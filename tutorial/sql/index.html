@@ -1,0 +1,1504 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.7.1">
+    
+    
+      
+        <title>Spatial SQL application - GeoSpark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.78aab2dc.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.6079476c.css">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="cyan" data-md-color-accent="pink">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#set-up-dependencies" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="GeoSpark" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                GeoSpark
+              </span>
+              <span class="md-header-nav__topic">
+                Spatial SQL application
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/DataSystemsLab/GeoSpark/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    GeoSpark
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/DataSystemsLab/GeoSpark/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Download
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Download
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../download/overview/" title="Quick start" class="md-nav__link">
+      Quick start
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../download/GeoSpark-All-Modules-Release-notes/" title="Release notes" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/" title="Maven Central coordinate" class="md-nav__link">
+      Maven Central coordinate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../download/cluster/" title="Set up Spark cluser" class="md-nav__link">
+      Set up Spark cluser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../download/scalashell/" title="Spark Scala shell" class="md-nav__link">
+      Spark Scala shell
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../download/project/" title="Self-contained project" class="md-nav__link">
+      Self-contained project
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../download/zeppelin/" title="Install GeoSpark-Zeppelin" class="md-nav__link">
+      Install GeoSpark-Zeppelin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../download/compile/" title="Compile the source code" class="md-nav__link">
+      Compile the source code
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutorial
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Tutorial
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../rdd/" title="Spatial RDD application" class="md-nav__link">
+      Spatial RDD application
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Spatial SQL application
+      </label>
+    
+    <a href="./" title="Spatial SQL application" class="md-nav__link md-nav__link--active">
+      Spatial SQL application
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-dependencies" title="Set up dependencies" class="md-nav__link">
+    Set up dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initiate-sparksession" title="Initiate SparkSession" class="md-nav__link">
+    Initiate SparkSession
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#register-geosparksql" title="Register GeoSparkSQL" class="md-nav__link">
+    Register GeoSparkSQL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-data-from-files" title="Load data from files" class="md-nav__link">
+    Load data from files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-geometry-type-column" title="Create a Geometry type column" class="md-nav__link">
+    Create a Geometry type column
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-shapefile-and-geojson" title="Load Shapefile and GeoJSON" class="md-nav__link">
+    Load Shapefile and GeoJSON
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transform-the-coordinate-reference-system" title="Transform the Coordinate Reference System" class="md-nav__link">
+    Transform the Coordinate Reference System
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-spatial-queries" title="Run spatial queries" class="md-nav__link">
+    Run spatial queries
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range-query" title="Range query" class="md-nav__link">
+    Range query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knn-query" title="KNN query" class="md-nav__link">
+    KNN query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join-query" title="Join query" class="md-nav__link">
+    Join query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-queries" title="Other queries" class="md-nav__link">
+    Other queries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-to-permanent-storage" title="Save to permanent storage" class="md-nav__link">
+    Save to permanent storage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convert-between-dataframe-and-spatialrdd" title="Convert between DataFrame and SpatialRDD" class="md-nav__link">
+    Convert between DataFrame and SpatialRDD
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataframe-to-spatialrdd" title="DataFrame to SpatialRDD" class="md-nav__link">
+    DataFrame to SpatialRDD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatialrdd-to-dataframe" title="SpatialRDD to DataFrame" class="md-nav__link">
+    SpatialRDD to DataFrame
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatialpairrdd-to-dataframe" title="SpatialPairRDD to DataFrame" class="md-nav__link">
+    SpatialPairRDD to DataFrame
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../viz/" title="Visualize Spatial DataFrame" class="md-nav__link">
+      Visualize Spatial DataFrame
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../zeppelin/" title="Run GeoSpark via Zeppelin" class="md-nav__link">
+      Run GeoSpark via Zeppelin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../geospark-core-python/" title="Spatial RDD in Python" class="md-nav__link">
+      Spatial RDD in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../geospark-sql-python/" title="Spatial SQL in Python" class="md-nav__link">
+      Spatial SQL in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../GeoSpark-Runnable-DEMO/" title="GeoSpark template project" class="md-nav__link">
+      GeoSpark template project
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faq/" title="Frequently Asked Questions" class="md-nav__link">
+      Frequently Asked Questions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Advanced-Tutorial-Tune-your-GeoSpark-Application/" title="Tune GeoSpark RDD application" class="md-nav__link">
+      Tune GeoSpark RDD application
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../benchmark/" title="Benchmark" class="md-nav__link">
+      Benchmark
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+    
+    <label class="md-nav__link" for="nav-4-1">
+      GeoSpark core (RDD)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        GeoSpark core (RDD)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/GeoSpark-Scala-and-Java-API/" title="Scala/Java doc" class="md-nav__link">
+      Scala/Java doc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/GeoSpark-Python-API/" title="Python doc" class="md-nav__link">
+      Python doc
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      GeoSpark SQL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        GeoSpark SQL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/sql/GeoSparkSQL-javadoc/" title="JavaDoc" class="md-nav__link">
+      JavaDoc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/sql/GeoSparkSQL-Overview/" title="Quick start" class="md-nav__link">
+      Quick start
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/sql/GeoSparkSQL-Constructor/" title="Constructor" class="md-nav__link">
+      Constructor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/sql/GeoSparkSQL-Function/" title="Function" class="md-nav__link">
+      Function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/sql/GeoSparkSQL-Predicate/" title="Predicate" class="md-nav__link">
+      Predicate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/sql/GeoSparkSQL-AggregateFunction/" title="Aggregate function" class="md-nav__link">
+      Aggregate function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/sql/GeoSparkSQL-Optimizer/" title="Join query (optimizer)" class="md-nav__link">
+      Join query (optimizer)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/sql/GeoSparkSQL-Parameter/" title="Parameter" class="md-nav__link">
+      Parameter
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      GeoSpark Viz
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        GeoSpark Viz
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/viz/sql/" title="DataFrame/SQL" class="md-nav__link">
+      DataFrame/SQL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/viz/Babylon-Scala-and-Java-API/" title="RDD" class="md-nav__link">
+      RDD
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Contributing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Contributing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../contribute/rule/" title="Contributing rule" class="md-nav__link">
+      Contributing rule
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../contribute/contributor/" title="Contributors and committers" class="md-nav__link">
+      Contributors and committers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contact/" title="Contact" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../publication/" title="Publications" class="md-nav__link">
+      Publications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      License
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        License
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../license/License-before-1-2-0/" title="License-before-1.2.0" class="md-nav__link">
+      License-before-1.2.0
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../license/License/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-dependencies" title="Set up dependencies" class="md-nav__link">
+    Set up dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initiate-sparksession" title="Initiate SparkSession" class="md-nav__link">
+    Initiate SparkSession
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#register-geosparksql" title="Register GeoSparkSQL" class="md-nav__link">
+    Register GeoSparkSQL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-data-from-files" title="Load data from files" class="md-nav__link">
+    Load data from files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-geometry-type-column" title="Create a Geometry type column" class="md-nav__link">
+    Create a Geometry type column
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-shapefile-and-geojson" title="Load Shapefile and GeoJSON" class="md-nav__link">
+    Load Shapefile and GeoJSON
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transform-the-coordinate-reference-system" title="Transform the Coordinate Reference System" class="md-nav__link">
+    Transform the Coordinate Reference System
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-spatial-queries" title="Run spatial queries" class="md-nav__link">
+    Run spatial queries
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range-query" title="Range query" class="md-nav__link">
+    Range query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knn-query" title="KNN query" class="md-nav__link">
+    KNN query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join-query" title="Join query" class="md-nav__link">
+    Join query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-queries" title="Other queries" class="md-nav__link">
+    Other queries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-to-permanent-storage" title="Save to permanent storage" class="md-nav__link">
+    Save to permanent storage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convert-between-dataframe-and-spatialrdd" title="Convert between DataFrame and SpatialRDD" class="md-nav__link">
+    Convert between DataFrame and SpatialRDD
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataframe-to-spatialrdd" title="DataFrame to SpatialRDD" class="md-nav__link">
+    DataFrame to SpatialRDD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatialrdd-to-dataframe" title="SpatialRDD to DataFrame" class="md-nav__link">
+    SpatialRDD to DataFrame
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatialpairrdd-to-dataframe" title="SpatialPairRDD to DataFrame" class="md-nav__link">
+    SpatialPairRDD to DataFrame
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/DataSystemsLab/GeoSpark/edit/master/docs/tutorial/sql.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Spatial SQL application</h1>
+                
+                <p>The page outlines the steps to manage spatial data using GeoSparkSQL. <mark>The example code is written in Scala but also works for Java</mark>.</p>
+<p>GeoSparkSQL supports SQL/MM Part3 Spatial SQL Standard. It includes four kinds of SQL operators as follows. All these operators can be directly called through:
+<div class="codehilite"><pre><span></span><span class="k">var</span> <span class="n">myDataFrame</span> <span class="k">=</span> <span class="n">sparkSession</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;YOUR_SQL&quot;</span><span class="o">)</span>
+</pre></div></p>
+<p>Detailed GeoSparkSQL APIs are available here: <a href="../../api/sql/GeoSparkSQL-Overview/">GeoSparkSQL API</a></p>
+<h2 id="set-up-dependencies">Set up dependencies<a class="headerlink" href="#set-up-dependencies" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Read <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/">GeoSpark Maven Central coordinates</a></li>
+<li>Select <mark>the minimum dependencies</mark>: Add <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-core_2.11">Apache Spark core</a>, <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-sql">Apache SparkSQL</a>, <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/#geospark-core">GeoSpark core</a>, <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/#geospark-sql">GeoSparkSQL</a></li>
+<li>Add the dependencies in build.sbt or pom.xml.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To enjoy the full functions of GeoSpark, we suggest you include <mark>the full dependencies</mark>: <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-core_2.11">Apache Spark core</a>, <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-sql">Apache SparkSQL</a>, <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/#geospark-core">GeoSpark core</a>, <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/#geospark-sql">GeoSparkSQL</a>, <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/#geospark-viz">GeoSparkViz</a></p>
+</div>
+<h2 id="initiate-sparksession">Initiate SparkSession<a class="headerlink" href="#initiate-sparksession" title="Permanent link">&para;</a></h2>
+<p>Use the following code to initiate your SparkSession at the beginning:
+<div class="codehilite"><pre><span></span><span class="k">var</span> <span class="n">sparkSession</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
+<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&quot;local[*]&quot;</span><span class="o">)</span> <span class="c1">// Delete this if run in cluster mode</span>
+<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&quot;readTestScala&quot;</span><span class="o">)</span> <span class="c1">// Change this to a proper name</span>
+<span class="c1">// Enable GeoSpark custom Kryo serializer</span>
+<span class="o">.</span><span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.serializer&quot;</span><span class="o">,</span> <span class="n">classOf</span><span class="o">[</span><span class="kt">KryoSerializer</span><span class="o">].</span><span class="n">getName</span><span class="o">)</span>
+<span class="o">.</span><span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.kryo.registrator&quot;</span><span class="o">,</span> <span class="n">classOf</span><span class="o">[</span><span class="kt">GeoSparkKryoRegistrator</span><span class="o">].</span><span class="n">getName</span><span class="o">)</span>
+<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+</pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>GeoSpark has a suite of well-written geometry and index serializers. Forgetting to enable these serializers will lead to high memory consumption.</p>
+</div>
+<p>If you add <mark>the GeoSpark full dependencies</mark> as suggested above, please use the following two lines to enable GeoSpark Kryo serializer instead:
+<div class="codehilite"><pre><span></span><span class="o">.</span><span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.serializer&quot;</span><span class="o">,</span> <span class="n">classOf</span><span class="o">[</span><span class="kt">KryoSerializer</span><span class="o">].</span><span class="n">getName</span><span class="o">)</span>
+<span class="o">.</span><span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.kryo.registrator&quot;</span><span class="o">,</span> <span class="n">classOf</span><span class="o">[</span><span class="kt">GeoSparkVizKryoRegistrator</span><span class="o">].</span><span class="n">getName</span><span class="o">)</span>
+</pre></div></p>
+<h2 id="register-geosparksql">Register GeoSparkSQL<a class="headerlink" href="#register-geosparksql" title="Permanent link">&para;</a></h2>
+<p>Add the following line after your SparkSession declaration</p>
+<div class="codehilite"><pre><span></span><span class="nc">GeoSparkSQLRegistrator</span><span class="o">.</span><span class="n">registerAll</span><span class="o">(</span><span class="n">sparkSession</span><span class="o">)</span>
+</pre></div>
+
+<p>This function will register GeoSpark User Defined Type, User Defined Function and optimized join query strategy.</p>
+<h2 id="load-data-from-files">Load data from files<a class="headerlink" href="#load-data-from-files" title="Permanent link">&para;</a></h2>
+<p>Assume we have a WKT file, namely <code class="codehilite">usa-county.tsv</code>, at Path <code class="codehilite">/Download/usa-county.tsv</code> as follows:</p>
+<p><div class="codehilite"><pre><span></span>POLYGON (..., ...)  Cuming County   
+POLYGON (..., ...)  Wahkiakum County
+POLYGON (..., ...)  De Baca County
+POLYGON (..., ...)  Lancaster County
+</pre></div>
+The file may have many other columns.</p>
+<p>Use the following code to load the data and create a raw DataFrame:</p>
+<div class="codehilite"><pre><span></span><span class="k">var</span> <span class="n">rawDf</span> <span class="k">=</span> <span class="n">sparkSession</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&quot;csv&quot;</span><span class="o">).</span><span class="n">option</span><span class="o">(</span><span class="s">&quot;delimiter&quot;</span><span class="o">,</span> <span class="s">&quot;\t&quot;</span><span class="o">).</span><span class="n">option</span><span class="o">(</span><span class="s">&quot;header&quot;</span><span class="o">,</span> <span class="s">&quot;false&quot;</span><span class="o">).</span><span class="n">load</span><span class="o">(</span><span class="s">&quot;/Download/usa-county.tsv&quot;</span><span class="o">)</span>
+<span class="n">rawDf</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="o">(</span><span class="s">&quot;rawdf&quot;</span><span class="o">)</span>
+<span class="n">rawDf</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+
+<p>The output will be like this:</p>
+<div class="codehilite"><pre><span></span>|                 _c0|_c1|_c2|     _c3|  _c4|        _c5|                 _c6|_c7|_c8|  _c9|_c10| _c11|_c12|_c13|      _c14|    _c15|       _c16|        _c17|
++--------------------+---+---+--------+-----+-----------+--------------------+---+---+-----+----+-----+----+----+----------+--------+-----------+------------+
+|POLYGON ((-97.019...| 31|039|00835841|31039|     Cuming|       Cuming County| 06| H1|G4020|null| null|null|   A|1477895811|10447360|+41.9158651|-096.7885168|
+|POLYGON ((-123.43...| 53|069|01513275|53069|  Wahkiakum|    Wahkiakum County| 06| H1|G4020|null| null|null|   A| 682138871|61658258|+46.2946377|-123.4244583|
+|POLYGON ((-104.56...| 35|011|00933054|35011|    De Baca|      De Baca County| 06| H1|G4020|null| null|null|   A|6015539696|29159492|+34.3592729|-104.3686961|
+|POLYGON ((-96.910...| 31|109|00835876|31109|  Lancaster|    Lancaster County| 06| H1|G4020| 339|30700|null|   A|2169240202|22877180|+40.7835474|-096.6886584|
+</pre></div>
+
+<h2 id="create-a-geometry-type-column">Create a Geometry type column<a class="headerlink" href="#create-a-geometry-type-column" title="Permanent link">&para;</a></h2>
+<p>All geometrical operations in GeoSparkSQL are on Geometry type objects. Therefore, before any kind of queries, you need to create a Geometry type column on a DataFrame.</p>
+<div class="codehilite"><pre><span></span><span class="k">var</span> <span class="n">spatialDf</span> <span class="k">=</span> <span class="n">sparkSession</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span>
+  <span class="s">&quot;&quot;&quot;</span>
+<span class="s">    |SELECT ST_GeomFromWKT(_c0) AS countyshape, _c1, _c2</span>
+<span class="s">    |FROM rawdf</span>
+<span class="s">  &quot;&quot;&quot;</span><span class="o">.</span><span class="n">stripMargin</span><span class="o">)</span>
+<span class="n">spatialDf</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="o">(</span><span class="s">&quot;spatialdf&quot;</span><span class="o">)</span>
+<span class="n">spatialDf</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+
+<p>You can select many other attributes to compose this <code class="codehilite">spatialdDf</code>. The output will be something like this:</p>
+<div class="codehilite"><pre><span></span>|                 countyshape|_c1|_c2|     _c3|  _c4|        _c5|                 _c6|_c7|_c8|  _c9|_c10| _c11|_c12|_c13|      _c14|    _c15|       _c16|        _c17|
++--------------------+---+---+--------+-----+-----------+--------------------+---+---+-----+----+-----+----+----+----------+--------+-----------+------------+
+|POLYGON ((-97.019...| 31|039|00835841|31039|     Cuming|       Cuming County| 06| H1|G4020|null| null|null|   A|1477895811|10447360|+41.9158651|-096.7885168|
+|POLYGON ((-123.43...| 53|069|01513275|53069|  Wahkiakum|    Wahkiakum County| 06| H1|G4020|null| null|null|   A| 682138871|61658258|+46.2946377|-123.4244583|
+|POLYGON ((-104.56...| 35|011|00933054|35011|    De Baca|      De Baca County| 06| H1|G4020|null| null|null|   A|6015539696|29159492|+34.3592729|-104.3686961|
+|POLYGON ((-96.910...| 31|109|00835876|31109|  Lancaster|    Lancaster County| 06| H1|G4020| 339|30700|null|   A|2169240202|22877180|+40.7835474|-096.6886584|
+</pre></div>
+
+<p>Although it looks same with the input, but actually the type of column countyshape has been changed to <mark>Geometry</mark> type.</p>
+<p>To verify this, use the following code to print the schema of the DataFrame:</p>
+<div class="codehilite"><pre><span></span><span class="n">spatialDf</span><span class="o">.</span><span class="n">printSchema</span><span class="o">()</span>
+</pre></div>
+
+<p>The output will be like this:</p>
+<div class="codehilite"><pre><span></span>root
+ |-- countyshape: geometry (nullable = false)
+ |-- _c1: string (nullable = true)
+ |-- _c2: string (nullable = true)
+ |-- _c3: string (nullable = true)
+ |-- _c4: string (nullable = true)
+ |-- _c5: string (nullable = true)
+ |-- _c6: string (nullable = true)
+ |-- _c7: string (nullable = true)
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GeoSparkSQL provides more than 10 different functions to create a Geometry column, please read <a href="../../api/sql/GeoSparkSQL-Constructor/">GeoSparkSQL constructor API</a>.</p>
+</div>
+<h2 id="load-shapefile-and-geojson">Load Shapefile and GeoJSON<a class="headerlink" href="#load-shapefile-and-geojson" title="Permanent link">&para;</a></h2>
+<p>Shapefile and GeoJSON must be loaded by SpatialRDD and converted to DataFrame using Adapter. Please read <a href="../rdd/#create-a-generic-spatialrdd-behavoir-changed-in-v120">Load SpatialRDD</a> and <a href="../sql/#convert-between-dataframe-and-spatialrdd">DataFrame &lt;-&gt; RDD</a>.</p>
+<h2 id="transform-the-coordinate-reference-system">Transform the Coordinate Reference System<a class="headerlink" href="#transform-the-coordinate-reference-system" title="Permanent link">&para;</a></h2>
+<p>GeoSpark doesn't control the coordinate unit (degree-based or meter-based) of all geometries in a Geometry column. The unit of all related distances in GeoSparkSQL is same as the unit of all geometries in a Geometry column.</p>
+<p>To convert Coordinate Reference System of the Geometry column created before, use the following code:</p>
+<div class="codehilite"><pre><span></span><span class="n">spatialDf</span> <span class="k">=</span> <span class="n">sparkSession</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span>
+  <span class="s">&quot;&quot;&quot;</span>
+<span class="s">    |SELECT ST_Transform(countyshape, &quot;epsg:4326&quot;, &quot;epsg:3857&quot;) AS newcountyshape, _c1, _c2, _c3, _c4, _c5, _c6, _c7</span>
+<span class="s">    |FROM spatialdf</span>
+<span class="s">  &quot;&quot;&quot;</span><span class="o">.</span><span class="n">stripMargin</span><span class="o">)</span>
+<span class="n">spatialDf</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="o">(</span><span class="s">&quot;spatialdf&quot;</span><span class="o">)</span>
+<span class="n">spatialDf</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+
+<p>The first EPSG code EPSG:4326 in <code class="codehilite">ST_Transform</code> is the source CRS of the geometries. It is WGS84, the most common degree-based CRS.</p>
+<p>The second EPSG code EPSG:3857 in <code class="codehilite">ST_Transform</code> is the target CRS of the geometries. It is the most common meter-based CRS.</p>
+<p>This <code class="codehilite">ST_Transform</code> transform the CRS of these geomtries from EPSG:4326 to EPSG:3857. The details CRS information can be found on <a href="https://epsg.io/.">EPSG.io</a></p>
+<p>The coordinates of polygons have been changed. The output will be like this:</p>
+<div class="codehilite"><pre><span></span>+--------------------+---+---+--------+-----+-----------+--------------------+---+
+|      newcountyshape|_c1|_c2|     _c3|  _c4|        _c5|                 _c6|_c7|
++--------------------+---+---+--------+-----+-----------+--------------------+---+
+|POLYGON ((-108001...| 31|039|00835841|31039|     Cuming|       Cuming County| 06|
+|POLYGON ((-137408...| 53|069|01513275|53069|  Wahkiakum|    Wahkiakum County| 06|
+|POLYGON ((-116403...| 35|011|00933054|35011|    De Baca|      De Baca County| 06|
+|POLYGON ((-107880...| 31|109|00835876|31109|  Lancaster|    Lancaster County| 06|
+</pre></div>
+
+<h2 id="run-spatial-queries">Run spatial queries<a class="headerlink" href="#run-spatial-queries" title="Permanent link">&para;</a></h2>
+<p>After creating a Geometry type column, you are able to run spatial queries.</p>
+<h3 id="range-query">Range query<a class="headerlink" href="#range-query" title="Permanent link">&para;</a></h3>
+<p>Use <mark>ST_Contains</mark>, <mark>ST_Intersects</mark>, <mark>ST_Within</mark> to run a range query over a single column.</p>
+<p>The following example finds all counties that are within the given polygon:</p>
+<div class="codehilite"><pre><span></span><span class="n">spatialDf</span> <span class="k">=</span> <span class="n">sparkSession</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span>
+  <span class="s">&quot;&quot;&quot;</span>
+<span class="s">    |SELECT *</span>
+<span class="s">    |FROM spatialdf</span>
+<span class="s">    |WHERE ST_Contains (ST_PolygonFromEnvelope(1.0,100.0,1000.0,1100.0), newcountyshape)</span>
+<span class="s">  &quot;&quot;&quot;</span><span class="o">.</span><span class="n">stripMargin</span><span class="o">)</span>
+<span class="n">spatialDf</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="o">(</span><span class="s">&quot;spatialdf&quot;</span><span class="o">)</span>
+<span class="n">spatialDf</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Read <a href="../../api/sql/GeoSparkSQL-Constructor/">GeoSparkSQL constructor API</a> to learn how to create a Geometry type query window</p>
+</div>
+<h3 id="knn-query">KNN query<a class="headerlink" href="#knn-query" title="Permanent link">&para;</a></h3>
+<p>Use <mark>ST_Distance</mark> to calculate the distance and rank the distance.</p>
+<p>The following code returns the 5 nearest neighbor of the given polygon.</p>
+<div class="codehilite"><pre><span></span><span class="n">spatialDf</span> <span class="k">=</span> <span class="n">sparkSession</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span>
+  <span class="s">&quot;&quot;&quot;</span>
+<span class="s">    |SELECT countyname, ST_Distance(ST_PolygonFromEnvelope(1.0,100.0,1000.0,1100.0), newcountyshape) AS distance</span>
+<span class="s">    |FROM spatialdf</span>
+<span class="s">    |ORDER BY distance DESC</span>
+<span class="s">    |LIMIT 5</span>
+<span class="s">  &quot;&quot;&quot;</span><span class="o">.</span><span class="n">stripMargin</span><span class="o">)</span>
+<span class="n">spatialDf</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="o">(</span><span class="s">&quot;spatialdf&quot;</span><span class="o">)</span>
+<span class="n">spatialDf</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+
+<h3 id="join-query">Join query<a class="headerlink" href="#join-query" title="Permanent link">&para;</a></h3>
+<p>The details of a join query is available here <a href="../../api/sql/GeoSparkSQL-Optimizer/">Join query</a>.</p>
+<h3 id="other-queries">Other queries<a class="headerlink" href="#other-queries" title="Permanent link">&para;</a></h3>
+<p>There are lots of other functions can be combined with these queries. Please read <a href="../../api/sql/GeoSparkSQL-Function/">GeoSparkSQL functions</a> and <a href="../../api/sql/GeoSparkSQL-AggregateFunction/">GeoSparkSQL aggregate functions</a>.</p>
+<h2 id="save-to-permanent-storage">Save to permanent storage<a class="headerlink" href="#save-to-permanent-storage" title="Permanent link">&para;</a></h2>
+<p>To save a Spatial DataFrame to some permanent storage such as Hive tables and HDFS, you can simply convert each geometry in the Geometry type column back to a plain String and save the plain DataFrame to wherever you want.</p>
+<p>Use the following code to convert the Geometry column in a DataFrame back to a WKT string column:
+<div class="codehilite"><pre><span></span><span class="n">sparkSession</span><span class="o">.</span><span class="n">udf</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="s">&quot;ST_SaveAsWKT&quot;</span><span class="o">,</span> <span class="o">(</span><span class="n">geometry</span><span class="k">:</span> <span class="kt">Geometry</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">toText</span><span class="o">))</span>
+<span class="k">var</span> <span class="n">stringDf</span> <span class="k">=</span> <span class="n">sparkSession</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span>
+  <span class="s">&quot;&quot;&quot;</span>
+<span class="s">    |SELECT ST_SaveAsWKT(countyshape)</span>
+<span class="s">    |FROM polygondf</span>
+<span class="s">  &quot;&quot;&quot;</span><span class="o">.</span><span class="n">stripMargin</span><span class="o">)</span>
+</pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We are working on providing more user-friendly output functions such as <mark>ST_SaveAsWKT</mark> and <mark>ST_SaveAsWKB</mark>. Stay tuned!</p>
+</div>
+<p>To load the DataFrame back, you first use the regular method to load the saved string DataFrame from the permanent storage and use <mark>ST_GeomFromWKT</mark> to re-build the Geometry type column.</p>
+<h2 id="convert-between-dataframe-and-spatialrdd">Convert between DataFrame and SpatialRDD<a class="headerlink" href="#convert-between-dataframe-and-spatialrdd" title="Permanent link">&para;</a></h2>
+<h3 id="dataframe-to-spatialrdd">DataFrame to SpatialRDD<a class="headerlink" href="#dataframe-to-spatialrdd" title="Permanent link">&para;</a></h3>
+<p>Use GeoSparkSQL DataFrame-RDD Adapter to convert a DataFrame to an SpatialRDD</p>
+<p><strong>GeoSpark 1.2.0+</strong>
+<div class="codehilite"><pre><span></span><span class="k">var</span> <span class="n">spatialRDD</span> <span class="k">=</span> <span class="nc">Adapter</span><span class="o">.</span><span class="n">toSpatialRdd</span><span class="o">(</span><span class="n">spatialDf</span><span class="o">,</span> <span class="s">&quot;usacounty&quot;</span><span class="o">)</span>
+</pre></div></p>
+<p>"usacounty" is the name of the geometry column</p>
+<p><strong>Before GeoSpark 1.2.0</strong>
+<div class="codehilite"><pre><span></span><span class="k">var</span> <span class="n">spatialRDD</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SpatialRDD</span><span class="o">[</span><span class="kt">Geometry</span><span class="o">]</span>
+<span class="n">spatialRDD</span><span class="o">.</span><span class="n">rawSpatialRDD</span> <span class="k">=</span> <span class="nc">Adapter</span><span class="o">.</span><span class="n">toRdd</span><span class="o">(</span><span class="n">spatialDf</span><span class="o">)</span>
+</pre></div></p>
+<p>Geometry must be the first column in the DataFrame</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only one Geometry type column is allowed per DataFrame.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before GeoSpark 1.2.0, other non-spatial columns need be brought to SpatialRDD using the UUIDs. Please read <a href="../../api/sql/GeoSparkSQL-Constructor/">GeoSparkSQL constructor API</a>. In GeoSpark 1.2.0+, all other non-spatial columns are automatically kept in SpatialRDD.</p>
+</div>
+<h3 id="spatialrdd-to-dataframe">SpatialRDD to DataFrame<a class="headerlink" href="#spatialrdd-to-dataframe" title="Permanent link">&para;</a></h3>
+<p>Use GeoSparkSQL DataFrame-RDD Adapter to convert a DataFrame to an SpatialRDD
+<div class="codehilite"><pre><span></span><span class="k">var</span> <span class="n">spatialDf</span> <span class="k">=</span> <span class="nc">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="o">(</span><span class="n">spatialRDD</span><span class="o">,</span> <span class="n">sparkSession</span><span class="o">)</span>
+</pre></div></p>
+<p>All other attributes such as price and age will be also brought to the DataFrame as long as you specify <mark>carryOtherAttributes</mark> (see <a href="../rdd#read-other-attributes-in-an-spatialrdd">Read other attributes in an SpatialRDD</a>).</p>
+<h3 id="spatialpairrdd-to-dataframe">SpatialPairRDD to DataFrame<a class="headerlink" href="#spatialpairrdd-to-dataframe" title="Permanent link">&para;</a></h3>
+<p>PairRDD is the result of a spatial join query or distance join query. GeoSparkSQL DataFrame-RDD Adapter can convert the result to a DataFrame:</p>
+<div class="codehilite"><pre><span></span><span class="k">var</span> <span class="n">joinResultDf</span> <span class="k">=</span> <span class="nc">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="o">(</span><span class="n">joinResultPairRDD</span><span class="o">,</span> <span class="n">sparkSession</span><span class="o">)</span>
+</pre></div>
+
+<p>All other attributes such as price and age will be also brought to the DataFrame as long as you specify <mark>carryOtherAttributes</mark> (see <a href="../rdd#read-other-attributes-in-an-spatialrdd">Read other attributes in an SpatialRDD</a>).</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../rdd/" title="Spatial RDD application" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Spatial RDD application
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../viz/" title="Visualize Spatial DataFrame" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Visualize Spatial DataFrame
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/DataSystemsLab/GeoSpark" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/GeoSpark_ASU" class="md-footer-social__link fa fa-twitter"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.8eb9be28.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-64886725-1","www.public.asu.edu/~jiayu2/geospark/index.html"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
