@@ -2,13 +2,13 @@
     "docs": [
         {
             "location": "/", 
-            "text": "On 07/19/2020, GeoSpark has been accepted to the Apache Software Foundation under the new name Apache Sedona (incubating). This website will be moved to the ASF domain. Old contributors please read \nthis GitHub issue\n and submit your CLA at your earliest convenience.\n\n\n\n\n\n\n\n\n\n\nStable\n\n\nLatest\n\n\nSource code\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGeoSpark@Twitter\n || \nGeoSpark Discussion Board\n || \n\n\nNews!\n\n\n\n\nGeoSpark 1.3.1 is released. This version provides a complete Python wrapper to GeoSpark RDD and SQL API. It also contains a number of bug fixes and new functions from 12 contributors. See \nPython tutorial: RDD\n, \nPython tutorial: SQL\n, \nRelease note\n\n\n\n\nCompanies are using GeoSpark\n\n\n(incomplete list)\n\n\n \n \n \n \n\n\nPlease make a Pull Request to add yourself!\n\n\nIntroduction\n\n\nGeoSpark is a cluster computing system for processing large-scale spatial data. GeoSpark extends Apache Spark / SparkSQL with a set of out-of-the-box Spatial Resilient Distributed Datasets (SRDDs)/ SpatialSQL that efficiently load, process, and analyze large-scale spatial data across machines.\n\n\nGeoSpark contains several modules:\n\n\n\n\n\n\n\n\nName\n\n\nAPI\n\n\nSpark compatibility\n\n\nIntroduction\n\n\n\n\n\n\n\n\n\n\nCore\n\n\nRDD\n\n\nSpark 2.X/1.X\n\n\nSpatialRDDs and Query Operators.\n\n\n\n\n\n\nSQL\n\n\nSQL/DataFrame\n\n\nSparkSQL 2.1+\n\n\nSQL interfaces for GeoSpark core.\n\n\n\n\n\n\nViz\n\n\nRDD, SQL/DataFrame\n\n\nRDD - Spark 2.X/1.X, SQL - Spark 2.1+\n\n\nVisualization for Spatial RDD and DataFrame.\n\n\n\n\n\n\nZeppelin\n\n\nApache Zeppelin\n\n\nSpark 2.1+, Zeppelin 0.8.1+\n\n\nGeoSpark plugin for Apache Zeppelin\n\n\n\n\n\n\n\n\nImpact\n\n\nGeoSpark Downloads on Maven Central\n\n\nGeoSpark ecosystem has around 8K - 10K downloads per month.\n\n\n\n\nFeatures\n\n\n\n\nSpatial RDD\n\n\nSpatial SQL\n\n\nSELECT\n \nsuperhero\n.\nname\n\n\nFROM\n \ncity\n,\n \nsuperhero\n\n\nWHERE\n \nST_Contains\n(\ncity\n.\ngeom\n,\n \nsuperhero\n.\ngeom\n)\n\n\nAND\n \ncity\n.\nname\n \n=\n \nGotham\n;\n\n\n\n\nComplex geometries / trajectories\n: point, polygon, linestring, multi-point, multi-polygon, multi-linestring, GeometryCollection\n\n\nVarious input formats\n: CSV, TSV, WKT, WKB, GeoJSON, NASA NetCDF/HDF, Shapefile (.shp, .shx, .dbf): extension must be in lower case\n\n\nSpatial query\n: range query, range join query, distance join query, K Nearest Neighbor query\n\n\nSpatial index\n: R-Tree, Quad-Tree\n\n\nSpatial partitioning\n: KDB-Tree, Quad-Tree, R-Tree, Voronoi diagram, Hilbert curve, Uniform grids\n\n\nCoordinate Reference System / Spatial Reference System Transformation\n: for exmaple, from WGS84 (EPSG:4326, degree-based), to EPSG:3857 (meter-based)\n\n\nHigh resolution map\n: Scatter plot, heat map, choropleth map\n\n\n\n\nGeoSpark language support\n\n\n\n\n\n\n\n\nLanguage\n\n\nSupported GeoSpark modules\n\n\nTutorial\n\n\n\n\n\n\n\n\n\n\nScala\n\n\nRDD, SQL, Viz, Zeppelin\n\n\nRDD\n, \nSQL\n, \nViz\n, \nZeppelin\n\n\n\n\n\n\nJava\n\n\nRDD, SQL, Viz\n\n\nRDD\n, \nSQL\n, \nViz\n\n\n\n\n\n\nSQL\n\n\nSQL, Viz, Zeppelin\n\n\nSQL\n, \nViz\n, \nZeppelin\n\n\n\n\n\n\nPython\n\n\nRDD, SQL\n\n\nRDD\n, \nSQL\n\n\n\n\n\n\nR\n\n\nSQL\n\n\n\n\n\n\n\n\n\n\nGeoSpark Visualization Extension (GeoSparkViz)\n\n\nGeoSparkViz is a large-scale in-memory geospatial visualization system.\n\n\nGeoSparkViz provides native support for general cartographic design by extending GeoSpark to process large-scale spatial data. It can visulize Spatial RDD and Spatial Queries and render super high resolution image in parallel.\n\n\nMore details are available here: \nVisualize Spatial DataFrame/RDD\n\n\nGeoSparkViz Gallery\n\n\n\n\n\n\nWatch the high resolution version on a real map\n\n\n\n\nResearch\n\n\nGeoSpark development team has published many papers about GeoSpark. Please read \nPublications\n. \n\n\nGeoSpark received an evaluation from PVLDB 2018 paper \n\"How Good Are Modern Spatial Analytics Systems?\"\n Varun Pandey, Andreas Kipf, Thomas Neumann, Alfons Kemper (Technical University of Munich), quoted as follows: \n\n\n\n\nGeoSpark comes close to a complete spatial analytics system. It also exhibits the best performance in most cases.", 
+            "text": "On 07/19/2020, GeoSpark has been accepted to the Apache Software Foundation under the new name Apache Sedona (incubating). This website will be refactored in the weeks to come.\n\n\n\n\n || \nSedona@Twitter\n || \nSedona Mailling Lists\n || \n\n\nNews!\n\n\n\n\nGeoSpark 1.3.1 is released. This version provides a complete Python wrapper to GeoSpark RDD and SQL API. It also contains a number of bug fixes and new functions from 12 contributors. See \nPython tutorial: RDD\n, \nPython tutorial: SQL\n, \nRelease note\n\n\n\n\nCompanies are using Sedona\n\n\n(incomplete list)\n\n\n \n \n \n \n\n\nPlease make a Pull Request to add yourself!\n\n\nIntroduction\n\n\nApache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. Sedona extends Apache Spark / SparkSQL with a set of out-of-the-box Spatial Resilient Distributed Datasets (SRDDs)/ SpatialSQL that efficiently load, process, and analyze large-scale spatial data across machines.\n\n\nSedona contains several modules:\n\n\n\n\n\n\n\n\nName\n\n\nAPI\n\n\nSpark compatibility\n\n\nIntroduction\n\n\n\n\n\n\n\n\n\n\nCore\n\n\nRDD\n\n\nSpark 2.X/1.X\n\n\nSpatialRDDs and Query Operators.\n\n\n\n\n\n\nSQL\n\n\nSQL/DataFrame\n\n\nSparkSQL 2.1+\n\n\nSQL interfaces for Sedona core.\n\n\n\n\n\n\nViz\n\n\nRDD, SQL/DataFrame\n\n\nRDD - Spark 2.X/1.X, SQL - Spark 2.1+\n\n\nVisualization for Spatial RDD and DataFrame.\n\n\n\n\n\n\nZeppelin\n\n\nApache Zeppelin\n\n\nSpark 2.1+, Zeppelin 0.8.1+\n\n\nPlugin for Apache Zeppelin\n\n\n\n\n\n\n\n\nImpact\n\n\nGeoSpark Downloads\n\n\nGeoSpark ecosystem has around 200K downloads per month.\n\n\nFeatures\n\n\n\n\nSpatial RDD\n\n\nSpatial SQL\n\n\nSELECT\n \nsuperhero\n.\nname\n\n\nFROM\n \ncity\n,\n \nsuperhero\n\n\nWHERE\n \nST_Contains\n(\ncity\n.\ngeom\n,\n \nsuperhero\n.\ngeom\n)\n\n\nAND\n \ncity\n.\nname\n \n=\n \nGotham\n;\n\n\n\n\nComplex geometries / trajectories\n: point, polygon, linestring, multi-point, multi-polygon, multi-linestring, GeometryCollection\n\n\nVarious input formats\n: CSV, TSV, WKT, WKB, GeoJSON, NASA NetCDF/HDF, Shapefile (.shp, .shx, .dbf): extension must be in lower case\n\n\nSpatial query\n: range query, range join query, distance join query, K Nearest Neighbor query\n\n\nSpatial index\n: R-Tree, Quad-Tree\n\n\nSpatial partitioning\n: KDB-Tree, Quad-Tree, R-Tree, Voronoi diagram, Hilbert curve, Uniform grids\n\n\nCoordinate Reference System / Spatial Reference System Transformation\n: for exmaple, from WGS84 (EPSG:4326, degree-based), to EPSG:3857 (meter-based)\n\n\nHigh resolution map\n: Scatter plot, heat map, choropleth map\n\n\n\n\nGeoSpark language support\n\n\n\n\n\n\n\n\nLanguage\n\n\nSupported GeoSpark modules\n\n\nTutorial\n\n\n\n\n\n\n\n\n\n\nScala\n\n\nRDD, SQL, Viz, Zeppelin\n\n\nRDD\n, \nSQL\n, \nViz\n, \nZeppelin\n\n\n\n\n\n\nJava\n\n\nRDD, SQL, Viz\n\n\nRDD\n, \nSQL\n, \nViz\n\n\n\n\n\n\nSQL\n\n\nSQL, Viz, Zeppelin\n\n\nSQL\n, \nViz\n, \nZeppelin\n\n\n\n\n\n\nPython\n\n\nRDD, SQL\n\n\nRDD\n, \nSQL\n\n\n\n\n\n\nR\n\n\nSQL\n\n\n\n\n\n\n\n\n\n\nGeoSpark Visualization Extension (GeoSparkViz)\n\n\nGeoSparkViz is a large-scale in-memory geospatial visualization system.\n\n\nGeoSparkViz provides native support for general cartographic design by extending GeoSpark to process large-scale spatial data. It can visulize Spatial RDD and Spatial Queries and render super high resolution image in parallel.\n\n\nMore details are available here: \nVisualize Spatial DataFrame/RDD\n\n\nGeoSparkViz Gallery\n\n\n\n\n\n\nWatch the high resolution version on a real map\n\n\n\n\nResearch\n\n\nGeoSpark development team has published many papers about GeoSpark. Please read \nPublications\n. \n\n\nGeoSpark received an evaluation from PVLDB 2018 paper \n\"How Good Are Modern Spatial Analytics Systems?\"\n Varun Pandey, Andreas Kipf, Thomas Neumann, Alfons Kemper (Technical University of Munich), quoted as follows: \n\n\n\n\nGeoSpark comes close to a complete spatial analytics system. It also exhibits the best performance in most cases.\n\n\n\n\nPowered by", 
             "title": "Home"
         }, 
         {
-            "location": "/#on-07192020-geospark-has-been-accepted-to-the-apache-software-foundation-under-the-new-name-apache-sedona-incubating-this-website-will-be-moved-to-the-asf-domain-old-contributors-please-read-this-github-issue-and-submit-your-cla-at-your-earliest-convenience", 
-            "text": "Stable  Latest  Source code            GeoSpark@Twitter  ||  GeoSpark Discussion Board  ||", 
-            "title": "On 07/19/2020, GeoSpark has been accepted to the Apache Software Foundation under the new name Apache Sedona (incubating). This website will be moved to the ASF domain. Old contributors please read this GitHub issue and submit your CLA at your earliest convenience."
+            "location": "/#on-07192020-geospark-has-been-accepted-to-the-apache-software-foundation-under-the-new-name-apache-sedona-incubating-this-website-will-be-refactored-in-the-weeks-to-come", 
+            "text": "||  Sedona@Twitter  ||  Sedona Mailling Lists  ||", 
+            "title": "On 07/19/2020, GeoSpark has been accepted to the Apache Software Foundation under the new name Apache Sedona (incubating). This website will be refactored in the weeks to come."
         }, 
         {
             "location": "/#news", 
@@ -16,19 +16,19 @@
             "title": "News!"
         }, 
         {
-            "location": "/#companies-are-using-geospark", 
+            "location": "/#companies-are-using-sedona", 
             "text": "(incomplete list)           Please make a Pull Request to add yourself!", 
-            "title": "Companies are using GeoSpark"
+            "title": "Companies are using Sedona"
         }, 
         {
             "location": "/#introduction", 
-            "text": "GeoSpark is a cluster computing system for processing large-scale spatial data. GeoSpark extends Apache Spark / SparkSQL with a set of out-of-the-box Spatial Resilient Distributed Datasets (SRDDs)/ SpatialSQL that efficiently load, process, and analyze large-scale spatial data across machines.", 
+            "text": "Apache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. Sedona extends Apache Spark / SparkSQL with a set of out-of-the-box Spatial Resilient Distributed Datasets (SRDDs)/ SpatialSQL that efficiently load, process, and analyze large-scale spatial data across machines.", 
             "title": "Introduction"
         }, 
         {
-            "location": "/#geospark-contains-several-modules", 
-            "text": "Name  API  Spark compatibility  Introduction      Core  RDD  Spark 2.X/1.X  SpatialRDDs and Query Operators.    SQL  SQL/DataFrame  SparkSQL 2.1+  SQL interfaces for GeoSpark core.    Viz  RDD, SQL/DataFrame  RDD - Spark 2.X/1.X, SQL - Spark 2.1+  Visualization for Spatial RDD and DataFrame.    Zeppelin  Apache Zeppelin  Spark 2.1+, Zeppelin 0.8.1+  GeoSpark plugin for Apache Zeppelin", 
-            "title": "GeoSpark contains several modules:"
+            "location": "/#sedona-contains-several-modules", 
+            "text": "Name  API  Spark compatibility  Introduction      Core  RDD  Spark 2.X/1.X  SpatialRDDs and Query Operators.    SQL  SQL/DataFrame  SparkSQL 2.1+  SQL interfaces for Sedona core.    Viz  RDD, SQL/DataFrame  RDD - Spark 2.X/1.X, SQL - Spark 2.1+  Visualization for Spatial RDD and DataFrame.    Zeppelin  Apache Zeppelin  Spark 2.1+, Zeppelin 0.8.1+  Plugin for Apache Zeppelin", 
+            "title": "Sedona contains several modules:"
         }, 
         {
             "location": "/#impact", 
@@ -36,9 +36,9 @@
             "title": "Impact"
         }, 
         {
-            "location": "/#geospark-downloads-on-maven-central", 
-            "text": "GeoSpark ecosystem has around 8K - 10K downloads per month.", 
-            "title": "GeoSpark Downloads on Maven Central"
+            "location": "/#geospark-downloads", 
+            "text": "GeoSpark ecosystem has around 200K downloads per month.", 
+            "title": "GeoSpark Downloads"
         }, 
         {
             "location": "/#features", 
@@ -59,6 +59,11 @@
             "location": "/#research", 
             "text": "GeoSpark development team has published many papers about GeoSpark. Please read  Publications .   GeoSpark received an evaluation from PVLDB 2018 paper  \"How Good Are Modern Spatial Analytics Systems?\"  Varun Pandey, Andreas Kipf, Thomas Neumann, Alfons Kemper (Technical University of Munich), quoted as follows:    GeoSpark comes close to a complete spatial analytics system. It also exhibits the best performance in most cases.", 
             "title": "Research"
+        }, 
+        {
+            "location": "/#powered-by", 
+            "text": "", 
+            "title": "Powered by"
         }, 
         {
             "location": "/download/overview/", 
