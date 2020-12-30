@@ -670,6 +670,63 @@
   </a>  
   
   
+    <nav class="md-nav" aria-label="Publish releases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#stage-the-releases" class="md-nav__link">
+    Stage the releases
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="Stage the releases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#for-spark-30-and-scala-212" class="md-nav__link">
+    For Spark 3.0 and Scala 2.12
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#for-spark-24-and-scala-211" class="md-nav__link">
+    For Spark 2.4 and Scala 2.11
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#for-spark-24-and-scala-212" class="md-nav__link">
+    For Spark 2.4 and Scala 2.12
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#close-the-staging-repo" class="md-nav__link">
+    Close the staging repo
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2002,6 +2059,63 @@
   </a>  
   
   
+    <nav class="md-nav" aria-label="Publish releases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#stage-the-releases" class="md-nav__link">
+    Stage the releases
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="Stage the releases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#for-spark-30-and-scala-212" class="md-nav__link">
+    For Spark 3.0 and Scala 2.12
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#for-spark-24-and-scala-211" class="md-nav__link">
+    For Spark 2.4 and Scala 2.11
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#for-spark-24-and-scala-212" class="md-nav__link">
+    For Spark 2.4 and Scala 2.12
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#close-the-staging-repo" class="md-nav__link">
+    Close the staging repo
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2167,6 +2281,58 @@ pip install mkdocs-material
 </ol>
 <h3 id="publish-python-project-to-pypi">Publish Python project to PyPi<a class="headerlink" href="#publish-python-project-to-pypi" title="Permanent link">&para;</a></h3>
 <h2 id="publish-releases">Publish releases<a class="headerlink" href="#publish-releases" title="Permanent link">&para;</a></h2>
+<h3 id="stage-the-releases">Stage the releases<a class="headerlink" href="#stage-the-releases" title="Permanent link">&para;</a></h3>
+<h4 id="for-spark-30-and-scala-212">For Spark 3.0 and Scala 2.12<a class="headerlink" href="#for-spark-30-and-scala-212" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Convert source code to Spark 3 format
+<div class="highlight"><pre><span></span><code>python3 spark-version-converter.py spark3
+</code></pre></div></li>
+<li>Prepare a release. Manually enter the following variables in the terminal: release id: <mark>1.0.0-incubator</mark>, scm tag id: <mark>sedona-3.0_2.12-1.0.0-incubator</mark> (this is just an example. Please use the correct version number). You also need to provide GitHub username and password
+<div class="highlight"><pre><span></span><code>mvn clean release:prepare -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span> 
+</code></pre></div></li>
+<li>Stage a release
+<div class="highlight"><pre><span></span><code>mvn clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span> 
+</code></pre></div></li>
+<li>Now the releases are staged. A tag and two commits will be created on Sedona GitHub repo.</li>
+</ol>
+<p>Now let's repeat the process to other Sedona modules.</p>
+<h4 id="for-spark-24-and-scala-211">For Spark 2.4 and Scala 2.11<a class="headerlink" href="#for-spark-24-and-scala-211" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Convert source code to Spark 2 format
+<div class="highlight"><pre><span></span><code>python3 spark-version-converter.py spark2
+</code></pre></div></li>
+<li>Manuallly commit the changes of the three scala files to GitHub</li>
+<li>Prepare a release. Note that: release id: <mark>1.0.0-incubator</mark>, scm tag id: <mark>sedona-2.4_2.11-1.0.0-incubator</mark> (this is just an example. Please use the correct version number)
+<div class="highlight"><pre><span></span><code>mvn clean release:prepare -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -DcheckModificationExcludeList<span class="o">=</span>sql/src/main/scala/org/apache/sedona/sql/UDF/UdfRegistrator.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/JoinQueryDetector.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/TraitJoinQueryExec.scala -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.11 -Dspark=2.4&quot;</span>
+</code></pre></div></li>
+<li>Stage a release
+<div class="highlight"><pre><span></span><code>mvn clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.11 -Dspark=2.4&quot;</span>
+</code></pre></div></li>
+</ol>
+<h4 id="for-spark-24-and-scala-212">For Spark 2.4 and Scala 2.12<a class="headerlink" href="#for-spark-24-and-scala-212" title="Permanent link">&para;</a></h4>
+<p>Step 1 and 2 are only needed if you didn't run the previous step before</p>
+<ol>
+<li>Convert source code to Spark 2 format
+<div class="highlight"><pre><span></span><code>python3 spark-version-converter.py spark2
+</code></pre></div></li>
+<li><mark>Manuallly commit the changes of the three scala files to GitHub</mark></li>
+<li>Prepare a release: release id: <mark>1.0.0-incubator</mark>, scm tag id: <mark>sedona-2.4_2.12-1.0.0-incubator</mark>  (this is just an example. Please use the correct version number)
+<div class="highlight"><pre><span></span><code>mvn clean release:prepare -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -DcheckModificationExcludeList<span class="o">=</span>sql/src/main/scala/org/apache/sedona/sql/UDF/UdfRegistrator.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/JoinQueryDetector.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/TraitJoinQueryExec.scala -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.12 -Dspark=2.4&quot;</span>
+</code></pre></div></li>
+<li>Stage a release
+<div class="highlight"><pre><span></span><code>mvn clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.12 -Dspark=2.4&quot;</span>
+</code></pre></div></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>After staged the three releases, you need to manually revert the commited three scala files. You will see 6 [maven-release-plugin] commits and 3 more tags in Sedona GitHub repo.</p>
+</div>
+<h3 id="close-the-staging-repo">Close the staging repo<a class="headerlink" href="#close-the-staging-repo" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Check the status of the staging repo: <a href="https://central.sonatype.org/pages/releasing-the-deployment.html#locate-and-examine-your-staging-repository">Locate and Examine Your Staging Repository
+</a>. You should see 12 Sedona modules in total.</li>
+<li>Call for a vote in Sedona community and Apache incubator. Then close the staging repo.</li>
+</ol>
                 
               
   
