@@ -1,6 +1,4 @@
 
-
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -12,28 +10,31 @@
       
       
       
+      
       <link rel="shortcut icon" href="../../image/sedona_logo.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.12">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.7">
     
     
       
-        <title>Spatial RDD in Python - Apache Sedona (incubating)</title>
+        <title>Python - Apache Sedona (incubating)</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4dd2dd8d.min.css">
-      
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.6a5ad368.min.css">
-      
+      <link rel="stylesheet" href="../../assets/stylesheets/main.19753c6b.min.css">
       
         
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
         
-        <meta name="theme-color" content="#ff6e42">
+          
+          
+          <meta name="theme-color" content="#ff6e42">
+        
       
     
     
     
       
+        
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
         <style>body,input{font-family:"Lato",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
@@ -55,9 +56,11 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-orange" data-md-color-accent="green">
-  
     
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-orange" data-md-color-accent="green">
+      
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -71,17 +74,11 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-announce">
-          <div class="md-announce__inner md-grid md-typeset">
-            
-  GeoSpark 1.3.2-SNAPSHOT (Java and Scala API) supports Spark 3.0. Please <a href="/download/GeoSpark-All-Modules-Maven-Central-Coordinates/">learn it here</a>! The first release of Apache Sedona will be out soon. For now, please still use "GeoSpark" in your code. 
-
-          </div>
-        </aside>
-      
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="../.." title="Apache Sedona (incubating)" class="md-header-nav__button md-logo" aria-label="Apache Sedona (incubating)">
       
@@ -100,7 +97,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Spatial RDD in Python
+              Python
             
           </span>
         </div>
@@ -115,7 +112,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
@@ -156,8 +153,6 @@
     
     <div class="md-container" data-md-component="container">
       
-        
-      
       
         
           
@@ -171,10 +166,10 @@
         
   <li class="md-tabs__item">
     
-      <a href="../.." class="md-tabs__link">
-        Home
-      </a>
     
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
   </li>
 
       
@@ -183,23 +178,10 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../download/features/" class="md-tabs__link">
-          Download
-        </a>
       
-    </li>
-  
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../rdd/" class="md-tabs__link md-tabs__link--active">
-          Tutorial
-        </a>
-      
+      <a href="../../download/features/" class="md-tabs__link">
+        Setup
+      </a>
     </li>
   
 
@@ -213,10 +195,31 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../api/GeoSpark-Scala-and-Java-API/" class="md-tabs__link">
-          API
-        </a>
       
+        
+      
+      <a href="../rdd/" class="md-tabs__link md-tabs__link--active">
+        Programming Guides
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../api/GeoSpark-Scala-and-Java-API/" class="md-tabs__link">
+        API Docs
+      </a>
     </li>
   
 
@@ -228,23 +231,10 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../community/contact/" class="md-tabs__link">
-          Community
-        </a>
       
-    </li>
-  
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../../license/License-before-1-2-0/" class="md-tabs__link">
-          License
-        </a>
-      
+      <a href="../../community/contact/" class="md-tabs__link">
+        Community
+      </a>
     </li>
   
 
@@ -258,10 +248,10 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../archive/download/overview/" class="md-tabs__link">
-          Archive for GeoSpark
-        </a>
       
+      <a href="../../archive/download/overview/" class="md-tabs__link">
+        GeoSpark Legacy Docs
+      </a>
     </li>
   
 
@@ -288,7 +278,9 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Apache Sedona (incubating)" class="md-nav__button md-logo" aria-label="Apache Sedona (incubating)">
       
@@ -320,7 +312,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Home" class="md-nav__link">
+    <a href="../.." class="md-nav__link">
       Home
     </a>
   </li>
@@ -333,16 +325,15 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
     <label class="md-nav__link" for="nav-2">
-      Download
+      Setup
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Download" data-md-level="1">
+    <nav class="md-nav" aria-label="Setup" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
         <span class="md-nav__icon md-icon"></span>
-        Download
+        Setup
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -353,7 +344,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../download/features/" title="Features" class="md-nav__link">
+    <a href="../../download/features/" class="md-nav__link">
       Features
     </a>
   </li>
@@ -365,7 +356,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../download/overview/" title="Quick start" class="md-nav__link">
+    <a href="../../download/overview/" class="md-nav__link">
       Quick start
     </a>
   </li>
@@ -377,7 +368,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../download/GeoSpark-All-Modules-Release-notes/" title="Release notes" class="md-nav__link">
+    <a href="../../download/GeoSpark-All-Modules-Release-notes/" class="md-nav__link">
       Release notes
     </a>
   </li>
@@ -389,7 +380,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/" title="Maven Central coordinate" class="md-nav__link">
+    <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/" class="md-nav__link">
       Maven Central coordinate
     </a>
   </li>
@@ -401,7 +392,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../download/cluster/" title="Set up Spark cluser" class="md-nav__link">
+    <a href="../../download/cluster/" class="md-nav__link">
       Set up Spark cluser
     </a>
   </li>
@@ -413,19 +404,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../download/scalashell/" title="Spark Scala shell" class="md-nav__link">
-      Spark Scala shell
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../download/project/" title="Self-contained project" class="md-nav__link">
+    <a href="../../download/project/" class="md-nav__link">
       Self-contained project
     </a>
   </li>
@@ -437,8 +416,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../download/zeppelin/" title="Install GeoSpark-Zeppelin" class="md-nav__link">
-      Install GeoSpark-Zeppelin
+    <a href="../../download/scalashell/" class="md-nav__link">
+      Interactive scala shell
     </a>
   </li>
 
@@ -449,8 +428,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../download/compile/" title="Compile the source code" class="md-nav__link">
-      Compile the source code
+    <a href="../../download/zeppelin/" class="md-nav__link">
+      Install Sedona-Zeppelin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../download/compile/" class="md-nav__link">
+      Compile and publish the code
     </a>
   </li>
 
@@ -469,16 +460,37 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     <label class="md-nav__link" for="nav-3">
-      Tutorial
+      Programming Guides
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Tutorial" data-md-level="1">
+    <nav class="md-nav" aria-label="Programming Guides" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
         <span class="md-nav__icon md-icon"></span>
-        Tutorial
+        Programming Guides
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    <label class="md-nav__link" for="nav-3-1">
+      Spatial RDD app
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Spatial RDD app" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        Spatial RDD app
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -489,44 +501,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../rdd/" title="Spatial RDD application" class="md-nav__link">
-      Spatial RDD application
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../sql/" title="Spatial SQL application" class="md-nav__link">
-      Spatial SQL application
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../viz/" title="Visualize Spatial DataFrame" class="md-nav__link">
-      Visualize Spatial DataFrame
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../zeppelin/" title="Run GeoSpark via Zeppelin" class="md-nav__link">
-      Run GeoSpark via Zeppelin
+    <a href="../rdd/" class="md-nav__link">
+      Scala/Java
     </a>
   </li>
 
@@ -546,12 +522,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Spatial RDD in Python
+        Python
         <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" title="Spatial RDD in Python" class="md-nav__link md-nav__link--active">
-      Spatial RDD in Python
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Python
     </a>
     
       
@@ -580,50 +556,17 @@
       
         <li class="md-nav__item">
   
-  <a href="#installing-the-package" class="md-nav__link">
-    Installing the package
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>  
   
-  
-    <nav class="md-nav" aria-label="Installing the package">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  
-  <a href="#installing-from-pypi-repositories" class="md-nav__link">
-    Installing from PyPi repositories
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#installing-from-wheel-file" class="md-nav__link">
-    Installing from wheel file
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#installing-from-source" class="md-nav__link">
-    Installing from source
-  </a>  
-  
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
   
-  <a href="#geospark-serializers" class="md-nav__link">
-    GeoSpark Serializers
+  <a href="#apache-sedona-serializers" class="md-nav__link">
+    Apache Sedona Serializers
   </a>  
   
   
@@ -1005,43 +948,10 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#supported-versions" class="md-nav__link">
-    Supported versions
-  </a>  
-  
-  
-    <nav class="md-nav" aria-label="Supported versions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   
-  <a href="#apache-spark" class="md-nav__link">
-    Apache Spark
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#geospark" class="md-nav__link">
-    GeoSpark
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#python" class="md-nav__link">
-    Python
+  <a href="#tips" class="md-nav__link">
+    Tips
   </a>  
   
   
@@ -1059,14 +969,39 @@
   </li>
 
         
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" >
+    <label class="md-nav__link" for="nav-3-2">
+      Spatial SQL app
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Spatial SQL app" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        Spatial SQL app
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../geospark-sql-python/" title="Spatial SQL in Python" class="md-nav__link">
-      Spatial SQL in Python
+    <a href="../sql/" class="md-nav__link">
+      Scala/Java
     </a>
   </li>
 
@@ -1077,8 +1012,45 @@
 
 
   <li class="md-nav__item">
-    <a href="../GeoSpark-Runnable-DEMO/" title="GeoSpark template project" class="md-nav__link">
-      GeoSpark template project
+    <a href="../geospark-sql-python/" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" >
+    <label class="md-nav__link" for="nav-3-3">
+      Map visualization SQL app
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Map visualization SQL app" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Map visualization SQL app
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../viz/" class="md-nav__link">
+      Scala/Java
     </a>
   </li>
 
@@ -1089,9 +1061,14 @@
 
 
   <li class="md-nav__item">
-    <a href="../faq/" title="Frequently Asked Questions" class="md-nav__link">
-      Frequently Asked Questions
+    <a href="../zeppelin/" class="md-nav__link">
+      Use Apache Zeppelin
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1101,8 +1078,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Advanced-Tutorial-Tune-your-GeoSpark-Application/" title="Tune GeoSpark RDD application" class="md-nav__link">
-      Tune GeoSpark RDD application
+    <a href="../GeoSpark-Runnable-DEMO/" class="md-nav__link">
+      Examples
     </a>
   </li>
 
@@ -1112,10 +1089,47 @@
           
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5" >
+    <label class="md-nav__link" for="nav-3-5">
+      Performance tuning
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Performance tuning" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        <span class="md-nav__icon md-icon"></span>
+        Performance tuning
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
-    <a href="../benchmark/" title="Benchmark" class="md-nav__link">
+    <a href="../benchmark/" class="md-nav__link">
       Benchmark
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Advanced-Tutorial-Tune-your-GeoSpark-Application/" class="md-nav__link">
+      Tune RDD application
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1131,16 +1145,15 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
     <label class="md-nav__link" for="nav-4">
-      API
+      API Docs
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="API" data-md-level="1">
+    <nav class="md-nav" aria-label="API Docs" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
         <span class="md-nav__icon md-icon"></span>
-        API
+        API Docs
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1152,16 +1165,15 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
     <label class="md-nav__link" for="nav-4-1">
-      GeoSpark core (RDD)
+      RDD (core)
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="GeoSpark core (RDD)" data-md-level="2">
+    <nav class="md-nav" aria-label="RDD (core)" data-md-level="2">
       <label class="md-nav__title" for="nav-4-1">
         <span class="md-nav__icon md-icon"></span>
-        GeoSpark core (RDD)
+        RDD (core)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1172,7 +1184,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/GeoSpark-Scala-and-Java-API/" title="Scala/Java doc" class="md-nav__link">
+    <a href="../../api/GeoSpark-Scala-and-Java-API/" class="md-nav__link">
       Scala/Java doc
     </a>
   </li>
@@ -1184,7 +1196,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/GeoSpark-Python-API/" title="Python doc" class="md-nav__link">
+    <a href="../../api/GeoSpark-Python-API/" class="md-nav__link">
       Python doc
     </a>
   </li>
@@ -1202,16 +1214,15 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
     <label class="md-nav__link" for="nav-4-2">
-      GeoSpark SQL
+      SQL
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="GeoSpark SQL" data-md-level="2">
+    <nav class="md-nav" aria-label="SQL" data-md-level="2">
       <label class="md-nav__title" for="nav-4-2">
         <span class="md-nav__icon md-icon"></span>
-        GeoSpark SQL
+        SQL
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1222,19 +1233,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-javadoc/" title="JavaDoc" class="md-nav__link">
-      JavaDoc
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Overview/" title="Quick start" class="md-nav__link">
+    <a href="../../api/sql/GeoSparkSQL-Overview/" class="md-nav__link">
       Quick start
     </a>
   </li>
@@ -1246,7 +1245,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Constructor/" title="Constructor" class="md-nav__link">
+    <a href="../../api/sql/GeoSparkSQL-Constructor/" class="md-nav__link">
       Constructor
     </a>
   </li>
@@ -1258,7 +1257,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Function/" title="Function" class="md-nav__link">
+    <a href="../../api/sql/GeoSparkSQL-Function/" class="md-nav__link">
       Function
     </a>
   </li>
@@ -1270,7 +1269,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Predicate/" title="Predicate" class="md-nav__link">
+    <a href="../../api/sql/GeoSparkSQL-Predicate/" class="md-nav__link">
       Predicate
     </a>
   </li>
@@ -1282,7 +1281,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-AggregateFunction/" title="Aggregate function" class="md-nav__link">
+    <a href="../../api/sql/GeoSparkSQL-AggregateFunction/" class="md-nav__link">
       Aggregate function
     </a>
   </li>
@@ -1294,7 +1293,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Optimizer/" title="Join query (optimizer)" class="md-nav__link">
+    <a href="../../api/sql/GeoSparkSQL-Optimizer/" class="md-nav__link">
       Join query (optimizer)
     </a>
   </li>
@@ -1306,7 +1305,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Parameter/" title="Parameter" class="md-nav__link">
+    <a href="../../api/sql/GeoSparkSQL-Parameter/" class="md-nav__link">
       Parameter
     </a>
   </li>
@@ -1324,16 +1323,15 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
     <label class="md-nav__link" for="nav-4-3">
-      GeoSpark Viz
+      Viz
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="GeoSpark Viz" data-md-level="2">
+    <nav class="md-nav" aria-label="Viz" data-md-level="2">
       <label class="md-nav__title" for="nav-4-3">
         <span class="md-nav__icon md-icon"></span>
-        GeoSpark Viz
+        Viz
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1344,7 +1342,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/viz/sql/" title="DataFrame/SQL" class="md-nav__link">
+    <a href="../../api/viz/sql/" class="md-nav__link">
       DataFrame/SQL
     </a>
   </li>
@@ -1356,7 +1354,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/viz/Babylon-Scala-and-Java-API/" title="RDD" class="md-nav__link">
+    <a href="../../api/viz/Babylon-Scala-and-Java-API/" class="md-nav__link">
       RDD
     </a>
   </li>
@@ -1379,8 +1377,7 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
     <label class="md-nav__link" for="nav-5">
       Community
       <span class="md-nav__icon md-icon"></span>
@@ -1399,8 +1396,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../community/contact/" title="Community info" class="md-nav__link">
-      Community info
+    <a href="../../community/contact/" class="md-nav__link">
+      Community
     </a>
   </li>
 
@@ -1411,7 +1408,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../community/rule/" title="Contributing rule" class="md-nav__link">
+    <a href="../../community/rule/" class="md-nav__link">
       Contributing rule
     </a>
   </li>
@@ -1423,7 +1420,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../community/contributor/" title="Committers" class="md-nav__link">
+    <a href="../../community/contributor/" class="md-nav__link">
       Committers
     </a>
   </li>
@@ -1435,12 +1432,24 @@
 
 
   <li class="md-nav__item">
-    <a href="../../community/publication/" title="Publications" class="md-nav__link">
+    <a href="../../community/publication/" class="md-nav__link">
       Publications
     </a>
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../license/License/" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1453,66 +1462,15 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
     <label class="md-nav__link" for="nav-6">
-      License
+      GeoSpark Legacy Docs
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="License" data-md-level="1">
+    <nav class="md-nav" aria-label="GeoSpark Legacy Docs" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
         <span class="md-nav__icon md-icon"></span>
-        License
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../license/License-before-1-2-0/" title="License-before-GeoSpark-1.2.0" class="md-nav__link">
-      License-before-GeoSpark-1.2.0
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../license/License/" title="License" class="md-nav__link">
-      License
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
-    
-    <label class="md-nav__link" for="nav-7">
-      Archive for GeoSpark
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Archive for GeoSpark" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
-        <span class="md-nav__icon md-icon"></span>
-        Archive for GeoSpark
+        GeoSpark Legacy Docs
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1524,14 +1482,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
-    
-    <label class="md-nav__link" for="nav-7-1">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-1" type="checkbox" id="nav-6-1" >
+    <label class="md-nav__link" for="nav-6-1">
       Download
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Download" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-1">
+      <label class="md-nav__title" for="nav-6-1">
         <span class="md-nav__icon md-icon"></span>
         Download
       </label>
@@ -1544,7 +1501,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/download/overview/" title="Quick start" class="md-nav__link">
+    <a href="../../archive/download/overview/" class="md-nav__link">
       Quick start
     </a>
   </li>
@@ -1556,7 +1513,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/download/GeoSpark-All-Modules-Release-notes/" title="Release notes" class="md-nav__link">
+    <a href="../../archive/download/GeoSpark-All-Modules-Release-notes/" class="md-nav__link">
       Release notes
     </a>
   </li>
@@ -1568,7 +1525,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/download/GeoSpark-All-Modules-Maven-Central-Coordinates/" title="Maven Central coordinate" class="md-nav__link">
+    <a href="../../archive/download/GeoSpark-All-Modules-Maven-Central-Coordinates/" class="md-nav__link">
       Maven Central coordinate
     </a>
   </li>
@@ -1580,7 +1537,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/download/cluster/" title="Set up Spark cluser" class="md-nav__link">
+    <a href="../../archive/download/cluster/" class="md-nav__link">
       Set up Spark cluser
     </a>
   </li>
@@ -1592,7 +1549,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/download/scalashell/" title="Spark Scala shell" class="md-nav__link">
+    <a href="../../archive/download/scalashell/" class="md-nav__link">
       Spark Scala shell
     </a>
   </li>
@@ -1604,7 +1561,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/download/project/" title="Self-contained project" class="md-nav__link">
+    <a href="../../archive/download/project/" class="md-nav__link">
       Self-contained project
     </a>
   </li>
@@ -1616,7 +1573,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/download/zeppelin/" title="Install GeoSpark-Zeppelin" class="md-nav__link">
+    <a href="../../archive/download/zeppelin/" class="md-nav__link">
       Install GeoSpark-Zeppelin
     </a>
   </li>
@@ -1628,7 +1585,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/download/compile/" title="Compile the source code" class="md-nav__link">
+    <a href="../../archive/download/compile/" class="md-nav__link">
       Compile the source code
     </a>
   </li>
@@ -1646,14 +1603,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
-    
-    <label class="md-nav__link" for="nav-7-2">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" >
+    <label class="md-nav__link" for="nav-6-2">
       Tutorial
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Tutorial" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-2">
+      <label class="md-nav__title" for="nav-6-2">
         <span class="md-nav__icon md-icon"></span>
         Tutorial
       </label>
@@ -1666,7 +1622,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/tutorial/rdd/" title="Spatial RDD application" class="md-nav__link">
+    <a href="../../archive/tutorial/rdd/" class="md-nav__link">
       Spatial RDD application
     </a>
   </li>
@@ -1678,7 +1634,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/tutorial/sql/" title="Spatial SQL application" class="md-nav__link">
+    <a href="../../archive/tutorial/sql/" class="md-nav__link">
       Spatial SQL application
     </a>
   </li>
@@ -1690,7 +1646,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/tutorial/viz/" title="Visualize Spatial DataFrame" class="md-nav__link">
+    <a href="../../archive/tutorial/viz/" class="md-nav__link">
       Visualize Spatial DataFrame
     </a>
   </li>
@@ -1702,7 +1658,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/tutorial/zeppelin/" title="Run GeoSpark via Zeppelin" class="md-nav__link">
+    <a href="../../archive/tutorial/zeppelin/" class="md-nav__link">
       Run GeoSpark via Zeppelin
     </a>
   </li>
@@ -1714,7 +1670,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/tutorial/geospark-core-python/" title="Spatial RDD in Python" class="md-nav__link">
+    <a href="../../archive/tutorial/geospark-core-python/" class="md-nav__link">
       Spatial RDD in Python
     </a>
   </li>
@@ -1726,7 +1682,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/tutorial/geospark-sql-python/" title="Spatial SQL in Python" class="md-nav__link">
+    <a href="../../archive/tutorial/geospark-sql-python/" class="md-nav__link">
       Spatial SQL in Python
     </a>
   </li>
@@ -1738,7 +1694,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/tutorial/GeoSpark-Runnable-DEMO/" title="GeoSpark template project" class="md-nav__link">
+    <a href="../../archive/tutorial/GeoSpark-Runnable-DEMO/" class="md-nav__link">
       GeoSpark template project
     </a>
   </li>
@@ -1750,7 +1706,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/tutorial/faq/" title="Frequently Asked Questions" class="md-nav__link">
+    <a href="../../archive/tutorial/faq/" class="md-nav__link">
       Frequently Asked Questions
     </a>
   </li>
@@ -1762,7 +1718,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/tutorial/Advanced-Tutorial-Tune-your-GeoSpark-Application/" title="Tune GeoSpark RDD application" class="md-nav__link">
+    <a href="../../archive/tutorial/Advanced-Tutorial-Tune-your-GeoSpark-Application/" class="md-nav__link">
       Tune GeoSpark RDD application
     </a>
   </li>
@@ -1774,7 +1730,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/tutorial/benchmark/" title="Benchmark" class="md-nav__link">
+    <a href="../../archive/tutorial/benchmark/" class="md-nav__link">
       Benchmark
     </a>
   </li>
@@ -1792,14 +1748,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
-    
-    <label class="md-nav__link" for="nav-7-3">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3" >
+    <label class="md-nav__link" for="nav-6-3">
       API
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="API" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-3">
+      <label class="md-nav__title" for="nav-6-3">
         <span class="md-nav__icon md-icon"></span>
         API
       </label>
@@ -1813,14 +1768,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3-1" type="checkbox" id="nav-7-3-1">
-    
-    <label class="md-nav__link" for="nav-7-3-1">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-3-1" type="checkbox" id="nav-6-3-1" >
+    <label class="md-nav__link" for="nav-6-3-1">
       GeoSpark core (RDD)
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="GeoSpark core (RDD)" data-md-level="3">
-      <label class="md-nav__title" for="nav-7-3-1">
+      <label class="md-nav__title" for="nav-6-3-1">
         <span class="md-nav__icon md-icon"></span>
         GeoSpark core (RDD)
       </label>
@@ -1833,7 +1787,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/GeoSpark-Scala-and-Java-API/" title="Scala/Java doc" class="md-nav__link">
+    <a href="../../archive/api/GeoSpark-Scala-and-Java-API/" class="md-nav__link">
       Scala/Java doc
     </a>
   </li>
@@ -1845,7 +1799,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/GeoSpark-Python-API/" title="Python doc" class="md-nav__link">
+    <a href="../../archive/api/GeoSpark-Python-API/" class="md-nav__link">
       Python doc
     </a>
   </li>
@@ -1863,14 +1817,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3-2" type="checkbox" id="nav-7-3-2">
-    
-    <label class="md-nav__link" for="nav-7-3-2">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-3-2" type="checkbox" id="nav-6-3-2" >
+    <label class="md-nav__link" for="nav-6-3-2">
       GeoSpark SQL
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="GeoSpark SQL" data-md-level="3">
-      <label class="md-nav__title" for="nav-7-3-2">
+      <label class="md-nav__title" for="nav-6-3-2">
         <span class="md-nav__icon md-icon"></span>
         GeoSpark SQL
       </label>
@@ -1883,7 +1836,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/sql/GeoSparkSQL-javadoc/" title="JavaDoc" class="md-nav__link">
+    <a href="../../archive/api/sql/GeoSparkSQL-javadoc/" class="md-nav__link">
       JavaDoc
     </a>
   </li>
@@ -1895,7 +1848,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/sql/GeoSparkSQL-Overview/" title="Quick start" class="md-nav__link">
+    <a href="../../archive/api/sql/GeoSparkSQL-Overview/" class="md-nav__link">
       Quick start
     </a>
   </li>
@@ -1907,7 +1860,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/sql/GeoSparkSQL-Constructor/" title="Constructor" class="md-nav__link">
+    <a href="../../archive/api/sql/GeoSparkSQL-Constructor/" class="md-nav__link">
       Constructor
     </a>
   </li>
@@ -1919,7 +1872,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/sql/GeoSparkSQL-Function/" title="Function" class="md-nav__link">
+    <a href="../../archive/api/sql/GeoSparkSQL-Function/" class="md-nav__link">
       Function
     </a>
   </li>
@@ -1931,7 +1884,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/sql/GeoSparkSQL-Predicate/" title="Predicate" class="md-nav__link">
+    <a href="../../archive/api/sql/GeoSparkSQL-Predicate/" class="md-nav__link">
       Predicate
     </a>
   </li>
@@ -1943,7 +1896,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/sql/GeoSparkSQL-AggregateFunction/" title="Aggregate function" class="md-nav__link">
+    <a href="../../archive/api/sql/GeoSparkSQL-AggregateFunction/" class="md-nav__link">
       Aggregate function
     </a>
   </li>
@@ -1955,7 +1908,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/sql/GeoSparkSQL-Optimizer/" title="Join query (optimizer)" class="md-nav__link">
+    <a href="../../archive/api/sql/GeoSparkSQL-Optimizer/" class="md-nav__link">
       Join query (optimizer)
     </a>
   </li>
@@ -1967,7 +1920,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/sql/GeoSparkSQL-Parameter/" title="Parameter" class="md-nav__link">
+    <a href="../../archive/api/sql/GeoSparkSQL-Parameter/" class="md-nav__link">
       Parameter
     </a>
   </li>
@@ -1985,14 +1938,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3-3" type="checkbox" id="nav-7-3-3">
-    
-    <label class="md-nav__link" for="nav-7-3-3">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-3-3" type="checkbox" id="nav-6-3-3" >
+    <label class="md-nav__link" for="nav-6-3-3">
       GeoSpark Viz
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="GeoSpark Viz" data-md-level="3">
-      <label class="md-nav__title" for="nav-7-3-3">
+      <label class="md-nav__title" for="nav-6-3-3">
         <span class="md-nav__icon md-icon"></span>
         GeoSpark Viz
       </label>
@@ -2005,7 +1957,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/viz/sql/" title="DataFrame/SQL" class="md-nav__link">
+    <a href="../../archive/api/viz/sql/" class="md-nav__link">
       DataFrame/SQL
     </a>
   </li>
@@ -2017,7 +1969,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/api/viz/Babylon-Scala-and-Java-API/" title="RDD" class="md-nav__link">
+    <a href="../../archive/api/viz/Babylon-Scala-and-Java-API/" class="md-nav__link">
       RDD
     </a>
   </li>
@@ -2044,7 +1996,7 @@
 
 
   <li class="md-nav__item">
-    <a href="https://www.apache.org/" title="Apache Software Foundation" class="md-nav__link">
+    <a href="https://www.apache.org/" class="md-nav__link">
       Apache Software Foundation
     </a>
   </li>
@@ -2086,50 +2038,17 @@
       
         <li class="md-nav__item">
   
-  <a href="#installing-the-package" class="md-nav__link">
-    Installing the package
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>  
   
-  
-    <nav class="md-nav" aria-label="Installing the package">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  
-  <a href="#installing-from-pypi-repositories" class="md-nav__link">
-    Installing from PyPi repositories
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#installing-from-wheel-file" class="md-nav__link">
-    Installing from wheel file
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#installing-from-source" class="md-nav__link">
-    Installing from source
-  </a>  
-  
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
   
-  <a href="#geospark-serializers" class="md-nav__link">
-    GeoSpark Serializers
+  <a href="#apache-sedona-serializers" class="md-nav__link">
+    Apache Sedona Serializers
   </a>  
   
   
@@ -2511,43 +2430,10 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#supported-versions" class="md-nav__link">
-    Supported versions
-  </a>  
-  
-  
-    <nav class="md-nav" aria-label="Supported versions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   
-  <a href="#apache-spark" class="md-nav__link">
-    Apache Spark
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#geospark" class="md-nav__link">
-    GeoSpark
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#python" class="md-nav__link">
-    Python
+  <a href="#tips" class="md-nav__link">
+    Tips
   </a>  
   
   
@@ -2577,120 +2463,65 @@
                   </a>
                 
                 
-                  
-                
-                
                 <h1 id="spatial-rdd-applications-in-python">Spatial RDD Applications in Python<a class="headerlink" href="#spatial-rdd-applications-in-python" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p><div style="text-align: justify">
-GeoSpark provides a Python wrapper on GeoSpark core Java/Scala library.
-GeoSpark SpatialRDDs (and other classes when it was necessary) have implemented meta classes which allow 
+<div style="text-align: justify">
+Sedona provides a Python wrapper on Sedona core Java/Scala library.
+Sedona SpatialRDDs (and other classes when it was necessary) have implemented meta classes which allow 
 to use overloaded functions, methods and constructors to be the most similar to Java/Scala API as possible. 
-</div></p>
-<p>GeoSpark-core provides five special SpatialRDDs:</p>
+</div>
+
+<p>Apache Sedona core provides five special SpatialRDDs:</p>
 <li> PointRDD </li>
-
 <li> PolygonRDD </li>
-
 <li> LineStringRDD </li>
-
 <li> CircleRDD </li>
-
 <li> RectangleRDD </li>
-
 <div style="text-align: justify">
 <p>
-All of them can be imported from <b> geospark.core.SpatialRDD </b> module
+All of them can be imported from <b> sedona.core.SpatialRDD </b> module
 
-<b> geospark </b> has written serializers which convert GeoSpark SpatialRDD to Python objects.
+<b> sedona </b> has written serializers which convert Sedona SpatialRDD to Python objects.
 Converting will produce GeoData objects which have 2 attributes:
 </p>
 </div>
-
 <li> geom: shapely.geometry.BaseGeometry </li>
-
 <li> userData: str </li>
 
 <p>geom attribute holds geometry representation as shapely objects. 
 userData is string representation of other attributes separated by "\t"
 </br></p>
-<p>GeoData has one method to get user data.
-<li> getUserData() -&gt; str </li></p>
-<h2 id="installing-the-package">Installing the package<a class="headerlink" href="#installing-the-package" title="Permanent link">&para;</a></h2>
-<p>GeoSpark extends pyspark functions which depend on Python packages and Scala libraries. To see all dependencies
-please look at the dependencies section.
-<a href="https://pypi.org/project/pyspark/">https://pypi.org/project/pyspark/</a>.</p>
-<p>This package needs 2 jar files to work properly:</p>
-<ul>
-<li>geospark.jar</li>
-<li>geo_wrapper.jar</li>
-</ul>
+<p>GeoData has one method to get user data.</p>
+<li> getUserData() -> str </li>
+
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To enable GeoSpark Core functionality without GeoSparkSQL there is no need to copy jar files from geospark/jars
-location. You can use jar files from Maven repositories. Since GeoSpark 1.3.0 it is possible also to use maven 
-jars for GeoSparkSQL instead of geospark/jars/../geospark-sql jars files.</p>
+<p>This tutorial is based on <a href="https://github.com/apache/incubator-sedona/blob/master/python/ApacheSedonaCore.ipynb">Sedona Core Jupyter Notebook example</a></p>
 </div>
-<p>This package automatically copies the newest GeoSpark jar files using upload_jars function, please follow the example below.</p>
-<li> upload_jars </li>
-
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
-
-<span class="kn">from</span> <span class="nn">geospark.register</span> <span class="kn">import</span> <span class="n">upload_jars</span>
-<span class="kn">from</span> <span class="nn">geospark.register</span> <span class="kn">import</span> <span class="n">GeoSparkRegistrator</span>
-
-<span class="n">upload_jars</span><span class="p">()</span>
-
-<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span>\
-      <span class="n">getOrCreate</span><span class="p">()</span>
-
-<span class="n">GeoSparkRegistrator</span><span class="o">.</span><span class="n">registerAll</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
-</code></pre></div>
-
-<p>Function</p>
-<div class="highlight"><pre><span></span><code><span class="n">upload_jars</span><span class="p">()</span>
-</code></pre></div>
-
-<p>uses findspark Python package to upload jar files to executor and nodes. To avoid copying all the time, jar files can be put in directory SPARK_HOME/jars or any other path specified in Spark config files.</p>
-<h3 id="installing-from-pypi-repositories">Installing from PyPi repositories<a class="headerlink" href="#installing-from-pypi-repositories" title="Permanent link">&para;</a></h3>
-<p>Please use command below</p>
-<div class="highlight"><pre><span></span><code>pip install geospark
-</code></pre></div>
-
-<h3 id="installing-from-wheel-file">Installing from wheel file<a class="headerlink" href="#installing-from-wheel-file" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>pipenv run python -m pip install dist/geospark-1.3.1-py3-none-any.whl
-</code></pre></div>
-
-<p>or</p>
-<div class="highlight"><pre><span></span><code>pip install dist/geospark-1.3.1-py3-none-any.whl
-</code></pre></div>
-
-<h3 id="installing-from-source">Installing from source<a class="headerlink" href="#installing-from-source" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>python3 setup.py install
-</code></pre></div>
-
-<h2 id="geospark-serializers">GeoSpark Serializers<a class="headerlink" href="#geospark-serializers" title="Permanent link">&para;</a></h2>
-<p>GeoSpark has a suite of well-written geometry and index serializers. Forgetting to enable these serializers will lead to high memory consumption.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>Please read <a href="/download/overview/#install-sedona-python">Quick start</a> to install Sedona Python.</p>
+<h2 id="apache-sedona-serializers">Apache Sedona Serializers<a class="headerlink" href="#apache-sedona-serializers" title="Permanent link">&para;</a></h2>
+<p>Sedona has a suite of well-written geometry and index serializers. Forgetting to enable these serializers will lead to high memory consumption.</p>
 <div class="highlight"><pre><span></span><code><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.serializer&quot;</span><span class="p">,</span> <span class="n">KryoSerializer</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span>
-<span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.kryo.registrator&quot;</span><span class="p">,</span> <span class="n">GeoSparkKryoRegistrator</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span>
+<span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.kryo.registrator&quot;</span><span class="p">,</span> <span class="n">SedonaKryoRegistrator</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span><span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span>
 </code></pre></div>
-
 <h2 id="create-a-spatialrdd">Create a SpatialRDD<a class="headerlink" href="#create-a-spatialrdd" title="Permanent link">&para;</a></h2>
 <h3 id="create-a-typed-spatialrdd">Create a typed SpatialRDD<a class="headerlink" href="#create-a-typed-spatialrdd" title="Permanent link">&para;</a></h3>
-<p>GeoSpark-core provides three special SpatialRDDs:
+<p>Apache Sedona core provides three special SpatialRDDs:</p>
 <li> PointRDD </li>
-<li> PolygonRDD </li> 
+<li> PolygonRDD </li>
 <li> LineStringRDD </li>
 <li> CircleRDD </li>
 <li> RectangleRDD </li>
-<br></p>
+<p><br></p>
 <p>They can be loaded from CSV, TSV, WKT, WKB, Shapefiles, GeoJSON formats.
 To pass the format to SpatialRDD constructor please use <b> FileDataSplitter </b> enumeration. </p>
-<p>geospark SpatialRDDs (and other classes when it was necessary) have implemented meta classes which allow 
-to use overloaded functions how Scala/Java GeoSpark API allows. ex. </p>
+<p>sedona SpatialRDDs (and other classes when it was necessary) have implemented meta classes which allow 
+to use overloaded functions how Scala/Java Apache Sedona API allows. ex. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">StorageLevel</span>
-<span class="kn">from</span> <span class="nn">geospark.core.SpatialRDD</span> <span class="kn">import</span> <span class="n">PointRDD</span>
-<span class="kn">from</span> <span class="nn">geospark.core.enums</span> <span class="kn">import</span> <span class="n">FileDataSplitter</span>
+<span class="kn">from</span> <span class="nn">sedona.core.SpatialRDD</span> <span class="kn">import</span> <span class="n">PointRDD</span>
+<span class="kn">from</span> <span class="nn">sedona.core.enums</span> <span class="kn">import</span> <span class="n">FileDataSplitter</span>
 
 <span class="n">input_location</span> <span class="o">=</span> <span class="s2">&quot;checkin.csv&quot;</span>
 <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># The point long/lat starts from Column 0</span>
@@ -2712,10 +2543,9 @@ to use overloaded functions how Scala/Java GeoSpark API allows. ex. </p>
     <span class="n">carryInputData</span><span class="o">=</span><span class="n">carry_other_attributes</span>
 <span class="p">)</span>
 </code></pre></div>
-
 <h4 id="from-sparksql-dataframe">From SparkSQL DataFrame<a class="headerlink" href="#from-sparksql-dataframe" title="Permanent link">&para;</a></h4>
 <p>To create spatialRDD from other formats you can use adapter between Spark DataFrame and SpatialRDD</p>
-<li> Load data in GeoSparkSQL. </li>
+<li> Load data in SedonaSQL. </li>
 
 <div class="highlight"><pre><span></span><code><span class="n">csv_point_input_location</span><span class="o">=</span> <span class="s2">&quot;/tests/resources/county_small.tsv&quot;</span>
 
@@ -2727,8 +2557,7 @@ to use overloaded functions how Scala/Java GeoSpark API allows. ex. </p>
 
 <span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;counties&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-<li> Create a Geometry type column in GeoSparkSQL </li>
+<li> Create a Geometry type column in SedonaSQL </li>
 
 <div class="highlight"><pre><span></span><code><span class="n">spatial_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -2738,30 +2567,24 @@ to use overloaded functions how Scala/Java GeoSpark API allows. ex. </p>
 <span class="p">)</span>
 <span class="n">spatial_df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code>root
  |-- geom: geometry (nullable = false)
  |-- county_name: string (nullable = true)
 </code></pre></div>
-
-<li> Use GeoSparkSQL DataFrame-RDD Adapter to convert a DataFrame to an SpatialRDD </li>
-
+<li> Use SedonaSQL DataFrame-RDD Adapter to convert a DataFrame to an SpatialRDD </li>
 <p>Note that, you have to name your column geometry</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.utils.adapter</span> <span class="kn">import</span> <span class="n">Adapter</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.utils.adapter</span> <span class="kn">import</span> <span class="n">Adapter</span>
 
 <span class="n">spatial_rdd</span> <span class="o">=</span> <span class="n">Adapter</span><span class="o">.</span><span class="n">toSpatialRdd</span><span class="p">(</span><span class="n">spatial_df</span><span class="p">)</span>
 <span class="n">spatial_rdd</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
 
 <span class="n">spatial_rdd</span><span class="o">.</span><span class="n">boundaryEnvelope</span>
 </code></pre></div>
-
-<div class="highlight"><pre><span></span><code>&lt;geospark.core.geom_types.Envelope object at 0x7f1e5f29fe10&gt;
+<div class="highlight"><pre><span></span><code>&lt;sedona.core.geom_types.Envelope object at 0x7f1e5f29fe10&gt;
 </code></pre></div>
-
 <p>or pass Geometry column name as a second argument</p>
 <div class="highlight"><pre><span></span><code><span class="n">spatial_rdd</span> <span class="o">=</span> <span class="n">Adapter</span><span class="o">.</span><span class="n">toSpatialRdd</span><span class="p">(</span><span class="n">spatial_df</span><span class="p">,</span> <span class="s2">&quot;geom&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <p>For WKT/WKB/GeoJSON data, please use <mark>ST_GeomFromWKT / ST_GeomFromWKB / ST_GeomFromGeoJSON</mark> instead.</p>
 <h2 id="read-other-attributes-in-an-spatialrdd">Read other attributes in an SpatialRDD<a class="headerlink" href="#read-other-attributes-in-an-spatialrdd" title="Permanent link">&para;</a></h2>
 <p>Each SpatialRDD can carry non-spatial attributes such as price, age and name as long as the user sets <mark>carryOtherAttributes</mark> as <a href="#create-a-spatialrdd">TRUE</a>.</p>
@@ -2770,33 +2593,50 @@ to use overloaded functions how Scala/Java GeoSpark API allows. ex. </p>
 <div class="highlight"><pre><span></span><code><span class="n">rdd_with_other_attributes</span> <span class="o">=</span> <span class="n">object_rdd</span><span class="o">.</span><span class="n">rawSpatialRDD</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">getUserData</span><span class="p">())</span>
 </code></pre></div></p>
 <h2 id="write-a-spatial-range-query">Write a Spatial Range Query<a class="headerlink" href="#write-a-spatial-range-query" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.geom.envelope</span> <span class="kn">import</span> <span class="n">Envelope</span>
-<span class="kn">from</span> <span class="nn">geospark.core.spatialOperator</span> <span class="kn">import</span> <span class="n">RangeQuery</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.geom.envelope</span> <span class="kn">import</span> <span class="n">Envelope</span>
+<span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">RangeQuery</span>
 
 <span class="n">range_query_window</span> <span class="o">=</span> <span class="n">Envelope</span><span class="p">(</span><span class="o">-</span><span class="mf">90.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">80.01</span><span class="p">,</span> <span class="mf">30.01</span><span class="p">,</span> <span class="mf">40.01</span><span class="p">)</span>
 <span class="n">consider_boundary_intersection</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1">## Only return gemeotries fully covered by the window</span>
 <span class="n">using_index</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">query_result</span> <span class="o">=</span> <span class="n">RangeQuery</span><span class="o">.</span><span class="n">SpatialRangeQuery</span><span class="p">(</span><span class="n">spatial_rdd</span><span class="p">,</span> <span class="n">range_query_window</span><span class="p">,</span> <span class="n">consider_boundary_intersection</span><span class="p">,</span> <span class="n">using_index</span><span class="p">)</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use RangeQueryRaw from the same module
+if you want to avoid jvm python serde while converting to Spatial DataFrame
+It takes the same parameters as RangeQuery but returns reference to jvm rdd which
+can be converted to dataframe without python - jvm serde using Adapter.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.geom.envelope</span> <span class="kn">import</span> <span class="n">Envelope</span>
+<span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">RangeQueryRaw</span>
+<span class="kn">from</span> <span class="nn">sedona.utils.adapter</span> <span class="kn">import</span> <span class="n">Adapter</span>
 
+<span class="n">range_query_window</span> <span class="o">=</span> <span class="n">Envelope</span><span class="p">(</span><span class="o">-</span><span class="mf">90.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">80.01</span><span class="p">,</span> <span class="mf">30.01</span><span class="p">,</span> <span class="mf">40.01</span><span class="p">)</span>
+<span class="n">consider_boundary_intersection</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1">## Only return gemeotries fully covered by the window</span>
+<span class="n">using_index</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">query_result</span> <span class="o">=</span> <span class="n">RangeQueryRaw</span><span class="o">.</span><span class="n">SpatialRangeQuery</span><span class="p">(</span><span class="n">spatial_rdd</span><span class="p">,</span> <span class="n">range_query_window</span><span class="p">,</span> <span class="n">consider_boundary_intersection</span><span class="p">,</span> <span class="n">using_index</span><span class="p">)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">query_result</span><span class="p">,</span> <span class="n">spark</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;col1&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;coln&quot;</span><span class="p">])</span>
+</code></pre></div></p>
+</div>
 <h3 id="range-query-window">Range query window<a class="headerlink" href="#range-query-window" title="Permanent link">&para;</a></h3>
-<p>Besides the rectangle (Envelope) type range query window, GeoSpark range query window can be 
-<li> Point </li> 
+<p>Besides the rectangle (Envelope) type range query window, Apache Sedona range query window can be </p>
+<li> Point </li>
 <li> Polygon </li>
 <li> LineString </li>
-</br></p>
+<p></br></p>
 <p>The code to create a point is as follows:
 To create shapely geometries please follow official shapely <a href=""> documentation </a>  </p>
 <h3 id="use-spatial-indexes">Use spatial indexes<a class="headerlink" href="#use-spatial-indexes" title="Permanent link">&para;</a></h3>
-<p>GeoSpark provides two types of spatial indexes,
+<p>Sedona provides two types of spatial indexes,</p>
 <li> Quad-Tree </li>
 <li> R-Tree </li>
-Once you specify an index type, 
-GeoSpark will build a local tree index on each of the SpatialRDD partition.</p>
+<p>Once you specify an index type, 
+Sedona will build a local tree index on each of the SpatialRDD partition.</p>
 <p>To utilize a spatial index in a spatial range query, use the following code:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.geom.envelope</span> <span class="kn">import</span> <span class="n">Envelope</span>
-<span class="kn">from</span> <span class="nn">geospark.core.enums</span> <span class="kn">import</span> <span class="n">IndexType</span>
-<span class="kn">from</span> <span class="nn">geospark.core.spatialOperator</span> <span class="kn">import</span> <span class="n">RangeQuery</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.geom.envelope</span> <span class="kn">import</span> <span class="n">Envelope</span>
+<span class="kn">from</span> <span class="nn">sedona.core.enums</span> <span class="kn">import</span> <span class="n">IndexType</span>
+<span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">RangeQuery</span>
 
 <span class="n">range_query_window</span> <span class="o">=</span> <span class="n">Envelope</span><span class="p">(</span><span class="o">-</span><span class="mf">90.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">80.01</span><span class="p">,</span> <span class="mf">30.01</span><span class="p">,</span> <span class="mf">40.01</span><span class="p">)</span>
 <span class="n">consider_boundary_intersection</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">## Only return gemeotries fully covered by the window</span>
@@ -2813,7 +2653,6 @@ GeoSpark will build a local tree index on each of the SpatialRDD partition.</p>
     <span class="n">using_index</span>
 <span class="p">)</span>
 </code></pre></div>
-
 <h3 id="output-format">Output format<a class="headerlink" href="#output-format" title="Permanent link">&para;</a></h3>
 <p>The output format of the spatial range query is another RDD which consists of GeoData objects.</p>
 <p>SpatialRangeQuery result can be used as RDD with map or other spark RDD funtions. Also it can be used as 
@@ -2821,7 +2660,6 @@ Python objects when using collect method.
 Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">query_result</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">length</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code>[
  1.5900840000000045,
  1.5906639999999896,
@@ -2835,7 +2673,6 @@ Example:</p>
  ...
 ]
 </code></pre></div>
-
 <p>Or transformed to GeoPandas GeoDataFrame</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
@@ -2844,11 +2681,10 @@ Example:</p>
     <span class="n">geometry</span><span class="o">=</span><span class="s2">&quot;geom&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
-
 <h2 id="write-a-spatial-knn-query">Write a Spatial KNN Query<a class="headerlink" href="#write-a-spatial-knn-query" title="Permanent link">&para;</a></h2>
 <p>A spatial K Nearnest Neighbor query takes as input a K, a query point and an SpatialRDD and finds the K geometries in the RDD which are the closest to he query point.</p>
 <p>Assume you now have an SpatialRDD (typed or generic). You can use the following code to issue an Spatial KNN Query on it.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.spatialOperator</span> <span class="kn">import</span> <span class="n">KNNQuery</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">KNNQuery</span>
 <span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
 
 <span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">84.01</span><span class="p">,</span> <span class="mf">34.01</span><span class="p">)</span>
@@ -2856,16 +2692,16 @@ Example:</p>
 <span class="n">using_index</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">KNNQuery</span><span class="o">.</span><span class="n">SpatialKnnQuery</span><span class="p">(</span><span class="n">object_rdd</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">using_index</span><span class="p">)</span>
 </code></pre></div>
-
 <h3 id="query-center-geometry">Query center geometry<a class="headerlink" href="#query-center-geometry" title="Permanent link">&para;</a></h3>
-<p>Besides the Point type, GeoSpark KNN query center can be 
+<p>Besides the Point type, Apache Sedona KNN query center can be </p>
 <li> Polygon </li>
-<li> LineString </li></p>
+<li> LineString </li>
+
 <p>To create Polygon or Linestring object please follow Shapely official <a href="https://shapely.readthedocs.io/en/stable/manual.html"> documentation </a></p>
 <h3 id="use-spatial-indexes_1">Use spatial indexes<a class="headerlink" href="#use-spatial-indexes_1" title="Permanent link">&para;</a></h3>
 <p>To utilize a spatial index in a spatial KNN query, use the following code:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.spatialOperator</span> <span class="kn">import</span> <span class="n">KNNQuery</span>
-<span class="kn">from</span> <span class="nn">geospark.core.enums</span> <span class="kn">import</span> <span class="n">IndexType</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">KNNQuery</span>
+<span class="kn">from</span> <span class="nn">sedona.core.enums</span> <span class="kn">import</span> <span class="n">IndexType</span>
 <span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
 
 <span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">84.01</span><span class="p">,</span> <span class="mf">34.01</span><span class="p">)</span>
@@ -2877,7 +2713,6 @@ Example:</p>
 <span class="n">using_index</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">KNNQuery</span><span class="o">.</span><span class="n">SpatialKnnQuery</span><span class="p">(</span><span class="n">spatial_rdd</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">using_index</span><span class="p">)</span>
 </code></pre></div>
-
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Only R-Tree index supports Spatial KNN query</p>
@@ -2893,8 +2728,8 @@ The list has K GeoData objects.</p>
 <h2 id="write-a-spatial-join-query">Write a Spatial Join Query<a class="headerlink" href="#write-a-spatial-join-query" title="Permanent link">&para;</a></h2>
 <p>A spatial join query takes as input two Spatial RDD A and B. For each geometry in A, finds the geometries (from B) covered/intersected by it. A and B can be any geometry type and are not necessary to have the same geometry type.</p>
 <p>Assume you now have two SpatialRDDs (typed or generic). You can use the following code to issue an Spatial Join Query on them.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.enums</span> <span class="kn">import</span> <span class="n">GridType</span>
-<span class="kn">from</span> <span class="nn">geospark.core.spatialOperator</span> <span class="kn">import</span> <span class="n">JoinQuery</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.enums</span> <span class="kn">import</span> <span class="n">GridType</span>
+<span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">JoinQuery</span>
 
 <span class="n">consider_boundary_intersection</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">## Only return geometries fully covered by each query window in queryWindowRDD</span>
 <span class="n">using_index</span> <span class="o">=</span> <span class="kc">False</span>
@@ -2906,12 +2741,10 @@ The list has K GeoData objects.</p>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">JoinQuery</span><span class="o">.</span><span class="n">SpatialJoinQuery</span><span class="p">(</span><span class="n">object_rdd</span><span class="p">,</span> <span class="n">query_window_rdd</span><span class="p">,</span> <span class="n">using_index</span><span class="p">,</span> <span class="n">consider_boundary_intersection</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Result of SpatialJoinQuery is RDD which consists of GeoData instance and list of GeoData instances which spatially intersects or 
 are covered by GeoData. </p>
 <div class="highlight"><pre><span></span><code><span class="n">result</span><span class="o">.</span><span class="n">collect</span><span class="p">())</span>
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code>[
     [GeoData, [GeoData, GeoData, GeoData, GeoData]],
     [GeoData, [GeoData, GeoData, GeoData]],
@@ -2921,24 +2754,21 @@ are covered by GeoData. </p>
     [GeoData, [GeoData, GeoData]]
 ]
 </code></pre></div>
-
 <h3 id="use-spatial-partitioning">Use spatial partitioning<a class="headerlink" href="#use-spatial-partitioning" title="Permanent link">&para;</a></h3>
-<p>GeoSpark spatial partitioning method can significantly speed up the join query. Three spatial partitioning methods are available: KDB-Tree, Quad-Tree and R-Tree. Two SpatialRDD must be partitioned by the same way.</p>
+<p>Apache Sedona spatial partitioning method can significantly speed up the join query. Three spatial partitioning methods are available: KDB-Tree, Quad-Tree and R-Tree. Two SpatialRDD must be partitioned by the same way.</p>
 <p>If you first partition SpatialRDD A, then you must use the partitioner of A to partition B.</p>
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">GridType</span><span class="o">.</span><span class="n">KDBTREE</span><span class="p">)</span>
 <span class="n">query_window_rdd</span><span class="o">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">object_rdd</span><span class="o">.</span><span class="n">getPartitioner</span><span class="p">())</span>
 </code></pre></div>
-
 <p>Or </p>
 <div class="highlight"><pre><span></span><code><span class="n">query_window_rdd</span><span class="o">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">GridType</span><span class="o">.</span><span class="n">KDBTREE</span><span class="p">)</span>
 <span class="n">object_rdd</span><span class="o">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">query_window_rdd</span><span class="o">.</span><span class="n">getPartitioner</span><span class="p">())</span>
 </code></pre></div>
-
 <h3 id="use-spatial-indexes_2">Use spatial indexes<a class="headerlink" href="#use-spatial-indexes_2" title="Permanent link">&para;</a></h3>
 <p>To utilize a spatial index in a spatial join query, use the following code:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.enums</span> <span class="kn">import</span> <span class="n">GridType</span>
-<span class="kn">from</span> <span class="nn">geospark.core.enums</span> <span class="kn">import</span> <span class="n">IndexType</span>
-<span class="kn">from</span> <span class="nn">geospark.core.spatialOperator</span> <span class="kn">import</span> <span class="n">JoinQuery</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.enums</span> <span class="kn">import</span> <span class="n">GridType</span>
+<span class="kn">from</span> <span class="nn">sedona.core.enums</span> <span class="kn">import</span> <span class="n">IndexType</span>
+<span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">JoinQuery</span>
 
 <span class="n">object_rdd</span><span class="o">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">GridType</span><span class="o">.</span><span class="n">KDBTREE</span><span class="p">)</span>
 <span class="n">query_window_rdd</span><span class="o">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">object_rdd</span><span class="o">.</span><span class="n">getPartitioner</span><span class="p">())</span>
@@ -2949,7 +2779,6 @@ are covered by GeoData. </p>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">JoinQuery</span><span class="o">.</span><span class="n">SpatialJoinQueryFlat</span><span class="p">(</span><span class="n">object_rdd</span><span class="p">,</span> <span class="n">query_window_rdd</span><span class="p">,</span> <span class="n">using_index</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
 <p>The index should be built on either one of two SpatialRDDs. In general, you should build it on the larger SpatialRDD.</p>
 <h3 id="output-format_2">Output format<a class="headerlink" href="#output-format_2" title="Permanent link">&para;</a></h3>
 <p>The output format of the spatial join query is a PairRDD. In this PairRDD, each object is a pair of two GeoData objects.
@@ -2962,7 +2791,6 @@ LineString,LineString
 Polygon,LineString
 ...
 </code></pre></div>
-
 <p>example 
 <div class="highlight"><pre><span></span><code><span class="n">result</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
 </code></pre></div></p>
@@ -2976,18 +2804,18 @@ Polygon,LineString
  [GeoData, GeoData]
 ]
 </code></pre></div>
-
 <p>Each object on the left is covered/intersected by the object on the right.</p>
 <h2 id="write-a-distance-join-query">Write a Distance Join Query<a class="headerlink" href="#write-a-distance-join-query" title="Permanent link">&para;</a></h2>
-<p>A distance join query takes two spatial RDD assuming that we have two SpatialRDD's:
+<p>A distance join query takes two spatial RDD assuming that we have two SpatialRDD's:</p>
 <li> object_rdd </li>
-<li> spatial_rdd </li></p>
+<li> spatial_rdd </li>
+
 <p>And finds the geometries (from spatial_rdd) are within given distance to it. spatial_rdd and object_rdd
 can be any geometry type (point, line, polygon) and are not necessary to have the same geometry type</p>
 <p>You can use the following code to issue an Distance Join Query on them.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.SpatialRDD</span> <span class="kn">import</span> <span class="n">CircleRDD</span>
-<span class="kn">from</span> <span class="nn">geospark.core.enums</span> <span class="kn">import</span> <span class="n">GridType</span>
-<span class="kn">from</span> <span class="nn">geospark.core.spatialOperator</span> <span class="kn">import</span> <span class="n">JoinQuery</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.SpatialRDD</span> <span class="kn">import</span> <span class="n">CircleRDD</span>
+<span class="kn">from</span> <span class="nn">sedona.core.enums</span> <span class="kn">import</span> <span class="n">GridType</span>
+<span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">JoinQuery</span>
 
 <span class="n">object_rdd</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
 
@@ -3002,7 +2830,44 @@ can be any geometry type (point, line, polygon) and are not necessary to have th
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">JoinQuery</span><span class="o">.</span><span class="n">DistanceJoinQueryFlat</span><span class="p">(</span><span class="n">spatial_rdd</span><span class="p">,</span> <span class="n">circle_rdd</span><span class="p">,</span> <span class="n">using_index</span><span class="p">,</span> <span class="n">consider_boundary_intersection</span><span class="p">)</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use JoinQueryRaw from the same module for methods </p>
+<ul>
+<li>
+<p>spatialJoin</p>
+</li>
+<li>
+<p>DistanceJoinQueryFlat</p>
+</li>
+<li>
+<p>SpatialJoinQueryFlat</p>
+</li>
+</ul>
+<p>For better performance while converting to dataframe with adapter. 
+That approach allows to avoid costly serialization between Python 
+and jvm and in result operating on python object instead of native geometries.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.SpatialRDD</span> <span class="kn">import</span> <span class="n">CircleRDD</span>
+<span class="kn">from</span> <span class="nn">sedona.core.enums</span> <span class="kn">import</span> <span class="n">GridType</span>
+<span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">JoinQueryRaw</span>
 
+<span class="n">object_rdd</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
+
+<span class="n">circle_rdd</span> <span class="o">=</span> <span class="n">CircleRDD</span><span class="p">(</span><span class="n">object_rdd</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1">## Create a CircleRDD using the given distance</span>
+<span class="n">circle_rdd</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
+
+<span class="n">circle_rdd</span><span class="o">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">GridType</span><span class="o">.</span><span class="n">KDBTREE</span><span class="p">)</span>
+<span class="n">spatial_rdd</span><span class="o">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">circle_rdd</span><span class="o">.</span><span class="n">getPartitioner</span><span class="p">())</span>
+
+<span class="n">consider_boundary_intersection</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">## Only return gemeotries fully covered by each query window in queryWindowRDD</span>
+<span class="n">using_index</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">JoinQueryRaw</span><span class="o">.</span><span class="n">DistanceJoinQueryFlat</span><span class="p">(</span><span class="n">spatial_rdd</span><span class="p">,</span> <span class="n">circle_rdd</span><span class="p">,</span> <span class="n">using_index</span><span class="p">,</span> <span class="n">consider_boundary_intersection</span><span class="p">)</span>
+
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;left_col1&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lefcoln&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;rightcol1&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;rightcol2&quot;</span><span class="p">],</span> <span class="n">spark</span><span class="p">)</span>
+</code></pre></div></p>
+</div>
 <h3 id="output-format_3">Output format<a class="headerlink" href="#output-format_3" title="Permanent link">&para;</a></h3>
 <p>Result for this query is RDD which holds two GeoData objects within list of lists.
 Example:
@@ -3010,7 +2875,6 @@ Example:
 </code></pre></div></p>
 <div class="highlight"><pre><span></span><code>[[GeoData, GeoData], [GeoData, GeoData] ...]
 </code></pre></div>
-
 <p>It is possible to do some RDD operation on result data ex. Getting polygon centroid.
 <div class="highlight"><pre><span></span><code><span class="n">result</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">centroid</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
 </code></pre></div></p>
@@ -3022,7 +2886,6 @@ Example:
  ...
 ]
 </code></pre></div>
-
 <h2 id="save-to-permanent-storage">Save to permanent storage<a class="headerlink" href="#save-to-permanent-storage" title="Permanent link">&para;</a></h2>
 <p>You can always save an SpatialRDD back to some permanent storage such as HDFS and Amazon S3. You can save distributed SpatialRDD to WKT, GeoJSON and object files.</p>
 <div class="admonition note">
@@ -3036,22 +2899,18 @@ Example:
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">rawSpatialRDD</span><span class="o">.</span><span class="n">saveAsTextFile</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 <span class="n">object_rdd</span><span class="o">.</span><span class="n">saveAsWKT</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <h4 id="save-to-distributed-wkb-text-file">Save to distributed WKB text file<a class="headerlink" href="#save-to-distributed-wkb-text-file" title="Permanent link">&para;</a></h4>
 <p>Use the following code to save an SpatialRDD as a distributed WKB text file:</p>
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">saveAsWKB</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <h4 id="save-to-distributed-geojson-text-file">Save to distributed GeoJSON text file<a class="headerlink" href="#save-to-distributed-geojson-text-file" title="Permanent link">&para;</a></h4>
 <p>Use the following code to save an SpatialRDD as a distributed GeoJSON text file:</p>
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">saveAsGeoJSON</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <h4 id="save-to-distributed-object-file">Save to distributed object file<a class="headerlink" href="#save-to-distributed-object-file" title="Permanent link">&para;</a></h4>
 <p>Use the following code to save an SpatialRDD as a distributed object file:</p>
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">rawJvmSpatialRDD</span><span class="o">.</span><span class="n">saveAsObjectFile</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Each object in a distributed object file is a byte array (not human-readable). This byte array is the serialized format of a Geometry or a SpatialIndex.</p>
@@ -3062,25 +2921,22 @@ Example:
 <p>Use the following code to save an SpatialRDD as a distributed object file:</p>
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">indexedRawRDD</span><span class="o">.</span><span class="n">saveAsObjectFile</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <h3 id="save-an-spatialrdd-spatialpartitioned-wo-indexed">Save an SpatialRDD (spatialPartitioned W/O indexed)<a class="headerlink" href="#save-an-spatialrdd-spatialpartitioned-wo-indexed" title="Permanent link">&para;</a></h3>
 <p>A spatial partitioned RDD can be saved to permanent storage but Spark is not able to maintain the same RDD partition Id of the original RDD. This will lead to wrong join query results. We are working on some solutions. Stay tuned!</p>
 <h3 id="reload-a-saved-spatialrdd">Reload a saved SpatialRDD<a class="headerlink" href="#reload-a-saved-spatialrdd" title="Permanent link">&para;</a></h3>
 <p>You can easily reload an SpatialRDD that has been saved to <mark>a distributed object file</mark>.</p>
 <h4 id="load-to-a-typed-spatialrdd">Load to a typed SpatialRDD<a class="headerlink" href="#load-to-a-typed-spatialrdd" title="Permanent link">&para;</a></h4>
 <p>Use the following code to reload the PointRDD/PolygonRDD/LineStringRDD:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.formatMapper.disc_utils</span> <span class="kn">import</span> <span class="n">load_spatial_rdd_from_disc</span><span class="p">,</span> <span class="n">GeoType</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.formatMapper.disc_utils</span> <span class="kn">import</span> <span class="n">load_spatial_rdd_from_disc</span><span class="p">,</span> <span class="n">GeoType</span>
 
 <span class="n">polygon_rdd</span> <span class="o">=</span> <span class="n">load_spatial_rdd_from_disc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">,</span> <span class="n">GeoType</span><span class="o">.</span><span class="n">POLYGON</span><span class="p">)</span>
 <span class="n">point_rdd</span> <span class="o">=</span> <span class="n">load_spatial_rdd_from_disc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">,</span> <span class="n">GeoType</span><span class="o">.</span><span class="n">POINT</span><span class="p">)</span>
 <span class="n">linestring_rdd</span> <span class="o">=</span> <span class="n">load_spatial_rdd_from_disc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">,</span> <span class="n">GeoType</span><span class="o">.</span><span class="n">LINESTRING</span><span class="p">)</span>
 </code></pre></div>
-
 <h4 id="load-to-a-generic-spatialrdd">Load to a generic SpatialRDD<a class="headerlink" href="#load-to-a-generic-spatialrdd" title="Permanent link">&para;</a></h4>
 <p>Use the following code to reload the SpatialRDD:</p>
 <div class="highlight"><pre><span></span><code><span class="n">saved_rdd</span> <span class="o">=</span> <span class="n">load_spatial_rdd_from_disc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">,</span> <span class="n">GeoType</span><span class="o">.</span><span class="n">GEOMETRY</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Use the following code to reload the indexed SpatialRDD:
 <div class="highlight"><pre><span></span><code><span class="n">saved_rdd</span> <span class="o">=</span> <span class="n">SpatialRDD</span><span class="p">()</span>
 <span class="n">saved_rdd</span><span class="o">.</span><span class="n">indexedRawRDD</span> <span class="o">=</span> <span class="n">load_spatial_index_rdd_from_disc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
@@ -3088,56 +2944,83 @@ Example:
 <h2 id="read-from-other-geometry-files">Read from other Geometry files<a class="headerlink" href="#read-from-other-geometry-files" title="Permanent link">&para;</a></h2>
 <p>All below methods will return SpatialRDD object which can be used with Spatial functions such as Spatial Join etc.</p>
 <h3 id="read-from-wkt-file">Read from WKT file<a class="headerlink" href="#read-from-wkt-file" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.formatMapper</span> <span class="kn">import</span> <span class="n">WktReader</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.formatMapper</span> <span class="kn">import</span> <span class="n">WktReader</span>
 
 <span class="n">WktReader</span><span class="o">.</span><span class="n">readToGeometryRDD</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">wkt_geometries_location</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;geospark.core.SpatialRDD.spatial_rdd.SpatialRDD at 0x7f8fd2fbf250&gt;
+<div class="highlight"><pre><span></span><code>&lt;sedona.core.SpatialRDD.spatial_rdd.SpatialRDD at 0x7f8fd2fbf250&gt;
 </code></pre></div></p>
 <h3 id="read-from-wkb-file">Read from WKB file<a class="headerlink" href="#read-from-wkb-file" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.formatMapper</span> <span class="kn">import</span> <span class="n">WkbReader</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.formatMapper</span> <span class="kn">import</span> <span class="n">WkbReader</span>
 
 <span class="n">WkbReader</span><span class="o">.</span><span class="n">readToGeometryRDD</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">wkb_geometries_location</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;geospark.core.SpatialRDD.spatial_rdd.SpatialRDD at 0x7f8fd2eece50&gt;
+<div class="highlight"><pre><span></span><code>&lt;sedona.core.SpatialRDD.spatial_rdd.SpatialRDD at 0x7f8fd2eece50&gt;
 </code></pre></div></p>
 <h3 id="read-from-geojson-file">Read from GeoJson file<a class="headerlink" href="#read-from-geojson-file" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.formatMapper</span> <span class="kn">import</span> <span class="n">GeoJsonReader</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.formatMapper</span> <span class="kn">import</span> <span class="n">GeoJsonReader</span>
 
 <span class="n">GeoJsonReader</span><span class="o">.</span><span class="n">readToGeometryRDD</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">geo_json_file_location</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;geospark.core.SpatialRDD.spatial_rdd.SpatialRDD at 0x7f8fd2eecb90&gt;
+<div class="highlight"><pre><span></span><code>&lt;sedona.core.SpatialRDD.spatial_rdd.SpatialRDD at 0x7f8fd2eecb90&gt;
 </code></pre></div></p>
 <h3 id="read-from-shapefile">Read from Shapefile<a class="headerlink" href="#read-from-shapefile" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.formatMapper.shapefileParser</span> <span class="kn">import</span> <span class="n">ShapefileReader</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.formatMapper.shapefileParser</span> <span class="kn">import</span> <span class="n">ShapefileReader</span>
 
 <span class="n">ShapefileReader</span><span class="o">.</span><span class="n">readToGeometryRDD</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">shape_file_location</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;geospark.core.SpatialRDD.spatial_rdd.SpatialRDD at 0x7f8fd2ee0710&gt;
+<div class="highlight"><pre><span></span><code>&lt;sedona.core.SpatialRDD.spatial_rdd.SpatialRDD at 0x7f8fd2ee0710&gt;
 </code></pre></div></p>
-<h2 id="supported-versions">Supported versions<a class="headerlink" href="#supported-versions" title="Permanent link">&para;</a></h2>
-<p>Currently this python wrapper supports the following Spark, GeoSpark and Python versions</p>
-<h3 id="apache-spark">Apache Spark<a class="headerlink" href="#apache-spark" title="Permanent link">&para;</a></h3>
-<li> 2.2 </li>
+<h3 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h3>
+<p>When you use Sedona functions such as</p>
+<ul>
+<li>
+<p>JoinQuery.spatialJoin</p>
+</li>
+<li>
+<p>JoinQuery.DistanceJoinQueryFlat</p>
+</li>
+<li>
+<p>JoinQuery.SpatialJoinQueryFlat</p>
+</li>
+<li>
+<p>RangeQuery.SpatialRangeQuery</p>
+</li>
+</ul>
+<p>For better performance when converting to dataframe you can use
+JoinQueryRaw and RangeQueryRaw from the same module and adapter to convert 
+to Spatial DataFrame. </p>
+<p>Example, JoinQueryRaw:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.SpatialRDD</span> <span class="kn">import</span> <span class="n">CircleRDD</span>
+<span class="kn">from</span> <span class="nn">sedona.core.enums</span> <span class="kn">import</span> <span class="n">GridType</span>
+<span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">JoinQueryRaw</span>
 
-<li> 2.3 </li>
+<span class="n">object_rdd</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
 
-<li> 2.4 </li>
+<span class="n">circle_rdd</span> <span class="o">=</span> <span class="n">CircleRDD</span><span class="p">(</span><span class="n">object_rdd</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1">## Create a CircleRDD using the given distance</span>
+<span class="n">circle_rdd</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
 
-<h3 id="geospark">GeoSpark<a class="headerlink" href="#geospark" title="Permanent link">&para;</a></h3>
-<li> 1.3.1 </li>
+<span class="n">circle_rdd</span><span class="o">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">GridType</span><span class="o">.</span><span class="n">KDBTREE</span><span class="p">)</span>
+<span class="n">spatial_rdd</span><span class="o">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">circle_rdd</span><span class="o">.</span><span class="n">getPartitioner</span><span class="p">())</span>
 
-<li> 1.2.0 </li>
+<span class="n">consider_boundary_intersection</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">## Only return gemeotries fully covered by each query window in queryWindowRDD</span>
+<span class="n">using_index</span> <span class="o">=</span> <span class="kc">False</span>
 
-<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
-<li> 3.6 </li>
+<span class="n">result</span> <span class="o">=</span> <span class="n">JoinQueryRaw</span><span class="o">.</span><span class="n">DistanceJoinQueryFlat</span><span class="p">(</span><span class="n">spatial_rdd</span><span class="p">,</span> <span class="n">circle_rdd</span><span class="p">,</span> <span class="n">using_index</span><span class="p">,</span> <span class="n">consider_boundary_intersection</span><span class="p">)</span>
 
-<li> 3.7 </li>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;left_col1&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lefcoln&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;rightcol1&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;rightcol2&quot;</span><span class="p">],</span> <span class="n">spark</span><span class="p">)</span>
+</code></pre></div>
+<p>and RangeQueryRaw</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sedona.core.geom.envelope</span> <span class="kn">import</span> <span class="n">Envelope</span>
+<span class="kn">from</span> <span class="nn">sedona.core.spatialOperator</span> <span class="kn">import</span> <span class="n">RangeQueryRaw</span>
+<span class="kn">from</span> <span class="nn">sedona.utils.adapter</span> <span class="kn">import</span> <span class="n">Adapter</span>
 
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Other versions may also work (or partially) but were not tested yet</p>
-</div>
+<span class="n">range_query_window</span> <span class="o">=</span> <span class="n">Envelope</span><span class="p">(</span><span class="o">-</span><span class="mf">90.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">80.01</span><span class="p">,</span> <span class="mf">30.01</span><span class="p">,</span> <span class="mf">40.01</span><span class="p">)</span>
+<span class="n">consider_boundary_intersection</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1">## Only return gemeotries fully covered by the window</span>
+<span class="n">using_index</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">query_result</span> <span class="o">=</span> <span class="n">RangeQueryRaw</span><span class="o">.</span><span class="n">SpatialRangeQuery</span><span class="p">(</span><span class="n">spatial_rdd</span><span class="p">,</span> <span class="n">range_query_window</span><span class="p">,</span> <span class="n">consider_boundary_intersection</span><span class="p">,</span> <span class="n">using_index</span><span class="p">)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">query_result</span><span class="p">,</span> <span class="n">spark</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;col1&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;coln&quot;</span><span class="p">])</span>
+</code></pre></div>
                 
               
   
@@ -3158,7 +3041,7 @@ Example:
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../zeppelin/" title="Run GeoSpark via Zeppelin" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../rdd/" title="Scala/Java" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -3167,19 +3050,19 @@ Example:
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Run GeoSpark via Zeppelin
+                Scala/Java
               </div>
             </div>
           </a>
         
         
-          <a href="../geospark-sql-python/" title="Spatial SQL in Python" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sql/" title="Scala/Java" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Spatial SQL in Python
+                Scala/Java
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -3232,15 +3115,15 @@ Apache Sedona is an effort undergoing incubation at The Apache Software Foundati
       
     </div>
     
-      <script src="../../assets/javascripts/vendor.3636a4ec.min.js"></script>
-      <script src="../../assets/javascripts/bundle.e9fe3281.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../assets/javascripts/vendor.0ac82a11.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f81dfb4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
           base: "../..",
-          features: ["tabs"],
+          features: ['navigation.tabs'],
           search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.5eca75d3.min.js"
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
