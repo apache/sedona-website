@@ -2128,7 +2128,7 @@ The file may have many other columns.</p>
 <p>SedonaSQL provides lots of functions to create a Geometry column, please read <a href="../../api/sql/GeoSparkSQL-Constructor/">SedonaSQL constructor API</a>.</p>
 </div>
 <h2 id="load-shapefile-and-geojson">Load Shapefile and GeoJSON<a class="headerlink" href="#load-shapefile-and-geojson" title="Permanent link">&para;</a></h2>
-<p>Shapefile and GeoJSON must be loaded by SpatialRDD and converted to DataFrame using Adapter. Please read <a href="rdd/#create-a-generic-spatialrdd">Load SpatialRDD</a> and <a href="sql/#convert-between-dataframe-and-spatialrdd">DataFrame &lt;-&gt; RDD</a>.</p>
+<p>Shapefile and GeoJSON must be loaded by SpatialRDD and converted to DataFrame using Adapter. Please read <a href="../rdd/#create-a-generic-spatialrdd">Load SpatialRDD</a> and <a href="#convert-between-dataframe-and-spatialrdd">DataFrame &lt;-&gt; RDD</a>.</p>
 <h2 id="transform-the-coordinate-reference-system">Transform the Coordinate Reference System<a class="headerlink" href="#transform-the-coordinate-reference-system" title="Permanent link">&para;</a></h2>
 <p>Sedona doesn't control the coordinate unit (degree-based or meter-based) of all geometries in a Geometry column. The unit of all related distances in SedonaSQL is same as the unit of all geometries in a Geometry column.</p>
 <p>To convert Coordinate Reference System of the Geometry column created before, use the following code:</p>
@@ -2214,12 +2214,12 @@ The file may have many other columns.</p>
 <p>Use SedonaSQL DataFrame-RDD Adapter to convert a DataFrame to an SpatialRDD. Please read <a href="/api/javadoc/sql/org/apache/sedona/sql/utils/index.html">Adapter Scaladoc</a></p>
 <div class="highlight"><pre><span></span><code><span class="k">var</span> <span class="n">spatialDf</span> <span class="o">=</span> <span class="nc">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="o">(</span><span class="n">spatialRDD</span><span class="o">,</span> <span class="n">sparkSession</span><span class="o">)</span>
 </code></pre></div>
-<p>All other attributes such as price and age will be also brought to the DataFrame as long as you specify <mark>carryOtherAttributes</mark> (see <a href="./rdd#read-other-attributes-in-an-spatialrdd">Read other attributes in an SpatialRDD</a>).</p>
+<p>All other attributes such as price and age will be also brought to the DataFrame as long as you specify <mark>carryOtherAttributes</mark> (see <a href="../rdd#read-other-attributes-in-an-spatialrdd">Read other attributes in an SpatialRDD</a>).</p>
 <h3 id="spatialpairrdd-to-dataframe">SpatialPairRDD to DataFrame<a class="headerlink" href="#spatialpairrdd-to-dataframe" title="Permanent link">&para;</a></h3>
 <p>PairRDD is the result of a spatial join query or distance join query. SedonaSQL DataFrame-RDD Adapter can convert the result to a DataFrame:</p>
 <div class="highlight"><pre><span></span><code><span class="k">var</span> <span class="n">joinResultDf</span> <span class="o">=</span> <span class="nc">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="o">(</span><span class="n">joinResultPairRDD</span><span class="o">,</span> <span class="n">sparkSession</span><span class="o">)</span>
 </code></pre></div>
-<p>All other attributes such as price and age will be also brought to the DataFrame as long as you specify <mark>carryOtherAttributes</mark> (see <a href="./rdd#read-other-attributes-in-an-spatialrdd">Read other attributes in an SpatialRDD</a>).</p>
+<p>All other attributes such as price and age will be also brought to the DataFrame as long as you specify <mark>carryOtherAttributes</mark> (see <a href="../rdd#read-other-attributes-in-an-spatialrdd">Read other attributes in an SpatialRDD</a>).</p>
                 
               
   
