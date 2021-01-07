@@ -804,10 +804,47 @@
           
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+    <label class="md-nav__link" for="nav-3-4">
+      Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Examples" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
     <a href="../../tutorial/GeoSpark-Runnable-DEMO/" class="md-nav__link">
-      Examples
+      Scala/Java
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/jupyter-notebook/" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1988,7 +2025,7 @@
                 
                 
                 <h1 id="compile-and-publish-sedona">Compile and Publish Sedona<a class="headerlink" href="#compile-and-publish-sedona" title="Permanent link">&para;</a></h1>
-<p><a href="https://github.com/apache/incubator-sedona/actions?query=workflow%3A%22Scala+and+Java+build%22"><img alt="Scala and Java build" src="https://github.com/apache/incubator-sedona/workflows/Scala%20and%20Java%20build/badge.svg" /></a> <a href="https://github.com/apache/incubator-sedona/actions?query=workflow%3A%22Python+build%22"><img alt="Python build" src="https://github.com/apache/incubator-sedona/workflows/Python%20build/badge.svg" /></a></p>
+<p><a href="https://github.com/apache/incubator-sedona/actions?query=workflow%3A%22Scala+and+Java+build%22"><img alt="Scala and Java build" src="https://github.com/apache/incubator-sedona/workflows/Scala%20and%20Java%20build/badge.svg" /></a> <a href="https://github.com/apache/incubator-sedona/actions?query=workflow%3A%22Python+build%22"><img alt="Python build" src="https://github.com/apache/incubator-sedona/workflows/Python%20build/badge.svg" /></a> <img alt="Example project build" src="https://github.com/apache/incubator-sedona/workflows/Example%20project%20build/badge.svg" /></p>
 <h2 id="compile-scala-and-java-source-code">Compile Scala and Java source code<a class="headerlink" href="#compile-scala-and-java-source-code" title="Permanent link">&para;</a></h2>
 <p>Sedona Scala/Java code is a project with four modules, core, sql, viz and python adapter. Each module is a Scala/Java mixed project which is managed by Apache Maven 3.</p>
 <ul>
@@ -2082,15 +2119,9 @@ pip install mkdocs-material
 <li>Scaladoc: Run <code>scaladoc -d site/api/javadoc/sql/ sql/src/main/scala/org/apache/sedona/sql/utils/*.scala</code></li>
 </ul>
 <h4>Copy</h4>
-<p>Copy the generated Javadoc (Scaladoc should already be there) to the corresponding folders in <code>site/api/javadoc</code></p>
-<h4>Deploy to ASF domain</h4>
 <ol>
-<li>
-<p>Copy the generated Javadoc and Scaladoc to the correct location in <code>docs/api/javadoc</code></p>
-</li>
-<li>
-<p>Then deploy Javadoc and Scaladoc with the project website</p>
-</li>
+<li>Copy the generated Javadoc (Scaladoc should already be there) to the corresponding folders in <code>site/api/javadoc</code></li>
+<li>Deploy Javadoc and Scaladoc with the project website</li>
 </ol>
 <h2 id="publish-snapshots">Publish SNAPSHOTs<a class="headerlink" href="#publish-snapshots" title="Permanent link">&para;</a></h2>
 <p>We follow the <a href="https://incubator.apache.org/guides/distribution.html">ASF Incubator Distribution Guidelines</a></p>

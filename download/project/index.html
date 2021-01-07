@@ -452,66 +452,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  
-  <a href="#how-to-use-sedona-in-an-ide" class="md-nav__link">
-    How to use Sedona in an IDE
-  </a>  
-  
-  
-    <nav class="md-nav" aria-label="How to use Sedona in an IDE">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  
-  <a href="#select-an-ide" class="md-nav__link">
-    Select an IDE
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#open-sedona-template-project" class="md-nav__link">
-    Open Sedona template project
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#try-sedona-sql-functions" class="md-nav__link">
-    Try Sedona SQL functions
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#package-the-project" class="md-nav__link">
-    Package the project
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#submit-the-compiled-jar" class="md-nav__link">
-    Submit the compiled jar
-  </a>  
-  
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -732,10 +672,47 @@
           
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+    <label class="md-nav__link" for="nav-3-4">
+      Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Examples" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
     <a href="../../tutorial/GeoSpark-Runnable-DEMO/" class="md-nav__link">
-      Examples
+      Scala/Java
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/jupyter-notebook/" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1764,66 +1741,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  
-  <a href="#how-to-use-sedona-in-an-ide" class="md-nav__link">
-    How to use Sedona in an IDE
-  </a>  
-  
-  
-    <nav class="md-nav" aria-label="How to use Sedona in an IDE">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  
-  <a href="#select-an-ide" class="md-nav__link">
-    Select an IDE
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#open-sedona-template-project" class="md-nav__link">
-    Open Sedona template project
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#try-sedona-sql-functions" class="md-nav__link">
-    Try Sedona SQL functions
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#package-the-project" class="md-nav__link">
-    Package the project
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#submit-the-compiled-jar" class="md-nav__link">
-    Submit the compiled jar
-  </a>  
-  
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1849,7 +1766,7 @@
 <ol>
 <li>To add Sedona as dependencies, please read <a href="../GeoSpark-All-Modules-Maven-Central-Coordinates/">Sedona Maven Central coordinates</a></li>
 <li>Use Sedona Template project to start: <a href="/tutorial/GeoSpark-Runnable-DEMO/">Sedona Template Project</a></li>
-<li>Compile your project using SBT or Maven. Make sure you obtain the fat jar which packages all dependencies.</li>
+<li>Compile your project using SBT. Make sure you obtain the fat jar which packages all dependencies.</li>
 <li>Submit your compiled fat jar to Spark cluster. Make sure you are in the root folder of Spark distribution. Then run the following command:
 <div class="highlight"><pre><span></span><code>./bin/spark-submit --master spark://YOUR-IP:7077 /Path/To/YourJar.jar
 </code></pre></div></li>
@@ -1858,57 +1775,6 @@
 <p class="admonition-title">Note</p>
 <p>The detailed explanation of spark-submit is available on <a href="https://spark.apache.org/docs/latest/submitting-applications.html">Spark website</a>.</p>
 </div>
-<h2 id="how-to-use-sedona-in-an-ide">How to use Sedona in an IDE<a class="headerlink" href="#how-to-use-sedona-in-an-ide" title="Permanent link">&para;</a></h2>
-<h3 id="select-an-ide">Select an IDE<a class="headerlink" href="#select-an-ide" title="Permanent link">&para;</a></h3>
-<p>To develop a complex project, we suggest you use IntelliJ IDEA. It supports JVM languages, Scala and Java, and many dependency management systems, Maven and SBT.</p>
-<p>Eclipse is also fine if you just want to use Java and Maven.</p>
-<h3 id="open-sedona-template-project">Open Sedona template project<a class="headerlink" href="#open-sedona-template-project" title="Permanent link">&para;</a></h3>
-<p>Select a proper project you want from <a href="/tutorial/GeoSpark-Runnable-DEMO/">Sedona Template Project</a>. In this tutorial, we use Sedona SQL Scala project as an example.</p>
-<p>Open the folder that contains <code>build.sbt</code> file in your IDE. The IDE may take a while to index dependencies and source code.</p>
-<h3 id="try-sedona-sql-functions">Try Sedona SQL functions<a class="headerlink" href="#try-sedona-sql-functions" title="Permanent link">&para;</a></h3>
-<p>In your IDE, run ScalaExample.scala file.</p>
-<p>You don't need to change anything in this file. The IDE will run all SQL queries in this example in local mode.</p>
-<h3 id="package-the-project">Package the project<a class="headerlink" href="#package-the-project" title="Permanent link">&para;</a></h3>
-<p>To run this project in cluster mode, you have to package this project to a JAR and then run it using <code>spark-submit</code> command.</p>
-<p>Before packaging this project, you always need to check two places:</p>
-<ul>
-<li>
-<p>Remove the hardcoded Master IP <code>master("local[*]")</code>. This hardcoded IP is only needed when you run this project in an IDE.
-<div class="highlight"><pre><span></span><code><span class="k">var</span> <span class="n">sparkSession</span><span class="k">:</span><span class="kt">SparkSession</span> <span class="o">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-    <span class="o">.</span><span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.serializer&quot;</span><span class="o">,</span><span class="n">classOf</span><span class="o">[</span><span class="kt">KryoSerializer</span><span class="o">].</span><span class="n">getName</span><span class="o">)</span>
-    <span class="o">.</span><span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.kryo.registrator&quot;</span><span class="o">,</span><span class="n">classOf</span><span class="o">[</span><span class="kt">SedonaVizKryoRegistrator</span><span class="o">].</span><span class="n">getName</span><span class="o">)</span>
-    <span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&quot;local[*]&quot;</span><span class="o">)</span>
-    <span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&quot;SedonaSQL-demo&quot;</span><span class="o">).</span><span class="n">getOrCreate</span><span class="o">()</span>
-</code></pre></div></p>
-</li>
-<li>
-<p>In build.sbt (or POM.xml), set Spark dependency scope to <code>provided</code> instead of <code>compile</code>. <code>compile</code> is only needed when you run this project in an IDE.</p>
-</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Forgetting to change the package scope will lead to a very big fat JAR and dependency conflicts when call <code>spark-submit</code>. For more details, please visit <a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope">Maven Dependency Scope</a>.</p>
-</div>
-<ul>
-<li>Make sure your downloaded Spark binary distribution is the same version with the Spark used in your <code>build.sbt</code> or <code>POM.xml</code>.</li>
-</ul>
-<h3 id="submit-the-compiled-jar">Submit the compiled jar<a class="headerlink" href="#submit-the-compiled-jar" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Go to <code>./target/scala-2.11</code> folder and find a jar called <code>SedonaSQLTemplate-0.1.0.jar</code>. Note that, this JAR normally is larger than 1MB. (If you use POM.xml, the jar is under <code>./target</code> folder)</li>
-<li>
-<p>Submit this JAR using <code>spark-submit</code>.</p>
-</li>
-<li>
-<p>Local mode:
-<div class="highlight"><pre><span></span><code>./bin/spark-submit /Path/To/YourJar.jar
-</code></pre></div></p>
-</li>
-<li>
-<p>Cluster mode:
-<div class="highlight"><pre><span></span><code>./bin/spark-submit --master spark://YOUR-IP:7077 /Path/To/YourJar.jar
-</code></pre></div></p>
-</li>
-</ol>
                 
               
   

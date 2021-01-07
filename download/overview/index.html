@@ -446,6 +446,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  
+  <a href="#setup-environment-variables" class="md-nav__link">
+    Setup environment variables
+  </a>  
+  
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -719,10 +728,47 @@
           
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+    <label class="md-nav__link" for="nav-3-4">
+      Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Examples" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
     <a href="../../tutorial/GeoSpark-Runnable-DEMO/" class="md-nav__link">
-      Examples
+      Scala/Java
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/jupyter-notebook/" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1795,6 +1841,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  
+  <a href="#setup-environment-variables" class="md-nav__link">
+    Setup environment variables
+  </a>  
+  
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1892,6 +1947,7 @@
 <li>shapely</li>
 <li>attrs</li>
 </ul>
+<p>You need to install necessary packages if your system does not have them installed. See <a href="https://github.com/apache/incubator-sedona/blob/master/python/Pipfile">"packages" in our Pipfile</a>.</p>
 <h3 id="install-sedona">Install sedona<a class="headerlink" href="#install-sedona" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Installing from PyPi repositories</li>
@@ -1899,15 +1955,15 @@
 <div class="highlight"><pre><span></span><code>pip install sedona
 </code></pre></div>
 <ul>
-<li>Installing from source</li>
+<li>Installing from Sedona Python source</li>
 </ul>
 <p>Clone Sedona GitHub source code and run the following command</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> python-adapter
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> python
 python3 setup.py install
 </code></pre></div>
 <h3 id="prepare-python-adapter-jar">Prepare python-adapter jar<a class="headerlink" href="#prepare-python-adapter-jar" title="Permanent link">&para;</a></h3>
 <p>Sedona Python needs one additional jar file call <code>sedona-python-adapter-3.0_2.12-1.0.0-incubator.jar</code> to work properly. Please make sure you use the correct version for Spark and Scala.</p>
-<p>You can get it using the following methods:</p>
+<p>You can get it using one of the following methods:</p>
 <ul>
 <li>
 <p>Compile from the source within main project directory and copy it (in <code>target</code> folder) to SPARK_HOME/jars/ folder (<a href="/download/compile/#compile-scala-and-java-source-code">more details</a>)</p>
@@ -1925,6 +1981,18 @@ python3 setup.py install
         <span class="n">getOrCreate</span><span class="p">()</span>
 </code></pre></div></li>
 </ul>
+<h3 id="setup-environment-variables">Setup environment variables<a class="headerlink" href="#setup-environment-variables" title="Permanent link">&para;</a></h3>
+<p>If you manually copy the python-adapter jar to <code>SPARK_HOME/jars/</code> folder, you need to setup two environment variables</p>
+<ul>
+<li>SPARK_HOME. For example, run the command in your terminal</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">SPARK_HOME</span><span class="o">=</span>~/Downloads/spark-3.0.1-bin-hadoop2.7
+</code></pre></div>
+<ul>
+<li>PYTHONPATH. For example, run the command in your terminal</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$SPARK_HOME</span>/python
+</code></pre></div>
                 
               
   
