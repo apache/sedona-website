@@ -2029,7 +2029,7 @@
 <h2 id="compile-scala-and-java-source-code">Compile Scala and Java source code<a class="headerlink" href="#compile-scala-and-java-source-code" title="Permanent link">&para;</a></h2>
 <p>Sedona Scala/Java code is a project with four modules, core, sql, viz and python adapter. Each module is a Scala/Java mixed project which is managed by Apache Maven 3.</p>
 <ul>
-<li>Make sure your machine has Java 1.8 and Apache Maven 3.</li>
+<li>Make sure your Linux/Mac machine has Java 1.8, Apache Maven 3.3.1+, and Python3. The compilation of Sedona is not tested on Windows machine.</li>
 </ul>
 <p>To compile all modules, please make sure you are in the root folder of three modules. Then enter the following command in the terminal:</p>
 <p><div class="highlight"><pre><span></span><code>mvn clean install -DskipTests
@@ -2129,9 +2129,6 @@ pip install mkdocs-material
 <p>The detailed requirement is on <a href="https://infra.apache.org/publishing-maven-artifacts.html">ASF Infra website</a></p>
 <h4>Prepare for Spark 3.0 and Scala 2.12</h4>
 <ol>
-<li>Convert source code to Spark 3 format
-<div class="highlight"><pre><span></span><code>python3 spark-version-converter.py spark3
-</code></pre></div></li>
 <li>Prepare the SNAPSHOTs
 <div class="highlight"><pre><span></span><code>mvn clean -Darguments=&quot;-DskipTests&quot; release:prepare -DdryRun=true -DautoVersionSubmodules=true -Dresume=false
 </code></pre></div></li>
@@ -2141,9 +2138,6 @@ pip install mkdocs-material
 </ol>
 <h4>Prepare for Spark 2.4 and Scala 2.11</h4>
 <ol>
-<li>Convert source code to Spark 2 format
-<div class="highlight"><pre><span></span><code>python3 spark-version-converter.py spark2
-</code></pre></div></li>
 <li>Prepare the SNAPSHOTs
 <div class="highlight"><pre><span></span><code>mvn clean release:prepare -DdryRun=true -DautoVersionSubmodules=true -Dresume=false -DcheckModificationExcludeList=sql/src/main/scala/org/apache/sedona/sql/UDF/UdfRegistrator.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/JoinQueryDetector.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/TraitJoinQueryExec.scala -Darguments=&quot;-DskipTests -Dscala=2.11 -Dspark=2.4&quot;
 </code></pre></div></li>
@@ -2153,9 +2147,6 @@ pip install mkdocs-material
 </ol>
 <h4>Prepare for Spark 2.4 and Scala 2.12</h4>
 <ol>
-<li>Convert source code to Spark 2 format
-<div class="highlight"><pre><span></span><code>python3 spark-version-converter.py spark2
-</code></pre></div></li>
 <li>Prepare the SNAPSHOTs
 <div class="highlight"><pre><span></span><code>mvn clean release:prepare -DdryRun=true -DautoVersionSubmodules=true -Dresume=false -DcheckModificationExcludeList=sql/src/main/scala/org/apache/sedona/sql/UDF/UdfRegistrator.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/JoinQueryDetector.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/TraitJoinQueryExec.scala -Darguments=&quot;-DskipTests -Dscala=2.12 -Dspark=2.4&quot;
 </code></pre></div></li>
@@ -2168,39 +2159,29 @@ pip install mkdocs-material
 <h3 id="stage-the-releases">Stage the releases<a class="headerlink" href="#stage-the-releases" title="Permanent link">&para;</a></h3>
 <h4>For Spark 3.0 and Scala 2.12</h4>
 <ol>
-<li>Convert source code to Spark 3 format
-<div class="highlight"><pre><span></span><code>python3 spark-version-converter.py spark3
-</code></pre></div></li>
-<li>Prepare a release. Manually enter the following variables in the terminal: release id: <mark>1.0.0-incubator</mark>, scm tag id: <mark>sedona-3.0_2.12-1.0.0-incubator</mark> (this is just an example. Please use the correct version number). You also need to provide GitHub username and password
+<li>Prepare a release. Manually enter the following variables in the terminal: release id: <mark>1.0.0-incubator</mark>, scm tag id: <mark>sedona-1.0.0-incubator</mark> (this is just an example. Please use the correct version number). You also need to provide GitHub username and password three times.
 <div class="highlight"><pre><span></span><code>mvn clean release:prepare -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span> 
 </code></pre></div></li>
 <li>Stage a release
 <div class="highlight"><pre><span></span><code>mvn clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span> 
 </code></pre></div></li>
 <li>Now the releases are staged. A tag and two commits will be created on Sedona GitHub repo.</li>
+<li>Delete the scm tag on GitHub and we will only keep the tag created by the last compilation target.</li>
 </ol>
 <p>Now let's repeat the process to other Sedona modules.</p>
 <h4>For Spark 2.4 and Scala 2.11</h4>
 <ol>
-<li>Convert source code to Spark 2 format
-<div class="highlight"><pre><span></span><code>python3 spark-version-converter.py spark2
-</code></pre></div></li>
-<li>Manuallly commit the changes of the three scala files to GitHub</li>
-<li>Prepare a release. Note that: release id: <mark>1.0.0-incubator</mark>, scm tag id: <mark>sedona-2.4_2.11-1.0.0-incubator</mark> (this is just an example. Please use the correct version number)
+<li>Prepare a release. Note that: release id: <mark>1.0.0-incubator</mark>, scm tag id: <mark>sedona-1.0.0-incubator</mark> (this is just an example. Please use the correct version number)
 <div class="highlight"><pre><span></span><code>mvn clean release:prepare -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -DcheckModificationExcludeList<span class="o">=</span>sql/src/main/scala/org/apache/sedona/sql/UDF/UdfRegistrator.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/JoinQueryDetector.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/TraitJoinQueryExec.scala -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.11 -Dspark=2.4&quot;</span>
 </code></pre></div></li>
 <li>Stage a release
 <div class="highlight"><pre><span></span><code>mvn clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.11 -Dspark=2.4&quot;</span>
 </code></pre></div></li>
+<li>Delete the scm tag on GitHub and we will only keep the tag created by the last compilation target.</li>
 </ol>
 <h4>For Spark 2.4 and Scala 2.12</h4>
-<p>Step 1 and 2 are only needed if you didn't run the previous step before</p>
 <ol>
-<li>Convert source code to Spark 2 format
-<div class="highlight"><pre><span></span><code>python3 spark-version-converter.py spark2
-</code></pre></div></li>
-<li><mark>Manuallly commit the changes of the three scala files to GitHub</mark></li>
-<li>Prepare a release: release id: <mark>1.0.0-incubator</mark>, scm tag id: <mark>sedona-2.4_2.12-1.0.0-incubator</mark>  (this is just an example. Please use the correct version number)
+<li>Prepare a release: release id: <mark>1.0.0-incubator</mark>, scm tag id: <mark>sedona-1.0.0-incubator</mark> (this is just an example. Please use the correct version number)
 <div class="highlight"><pre><span></span><code>mvn clean release:prepare -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -DcheckModificationExcludeList<span class="o">=</span>sql/src/main/scala/org/apache/sedona/sql/UDF/UdfRegistrator.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/JoinQueryDetector.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/TraitJoinQueryExec.scala -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.12 -Dspark=2.4&quot;</span>
 </code></pre></div></li>
 <li>Stage a release
@@ -2209,7 +2190,7 @@ pip install mkdocs-material
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>After staged the three releases, you need to manually revert the commited three scala files. You will see 6 [maven-release-plugin] commits and 3 more tags in Sedona GitHub repo.</p>
+<p>After staged the three releases, you will see 6 [maven-release-plugin] commits and 1 more tag in Sedona GitHub repo.</p>
 </div>
 <h3 id="close-the-staging-repo">Close the staging repo<a class="headerlink" href="#close-the-staging-repo" title="Permanent link">&para;</a></h3>
 <ol>
