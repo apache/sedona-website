@@ -2035,9 +2035,13 @@
 <p><div class="highlight"><pre><span></span><code>mvn clean install -DskipTests
 </code></pre></div>
 This command will first delete the old binary files and compile all modules. This compilation will skip the unit tests. To compile a single module, please make sure you are in the folder of that module. Then enter the same command.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>By default, this command will compile Sedona with Spark 3.0 and Scala 2.12</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To get the Sedona Python-adapter jar with all GeoTools jars included, simply append <code>-Dgeotools</code> option. The command is like this:<code>mvn clean install -DskipTests -Dgeotools</code></p>
 </div>
 <p>To run unit tests, just simply remove <code>-DskipTests</code> option. The command is like this:
 <div class="highlight"><pre><span></span><code>mvn clean install
@@ -2058,6 +2062,10 @@ This command will first delete the old binary files and compile all modules. Thi
 <div class="highlight"><pre><span></span><code>mvn clean install -DskipTests -Dscala=2.12 -Dspark=2.4
 </code></pre></div></li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To get the Sedona Python-adapter jar with all GeoTools jars included, simply append <code>-Dgeotools</code> option. The command is like this:<code>mvn clean install -DskipTests -Dscala=2.12 -Dspark=3.0 -Dgeotools</code></p>
+</div>
 <h3 id="download-staged-jars">Download staged jars<a class="headerlink" href="#download-staged-jars" title="Permanent link">&para;</a></h3>
 <p>Sedona uses GitHub action to automatically generate jars per commit. You can go <a href="https://github.com/apache/incubator-sedona/actions?query=workflow%3A%22Scala+and+Java+build%22">here</a> and download the jars by clicking the commit's <mark>Artifacts</mark> tag.</p>
 <h2 id="run-python-test">Run Python test<a class="headerlink" href="#run-python-test" title="Permanent link">&para;</a></h2>
@@ -2068,7 +2076,7 @@ This command will first delete the old binary files and compile all modules. Thi
 <div class="highlight"><pre><span></span><code>export SPARK_HOME=$PWD/spark-3.0.1-bin-hadoop2.7
 export PYTHONPATH=$SPARK_HOME/python
 </code></pre></div>
-2. Compile the Sedona Scala and Java code and then copy the <mark>sedona-python-adapter-xxx.jar</mark> to <mark>SPARK_HOME/jars/</mark> folder
+2. Compile the Sedona Scala and Java code with <code>-Dgeotools</code> and then copy the <mark>sedona-python-adapter-xxx.jar</mark> to <mark>SPARK_HOME/jars/</mark> folder.
 <div class="highlight"><pre><span></span><code>cp python-adapter/target/sedona-python-adapter-xxx.jar SPARK_HOME/jars/
 </code></pre></div>
 3. Install the following libraries

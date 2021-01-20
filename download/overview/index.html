@@ -1962,11 +1962,11 @@
 python3 setup.py install
 </code></pre></div>
 <h3 id="prepare-python-adapter-jar">Prepare python-adapter jar<a class="headerlink" href="#prepare-python-adapter-jar" title="Permanent link">&para;</a></h3>
-<p>Sedona Python needs one additional jar file call <code>sedona-python-adapter-3.0_2.12-1.0.0-incubator.jar</code> to work properly. Please make sure you use the correct version for Spark and Scala.</p>
+<p>Sedona Python needs one additional jar file called <code>sedona-python-adapter</code> to work properly. Please make sure you use the correct version for Spark and Scala. For Spark 3.0 + Scala 2.12, it is called <code>sedona-python-adapter-3.0_2.12-1.0.0-incubating.jar</code></p>
 <p>You can get it using one of the following methods:</p>
-<ul>
+<ol>
 <li>
-<p>Compile from the source within main project directory and copy it (in <code>target</code> folder) to SPARK_HOME/jars/ folder (<a href="/download/compile/#compile-scala-and-java-source-code">more details</a>)</p>
+<p>Compile from the source within main project directory and copy it (in <code>python-adapter/target</code> folder) to SPARK_HOME/jars/ folder (<a href="/download/compile/#compile-scala-and-java-source-code">more details</a>)</p>
 </li>
 <li>
 <p>Download from <a href="https://github.com/apache/incubator-sedona/releases">GitHub release</a> and copy it to SPARK_HOME/jars/ folder</p>
@@ -1977,10 +1977,14 @@ python3 setup.py install
         <span class="n">appName</span><span class="p">(</span><span class="s1">&#39;appName&#39;</span><span class="p">)</span><span class="o">.</span>\
         <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.serializer&quot;</span><span class="p">,</span> <span class="n">KryoSerializer</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span><span class="o">.</span>\
         <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.kryo.registrator&quot;</span><span class="p">,</span> <span class="n">SedonaKryoRegistrator</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span> <span class="o">.</span>\
-        <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.jars.packages&#39;</span><span class="p">,</span> <span class="s1">&#39;org.apache.sedona:sedona-python-adapter-3.0_2.12:1.0.0-incubator&#39;</span><span class="p">)</span><span class="o">.</span>\
+        <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.jars.packages&#39;</span><span class="p">,</span> <span class="s1">&#39;org.apache.sedona:sedona-python-adapter-3.0_2.12:1.0.0-incubating&#39;</span><span class="p">)</span><span class="o">.</span>\
         <span class="n">getOrCreate</span><span class="p">()</span>
 </code></pre></div></li>
-</ul>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are going to use Sedona CRS transformation and ShapefileReader functions, you have to use Method 1. Because these functions internally use GeoTools libraries which are under LGPL license, Apache Sedona binary release cannot include them.</p>
+</div>
 <h3 id="setup-environment-variables">Setup environment variables<a class="headerlink" href="#setup-environment-variables" title="Permanent link">&para;</a></h3>
 <p>If you manually copy the python-adapter jar to <code>SPARK_HOME/jars/</code> folder, you need to setup two environment variables</p>
 <ul>
@@ -1993,6 +1997,7 @@ python3 setup.py install
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$SPARK_HOME</span>/python
 </code></pre></div>
+<p>You can then play with <a href="/tutorial/jupyter-notebook/">Sedona Python Jupyter notebook</a></p>
                 
               
   
