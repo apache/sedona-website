@@ -534,15 +534,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  
-  <a href="#publish-python-project-to-pypi" class="md-nav__link">
-    Publish Python project to PyPi
-  </a>  
-  
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -587,8 +578,8 @@
         
           <li class="md-nav__item">
   
-  <a href="#close-the-staging-repo" class="md-nav__link">
-    Close the staging repo
+  <a href="#release-the-package" class="md-nav__link">
+    Release the package
   </a>  
   
   
@@ -1886,15 +1877,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  
-  <a href="#publish-python-project-to-pypi" class="md-nav__link">
-    Publish Python project to PyPi
-  </a>  
-  
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1939,8 +1921,8 @@
         
           <li class="md-nav__item">
   
-  <a href="#close-the-staging-repo" class="md-nav__link">
-    Close the staging repo
+  <a href="#release-the-package" class="md-nav__link">
+    Release the package
   </a>  
   
   
@@ -1996,6 +1978,7 @@
 </div>
 <h2 id="publish-snapshots">Publish SNAPSHOTs<a class="headerlink" href="#publish-snapshots" title="Permanent link">&para;</a></h2>
 <h3 id="publish-maven-snapshots">Publish Maven SNAPSHOTs<a class="headerlink" href="#publish-maven-snapshots" title="Permanent link">&para;</a></h3>
+<p>This step is to publish the SNAPSHOTs to <a href="https://repository.apache.org">https://repository.apache.org</a></p>
 <p>The detailed requirement is on <a href="https://infra.apache.org/publishing-maven-artifacts.html">ASF Infra website</a></p>
 <h4>Prepare for Spark 3.0 and Scala 2.12</h4>
 <ol>
@@ -2024,9 +2007,9 @@
 <div class="highlight"><pre><span></span><code>mvn deploy -DskipTests -Dscala=2.12 -Dspark=2.4
 </code></pre></div></li>
 </ol>
-<h3 id="publish-python-project-to-pypi">Publish Python project to PyPi<a class="headerlink" href="#publish-python-project-to-pypi" title="Permanent link">&para;</a></h3>
 <h2 id="publish-releases">Publish releases<a class="headerlink" href="#publish-releases" title="Permanent link">&para;</a></h2>
 <h3 id="stage-the-release-candidate">Stage the Release Candidate<a class="headerlink" href="#stage-the-release-candidate" title="Permanent link">&para;</a></h3>
+<p>This step is to stage the release to <a href="https://repository.apache.org">https://repository.apache.org</a></p>
 <h4>For Spark 3.0 and Scala 2.12</h4>
 <ol>
 <li>Prepare a release. Manually enter the following variables in the terminal: release id: <mark>1.0.0-incubating</mark>, scm tag id: <mark>sedona-1.0.0-incubating-rc1</mark> (this is just an example. Please use the correct version number). You also need to provide GitHub username and password three times.
@@ -2036,32 +2019,14 @@
 <div class="highlight"><pre><span></span><code>mvn clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span> 
 </code></pre></div></li>
 <li>Now the releases are staged. A tag and two commits will be created on Sedona GitHub repo.</li>
-<li>Delete the scm tag on GitHub and we will only keep the tag created by the last compilation target.</li>
 </ol>
-<p>Now let's repeat the process to other Sedona modules.</p>
+<p>Now let's repeat the process to other Sedona modules. Make sure you use the correct SCM Git tag id. For example, <mark>sedona-1.0.0-incubating-rc1</mark> (see below).</p>
 <h4>For Spark 2.4 and Scala 2.11</h4>
-<ol>
-<li>Prepare a release. Note that: release id: <mark>1.0.0-incubating</mark>, scm tag id: <mark>sedona-1.0.0-incubating-rc1</mark> (this is just an example. Please use the correct version number)
-<div class="highlight"><pre><span></span><code>mvn clean release:prepare -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -DcheckModificationExcludeList<span class="o">=</span>sql/src/main/scala/org/apache/sedona/sql/UDF/UdfRegistrator.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/JoinQueryDetector.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/TraitJoinQueryExec.scala -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.11 -Dspark=2.4&quot;</span>
-</code></pre></div></li>
-<li>Stage a release
-<div class="highlight"><pre><span></span><code>mvn clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.11 -Dspark=2.4&quot;</span>
-</code></pre></div></li>
-<li>Delete the scm tag on GitHub and we will only keep the tag created by the last compilation target.</li>
-</ol>
+<div class="highlight"><pre><span></span><code>mvn org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl=scm:git:https://github.com/apache/incubator-sedona.git -Dtag=sedona-1.0.0-incubating-rc1 -DautoVersionSubmodules=true -Dresume=false -Darguments=&quot;-DskipTests -Dscala=2.11 -Dspark=2.4&quot;
+</code></pre></div>
 <h4>For Spark 2.4 and Scala 2.12</h4>
-<ol>
-<li>Prepare a release: release id: <mark>1.0.0-incubating</mark>, scm tag id: <mark>sedona-1.0.0-incubating-rc1</mark> (this is just an example. Please use the correct version number)
-<div class="highlight"><pre><span></span><code>mvn clean release:prepare -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -DcheckModificationExcludeList<span class="o">=</span>sql/src/main/scala/org/apache/sedona/sql/UDF/UdfRegistrator.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/JoinQueryDetector.scala,sql/src/main/scala/org/apache/spark/sql/sedona_sql/strategy/join/TraitJoinQueryExec.scala -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.12 -Dspark=2.4&quot;</span>
-</code></pre></div></li>
-<li>Stage a release
-<div class="highlight"><pre><span></span><code>mvn clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.12 -Dspark=2.4&quot;</span>
-</code></pre></div></li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>After staged the three releases, you will see 6 [maven-release-plugin] commits and 1 more tag in Sedona GitHub repo.</p>
-</div>
+<div class="highlight"><pre><span></span><code>mvn org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl=scm:git:https://github.com/apache/incubator-sedona.git -Dtag=sedona-1.0.0-incubating-rc1 -DautoVersionSubmodules=true -Dresume=false -Darguments=&quot;-DskipTests -Dscala=2.12 -Dspark=2.4&quot;
+</code></pre></div>
 <h4>Use Maven Release Plugin directly from an existing tag</h4>
 <p>In some cases (i.e., the staging repo on repository.apache.org is closed by mistake), if you need to do <code>mvn release:perform</code> from an existing tag, you should use the following command. Note that: you have to use <code>org.apache.maven.plugins:maven-release-plugin:2.3.2:perform</code> due to a bug in maven release plugin from v2.4 (<a href="https://issues.apache.org/jira/browse/SCM-729">https://issues.apache.org/jira/browse/SCM-729</a>). Make sure you use the correct scm tag (i.e.,  <code>sedona-1.0.0-incubating-rc1</code>).</p>
 <h5>For Spark 3.0 and Scala 2.12</h5>
@@ -2095,7 +2060,13 @@
 </ol>
 <h4>Failed vote</h4>
 <p>If a vote failed, please first drop the staging repo on <code>repository.apache.org</code>. Then redo all the steps above. Make sure you use a new scm tag for the new release candidate when use maven-release-plugin (i.e., <code>sedona-1.0.0-incubating-rc2</code>)</p>
-<h3 id="close-the-staging-repo">Close the staging repo<a class="headerlink" href="#close-the-staging-repo" title="Permanent link">&para;</a></h3>
+<h3 id="release-the-package">Release the package<a class="headerlink" href="#release-the-package" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Close the staging repo on <a href="https://repository.apache.org">https://repository.apache.org</a>. If the staging repo has been automatically closed by the system, please read <mark>Use Maven Release Plugin directly from an existing tag</mark> above.</li>
+<li>Move all files in <a href="https://dist.apache.org/repos/dist/dev/incubator/sedona">https://dist.apache.org/repos/dist/dev/incubator/sedona</a> to <a href="https://dist.apache.org/repos/dist/release/incubator/sedona">https://dist.apache.org/repos/dist/release/incubator/sedona</a>, using svn</li>
+<li>Create a GitHub release. Please follow the template: <a href="https://github.com/apache/incubator-sedona/releases/tag/sedona-1.0.0-incubating">https://github.com/apache/incubator-sedona/releases/tag/sedona-1.0.0-incubating</a></li>
+<li>Publish Python project to PyPi using twine. You must have the maintainer priviledge of <a href="https://pypi.org/project/apache-sedona/">https://pypi.org/project/apache-sedona/</a>. Then please setup your token and run <code>python3 setup.py sdist bdist_wheel</code> and <code>twine upload dist/*</code> in the <code>incubator-sedona/python</code> directory.</li>
+</ol>
                 
               
   
