@@ -1220,6 +1220,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#st_minimumboundingradius" class="md-nav__link">
+    ST_MinimumBoundingRadius
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_minimumboundingcircle" class="md-nav__link">
+    ST_MinimumBoundingCircle
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2395,6 +2413,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#st_minimumboundingradius" class="md-nav__link">
+    ST_MinimumBoundingRadius
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_minimumboundingcircle" class="md-nav__link">
+    ST_MinimumBoundingCircle
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2752,6 +2788,20 @@ LINESTRING(0 0, 1 1, 1 0, 21 52)
 </code></pre></div></p>
 <p>Input: <code>POINT (1 2)</code></p>
 <p>Output: <code>POINT (2 1)</code></p>
+<h2 id="st_minimumboundingradius">ST_MinimumBoundingRadius<a class="headerlink" href="#st_minimumboundingradius" title="Permanent link">&para;</a></h2>
+<p>Introduction: Returns a struct containing the center point and radius of the smallest circle that contains a geometry.</p>
+<p>Format: <code>ST_MinimumBoundingRadius(geom: geometry)</code></p>
+<p>Since: <code>v1.0.1</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_MinimumBoundingRadius</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POLYGON((1 1,0 0, -1 1, 1 1))&#39;</span><span class="p">))</span>
+</code></pre></div></p>
+<h2 id="st_minimumboundingcircle">ST_MinimumBoundingCircle<a class="headerlink" href="#st_minimumboundingcircle" title="Permanent link">&para;</a></h2>
+<p>Introduction: Returns the smallest circle polygon that contains a geometry.</p>
+<p>Format: <code>ST_MinimumBoundingCircle(geom: geometry, [Optional] quadrantSegments:int)</code></p>
+<p>Since: <code>v1.0.1</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_MinimumBoundingCircle</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POLYGON((1 1,0 0, -1 1, 1 1))&#39;</span><span class="p">))</span>
+</code></pre></div></p>
                 
               
   

@@ -1983,18 +1983,24 @@ python3 setup.py install
 <p>Download from <a href="https://github.com/apache/incubator-sedona/releases">GitHub release</a> and copy it to SPARK_HOME/jars/ folder</p>
 </li>
 <li>Call the <a href="../GeoSpark-All-Modules-Maven-Central-Coordinates">Maven Central coordinate</a> in your python program. For example, in PySparkSQL
-<div class="highlight"><pre><span></span><code>    <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span>\
-        <span class="n">builder</span><span class="o">.</span>\
-        <span class="n">appName</span><span class="p">(</span><span class="s1">&#39;appName&#39;</span><span class="p">)</span><span class="o">.</span>\
-        <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.serializer&quot;</span><span class="p">,</span> <span class="n">KryoSerializer</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span><span class="o">.</span>\
-        <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.kryo.registrator&quot;</span><span class="p">,</span> <span class="n">SedonaKryoRegistrator</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span> <span class="o">.</span>\
-        <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.jars.packages&#39;</span><span class="p">,</span> <span class="s1">&#39;org.apache.sedona:sedona-python-adapter-3.0_2.12:1.0.0-incubating&#39;</span><span class="p">)</span><span class="o">.</span>\
-        <span class="n">getOrCreate</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span> \
+    <span class="n">builder</span><span class="o">.</span> \
+    <span class="n">appName</span><span class="p">(</span><span class="s1">&#39;appName&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.serializer&quot;</span><span class="p">,</span> <span class="n">KryoSerializer</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.kryo.registrator&quot;</span><span class="p">,</span> <span class="n">SedonaKryoRegistrator</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars.repositories&quot;</span><span class="p">,</span> <span class="s1">&#39;https://repo.osgeo.org/repository/release,&#39;</span>
+                                      <span class="s1">&#39;https://download.java.net/maven/2&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.jars.packages&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;org.apache.sedona:sedona-python-adapter-3.0_2.12:1.0.0-incubating,&#39;</span>
+           <span class="s1">&#39;org.geotools:gt-main:24.0,&#39;</span>
+           <span class="s1">&#39;org.geotools:gt-referencing:24.0,&#39;</span>
+           <span class="s1">&#39;org.geotools:gt-epsg-hsql:24.0&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">getOrCreate</span><span class="p">()</span>
 </code></pre></div></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If you are going to use Sedona CRS transformation and ShapefileReader functions, you have to use Method 1. Because these functions internally use GeoTools libraries which are under LGPL license, Apache Sedona binary release cannot include them.</p>
+<p>If you are going to use Sedona CRS transformation and ShapefileReader functions, you have to use Method 1 or 3. Because these functions internally use GeoTools libraries which are under LGPL license, Apache Sedona binary release cannot include them.</p>
 </div>
 <h3 id="setup-environment-variables">Setup environment variables<a class="headerlink" href="#setup-environment-variables" title="Permanent link">&para;</a></h3>
 <p>If you manually copy the python-adapter jar to <code>SPARK_HOME/jars/</code> folder, you need to setup two environment variables</p>
