@@ -1952,6 +1952,7 @@
 <li><a href="../project">Self-contained Scala / Java project</a>: a steep learning curve of package management, but good for large projects</li>
 </ul>
 <h2 id="install-sedona-python">Install Sedona Python<a class="headerlink" href="#install-sedona-python" title="Permanent link">&para;</a></h2>
+<p>Click <a href="https://mybinder.org/v2/gh/apache/incubator-sedona/HEAD?filepath=binder"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a> and play the interactive Sedona Python Jupyter Notebook immediately!</p>
 <p>Apache Sedona extends pyspark functions which depends on libraries:</p>
 <ul>
 <li>pyspark</li>
@@ -1988,13 +1989,9 @@ python3 setup.py install
     <span class="n">appName</span><span class="p">(</span><span class="s1">&#39;appName&#39;</span><span class="p">)</span><span class="o">.</span> \
     <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.serializer&quot;</span><span class="p">,</span> <span class="n">KryoSerializer</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span><span class="o">.</span> \
     <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.kryo.registrator&quot;</span><span class="p">,</span> <span class="n">SedonaKryoRegistrator</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span><span class="o">.</span> \
-    <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars.repositories&quot;</span><span class="p">,</span> <span class="s1">&#39;https://repo.osgeo.org/repository/release,&#39;</span>
-                                      <span class="s1">&#39;https://download.java.net/maven/2&#39;</span><span class="p">)</span><span class="o">.</span> \
     <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.jars.packages&#39;</span><span class="p">,</span>
            <span class="s1">&#39;org.apache.sedona:sedona-python-adapter-3.0_2.12:1.0.0-incubating,&#39;</span>
-           <span class="s1">&#39;org.geotools:gt-main:24.0,&#39;</span>
-           <span class="s1">&#39;org.geotools:gt-referencing:24.0,&#39;</span>
-           <span class="s1">&#39;org.geotools:gt-epsg-hsql:24.0&#39;</span><span class="p">)</span><span class="o">.</span> \
+           <span class="s1">&#39;org.datasyslab:geotools-wrapper:geotools-24.0&#39;</span><span class="p">)</span><span class="o">.</span> \
     <span class="n">getOrCreate</span><span class="p">()</span>
 </code></pre></div></li>
 </ol>
@@ -2014,7 +2011,7 @@ python3 setup.py install
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$SPARK_HOME</span>/python
 </code></pre></div>
-<p>You can then play with <a href="/tutorial/jupyter-notebook/">Sedona Python Jupyter notebook</a></p>
+<p>You can then play with <a href="/tutorial/jupyter-notebook/">Sedona Python Jupyter notebook</a>.</p>
                 
               
   
