@@ -1238,24 +1238,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  
-  <a href="#st_linesubstring" class="md-nav__link">
-    ST_LineSubstring
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_lineinterpolatepoint" class="md-nav__link">
-    ST_LineInterpolatePoint
-  </a>  
-  
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2449,24 +2431,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  
-  <a href="#st_linesubstring" class="md-nav__link">
-    ST_LineSubstring
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_lineinterpolatepoint" class="md-nav__link">
-    ST_LineInterpolatePoint
-  </a>  
-  
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2541,7 +2505,7 @@
 <p>Transform the Spatial Reference System / Coordinate Reference System of A, from SourceCRS to TargetCRS</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You can use <mark>ST_FlipCoordinates</mark> to swap X and Y.</p>
+<p>By default, this function uses lat/lon order. You can use <mark>ST_FlipCoordinates</mark> to swap X and Y.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2837,22 +2801,6 @@ LINESTRING(0 0, 1 1, 1 0, 21 52)
 <p>Since: <code>v1.0.1</code></p>
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_MinimumBoundingCircle</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POLYGON((1 1,0 0, -1 1, 1 1))&#39;</span><span class="p">))</span>
-</code></pre></div></p>
-<h2 id="st_linesubstring">ST_LineSubstring<a class="headerlink" href="#st_linesubstring" title="Permanent link">&para;</a></h2>
-<p>Return a linestring being a substring of the input one starting and ending at the given fractions of total 2d length. Second and third arguments are Double values between 0 and 1. This only works with LINESTRINGs.</p>
-<p>Format: <code>ST_LineSubstring(geom: LineString, startFraction: Double, endFraction: Double)</code></p>
-<p>Since: <code>v1.0.1</code></p>
-<p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_LineSubstring</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">geometry</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">333</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">666</span><span class="p">)</span>
-<span class="k">FROM</span> <span class="n">df</span>
-</code></pre></div></p>
-<h2 id="st_lineinterpolatepoint">ST_LineInterpolatePoint<a class="headerlink" href="#st_lineinterpolatepoint" title="Permanent link">&para;</a></h2>
-<p>Returns a point interpolated along a line. First argument must be a LINESTRING. Second argument is a Double between 0 and 1 representing fraction of total linestring length the point has to be located.</p>
-<p>Format: <code>ST_LineInterpolatePoint(geom: LineString, fraction: Double)</code></p>
-<p>Since: <code>v1.0.1</code></p>
-<p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_LineInterpolatePoint</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">geometry</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">)</span>
-<span class="k">FROM</span> <span class="n">df</span>
 </code></pre></div></p>
                 
               
