@@ -11,7 +11,7 @@
       
       
       
-      <link rel="shortcut icon" href="../../image/sedona_logo.png">
+      <link rel="shortcut icon" href="https://www.apache.org/logos/res/sedona/sedona.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.7">
     
     
@@ -215,7 +215,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../api/GeoSpark-Scala-and-Java-API/" class="md-tabs__link">
+      <a href="../../api/java-api/" class="md-tabs__link">
         API Docs
       </a>
     </li>
@@ -371,7 +371,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../download/GeoSpark-All-Modules-Release-notes/" class="md-nav__link">
+    <a href="../../download/release-notes/" class="md-nav__link">
       Release notes
     </a>
   </li>
@@ -383,7 +383,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/" class="md-nav__link">
+    <a href="../../download/maven-coordinates/" class="md-nav__link">
       Maven Central coordinate
     </a>
   </li>
@@ -526,7 +526,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../geospark-core-python/" class="md-nav__link">
+    <a href="../core-python/" class="md-nav__link">
       Python
     </a>
   </li>
@@ -771,7 +771,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../geospark-sql-python/" class="md-nav__link">
+    <a href="../sql-pure-sql/" class="md-nav__link">
+      Pure SQL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sql-python/" class="md-nav__link">
       Python
     </a>
   </li>
@@ -857,7 +869,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../GeoSpark-Runnable-DEMO/" class="md-nav__link">
+    <a href="../demo/" class="md-nav__link">
       Scala/Java
     </a>
   </li>
@@ -918,7 +930,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../Advanced-Tutorial-Tune-your-GeoSpark-Application/" class="md-nav__link">
+    <a href="../Advanced-Tutorial-Tune-your-Application/" class="md-nav__link">
       Tune RDD application
     </a>
   </li>
@@ -980,7 +992,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/GeoSpark-Scala-and-Java-API/" class="md-nav__link">
+    <a href="../../api/java-api/" class="md-nav__link">
       Scala/Java doc
     </a>
   </li>
@@ -992,7 +1004,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/GeoSpark-Python-API/" class="md-nav__link">
+    <a href="../../api/python-api/" class="md-nav__link">
       Python doc
     </a>
   </li>
@@ -1029,7 +1041,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Overview/" class="md-nav__link">
+    <a href="../../api/sql/Overview/" class="md-nav__link">
       Quick start
     </a>
   </li>
@@ -1041,7 +1053,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Constructor/" class="md-nav__link">
+    <a href="../../api/sql/Constructor/" class="md-nav__link">
       Constructor
     </a>
   </li>
@@ -1053,7 +1065,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Function/" class="md-nav__link">
+    <a href="../../api/sql/Function/" class="md-nav__link">
       Function
     </a>
   </li>
@@ -1065,7 +1077,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Predicate/" class="md-nav__link">
+    <a href="../../api/sql/Predicate/" class="md-nav__link">
       Predicate
     </a>
   </li>
@@ -1077,7 +1089,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-AggregateFunction/" class="md-nav__link">
+    <a href="../../api/sql/AggregateFunction/" class="md-nav__link">
       Aggregate function
     </a>
   </li>
@@ -1089,7 +1101,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Optimizer/" class="md-nav__link">
+    <a href="../../api/sql/Optimizer/" class="md-nav__link">
       Join query (optimizer)
     </a>
   </li>
@@ -1101,7 +1113,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/sql/GeoSparkSQL-Parameter/" class="md-nav__link">
+    <a href="../../api/sql/Parameter/" class="md-nav__link">
       Parameter
     </a>
   </li>
@@ -1150,7 +1162,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/viz/Babylon-Scala-and-Java-API/" class="md-nav__link">
+    <a href="../../api/viz/java-api/" class="md-nav__link">
       RDD
     </a>
   </li>
@@ -2084,16 +2096,16 @@
 <p>SedonaSQL supports SQL/MM Part3 Spatial SQL Standard. It includes four kinds of SQL operators as follows. All these operators can be directly called through:
 <div class="highlight"><pre><span></span><code><span class="k">var</span> <span class="n">myDataFrame</span> <span class="o">=</span> <span class="n">sparkSession</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;YOUR_SQL&quot;</span><span class="o">)</span>
 </code></pre></div></p>
-<p>Detailed SedonaSQL APIs are available here: <a href="../../api/sql/GeoSparkSQL-Overview/">SedonaSQL API</a></p>
+<p>Detailed SedonaSQL APIs are available here: <a href="../../api/sql/Overview/">SedonaSQL API</a></p>
 <h2 id="set-up-dependencies">Set up dependencies<a class="headerlink" href="#set-up-dependencies" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Read <a href="../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/">Sedona Maven Central coordinates</a></li>
+<li>Read <a href="../../download/maven-coordinates/">Sedona Maven Central coordinates</a></li>
 <li>Select <mark>the minimum dependencies</mark>: Add <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-core_2.11">Apache Spark core</a>, <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-sql">Apache SparkSQL</a>, Sedona-core and Sedona-SQL</li>
 <li>Add the dependencies in build.sbt or pom.xml.</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To enjoy the full functions of Sedona, we suggest you include <mark>the full dependencies</mark>: <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-core_2.11">Apache Spark core</a>, <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-sql">Apache SparkSQL</a>, Sedona-core, Sedona-SQL, Sedona-Viz. Please see <a href="/tutorial/GeoSpark-Runnable-DEMO/">SQL example project</a></p>
+<p>To enjoy the full functions of Sedona, we suggest you include <mark>the full dependencies</mark>: <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-core_2.11">Apache Spark core</a>, <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-sql">Apache SparkSQL</a>, Sedona-core, Sedona-SQL, Sedona-Viz. Please see <a href="/tutorial/demo/">SQL example project</a></p>
 </div>
 <h2 id="initiate-sparksession">Initiate SparkSession<a class="headerlink" href="#initiate-sparksession" title="Permanent link">&para;</a></h2>
 <p>Use the following code to initiate your SparkSession at the beginning:
@@ -2118,6 +2130,7 @@
 <div class="highlight"><pre><span></span><code><span class="nc">SedonaSQLRegistrator</span><span class="o">.</span><span class="n">registerAll</span><span class="o">(</span><span class="n">sparkSession</span><span class="o">)</span>
 </code></pre></div>
 <p>This function will register Sedona User Defined Type, User Defined Function and optimized join query strategy.</p>
+<p>You can also register everything by passing <code>--conf spark.sql.extensions=org.apache.sedona.sql.SedonaSqlExtensions</code> to <code>spark-submit</code> or <code>spark-shell</code>.</p>
 <h2 id="load-data-from-files">Load data from files<a class="headerlink" href="#load-data-from-files" title="Permanent link">&para;</a></h2>
 <p>Assume we have a WKT file, namely <code>usa-county.tsv</code>, at Path <code>/Download/usa-county.tsv</code> as follows:</p>
 <p><div class="highlight"><pre><span></span><code>POLYGON (..., ...)  Cuming County   
@@ -2174,7 +2187,7 @@ The file may have many other columns.</p>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>SedonaSQL provides lots of functions to create a Geometry column, please read <a href="../../api/sql/GeoSparkSQL-Constructor/">SedonaSQL constructor API</a>.</p>
+<p>SedonaSQL provides lots of functions to create a Geometry column, please read <a href="../../api/sql/Constructor/">SedonaSQL constructor API</a>.</p>
 </div>
 <h2 id="load-shapefile-and-geojson">Load Shapefile and GeoJSON<a class="headerlink" href="#load-shapefile-and-geojson" title="Permanent link">&para;</a></h2>
 <p>Shapefile and GeoJSON must be loaded by SpatialRDD and converted to DataFrame using Adapter. Please read <a href="../rdd/#create-a-generic-spatialrdd">Load SpatialRDD</a> and <a href="#convert-between-dataframe-and-spatialrdd">DataFrame &lt;-&gt; RDD</a>.</p>
@@ -2217,7 +2230,7 @@ The file may have many other columns.</p>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Read <a href="../../api/sql/GeoSparkSQL-Constructor/">SedonaSQL constructor API</a> to learn how to create a Geometry type query window</p>
+<p>Read <a href="../../api/sql/Constructor/">SedonaSQL constructor API</a> to learn how to create a Geometry type query window</p>
 </div>
 <h3 id="knn-query">KNN query<a class="headerlink" href="#knn-query" title="Permanent link">&para;</a></h3>
 <p>Use <mark>ST_Distance</mark> to calculate the distance and rank the distance.</p>
@@ -2233,9 +2246,9 @@ The file may have many other columns.</p>
 <span class="n">spatialDf</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div>
 <h3 id="join-query">Join query<a class="headerlink" href="#join-query" title="Permanent link">&para;</a></h3>
-<p>The details of a join query is available here <a href="../../api/sql/GeoSparkSQL-Optimizer/">Join query</a>.</p>
+<p>The details of a join query is available here <a href="../../api/sql/Optimizer/">Join query</a>.</p>
 <h3 id="other-queries">Other queries<a class="headerlink" href="#other-queries" title="Permanent link">&para;</a></h3>
-<p>There are lots of other functions can be combined with these queries. Please read <a href="../../api/sql/GeoSparkSQL-Function/">SedonaSQL functions</a> and <a href="../../api/sql/GeoSparkSQL-AggregateFunction/">SedonaSQL aggregate functions</a>.</p>
+<p>There are lots of other functions can be combined with these queries. Please read <a href="../../api/sql/Function/">SedonaSQL functions</a> and <a href="../../api/sql/AggregateFunction/">SedonaSQL aggregate functions</a>.</p>
 <h2 id="save-to-permanent-storage">Save to permanent storage<a class="headerlink" href="#save-to-permanent-storage" title="Permanent link">&para;</a></h2>
 <p>To save a Spatial DataFrame to some permanent storage such as Hive tables and HDFS, you can simply convert each geometry in the Geometry type column back to a plain String and save the plain DataFrame to wherever you want.</p>
 <p>Use the following code to convert the Geometry column in a DataFrame back to a WKT string column:
@@ -2293,7 +2306,7 @@ The file may have many other columns.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../geospark-core-python/" title="Python" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../core-python/" title="Python" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -2308,13 +2321,13 @@ The file may have many other columns.</p>
           </a>
         
         
-          <a href="../geospark-sql-python/" title="Python" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sql-pure-sql/" title="Pure SQL" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Python
+                Pure SQL
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -2330,13 +2343,12 @@ The file may have many other columns.</p>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Apache Sedona, Apache Incubator, Apache, the Apache feather logo, and the Apache Incubator project logo are trademarks or registered trademarks of The Apache Software Foundation.
+            Apache Sedona, Apache Incubator, Apache, the Apache feather logo, and the Apache Incubator project logo are trademarks or registered trademarks of The Apache Software Foundation. Copyright © 2021 The Apache Software Foundation
           </div>
         
-<img src="https://raw.githubusercontent.com/apache/incubator-sedona/master/docs/image/apache_incubator_red.svg" width="300">
+<img src="https://incubator.apache.org/images/incubator_feather_egg_logo_bw_crop.png" width="300">
 <br>
-Apache Sedona is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
-        </a>
+Apache Sedona is an effort undergoing incubation at <a href="http://www.apache.org/">The Apache Software Foundation (ASF)</a> , sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
       </div>
       
   <div class="md-footer-social">

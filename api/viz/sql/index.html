@@ -11,7 +11,7 @@
       
       
       
-      <link rel="shortcut icon" href="../../../image/sedona_logo.png">
+      <link rel="shortcut icon" href="https://www.apache.org/logos/res/sedona/sedona.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.7">
     
     
@@ -215,7 +215,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../GeoSpark-Scala-and-Java-API/" class="md-tabs__link">
+      <a href="../../java-api/" class="md-tabs__link">
         API Docs
       </a>
     </li>
@@ -371,7 +371,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../download/GeoSpark-All-Modules-Release-notes/" class="md-nav__link">
+    <a href="../../../download/release-notes/" class="md-nav__link">
       Release notes
     </a>
   </li>
@@ -383,7 +383,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../download/GeoSpark-All-Modules-Maven-Central-Coordinates/" class="md-nav__link">
+    <a href="../../../download/maven-coordinates/" class="md-nav__link">
       Maven Central coordinate
     </a>
   </li>
@@ -524,7 +524,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../tutorial/geospark-core-python/" class="md-nav__link">
+    <a href="../../../tutorial/core-python/" class="md-nav__link">
       Python
     </a>
   </li>
@@ -573,7 +573,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../tutorial/geospark-sql-python/" class="md-nav__link">
+    <a href="../../../tutorial/sql-pure-sql/" class="md-nav__link">
+      Pure SQL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorial/sql-python/" class="md-nav__link">
       Python
     </a>
   </li>
@@ -659,7 +671,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../tutorial/GeoSpark-Runnable-DEMO/" class="md-nav__link">
+    <a href="../../../tutorial/demo/" class="md-nav__link">
       Scala/Java
     </a>
   </li>
@@ -720,7 +732,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../tutorial/Advanced-Tutorial-Tune-your-GeoSpark-Application/" class="md-nav__link">
+    <a href="../../../tutorial/Advanced-Tutorial-Tune-your-Application/" class="md-nav__link">
       Tune RDD application
     </a>
   </li>
@@ -784,7 +796,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../GeoSpark-Scala-and-Java-API/" class="md-nav__link">
+    <a href="../../java-api/" class="md-nav__link">
       Scala/Java doc
     </a>
   </li>
@@ -796,7 +808,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../GeoSpark-Python-API/" class="md-nav__link">
+    <a href="../../python-api/" class="md-nav__link">
       Python doc
     </a>
   </li>
@@ -833,7 +845,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sql/GeoSparkSQL-Overview/" class="md-nav__link">
+    <a href="../../sql/Overview/" class="md-nav__link">
       Quick start
     </a>
   </li>
@@ -845,7 +857,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sql/GeoSparkSQL-Constructor/" class="md-nav__link">
+    <a href="../../sql/Constructor/" class="md-nav__link">
       Constructor
     </a>
   </li>
@@ -857,7 +869,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sql/GeoSparkSQL-Function/" class="md-nav__link">
+    <a href="../../sql/Function/" class="md-nav__link">
       Function
     </a>
   </li>
@@ -869,7 +881,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sql/GeoSparkSQL-Predicate/" class="md-nav__link">
+    <a href="../../sql/Predicate/" class="md-nav__link">
       Predicate
     </a>
   </li>
@@ -881,7 +893,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sql/GeoSparkSQL-AggregateFunction/" class="md-nav__link">
+    <a href="../../sql/AggregateFunction/" class="md-nav__link">
       Aggregate function
     </a>
   </li>
@@ -893,7 +905,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sql/GeoSparkSQL-Optimizer/" class="md-nav__link">
+    <a href="../../sql/Optimizer/" class="md-nav__link">
       Join query (optimizer)
     </a>
   </li>
@@ -905,7 +917,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sql/GeoSparkSQL-Parameter/" class="md-nav__link">
+    <a href="../../sql/Parameter/" class="md-nav__link">
       Parameter
     </a>
   </li>
@@ -1069,7 +1081,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../Babylon-Scala-and-Java-API/" class="md-nav__link">
+    <a href="../java-api/" class="md-nav__link">
       RDD
     </a>
   </li>
@@ -1935,7 +1947,8 @@
 </ol>
 <h2 id="regular-functions">Regular functions<a class="headerlink" href="#regular-functions" title="Permanent link">&para;</a></h2>
 <h3 id="st_pixelize">ST_Pixelize<a class="headerlink" href="#st_pixelize" title="Permanent link">&para;</a></h3>
-<p>Introduction: Return a pixel for a given resolution</p>
+<p>Introduction: Convert a geometry to an array of pixels given a resolution</p>
+<p>You should use it together with <code>Lateral View</code> and <code>Explode</code></p>
 <p>Format: <code>ST_Pixelize (A:geometry, ResolutionX:int, ResolutionY:int, Boundary:geometry)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
@@ -1991,8 +2004,8 @@
 </code></pre></div></p>
 <h2 id="aggregate-functions">Aggregate functions<a class="headerlink" href="#aggregate-functions" title="Permanent link">&para;</a></h2>
 <h3 id="st_render">ST_Render<a class="headerlink" href="#st_render" title="Permanent link">&para;</a></h3>
-<p>Introduction: Given a group of pixels and their colors, return a single Java PNG BufferedImage</p>
-<p>Format: <code>ST_Render (A:pixel, B:color)</code></p>
+<p>Introduction: Given a group of pixels and their colors, return a single Java PNG BufferedImage. The 3<sup>rd</sup> parameter is optional and it is the zoom level. You should use zoom level when you want to render tiles, instead of a single image.</p>
+<p>Format: <code>ST_Render (A:pixel, B:color, C:Integer - optional zoom level)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">tilename</span><span class="p">,</span> <span class="n">ST_Render</span><span class="p">(</span><span class="n">pixels</span><span class="p">.</span><span class="n">px</span><span class="p">,</span> <span class="n">pixels</span><span class="p">.</span><span class="n">color</span><span class="p">)</span> <span class="k">AS</span> <span class="n">tileimg</span>
@@ -2019,7 +2032,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../../sql/GeoSparkSQL-Parameter/" title="Parameter" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../sql/Parameter/" title="Parameter" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -2034,7 +2047,7 @@
           </a>
         
         
-          <a href="../Babylon-Scala-and-Java-API/" title="RDD" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../java-api/" title="RDD" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
@@ -2056,13 +2069,12 @@
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Apache Sedona, Apache Incubator, Apache, the Apache feather logo, and the Apache Incubator project logo are trademarks or registered trademarks of The Apache Software Foundation.
+            Apache Sedona, Apache Incubator, Apache, the Apache feather logo, and the Apache Incubator project logo are trademarks or registered trademarks of The Apache Software Foundation. Copyright © 2021 The Apache Software Foundation
           </div>
         
-<img src="https://raw.githubusercontent.com/apache/incubator-sedona/master/docs/image/apache_incubator_red.svg" width="300">
+<img src="https://incubator.apache.org/images/incubator_feather_egg_logo_bw_crop.png" width="300">
 <br>
-Apache Sedona is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
-        </a>
+Apache Sedona is an effort undergoing incubation at <a href="http://www.apache.org/">The Apache Software Foundation (ASF)</a> , sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
       </div>
       
   <div class="md-footer-social">
