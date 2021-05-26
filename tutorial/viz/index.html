@@ -2115,7 +2115,7 @@
 <p>SedonaViz offers Map Visualization SQL. This gives users a more flexible way to design beautiful map visualization effects including scatter plots and heat maps. SedonaViz RDD API is also available.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All SedonaViz SQL/DataFrame APIs are explained in <a href="../api/viz/sql">SedonaViz API</a>. Please see <a href="https://github.com/apache/incubator-sedona/tree/master/examples/viz">Viz exmaple project</a></p>
+<p>All SedonaViz SQL/DataFrame APIs are explained in <a href="../../api/viz/sql">SedonaViz API</a>. Please see <a href="https://github.com/apache/incubator-sedona/tree/master/examples/viz">Viz exmaple project</a></p>
 </div>
 <h2 id="why-scalable-map-visualization">Why scalable map visualization?<a class="headerlink" href="#why-scalable-map-visualization" title="Permanent link">&para;</a></h2>
 <p>Data visualization allows users to summarize, analyze and reason about data. Guaranteeing detailed and accurate geospatial map visualization (e.g., at multiple zoom levels) requires extremely high-resolution maps. Classic visualization solutions such as Google Maps, MapBox and ArcGIS suffer from limited computation resources and hence take a tremendous amount of time to generate maps for large-scale geospatial data. In big spatial data scenarios, these tools just crash or run forever.</p>
@@ -2160,7 +2160,7 @@ This will register SedonaViz Kryo serializer.</p>
 <span class="k">SELECT</span> <span class="n">ST_Point</span><span class="p">(</span><span class="k">cast</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c0</span> <span class="k">as</span> <span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)),</span><span class="k">cast</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c1</span> <span class="k">as</span> <span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span> <span class="k">as</span> <span class="n">shape</span>
 <span class="k">FROM</span> <span class="n">pointtable</span>
 </code></pre></div>
-<p>As you know, Sedona provides many different methods to load various spatial data formats. Please read <a href="sql">Write an Spatial DataFrame application</a>.</p>
+<p>As you know, Sedona provides many different methods to load various spatial data formats. Please read <a href="../sql">Write an Spatial DataFrame application</a>.</p>
 <h2 id="generate-a-single-image">Generate a single image<a class="headerlink" href="#generate-a-single-image" title="Permanent link">&para;</a></h2>
 <p>In most cases, you just want to see a single image out of your spatial dataset.</p>
 <h3 id="pixelize-spatial-objects">Pixelize spatial objects<a class="headerlink" href="#pixelize-spatial-objects" title="Permanent link">&para;</a></h3>
@@ -2199,7 +2199,7 @@ This will register SedonaViz Kryo serializer.</p>
 <span class="k">SELECT</span> <span class="n">pixel</span><span class="p">,</span> <span class="n">ST_Colorize</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">max</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">pixelaggregates</span><span class="p">))</span> <span class="k">as</span> <span class="n">color</span>
 <span class="k">FROM</span> <span class="n">pixelaggregates</span>
 </code></pre></div>
-<p>Please read <a href="../api/viz/sql/#st_colorize">ST_Colorize</a> for a detailed API description.</p>
+<p>Please read <a href="../../api/viz/sql/#st_colorize">ST_Colorize</a> for a detailed API description.</p>
 <h3 id="render-the-image">Render the image<a class="headerlink" href="#render-the-image" title="Permanent link">&para;</a></h3>
 <p>Use ST_Render to plot all pixels on a single image.</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="n">TEMP</span> <span class="k">VIEW</span> <span class="n">images</span> <span class="k">AS</span>

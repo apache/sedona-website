@@ -2077,6 +2077,7 @@
 <li>Move all files in <a href="https://dist.apache.org/repos/dist/dev/incubator/sedona">https://dist.apache.org/repos/dist/dev/incubator/sedona</a> to <a href="https://dist.apache.org/repos/dist/release/incubator/sedona">https://dist.apache.org/repos/dist/release/incubator/sedona</a>, using svn</li>
 <li>Create a GitHub release. Please follow the template: <a href="https://github.com/apache/incubator-sedona/releases/tag/sedona-1.0.0-incubating">https://github.com/apache/incubator-sedona/releases/tag/sedona-1.0.0-incubating</a></li>
 <li>Publish Python project to PyPi using twine. You must have the maintainer priviledge of <a href="https://pypi.org/project/apache-sedona/">https://pypi.org/project/apache-sedona/</a>. Then please setup your token and run <code>python3 setup.py sdist bdist_wheel</code> and <code>twine upload dist/*</code> in the <code>incubator-sedona/python</code> directory.</li>
+<li>Publish Sedona-Zeppelin (a node.js package) on NPM. Run <code>npm publish</code> in the <code>zeppelin</code> directory.</li>
 <li>Close the staging repo on <a href="https://repository.apache.org">https://repository.apache.org</a>. If the staging repo has been automatically closed by the system, please read <mark>Use Maven Release Plugin directly from an existing tag</mark> above.</li>
 </ol>
 <h4>Fix the error when close the staged repo</h4>

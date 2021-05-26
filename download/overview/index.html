@@ -1952,9 +1952,9 @@
 </tbody>
 </table>
 <h2 id="direct-download">Direct download<a class="headerlink" href="#direct-download" title="Permanent link">&para;</a></h2>
-<p><a href="../GeoSpark-All-Modules-Release-notes">Release notes</a></p>
+<p><a href="../release-notes">Release notes</a></p>
 <p>Latest source code: <a href="https://github.com/apache/incubator-sedona/">GitHub repository</a>.</p>
-<p>Release source code and binary jars: <a href="https://github.com/apache/incubator-sedona/releases">GitHub releases</a>, <a href="../GeoSpark-All-Modules-Maven-Central-Coordinates">Maven Central</a>.</p>
+<p>Release source code and binary jars: <a href="https://github.com/apache/incubator-sedona/releases">GitHub releases</a>, <a href="../maven-coordinates">Maven Central</a>.</p>
 <p>Automatically generated binary JARs (per each Master branch commit): <a href="https://github.com/apache/incubator-sedona/actions?query=workflow%3A%22Scala+and+Java+build%22">GitHub Action</a>.</p>
 <h2 id="use-sedona-scalajava">Use Sedona Scala/Java<a class="headerlink" href="#use-sedona-scalajava" title="Permanent link">&para;</a></h2>
 <p>Before starting the Sedona journey, you need to make sure your Apache Spark cluster is ready.</p>
@@ -1974,7 +1974,7 @@
 <p>You need to install necessary packages if your system does not have them installed. See <a href="https://github.com/apache/incubator-sedona/blob/master/python/Pipfile">"packages" in our Pipfile</a>.</p>
 <h3 id="install-sedona">Install sedona<a class="headerlink" href="#install-sedona" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Installing from PyPi repositories</li>
+<li>Installing from PyPi repositories. You can find the latest Sedona Python on <a href="https://pypi.org/project/apache-sedona/">PyPi</a></li>
 </ul>
 <div class="highlight"><pre><span></span><code>pip install apache-sedona
 </code></pre></div>
@@ -1986,7 +1986,7 @@
 python3 setup.py install
 </code></pre></div>
 <h3 id="prepare-python-adapter-jar">Prepare python-adapter jar<a class="headerlink" href="#prepare-python-adapter-jar" title="Permanent link">&para;</a></h3>
-<p>Sedona Python needs one additional jar file called <code>sedona-python-adapter</code> to work properly. Please make sure you use the correct version for Spark and Scala. For Spark 3.0 + Scala 2.12, it is called <code>sedona-python-adapter-3.0_2.12-1.0.0-incubating.jar</code></p>
+<p>Sedona Python needs one additional jar file called <code>sedona-python-adapter</code> to work properly. Please make sure you use the correct version for Spark and Scala. For Spark 3.0 + Scala 2.12, it is called <code>sedona-python-adapter-3.0_2.12-1.0.1-incubating.jar</code></p>
 <p>You can get it using one of the following methods:</p>
 <ol>
 <li>
@@ -1995,15 +1995,15 @@ python3 setup.py install
 <li>
 <p>Download from <a href="https://github.com/apache/incubator-sedona/releases">GitHub release</a> and copy it to SPARK_HOME/jars/ folder</p>
 </li>
-<li>Call the <a href="../GeoSpark-All-Modules-Maven-Central-Coordinates">Maven Central coordinate</a> in your python program. For example, in PySparkSQL
+<li>Call the <a href="../maven-coordiantes">Maven Central coordinate</a> in your python program. For example, in PySparkSQL
 <div class="highlight"><pre><span></span><code><span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span> \
     <span class="n">builder</span><span class="o">.</span> \
     <span class="n">appName</span><span class="p">(</span><span class="s1">&#39;appName&#39;</span><span class="p">)</span><span class="o">.</span> \
     <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.serializer&quot;</span><span class="p">,</span> <span class="n">KryoSerializer</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span><span class="o">.</span> \
     <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.kryo.registrator&quot;</span><span class="p">,</span> <span class="n">SedonaKryoRegistrator</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span><span class="o">.</span> \
     <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.jars.packages&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;org.apache.sedona:sedona-python-adapter-3.0_2.12:1.0.0-incubating,&#39;</span>
-           <span class="s1">&#39;org.datasyslab:geotools-wrapper:geotools-24.0&#39;</span><span class="p">)</span><span class="o">.</span> \
+           <span class="s1">&#39;org.apache.sedona:sedona-python-adapter-3.0_2.12:1.0.1-incubating,&#39;</span>
+           <span class="s1">&#39;org.datasyslab:geotools-wrapper:geotools-24.1&#39;</span><span class="p">)</span><span class="o">.</span> \
     <span class="n">getOrCreate</span><span class="p">()</span>
 </code></pre></div></li>
 </ol>
