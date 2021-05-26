@@ -2074,10 +2074,43 @@
 <p>If a vote failed, please first drop the staging repo on <code>repository.apache.org</code>. Then redo all the steps above. Make sure you use a new scm tag for the new release candidate when use maven-release-plugin (i.e., <code>sedona-1.0.0-incubating-rc2</code>)</p>
 <h3 id="release-the-package">Release the package<a class="headerlink" href="#release-the-package" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Close the staging repo on <a href="https://repository.apache.org">https://repository.apache.org</a>. If the staging repo has been automatically closed by the system, please read <mark>Use Maven Release Plugin directly from an existing tag</mark> above.</li>
 <li>Move all files in <a href="https://dist.apache.org/repos/dist/dev/incubator/sedona">https://dist.apache.org/repos/dist/dev/incubator/sedona</a> to <a href="https://dist.apache.org/repos/dist/release/incubator/sedona">https://dist.apache.org/repos/dist/release/incubator/sedona</a>, using svn</li>
 <li>Create a GitHub release. Please follow the template: <a href="https://github.com/apache/incubator-sedona/releases/tag/sedona-1.0.0-incubating">https://github.com/apache/incubator-sedona/releases/tag/sedona-1.0.0-incubating</a></li>
 <li>Publish Python project to PyPi using twine. You must have the maintainer priviledge of <a href="https://pypi.org/project/apache-sedona/">https://pypi.org/project/apache-sedona/</a>. Then please setup your token and run <code>python3 setup.py sdist bdist_wheel</code> and <code>twine upload dist/*</code> in the <code>incubator-sedona/python</code> directory.</li>
+<li>Close the staging repo on <a href="https://repository.apache.org">https://repository.apache.org</a>. If the staging repo has been automatically closed by the system, please read <mark>Use Maven Release Plugin directly from an existing tag</mark> above.</li>
+</ol>
+<h4>Fix the error when close the staged repo</h4>
+<p>In the last step, you may see 6 errors similar to the following:
+<div class="highlight"><pre><span></span><code>typeId  signature-staging
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-python-adapter-2.4_2.12/1.0.1-incubating/sedona-python-adapter-2.4_2.12-1.0.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-python-adapter-2.4_2.12-1.0.1-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-python-adapter-2.4_2.11/1.0.1-incubating/sedona-python-adapter-2.4_2.11-1.0.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-python-adapter-2.4_2.11-1.0.1-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.0.1-incubating/sedona-python-adapter-3.0_2.12-1.0.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-python-adapter-3.0_2.12-1.0.1-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-2.4_2.12/1.0.1-incubating/sedona-viz-2.4_2.12-1.0.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-2.4_2.12-1.0.1-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-3.0_2.12/1.0.1-incubating/sedona-viz-3.0_2.12-1.0.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-3.0_2.12-1.0.1-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-2.4_2.11/1.0.1-incubating/sedona-viz-2.4_2.11-1.0.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-2.4_2.11-1.0.1-incubating.pom&#39;.
+</code></pre></div></p>
+<p>This is caused by a bug in the resolved-pom-maven-plugin in POM.xml. You will have to upload the signatures of the 6 POM files mannualy. Please follow the steps below.</p>
+<ol>
+<li>Please download the correct 6 pom files from the staging repo. On the web interface. Click Staging Repositories, select the latest Sedona staging repo, cick Content, find the aforementioned 6 pom files, download them to your local path.</li>
+<li>Generate asc files for the 6 pom files. For example,
+<div class="highlight"><pre><span></span><code>gpg -ab sedona-viz-3.0_2.12-1.0.1-incubating.pom
+</code></pre></div></li>
+<li>Delete the asc files of the 6 pom files. Follow the steps in Step 2, and delete them from the web interface.</li>
+<li>Upload the 6 asc files to the staging repo using curl. For example,
+<div class="highlight"><pre><span></span><code>curl -v -u admin:admin123 --upload-file sedona-python-adapter-2.4_2.11-1.0.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-1010/content/org/apache/sedona/sedona-python-adapter-2.4_2.11/1.0.1-incubating/sedona-python-adapter-2.4_2.11-1.0.1-incubating.pom.asc
+
+curl -v -u admin:admin123 --upload-file sedona-python-adapter-2.4_2.12-1.0.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-1010/content/org/apache/sedona/sedona-python-adapter-2.4_2.12/1.0.1-incubating/sedona-python-adapter-2.4_2.12-1.0.1-incubating.pom.asc
+
+curl -v -u admin:admin123 --upload-file sedona-python-adapter-3.0_2.12-1.0.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-1010/content/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.0.1-incubating/sedona-python-adapter-3.0_2.12-1.0.1-incubating.pom.asc
+
+curl -v -u admin:admin123 --upload-file sedona-viz-2.4_2.11-1.0.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-1010/content/org/apache/sedona/sedona-viz-2.4_2.11/1.0.1-incubating/sedona-viz-2.4_2.11-1.0.1-incubating.pom.asc
+
+curl -v -u admin:admin123 --upload-file sedona-viz-2.4_2.12-1.0.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-1010/content/org/apache/sedona/sedona-viz-2.4_2.12/1.0.1-incubating/sedona-viz-2.4_2.12-1.0.1-incubating.pom.asc
+
+curl -v -u admin:admin123 --upload-file sedona-viz-3.0_2.12-1.0.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-1010/content/org/apache/sedona/sedona-viz-3.0_2.12/1.0.1-incubating/sedona-viz-3.0_2.12-1.0.1-incubating.pom.asc
+</code></pre></div>
+admin is your Apache ID username and admin123 is your Apache ID password. You can find the correct upload path from the web interface.</li>
+<li>Once the staging repo is closed, click "Release" on the web interface.</li>
 </ol>
                 
               
