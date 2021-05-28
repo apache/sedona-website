@@ -395,6 +395,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../download/databricks/" class="md-nav__link">
+      Installation on Databricks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../download/cluster/" class="md-nav__link">
       Set up Spark cluser
     </a>
@@ -420,7 +432,7 @@
 
   <li class="md-nav__item">
     <a href="../../download/scalashell/" class="md-nav__link">
-      Interactive scala shell
+      Interactive Scala and SQL shell
     </a>
   </li>
 
@@ -1839,7 +1851,7 @@
 <h2 id="initiate-session">Initiate Session<a class="headerlink" href="#initiate-session" title="Permanent link">&para;</a></h2>
 <p>Start <code>spark-sql</code> as following (replace <code>&lt;VERSION&gt;</code> with actual version, like, <code>1.0.1-incubating</code>):</p>
 <div class="highlight"><pre><span></span><code>spark-sql --packages org.apache.sedona:sedona-python-adapter-3.0_2.12:&lt;VERSION&gt;,org.apache.sedona:sedona-viz-3.0_2.12:&lt;VERSION&gt;,org.datasyslab:geotools-wrapper:geotools-24.0 <span class="se">\</span>
-  --conf spark.kryo.registrator<span class="o">=</span>org.apache.spark.serializer.KryoSerializer <span class="se">\</span>
+  --conf spark.serializer<span class="o">=</span>org.apache.spark.serializer.KryoSerializer <span class="se">\</span>
   --conf spark.kryo.registrator<span class="o">=</span>org.apache.sedona.viz.core.Serde.SedonaVizKryoRegistrator <span class="se">\</span>
   --conf spark.sql.extensions<span class="o">=</span>org.apache.sedona.viz.sql.SedonaVizExtensions,org.apache.sedona.sql.SedonaSqlExtensions
 </code></pre></div>

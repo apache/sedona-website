@@ -415,6 +415,15 @@
         
           <li class="md-nav__item">
   
+  <a href="#known-issue" class="md-nav__link">
+    Known issue
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
   <a href="#global" class="md-nav__link">
     Global
   </a>  
@@ -698,6 +707,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../databricks/" class="md-nav__link">
+      Installation on Databricks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../cluster/" class="md-nav__link">
       Set up Spark cluser
     </a>
@@ -723,7 +744,7 @@
 
   <li class="md-nav__item">
     <a href="../scalashell/" class="md-nav__link">
-      Interactive scala shell
+      Interactive Scala and SQL shell
     </a>
   </li>
 
@@ -2023,6 +2044,15 @@
         
           <li class="md-nav__item">
   
+  <a href="#known-issue" class="md-nav__link">
+    Known issue
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
   <a href="#global" class="md-nav__link">
     Global
   </a>  
@@ -2304,6 +2334,20 @@
                 
                 <h2 id="sedona-101">Sedona 1.0.1<a class="headerlink" href="#sedona-101" title="Permanent link">&para;</a></h2>
 <p>This version is a maintenance release on Sedona 1.0.0 line. It includes bug fixes, some new features, one <mark>API change</mark></p>
+<h3 id="known-issue">Known issue<a class="headerlink" href="#known-issue" title="Permanent link">&para;</a></h3>
+<p>In Sedona v1.0.1 and eariler versions, the Spark dependency in setup.py was configured to be <mark>&lt; v3.1.0</mark> <a href="https://github.com/apache/incubator-sedona/blob/8235924ac80939cbf2ce562b0209b71833ed9429/python/setup.py#L39">by mistake</a>. When you install  Sedona Python (apache-sedona v1.0.1) from Pypi, pip might unstall PySpark 3.1.1 and install PySpark 3.0.2 on your machine.</p>
+<p>Three ways to fix this:</p>
+<ol>
+<li>
+<p>After install apache-sedona v1.0.1, unstall PySpark 3.0.2 and reinstall PySpark 3.1.1</p>
+</li>
+<li>
+<p>Ask pip not to install Sedona dependencies: <code>pip install --no-deps apache-sedona</code></p>
+</li>
+<li>
+<p>Install Sedona from the latest setup.py (on GitHub) manually.</p>
+</li>
+</ol>
 <h3 id="global">Global<a class="headerlink" href="#global" title="Permanent link">&para;</a></h3>
 <p>Dependency upgrade:</p>
 <ul>
