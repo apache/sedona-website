@@ -35,12 +35,19 @@ sedona_write_wkt(x, output_location)
 </table>
 
 
+<h3>Value</h3>
+
+<p>No return value.
+</p>
+
+
 <h3>See Also</h3>
 
 <p>Other Sedona data inferface functions: 
 <code>sedona_read_dsv_to_typed_rdd()</code>,
 <code>sedona_read_geojson_to_typed_rdd()</code>,
 <code>sedona_read_geojson()</code>,
+<code>sedona_read_shapefile_to_typed_rdd()</code>,
 <code>sedona_read_shapefile()</code>,
 <code>sedona_read_wkb()</code>,
 <code>sedona_read_wkt()</code>,
@@ -67,6 +74,7 @@ if (!inherits(sc, "test_connection")) {
   )
   sedona_write_wkt(rdd, "/tmp/wkt_output.tsv")
 }
+
 </pre>
 
 <hr /><div style="text-align: center;">[Package <em>apache.sedona</em> version 1.1.0 ]</div>
