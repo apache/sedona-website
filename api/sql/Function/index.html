@@ -1273,6 +1273,42 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_asbinary" class="md-nav__link">
+    ST_AsBinary
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_asewkb" class="md-nav__link">
+    ST_AsEWKB
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_srid" class="md-nav__link">
+    ST_SRID
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_setsrid" class="md-nav__link">
+    ST_SetSRID
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_npoints" class="md-nav__link">
     ST_NPoints
   </a>  
@@ -1500,6 +1536,24 @@
   
   <a href="#st_subdivideexplode" class="md-nav__link">
     ST_SubDivideExplode
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_makepolygon" class="md-nav__link">
+    ST_MakePolygon
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_geohash" class="md-nav__link">
+    ST_GeoHash
   </a>  
   
   
@@ -2574,6 +2628,42 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_asbinary" class="md-nav__link">
+    ST_AsBinary
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_asewkb" class="md-nav__link">
+    ST_AsEWKB
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_srid" class="md-nav__link">
+    ST_SRID
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_setsrid" class="md-nav__link">
+    ST_SetSRID
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_npoints" class="md-nav__link">
     ST_NPoints
   </a>  
@@ -2806,6 +2896,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#st_makepolygon" class="md-nav__link">
+    ST_MakePolygon
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_geohash" class="md-nav__link">
+    ST_GeoHash
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2974,6 +3082,42 @@ The new coordinates will only have 9 decimal places.</p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_AsGeoJSON</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">polygondf</span>
+</code></pre></div></p>
+<h2 id="st_asbinary">ST_AsBinary<a class="headerlink" href="#st_asbinary" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return the Well-Known Binary representation of a geometry</p>
+<p>Format: <code>ST_AsBinary (A:geometry)</code></p>
+<p>Since: <code>v1.2.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_AsBinary</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">polygondf</span>
+</code></pre></div></p>
+<h2 id="st_asewkb">ST_AsEWKB<a class="headerlink" href="#st_asewkb" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return the Extended Well-Known Binary representation of a geometry.
+EWKB is an extended version of WKB which includes the SRID of the geometry.
+The format originated in PostGIS but is supported by many GIS tools.
+If the geometry is lacking SRID a WKB format is produced.
+<a href="#ST_SetSRID">Se ST_SetSRID</a></p>
+<p>Format: <code>ST_AsEWKB (A:geometry)</code></p>
+<p>Since: <code>v1.2.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_AsEWKB</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">polygondf</span>
+</code></pre></div></p>
+<h2 id="st_srid">ST_SRID<a class="headerlink" href="#st_srid" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return the spatial refence system identifier (SRID) of the geometry.</p>
+<p>Format: <code>ST_SRID (A:geometry)</code></p>
+<p>Since: <code>v1.2.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_SRID</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">polygondf</span>
+</code></pre></div></p>
+<h2 id="st_setsrid">ST_SetSRID<a class="headerlink" href="#st_setsrid" title="Permanent link">&para;</a></h2>
+<p>Introduction: Sets the spatial refence system identifier (SRID) of the geometry.</p>
+<p>Format: <code>ST_SetSRID (A:geometry, srid: Integer)</code></p>
+<p>Since: <code>v1.2.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">,</span> <span class="mi">3021</span><span class="p">)</span>
 <span class="k">FROM</span> <span class="n">polygondf</span>
 </code></pre></div></p>
 <h2 id="st_npoints">ST_NPoints<a class="headerlink" href="#st_npoints" title="Permanent link">&para;</a></h2>
@@ -3261,6 +3405,40 @@ LINESTRING(0 0, 1 1, 1 0, 21 52)
 |LINESTRING(100 100, 120 120) |
 +-----------------------------+
 </code></pre></div></p>
+<h2 id="st_makepolygon">ST_MakePolygon<a class="headerlink" href="#st_makepolygon" title="Permanent link">&para;</a></h2>
+<p>Introduction: Function to convert closed linestring to polygon including holes</p>
+<p>Format: <code>ST_MakePolygon(geom: geometry, holes: array&lt;geometry&gt;)</code></p>
+<p>Since: <code>v1.1.0</code></p>
+<p>Example:</p>
+<p>Query:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+    <span class="n">ST_MakePolygon</span><span class="p">(</span>
+        <span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;LINESTRING(7 -1, 7 6, 9 6, 9 1, 7 -1)&#39;</span><span class="p">),</span>
+        <span class="nb">ARRAY</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;LINESTRING(6 2, 8 2, 8 1, 6 1, 6 2)&#39;</span><span class="p">))</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">polygon</span>
+</code></pre></div></p>
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code>+----------------------------------------------------------------+
+|polygon                                                         |
++----------------------------------------------------------------+
+|POLYGON ((7 -1, 7 6, 9 6, 9 1, 7 -1), (6 2, 8 2, 8 1, 6 1, 6 2))|
++----------------------------------------------------------------+
+</code></pre></div>
+<h2 id="st_geohash">ST_GeoHash<a class="headerlink" href="#st_geohash" title="Permanent link">&para;</a></h2>
+<p>Introduction: Returns GeoHash of the geometry with given precision</p>
+<p>Format: <code>ST_GeoHash(geom: geometry, precision: int)</code></p>
+<p>Since: <code>v1.1.0</code></p>
+<p>Example: </p>
+<p>Query:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_GeoHash</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(21.427834 52.042576573)&#39;</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span> <span class="k">AS</span> <span class="n">geohash</span>
+</code></pre></div>
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code>+-----------------------------+
+|geohash                      |
++-----------------------------+
+|u3r0p                        |
++-----------------------------+
+</code></pre></div>
                 
                   
                     
@@ -3269,7 +3447,7 @@ LINESTRING(0 0, 1 1, 1 0, 21 52)
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 6, 2021 14:59:08</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 21, 2021 10:13:15</span>
       
     
   </small>

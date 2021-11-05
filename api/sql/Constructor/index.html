@@ -1205,6 +1205,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#st_geomfromgeohash" class="md-nav__link">
+    ST_GeomFromGeoHash
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2230,6 +2239,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#st_geomfromgeohash" class="md-nav__link">
+    ST_GeomFromGeoHash
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2374,6 +2392,20 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 <span class="k">FROM</span> <span class="n">pointdf</span>
 <span class="k">WHERE</span> <span class="n">ST_Contains</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">)</span>
 </code></pre></div></p>
+<h2 id="st_geomfromgeohash">ST_GeomFromGeoHash<a class="headerlink" href="#st_geomfromgeohash" title="Permanent link">&para;</a></h2>
+<p>Introduction: Create Geometry from geohash string and optional precision</p>
+<p>Format: <code>ST_GeomFromGeoHash(geohash: string, precision: int)</code></p>
+<p>Since: <code>v1.1.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_GeomFromGeoHash</span><span class="p">(</span><span class="s1">&#39;s00twy01mt&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="k">AS</span> <span class="n">geom</span>
+</code></pre></div></p>
+<p>result:</p>
+<div class="highlight"><pre><span></span><code>+--------------------------------------------------------------------------------------------------------------------+
+|geom                                                                                                                |
++--------------------------------------------------------------------------------------------------------------------+
+|POLYGON ((0.703125 0.87890625, 0.703125 1.0546875, 1.0546875 1.0546875, 1.0546875 0.87890625, 0.703125 0.87890625)) |
++--------------------------------------------------------------------------------------------------------------------+
+</code></pre></div>
                 
                   
                     
@@ -2382,7 +2414,7 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 17, 2021 02:36:18</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 10, 2021 18:42:39</span>
       
     
   </small>
