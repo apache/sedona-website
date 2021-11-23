@@ -619,39 +619,6 @@
       
         <li class="md-nav__item">
   
-  <a href="#publish-the-doc-website" class="md-nav__link">
-    Publish the doc website
-  </a>  
-  
-  
-    <nav class="md-nav" aria-label="Publish the doc website">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  
-  <a href="#javadoc-and-scaladoc" class="md-nav__link">
-    Javadoc and Scaladoc
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#compile-r-html-docs" class="md-nav__link">
-    Compile R html docs
-  </a>  
-  
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  
   <a href="#publish-snapshots" class="md-nav__link">
     Publish SNAPSHOTs
   </a>  
@@ -713,8 +680,17 @@
         
           <li class="md-nav__item">
   
-  <a href="#call-for-a-vote" class="md-nav__link">
-    Call for a vote
+  <a href="#vote-in-dev-sedonaapacheorg" class="md-nav__link">
+    Vote in dev sedona.apache.org
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#vote-in-general-incubatorapacheorg" class="md-nav__link">
+    Vote in general incubator.apache.org
   </a>  
   
   
@@ -733,6 +709,39 @@
   
   <a href="#release-the-package" class="md-nav__link">
     Release the package
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#publish-the-doc-website" class="md-nav__link">
+    Publish the doc website
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="Publish the doc website">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#javadoc-and-scaladoc" class="md-nav__link">
+    Javadoc and Scaladoc
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#compile-r-html-docs" class="md-nav__link">
+    Compile R html docs
   </a>  
   
   
@@ -2231,39 +2240,6 @@
       
         <li class="md-nav__item">
   
-  <a href="#publish-the-doc-website" class="md-nav__link">
-    Publish the doc website
-  </a>  
-  
-  
-    <nav class="md-nav" aria-label="Publish the doc website">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  
-  <a href="#javadoc-and-scaladoc" class="md-nav__link">
-    Javadoc and Scaladoc
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#compile-r-html-docs" class="md-nav__link">
-    Compile R html docs
-  </a>  
-  
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  
   <a href="#publish-snapshots" class="md-nav__link">
     Publish SNAPSHOTs
   </a>  
@@ -2325,8 +2301,17 @@
         
           <li class="md-nav__item">
   
-  <a href="#call-for-a-vote" class="md-nav__link">
-    Call for a vote
+  <a href="#vote-in-dev-sedonaapacheorg" class="md-nav__link">
+    Vote in dev sedona.apache.org
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#vote-in-general-incubatorapacheorg" class="md-nav__link">
+    Vote in general incubator.apache.org
   </a>  
   
   
@@ -2345,6 +2330,39 @@
   
   <a href="#release-the-package" class="md-nav__link">
     Release the package
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#publish-the-doc-website" class="md-nav__link">
+    Publish the doc website
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="Publish the doc website">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#javadoc-and-scaladoc" class="md-nav__link">
+    Javadoc and Scaladoc
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#compile-r-html-docs" class="md-nav__link">
+    Compile R html docs
   </a>  
   
   
@@ -2387,36 +2405,6 @@ java -jar apache-rat-0.13.jar -d sedona-src &gt; report.txt
 <li>Delete the generated report and cloned files
 <div class="highlight"><pre><span></span><code>rm -rf sedona-src
 rm report.txt
-</code></pre></div></li>
-</ol>
-<h2 id="publish-the-doc-website">Publish the doc website<a class="headerlink" href="#publish-the-doc-website" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Run <code>mkdocs build</code> in Sedona root directory. Copy all content in the <code>site</code> folder.</li>
-<li>Check out GitHub incubator-sedona-website <a href="https://github.com/apache/incubator-sedona-website/tree/asf-site">asf-site branch</a></li>
-<li>Use the copied content to replace all content in <code>asf-site</code> branch and upload to GitHub. Then <code>sedona.apache.org</code> will be automatically updated.</li>
-<li>You can also push the content to <code>asf-staging</code> branch. The staging website will be then updated: <code>sedona.staged.apache.org</code></li>
-</ol>
-<h3 id="javadoc-and-scaladoc">Javadoc and Scaladoc<a class="headerlink" href="#javadoc-and-scaladoc" title="Permanent link">&para;</a></h3>
-<h4>Compile</h4>
-<p>You should first compile the entire docs using <code>mkdocs build</code> to get the <code>site</code> folder.</p>
-<ul>
-<li>Javadoc: Use Intelij IDEA to generate Javadoc for <code>core</code> and <code>viz</code> module</li>
-<li>Scaladoc: Run <code>scaladoc -d site/api/javadoc/sql/ sql/src/main/scala/org/apache/sedona/sql/utils/*.scala</code></li>
-</ul>
-<h4>Copy</h4>
-<ol>
-<li>Copy the generated Javadoc (Scaladoc should already be there) to the corresponding folders in <code>site/api/javadoc</code></li>
-<li>Deploy Javadoc and Scaladoc with the project website</li>
-</ol>
-<h3 id="compile-r-html-docs">Compile R html docs<a class="headerlink" href="#compile-r-html-docs" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Make sure you install R, tree and curl on your Ubuntu machine. On Mac, just do <code>brew install tree</code>
-<div class="highlight"><pre><span></span><code>sudo apt install littler tree libcurl4-openssl-dev
-</code></pre></div></li>
-<li>In the Sedona root directory, run the script below. This will create <code>rdocs</code> folder in Sedona <code>/docs/api/rdocs</code>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-Rscript generate-docs.R
-<span class="nb">cd</span> ./docs/api/rdocs <span class="o">&amp;&amp;</span> tree -H <span class="s1">&#39;.&#39;</span> -L <span class="m">1</span> --noreport --charset utf-8 -o index.html <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ../../../
 </code></pre></div></li>
 </ol>
 <div class="admonition note">
@@ -2534,7 +2522,7 @@ rm -rf apache-sedona-1.1.1-incubating-src
 rm -rf apache-sedona-1.1.1-incubating-bin
 </code></pre></div></li>
 </ol>
-<h3 id="call-for-a-vote">Call for a vote<a class="headerlink" href="#call-for-a-vote" title="Permanent link">&para;</a></h3>
+<h3 id="vote-in-dev-sedonaapacheorg">Vote in dev sedona.apache.org<a class="headerlink" href="#vote-in-dev-sedonaapacheorg" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Check the status of the staging repo: <a href="https://central.sonatype.org/pages/releasing-the-deployment.html#locate-and-examine-your-staging-repository">Locate and Examine Your Staging Repository
 </a>. You should see 12 Sedona modules in total.</li>
@@ -2548,16 +2536,16 @@ Hi all,
 This is a call for vote on Apache Sedona 1.1.1-incubating-rc1. Please refer to the changes listed at the bottom of this email.
 
 Release notes:
-https://github.com/apache/incubator-sedona/blob/sedona-1.1.1-incubating-rc1/docs/download/release-notes.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.1.1-incubating-rc1/docs/setup/release-notes.md
 
 Build instructions:
-https://github.com/apache/incubator-sedona/blob/sedona-1.1.1-incubating-rc1/docs/download/compile.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.1.1-incubating-rc1/docs/setup/compile.md
 
 GitHub tag:
 https://github.com/apache/incubator-sedona/releases/tag/sedona-1.1.1-incubating-rc1
 
 GPG public key to verify the Release:
-https://dist.apache.org/repos/dist/dev/incubator/sedona/KEYS
+https://downloads.apache.org/incubator/sedona/KEYS
 
 Source code and binaries:
 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.1.1-incubating-rc1/
@@ -2597,7 +2585,7 @@ Dear all,
 
 The vote closes now as 72hr have passed. The vote PASSES with
 
-+? (PPMC): NAME1, NAME2, NAME3
++? (binding): NAME1, NAME2, NAME3
 +? (non-binding): NAME4
 No -1 votes
 
@@ -2606,7 +2594,77 @@ The vote thread (Permalink from https://lists.apache.org/list.html):
 I will now bring the vote to general@incubator.apache.org to get
 approval by the IPMC. If this vote passes too, the release is accepted and will be published.
 </code></pre></div>
-<p>Here is a generated "announce" email:</p>
+<h3 id="vote-in-general-incubatorapacheorg">Vote in general incubator.apache.org<a class="headerlink" href="#vote-in-general-incubatorapacheorg" title="Permanent link">&para;</a></h3>
+<p>Here is a generated vote email. Please add changes at the end if needed:</p>
+<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.1.1-incubating-rc1
+
+Hi all,
+
+This is a call for vote on Apache Sedona 1.1.1-incubating-rc1. Please refer to the changes listed at the bottom of this email.
+
+Sedona Community vote thread (Permalink from https://lists.apache.org/list.html):
+
+Sedona community vote result thread (Permalink from https://lists.apache.org/list.html):
+
+Release notes:
+https://github.com/apache/incubator-sedona/blob/sedona-1.1.1-incubating-rc1/docs/setup/release-notes.md
+
+Build instructions:
+https://github.com/apache/incubator-sedona/blob/sedona-1.1.1-incubating-rc1/docs/setup/compile.md
+
+GitHub tag:
+https://github.com/apache/incubator-sedona/releases/tag/sedona-1.1.1-incubating-rc1
+
+GPG public key to verify the Release:
+https://downloads.apache.org/incubator/sedona/KEYS
+
+Source code and binaries:
+https://dist.apache.org/repos/dist/dev/incubator/sedona/1.1.1-incubating-rc1/
+
+The vote will be open for at least 72 hours or until a majority of at least 3 &quot;approve&quot; PMC votes are cast
+
+Please vote accordingly:
+
+[ ] +1 approve
+
+[ ] +0 no opinion
+
+[ ] -1 disapprove with the reason
+
+Checklist for reference (because of DISCLAIMER-WIP, other checklist items are not blockers):
+
+[ ] Download links are valid.
+
+[ ] Checksums and PGP signatures are valid.
+
+[ ] DISCLAIMER is included.
+
+[ ] Source code artifacts have correct names matching the current release.
+
+For a detailed checklist  please refer to:
+https://cwiki.apache.org/confluence/display/INCUBATOR/Incubator+Release+Checklist
+
+------------
+
+Changes according to the comments on the previous release
+Original comment (Permalink from https://lists.apache.org/list.html): 
+</code></pre></div>
+<p>Here is a generated "pass" email:</p>
+<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.1.1-incubating-rc1
+
+Dear all,
+
+The vote closes now as 72hr have passed. The vote PASSES with
+
++? (binding): NAME1, NAME2, NAME3
++? (non-binding): NAME4
+No -1 votes
+
+The vote thread (Permalink from https://lists.apache.org/list.html):
+
+I will publish the release and make an annoucement once it is done.
+</code></pre></div>
+<p>Here is a generated "announce" email. This email should be CCed to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#101;&#118;&#64;&#115;&#101;&#100;&#111;&#110;&#97;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#100;&#101;&#118;&#64;&#115;&#101;&#100;&#111;&#110;&#97;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a>:</p>
 <div class="highlight"><pre><span></span><code>Subject: [ANNOUNCE] Apache Sedona 1.1.1-incubating released
 
 Dear all,
@@ -2614,6 +2672,7 @@ Dear all,
 We are happy to report that we have released Apache Sedona (incubating) 1.1.1-incubating. Thank you again for your help.
 
 Apache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. 
+
 
 Vote thread (Permalink from https://lists.apache.org/list.html):
 
@@ -2625,13 +2684,13 @@ Website:
 http://sedona.apache.org/
 
 Release notes:
-https://github.com/apache/incubator-sedona/blob/sedona-1.1.1-incubating/docs/download/release-notes.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.1.1-incubating/docs/setup/release-notes.md
 
 Download links:
 https://github.com/apache/incubator-sedona/releases/tag/sedona-1.1.1-incubating
 
 Additional resources:
-Get started: http://sedona.apache.org/download/overview/
+Get started: http://sedona.apache.org/setup/overview/
 Tutorials: http://sedona.apache.org/tutorial/rdd/
 Mailing list: dev@sedona.apache.org
 Twitter: https://twitter.com/ApacheSedona
@@ -2666,7 +2725,7 @@ rm apache-sedona-1.1.1-incubating-bin.tar.gz
 rm apache-sedona-1.1.1-incubating-bin.tar.gz.asc
 rm apache-sedona-1.1.1-incubating-bin.tar.gz.sha512
 </code></pre></div></li>
-<li>Add the download link to <a href="/download/download#versions">Download page</a> and create a GitHub release.</li>
+<li>Add the download link to <a href="/download#versions">Download page</a> and create a GitHub release.</li>
 <li>(1) Publish Python project to PyPi using twine. You must have the maintainer priviledge of <a href="https://pypi.org/project/apache-sedona/">https://pypi.org/project/apache-sedona/</a>. (2) Publish Zeppelin plugin to NPM
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 git clone --shared --branch sedona-1.1.1-incubating-rc1 https://github.com/apache/incubator-sedona.git apache-sedona-1.1.1-incubating-src
@@ -2680,7 +2739,7 @@ R CMD build .
 R CMD check --as-cran apache.sedona_*.tar.gz
 </code></pre></div></li>
 <li>Instructions on how to submit a R package to CRAN are at the bottom of the <a href="https://cran.r-project.org/">CRAN front page</a>, “Submitting to CRAN.” Submission is now via <a href="https://xmpalantir.wu.ac.at/cransubmit/">a web form</a>.</li>
-<li>Close the staging repo on <a href="https://repository.apache.org">https://repository.apache.org</a>. If the staging repo has been automatically closed by the system, please read <mark>Use Maven Release Plugin directly from an existing tag</mark>.</li>
+<li>Close the staging repo on <a href="https://repository.apache.org">https://repository.apache.org</a>. If the staging repo has been automatically closed by the system, please read below.</li>
 </ol>
 <h4>Use Maven Release Plugin directly from an existing tag</h4>
 <p>The staging repo on repository.apache.org is usually automatically closed before the voting is closed. If so, you need to do <code>mvn release:perform</code> from an existing tag. Note that: you have to use <code>org.apache.maven.plugins:maven-release-plugin:2.3.2:perform</code> due to a bug in maven release plugin from v2.4 (<a href="https://issues.apache.org/jira/browse/SCM-729">https://issues.apache.org/jira/browse/SCM-729</a>). Make sure you use the correct scm tag (i.e.,  <code>sedona-1.1.1-incubating-rc1</code>).</p>
@@ -2703,30 +2762,39 @@ failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-2.4_2.12/1
 failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-3.0_2.12/1.1.1-incubating/sedona-viz-3.0_2.12-1.1.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-3.0_2.12-1.1.1-incubating.pom&#39;.
 failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-2.4_2.11/1.1.1-incubating/sedona-viz-2.4_2.11-1.1.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-2.4_2.11-1.1.1-incubating.pom&#39;.
 </code></pre></div></p>
-<p>This is caused by a bug in the resolved-pom-maven-plugin in POM.xml. You will have to upload the signatures of the 6 POM files mannualy. Please follow the steps below.</p>
-<ol>
-<li>Please download the correct 6 pom files from the staging repo to your local path and generate signatures. Please make sure you use the correct Sedona staging repo ID
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<p>This is caused by a bug in the resolved-pom-maven-plugin in POM.xml. You will have to upload the signatures of the POM files mannualy.</p>
+<p>Please run the following script to reupload ASC files to the staging repo. Please make sure you use the correct Sedona staging repo ID, ASF username and password.</p>
+<p><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nv">username</span><span class="o">=</span>admin
+<span class="nv">password</span><span class="o">=</span>admin123
 <span class="nv">stagingid</span><span class="o">=</span><span class="m">1016</span>
+
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.11/1.1.1-incubating/sedona-core-2.4_2.11-1.1.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.12/1.1.1-incubating/sedona-core-2.4_2.12-1.1.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.1.1-incubating/sedona-core-3.0_2.12-1.1.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.11/1.1.1-incubating/sedona-sql-2.4_2.11-1.1.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.12/1.1.1-incubating/sedona-sql-2.4_2.12-1.1.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.12/1.1.1-incubating/sedona-sql-3.0_2.12-1.1.1-incubating.pom
 wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-2.4_2.11/1.1.1-incubating/sedona-viz-2.4_2.11-1.1.1-incubating.pom
 wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-2.4_2.12/1.1.1-incubating/sedona-viz-2.4_2.12-1.1.1-incubating.pom
 wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.12/1.1.1-incubating/sedona-viz-3.0_2.12-1.1.1-incubating.pom
 wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.11/1.1.1-incubating/sedona-python-adapter-2.4_2.11-1.1.1-incubating.pom
 wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.12/1.1.1-incubating/sedona-python-adapter-2.4_2.12-1.1.1-incubating.pom
 wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.1.1-incubating/sedona-python-adapter-3.0_2.12-1.1.1-incubating.pom
+
+gpg -ab sedona-core-2.4_2.11-1.1.1-incubating.pom
+gpg -ab sedona-core-2.4_2.12-1.1.1-incubating.pom
+gpg -ab sedona-core-3.0_2.12-1.1.1-incubating.pom
+gpg -ab sedona-sql-2.4_2.11-1.1.1-incubating.pom
+gpg -ab sedona-sql-2.4_2.12-1.1.1-incubating.pom
+gpg -ab sedona-sql-3.0_2.12-1.1.1-incubating.pom
 gpg -ab sedona-viz-2.4_2.11-1.1.1-incubating.pom
 gpg -ab sedona-viz-2.4_2.12-1.1.1-incubating.pom
 gpg -ab sedona-viz-3.0_2.12-1.1.1-incubating.pom
 gpg -ab sedona-python-adapter-2.4_2.11-1.1.1-incubating.pom
 gpg -ab sedona-python-adapter-2.4_2.12-1.1.1-incubating.pom
 gpg -ab sedona-python-adapter-3.0_2.12-1.1.1-incubating.pom
-</code></pre></div></li>
-<li>Delete the asc files of the 6 pom files from the ASF staging repo web interface.</li>
-<li>Upload the 6 asc files to the staging repo using curl. For example,
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="nv">username</span><span class="o">=</span>admin
-<span class="nv">password</span><span class="o">=</span>admin123
-<span class="nv">stagingid</span><span class="o">=</span><span class="m">1016</span>
+
 curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-2.4_2.11-1.1.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.11/1.1.1-incubating/sedona-python-adapter-2.4_2.11-1.1.1-incubating.pom.asc
 
 curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-2.4_2.12-1.1.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.12/1.1.1-incubating/sedona-python-adapter-2.4_2.12-1.1.1-incubating.pom.asc
@@ -2739,6 +2807,24 @@ curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> -
 
 curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-3.0_2.12-1.1.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.12/1.1.1-incubating/sedona-viz-3.0_2.12-1.1.1-incubating.pom.asc
 
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-2.4_2.11-1.1.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.11/1.1.1-incubating/sedona-core-2.4_2.11-1.1.1-incubating.pom.asc
+
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-2.4_2.12-1.1.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.12/1.1.1-incubating/sedona-core-2.4_2.12-1.1.1-incubating.pom.asc
+
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-3.0_2.12-1.1.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.1.1-incubating/sedona-core-3.0_2.12-1.1.1-incubating.pom.asc
+
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-2.4_2.11-1.1.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.11/1.1.1-incubating/sedona-sql-2.4_2.11-1.1.1-incubating.pom.asc
+
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-2.4_2.12-1.1.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.12/1.1.1-incubating/sedona-sql-2.4_2.12-1.1.1-incubating.pom.asc
+
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-3.0_2.12-1.1.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.12/1.1.1-incubating/sedona-sql-3.0_2.12-1.1.1-incubating.pom.asc
+
+rm sedona-core-2.4_2.11-1.1.1-incubating.pom.asc
+rm sedona-core-2.4_2.12-1.1.1-incubating.pom.asc
+rm sedona-core-3.0_2.12-1.1.1-incubating.pom.asc
+rm sedona-sql-2.4_2.11-1.1.1-incubating.pom.asc
+rm sedona-sql-2.4_2.12-1.1.1-incubating.pom.asc
+rm sedona-sql-3.0_2.12-1.1.1-incubating.pom.asc
 rm sedona-viz-2.4_2.11-1.1.1-incubating.pom.asc
 rm sedona-viz-2.4_2.12-1.1.1-incubating.pom.asc
 rm sedona-viz-3.0_2.12-1.1.1-incubating.pom.asc
@@ -2746,8 +2832,37 @@ rm sedona-python-adapter-2.4_2.11-1.1.1-incubating.pom.asc
 rm sedona-python-adapter-2.4_2.12-1.1.1-incubating.pom.asc
 rm sedona-python-adapter-3.0_2.12-1.1.1-incubating.pom.asc
 </code></pre></div>
-admin is your Apache ID username and admin123 is your Apache ID password. You can find the correct upload path from the web interface.</li>
-<li>Once the staging repo is closed, click "Release" on the web interface.</li>
+admin is your Apache ID username and admin123 is your Apache ID password. You can find the correct upload path from the web interface.</p>
+<p>Once the staging repo is closed, click "Release" on the web interface.</p>
+<h2 id="publish-the-doc-website">Publish the doc website<a class="headerlink" href="#publish-the-doc-website" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Run <code>mkdocs build</code> in Sedona root directory. Copy all content in the <code>site</code> folder.</li>
+<li>Check out GitHub incubator-sedona-website <a href="https://github.com/apache/incubator-sedona-website/tree/asf-site">asf-site branch</a></li>
+<li>Use the copied content to replace all content in <code>asf-site</code> branch and upload to GitHub. Then <code>sedona.apache.org</code> will be automatically updated.</li>
+<li>You can also push the content to <code>asf-staging</code> branch. The staging website will be then updated: <code>sedona.staged.apache.org</code></li>
+</ol>
+<h3 id="javadoc-and-scaladoc">Javadoc and Scaladoc<a class="headerlink" href="#javadoc-and-scaladoc" title="Permanent link">&para;</a></h3>
+<h4>Compile</h4>
+<p>You should first compile the entire docs using <code>mkdocs build</code> to get the <code>site</code> folder.</p>
+<ul>
+<li>Javadoc: Use Intelij IDEA to generate Javadoc for <code>core</code> and <code>viz</code> module</li>
+<li>Scaladoc: Run <code>scaladoc -d site/api/javadoc/sql/ sql/src/main/scala/org/apache/sedona/sql/utils/*.scala</code></li>
+</ul>
+<h4>Copy</h4>
+<ol>
+<li>Copy the generated Javadoc (Scaladoc should already be there) to the corresponding folders in <code>site/api/javadoc</code></li>
+<li>Deploy Javadoc and Scaladoc with the project website</li>
+</ol>
+<h3 id="compile-r-html-docs">Compile R html docs<a class="headerlink" href="#compile-r-html-docs" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Make sure you install R, tree and curl on your Ubuntu machine. On Mac, just do <code>brew install tree</code>
+<div class="highlight"><pre><span></span><code>sudo apt install littler tree libcurl4-openssl-dev
+</code></pre></div></li>
+<li>In the Sedona root directory, run the script below. This will create <code>rdocs</code> folder in Sedona <code>/docs/api/rdocs</code>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+Rscript generate-docs.R
+<span class="nb">cd</span> ./docs/api/rdocs <span class="o">&amp;&amp;</span> tree -H <span class="s1">&#39;.&#39;</span> -L <span class="m">1</span> --noreport --charset utf-8 -o index.html <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ../../../
+</code></pre></div></li>
 </ol>
                 
                   
@@ -2757,7 +2872,7 @@ admin is your Apache ID username and admin123 is your Apache ID password. You ca
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 22, 2021 22:53:29</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 23, 2021 11:46:44</span>
       
     
   </small>
