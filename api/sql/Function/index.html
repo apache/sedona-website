@@ -1162,6 +1162,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_3ddistance" class="md-nav__link">
+    ST_3DDistance
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_convexhull" class="md-nav__link">
     ST_ConvexHull
   </a>  
@@ -1387,6 +1396,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_z" class="md-nav__link">
+    ST_Z
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_startpoint" class="md-nav__link">
     ST_StartPoint
   </a>  
@@ -1569,6 +1587,15 @@
   
   <a href="#st_geohash" class="md-nav__link">
     ST_GeoHash
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_collect" class="md-nav__link">
+    ST_Collect
   </a>  
   
   
@@ -2517,6 +2544,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_3ddistance" class="md-nav__link">
+    ST_3DDistance
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_convexhull" class="md-nav__link">
     ST_ConvexHull
   </a>  
@@ -2742,6 +2778,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_z" class="md-nav__link">
+    ST_Z
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_startpoint" class="md-nav__link">
     ST_StartPoint
   </a>  
@@ -2929,6 +2974,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#st_collect" class="md-nav__link">
+    ST_Collect
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2956,6 +3010,14 @@
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_Distance</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">,</span> <span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">polygondf</span>
+</code></pre></div></p>
+<h2 id="st_3ddistance">ST_3DDistance<a class="headerlink" href="#st_3ddistance" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return the 3-dimensional minimum cartesian distance between A and B</p>
+<p>Format: <code>ST_3DDistance (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.2.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_3DDistance</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">,</span> <span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span>
 <span class="k">FROM</span> <span class="n">polygondf</span>
 </code></pre></div></p>
 <h2 id="st_convexhull">ST_ConvexHull<a class="headerlink" href="#st_convexhull" title="Permanent link">&para;</a></h2>
@@ -3193,6 +3255,14 @@ If the geometry is lacking SRID a WKB format is produced.
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span> <span class="mi">25</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span>
 </code></pre></div></p>
 <p>Output: <code>25.0</code></p>
+<h2 id="st_z">ST_Z<a class="headerlink" href="#st_z" title="Permanent link">&para;</a></h2>
+<p>Introduction: Returns Z Coordinate of given Point, null otherwise.</p>
+<p>Format: <code>ST_Z(pointA: Point)</code></p>
+<p>Since: <code>v1.2.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_Z</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span> <span class="mi">25</span><span class="p">.</span><span class="mi">0</span> <span class="mi">11</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div></p>
+<p>Output: <code>11.0</code></p>
 <h2 id="st_startpoint">ST_StartPoint<a class="headerlink" href="#st_startpoint" title="Permanent link">&para;</a></h2>
 <p>Introduction: Returns first point of given linestring.</p>
 <p>Format: <code>ST_StartPoint(geom: geometry)</code></p>
@@ -3454,6 +3524,40 @@ LINESTRING(0 0, 1 1, 1 0, 21 52)
 |u3r0p                        |
 +-----------------------------+
 </code></pre></div>
+<h2 id="st_collect">ST_Collect<a class="headerlink" href="#st_collect" title="Permanent link">&para;</a></h2>
+<p>Introduction: Returns MultiGeometry object based on geometry column/s or array with geometries</p>
+<p>Format </p>
+<p><code>ST_Collect(*geom: geometry)</code></p>
+<p><code>ST_Collect(geom: array&lt;geometry&gt;)</code></p>
+<p>Since: <code>v1.2.0</code></p>
+<p>Example: 
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span>
+    <span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(21.427834 52.042576573)&#39;</span><span class="p">),</span>
+    <span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(45.342524 56.342354355)&#39;</span><span class="p">)</span>
+<span class="p">)</span> <span class="k">AS</span> <span class="n">geom</span>
+</code></pre></div>
+Result:</p>
+<div class="highlight"><pre><span></span><code>+---------------------------------------------------------------+
+|geom                                                           |
++---------------------------------------------------------------+
+|MULTIPOINT ((21.427834 52.042576573), (45.342524 56.342354355))|
++---------------------------------------------------------------+
+</code></pre></div>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span>
+    <span class="nb">Array</span><span class="p">(</span>
+        <span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(21.427834 52.042576573)&#39;</span><span class="p">),</span>
+        <span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(45.342524 56.342354355)&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span> <span class="k">AS</span> <span class="n">geom</span>
+</code></pre></div></p>
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code>+---------------------------------------------------------------+
+|geom                                                           |
++---------------------------------------------------------------+
+|MULTIPOINT ((21.427834 52.042576573), (45.342524 56.342354355))|
++---------------------------------------------------------------+
+</code></pre></div>
                 
                   
                     
@@ -3462,7 +3566,7 @@ LINESTRING(0 0, 1 1, 1 0, 21 52)
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 13, 2021 21:41:23</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">December 3, 2021 07:59:03</span>
       
     
   </small>

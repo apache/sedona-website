@@ -2362,7 +2362,8 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 </code></pre></div>
 <h2 id="st_point">ST_Point<a class="headerlink" href="#st_point" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Point from X and Y</p>
-<p>Format: <code>ST_Point (X:decimal, Y:decimal)</code></p>
+<p>Format: <code>ST_Point (X:decimal, Y:decimal)</code>
+Format: <code>ST_Point (X:decimal, Y:decimal, Z:decimal)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_Point</span><span class="p">(</span><span class="k">CAST</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c0</span> <span class="k">AS</span> <span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)),</span> <span class="k">CAST</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c1</span> <span class="k">AS</span> <span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span> <span class="k">AS</span> <span class="n">pointshape</span>
@@ -2429,7 +2430,7 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 13, 2021 21:41:23</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">December 3, 2021 07:59:03</span>
       
     
   </small>

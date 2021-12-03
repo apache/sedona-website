@@ -2274,18 +2274,13 @@
     <div class="highlight"><pre><span></span><code>org.apache.sedona:sedona-python-adapter-3.0_2.12:1.1.1-incubating
 org.datasyslab:geotools-wrapper:1.1.0-25.2
 </code></pre></div></p>
-<p>2) From the Libraries tab install from PyPI
+<p>2) For enabling python support, from the Libraries tab install from PyPI
     <div class="highlight"><pre><span></span><code>apache-sedona
 </code></pre></div></p>
-<p>3) (For DBR up to 7.3 LTS) You can speed up the serialization of geometry types by adding to your spark configurations (<code>Cluster</code> -&gt; <code>Edit</code> -&gt; <code>Configuration</code> -&gt; <code>Advanced options</code>) the following lines:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">```</span>
-<span class="n">spark</span><span class="p">.</span><span class="n">serializer</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="n">serializer</span><span class="p">.</span><span class="n">KryoSerializer</span>
-<span class="n">spark</span><span class="p">.</span><span class="n">kryo</span><span class="p">.</span><span class="n">registrator</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">sedona</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">serde</span><span class="p">.</span><span class="n">SedonaKryoRegistrator</span>
-<span class="err">```</span>
-
-<span class="n">In</span> <span class="n">order</span> <span class="n">to</span> <span class="n">activate</span> <span class="n">this</span> <span class="n">options</span> <span class="k">for</span> <span class="n">DBR</span> <span class="n">versions</span> <span class="mf">8.</span><span class="n">x</span><span class="o">+</span><span class="p">,</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">install</span> <span class="n">the</span> <span class="n">Sedona</span> <span class="n">libraries</span> <span class="n">via</span> <span class="n">init</span> <span class="n">script</span> <span class="n">because</span> <span class="n">libraries</span> <span class="n">installed</span> <span class="n">via</span> <span class="n">UI</span> <span class="n">are</span> <span class="k">not</span> <span class="n">yet</span> <span class="n">available</span> <span class="n">at</span> <span class="n">cluster</span> <span class="n">startup</span> <span class="n">when</span> <span class="n">this</span> <span class="n">options</span> <span class="n">are</span> <span class="n">regiestered</span><span class="p">.</span>
-</code></pre></div>
-
+<p>3) (Only for DBR up to 7.3 LTS) You can speed up the serialization of geometry types by adding to your spark configurations (<code>Cluster</code> -&gt; <code>Edit</code> -&gt; <code>Configuration</code> -&gt; <code>Advanced options</code>) the following lines:
+    <div class="highlight"><pre><span></span><code>spark.serializer org.apache.spark.serializer.KryoSerializer
+spark.kryo.registrator org.apache.sedona.core.serde.SedonaKryoRegistrator
+</code></pre></div></p>
 <h2 id="initialise">Initialise<a class="headerlink" href="#initialise" title="Permanent link">&para;</a></h2>
 <p>After you have installed the libraries and started the cluster, you can initialize the Sedona <code>ST_*</code> functions and types by running from your code: </p>
 <p>(scala)
@@ -2299,17 +2294,17 @@ org.datasyslab:geotools-wrapper:1.1.0-25.2
 <h2 id="pure-sql-environment">Pure SQL environment<a class="headerlink" href="#pure-sql-environment" title="Permanent link">&para;</a></h2>
 <p>In order to use the Sedona <code>ST_*</code> functions from SQL without having to register the Sedona functions from a python/scala cell, you need to install the sedona libraries from the <a href="https://docs.databricks.com/clusters/init-scripts.html">cluster init-scripts</a> as follows.</p>
 <h2 id="install-sedona-via-init-script">Install Sedona via init script<a class="headerlink" href="#install-sedona-via-init-script" title="Permanent link">&para;</a></h2>
-<p>Download the Sedona jars to a DBFS location. You can do that manually via UI or from a notebook with</p>
+<p>Download the Sedona jars to a DBFS location. You can do that manually via UI or from a notebook by executing this code in a cell:</p>
 <div class="highlight"><pre><span></span><code>%sh 
 <span class="c1"># Create JAR directory for Sedona</span>
 mkdir -p /dbfs/FileStore/jars/sedona/1.1.1-incubating
 
 <span class="c1"># Download the dependencies from Maven into DBFS</span>
-curl -o /dbfs/FileStore/jars/sedona/1.1.1-incubating/geotools-wrapper-geotools-1.1.0-25.2.jar <span class="s2">&quot;https://repo1.maven.org/maven2/org/datasyslab/geotools-wrapper/geotools-1.1.0-25.2/geotools-wrapper-geotools-1.1.0-25.2.jar&quot;</span>
+curl -o /dbfs/FileStore/jars/sedona/1.1.1-incubating/geotools-wrapper-1.1.0-25.2.jar <span class="s2">&quot;https://repo1.maven.org/maven2/org/datasyslab/geotools-wrapper/1.1.0-25.2/geotools-wrapper-1.1.0-25.2.jar&quot;</span>
 
-curl -o /dbfs/FileStore/jars/sedona/1.1.1-incubating/sedona-python-adapter-3.0_2.12-1.1.1-incubating.jar <span class="s2">&quot;https://repo1.maven.org/maven2/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.1.1-incubating/sedona-python-adapter-3.0_2.1.1.1-incubating.jar&quot;</span>
+curl -o /dbfs/FileStore/jars/sedona/1.1.1-incubating/sedona-python-adapter-3.0_2.12-1.1.1-incubating.jar <span class="s2">&quot;https://repo1.maven.org/maven2/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.1.1-incubating/sedona-python-adapter-3.0_2.12-1.1.1-incubating.jar&quot;</span>
 
-curl -o /dbfs/FileStore/jars/sedona/1.1.1-incubating/sedona-viz-2.4_2.12-1.1.1-incubating.jar <span class="s2">&quot;https://repo1.maven.org/maven2/org/apache/sedona/sedona-viz-2.4_2.12/1.1.1-incubating/sedona-viz-2.4_2.12-1.1.1-incubating.jar&quot;</span>
+curl -o /dbfs/FileStore/jars/sedona/1.1.1-incubating/sedona-viz-3.0_2.12-1.1.1-incubating.jar <span class="s2">&quot;https://repo1.maven.org/maven2/org/apache/sedona/sedona-viz-3.0_2.12/1.1.1-incubating/sedona-viz-3.0_2.12-1.1.1-incubating.jar&quot;</span>
 </code></pre></div>
 <p>Create an init script in DBFS that loads the Sedona jars into the cluster's default jar directory. You can create that from any notebook by running: </p>
 <div class="highlight"><pre><span></span><code>%sh 
@@ -2349,7 +2344,7 @@ spark.kryo.registrator org.apache.sedona.core.serde.SedonaKryoRegistrator
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 22, 2021 22:53:29</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">December 3, 2021 09:47:30</span>
       
     
   </small>
