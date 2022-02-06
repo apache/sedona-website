@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rs_addband" class="md-skip">
+        <a href="#rs_addbands" class="md-skip">
           Skip to content
         </a>
       
@@ -1240,8 +1240,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_addband" class="md-nav__link">
-    RS_AddBand
+  <a href="#rs_addbands" class="md-nav__link">
+    RS_AddBands
   </a>  
   
   
@@ -2274,8 +2274,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_addband" class="md-nav__link">
-    RS_AddBand
+  <a href="#rs_addbands" class="md-nav__link">
+    RS_AddBands
   </a>  
   
   
@@ -2482,19 +2482,19 @@
                 
                   <h1>Raster operators</h1>
                 
-                <h2 id="rs_addband">RS_AddBand<a class="headerlink" href="#rs_addband" title="Permanent link">&para;</a></h2>
+                <h2 id="rs_addbands">RS_AddBands<a class="headerlink" href="#rs_addbands" title="Permanent link">&para;</a></h2>
 <p>Introduction: Add two spectral bands in a Geotiff image </p>
-<p>Format: <code>RS_AddBand (Band1: Array[Double], Band2: Array[Double])</code></p>
+<p>Format: <code>RS_AddBands (Band1: Array[Double], Band2: Array[Double])</code></p>
 <p>Since: <code>v1.1.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="n">sumDF</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;select RS_Add(band1, band2) as sumOfBands from dataframe&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="n">sumDF</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;select RS_AddBands(band1, band2) as sumOfBands from dataframe&quot;</span><span class="o">)</span>
 </code></pre></div></p>
 <h2 id="rs_subtractbands">RS_SubtractBands<a class="headerlink" href="#rs_subtractbands" title="Permanent link">&para;</a></h2>
 <p>Introduction: Subtract two spectral bands in a Geotiff image(band2 - band1)</p>
 <p>Format: <code>RS_SubtractBands (Band1: Array[Double], Band2: Array[Double])</code></p>
 <p>Since: <code>v1.1.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="n">subtractDF</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;select RS_Subtract(band1, band2) as differenceOfOfBands from dataframe&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="n">subtractDF</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;select RS_SubtractBands(band1, band2) as differenceOfOfBands from dataframe&quot;</span><span class="o">)</span>
 </code></pre></div></p>
 <h2 id="rs_multiplybands">RS_MultiplyBands<a class="headerlink" href="#rs_multiplybands" title="Permanent link">&para;</a></h2>
 <p>Introduction: Multiply two spectral bands in a Geotiff image</p>
@@ -2636,7 +2636,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 17, 2021 02:36:18</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">January 11, 2022 17:52:03</span>
       
     
   </small>

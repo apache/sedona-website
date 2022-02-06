@@ -568,30 +568,6 @@
   </a>  
   
   
-    <nav class="md-nav" aria-label="Advanced editions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  
-  <a href="#databricks-dbr-7x" class="md-nav__link">
-    Databricks DBR 7.x
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#databricks-dbr-8x-9x-10x" class="md-nav__link">
-    Databricks DBR 8.x, 9.x, 10.x
-  </a>  
-  
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -623,8 +599,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#install-sedona-via-init-script" class="md-nav__link">
-    Install Sedona via init script
+  <a href="#install-sedona-via-init-script-for-dbrs-73" class="md-nav__link">
+    Install Sedona via init script (for DBRs &gt; 7.3)
   </a>  
   
   
@@ -2175,30 +2151,6 @@
   </a>  
   
   
-    <nav class="md-nav" aria-label="Advanced editions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  
-  <a href="#databricks-dbr-7x" class="md-nav__link">
-    Databricks DBR 7.x
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#databricks-dbr-8x-9x-10x" class="md-nav__link">
-    Databricks DBR 8.x, 9.x, 10.x
-  </a>  
-  
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2230,8 +2182,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#install-sedona-via-init-script" class="md-nav__link">
-    Install Sedona via init script
+  <a href="#install-sedona-via-init-script-for-dbrs-73" class="md-nav__link">
+    Install Sedona via init script (for DBRs &gt; 7.3)
   </a>  
   
   
@@ -2261,13 +2213,24 @@
                 <h2 id="community-edition-free-tier">Community edition (free-tier)<a class="headerlink" href="#community-edition-free-tier" title="Permanent link">&para;</a></h2>
 <p>You just need to install the Sedona jars and Sedona Python on Databricks using Databricks default web UI. Then everything will work.</p>
 <h2 id="advanced-editions">Advanced editions<a class="headerlink" href="#advanced-editions" title="Permanent link">&para;</a></h2>
-<h3 id="databricks-dbr-7x">Databricks DBR 7.x<a class="headerlink" href="#databricks-dbr-7x" title="Permanent link">&para;</a></h3>
-<p>If you are using the commercial version of Databricks up to version 7.x you can install the Sedona jars and Sedona Python using the Databricks default web UI and everything should work.</p>
-<h3 id="databricks-dbr-8x-9x-10x">Databricks DBR 8.x, 9.x, 10.x<a class="headerlink" href="#databricks-dbr-8x-9x-10x" title="Permanent link">&para;</a></h3>
-<p>If you are using the commercial version of Databricks for DBR 8.x+</p>
 <ul>
-<li>You need to use sedona version <code>1.1.1-incubating</code> or higher. </li>
+<li>Sedona 1.0.1 &amp; 1.1.0 is compiled against Spark 3.1 (~ Databricks DBR 9 LTS, DBR 7 is Spark 3.0)</li>
+<li>Sedona 1.1.1 is compiled against Spark 3.2 (~ DBR 10 &amp; 11)</li>
+</ul>
+<blockquote>
+<p>In Spark 3.2, <code>org.apache.spark.sql.catalyst.expressions.Generator</code> class added a field <code>nodePatterns</code>. Any SQL functions that rely on Generator class may have issues if compiled for a runtime with a differing spark version. For Sedona, those functions are:
+   * ST_MakeValid
+   * ST_SubDivideExplode</p>
+</blockquote>
+<p><strong>Sedona <code>1.1.1-incubating</code> is overall the recommended version to use. It is generally backwards compatible with earlier Spark releases but you should be aware of what Spark version Sedona was compiled against versus which is being executed in case you hit issues.</strong></p>
+<h4>Databricks 10.x+ (Recommended)</h4>
+<ul>
+<li>You need to use Sedona version <code>1.1.1-incubating</code> or higher. </li>
 <li>In order to activate the Kryo serializer (this speeds up the serialization and deserialization of geometry types) you need to install the libraries via init script as described below.</li>
+</ul>
+<h4>Databricks DBR 7.x - 9.x</h4>
+<ul>
+<li>If you are using the commercial version of Databricks you can install the Sedona jars and Sedona Python using the Databricks default web UI. DBR 7 matches with Sedona <code>1.1.0-incubating</code> and DBR 9 matches better with Sedona <code>1.1.1-incubating</code> due to Databricks cherry-picking some Spark 3.2 private APIs.</li>
 </ul>
 <h2 id="install-sedona-from-the-web-ui">Install Sedona from the web UI<a class="headerlink" href="#install-sedona-from-the-web-ui" title="Permanent link">&para;</a></h2>
 <p>1) From the Libraries tab install from Maven Coordinates
@@ -2280,7 +2243,8 @@ org.datasyslab:geotools-wrapper:1.1.0-25.2
 <p>3) (Only for DBR up to 7.3 LTS) You can speed up the serialization of geometry types by adding to your spark configurations (<code>Cluster</code> -&gt; <code>Edit</code> -&gt; <code>Configuration</code> -&gt; <code>Advanced options</code>) the following lines:
     <div class="highlight"><pre><span></span><code>spark.serializer org.apache.spark.serializer.KryoSerializer
 spark.kryo.registrator org.apache.sedona.core.serde.SedonaKryoRegistrator
-</code></pre></div></p>
+</code></pre></div>
+    &gt; For DBRs after 7.3, use the Init Script method described further down.</p>
 <h2 id="initialise">Initialise<a class="headerlink" href="#initialise" title="Permanent link">&para;</a></h2>
 <p>After you have installed the libraries and started the cluster, you can initialize the Sedona <code>ST_*</code> functions and types by running from your code: </p>
 <p>(scala)
@@ -2292,8 +2256,8 @@ spark.kryo.registrator org.apache.sedona.core.serde.SedonaKryoRegistrator
 <span class="n">SedonaRegistrator</span><span class="o">.</span><span class="n">registerAll</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
 </code></pre></div></p>
 <h2 id="pure-sql-environment">Pure SQL environment<a class="headerlink" href="#pure-sql-environment" title="Permanent link">&para;</a></h2>
-<p>In order to use the Sedona <code>ST_*</code> functions from SQL without having to register the Sedona functions from a python/scala cell, you need to install the sedona libraries from the <a href="https://docs.databricks.com/clusters/init-scripts.html">cluster init-scripts</a> as follows.</p>
-<h2 id="install-sedona-via-init-script">Install Sedona via init script<a class="headerlink" href="#install-sedona-via-init-script" title="Permanent link">&para;</a></h2>
+<p>In order to use the Sedona <code>ST_*</code> functions from SQL without having to register the Sedona functions from a python/scala cell, you need to install the Sedona libraries from the <a href="https://docs.databricks.com/clusters/init-scripts.html">cluster init-scripts</a> as follows.</p>
+<h2 id="install-sedona-via-init-script-for-dbrs-73">Install Sedona via init script (for DBRs &gt; 7.3)<a class="headerlink" href="#install-sedona-via-init-script-for-dbrs-73" title="Permanent link">&para;</a></h2>
 <p>Download the Sedona jars to a DBFS location. You can do that manually via UI or from a notebook by executing this code in a cell:</p>
 <div class="highlight"><pre><span></span><code>%sh 
 <span class="c1"># Create JAR directory for Sedona</span>
@@ -2333,9 +2297,9 @@ spark.serializer org.apache.spark.serializer.KryoSerializer
 spark.kryo.registrator org.apache.sedona.core.serde.SedonaKryoRegistrator
 </code></pre></div></p>
 <p>From your cluster configuration (<code>Cluster</code> -&gt; <code>Edit</code> -&gt; <code>Configuration</code> -&gt; <code>Advanced options</code> -&gt; <code>Init Scripts</code>) add the newly created init script 
-<div class="highlight"><pre><span></span><code>/dbfs/FileStore/sedona/sedona-init.sh
+<div class="highlight"><pre><span></span><code>dbfs:/FileStore/sedona/sedona-init.sh
 </code></pre></div></p>
-<p><em>Note: You need to install the sedona libraries via init script because the libraries installed via UI are installed after the cluster has already started, and therefore the classes specified by the config <code>spark.sql.extensions</code>, <code>spark.serializer</code>, and <code>spark.kryo.registrator</code> are not available at startup time.</em></p>
+<p><em>Note: You need to install the Sedona libraries via init script because the libraries installed via UI are installed after the cluster has already started, and therefore the classes specified by the config <code>spark.sql.extensions</code>, <code>spark.serializer</code>, and <code>spark.kryo.registrator</code> are not available at startup time.</em></p>
                 
                   
                     
@@ -2344,7 +2308,7 @@ spark.kryo.registrator org.apache.sedona.core.serde.SedonaKryoRegistrator
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">December 3, 2021 09:47:30</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">January 29, 2022 01:20:36</span>
       
     
   </small>

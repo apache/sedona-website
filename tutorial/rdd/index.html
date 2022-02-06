@@ -2760,9 +2760,10 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 <span class="s">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">stripMargin</span><span class="o">)</span>
 </code></pre></div></li>
 <li>Use SedonaSQL DataFrame-RDD Adapter to convert a DataFrame to an SpatialRDD
-<div class="highlight"><pre><span></span><code><span class="k">var</span> <span class="n">spatialRDD</span> <span class="o">=</span> <span class="nc">Adapter</span><span class="o">.</span><span class="n">toRdd</span><span class="o">(</span><span class="n">spatialDf</span><span class="o">,</span> <span class="s">&quot;checkin&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">var</span> <span class="n">spatialRDD</span> <span class="o">=</span> <span class="nc">Adapter</span><span class="o">.</span><span class="n">toSpatialRdd</span><span class="o">(</span><span class="n">spatialDf</span><span class="o">,</span> <span class="s">&quot;checkin&quot;</span><span class="o">)</span>
 </code></pre></div></li>
 </ol>
+<p>"checkin" is the name of the geometry column</p>
 <p>For WKT/WKB/GeoJSON data, please use <mark>ST_GeomFromWKT / ST_GeomFromWKB / ST_GeomFromGeoJSON</mark> instead.</p>
 <h2 id="transform-the-coordinate-reference-system">Transform the Coordinate Reference System<a class="headerlink" href="#transform-the-coordinate-reference-system" title="Permanent link">&para;</a></h2>
 <p>Sedona doesn't control the coordinate unit (degree-based or meter-based) of all geometries in an SpatialRDD. The unit of all related distances in Sedona is same as the unit of all geometries in an SpatialRDD.</p>
@@ -3033,7 +3034,7 @@ Find the super heros within 10 miles of each city</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 22, 2021 22:53:29</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">December 10, 2021 20:34:35</span>
       
     
   </small>
