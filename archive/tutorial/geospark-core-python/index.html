@@ -11,7 +11,7 @@
       
       
       <link rel="icon" href="https://www.apache.org/logos/res/sedona/sedona.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
@@ -800,6 +800,20 @@
     <li class="md-nav__item">
       <a href="../../../setup/publish/" class="md-nav__link">
         Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/vote/" class="md-nav__link">
+        Vote the release
       </a>
     </li>
   
@@ -3751,7 +3765,7 @@ to use overloaded functions how Scala/Java GeoSpark API allows. ex. </p>
     <span class="n">carryInputData</span><span class="o">=</span><span class="n">carry_other_attributes</span>
 <span class="p">)</span>
 </code></pre></div>
-<h4>From SparkSQL DataFrame</h4>
+<h4 id="from-sparksql-dataframe">From SparkSQL DataFrame<a class="headerlink" href="#from-sparksql-dataframe" title="Permanent link">&para;</a></h4>
 <p>To create spatialRDD from other formats you can use adapter between Spark DataFrame and SpatialRDD</p>
 <li> Load data in GeoSparkSQL. </li>
 
@@ -4046,20 +4060,20 @@ Example:
 </div>
 <h3 id="save-an-spatialrdd-not-indexed">Save an SpatialRDD (not indexed)<a class="headerlink" href="#save-an-spatialrdd-not-indexed" title="Permanent link">&para;</a></h3>
 <p>Typed SpatialRDD and generic SpatialRDD can be saved to permanent storage.</p>
-<h4>Save to distributed WKT text file</h4>
+<h4 id="save-to-distributed-wkt-text-file">Save to distributed WKT text file<a class="headerlink" href="#save-to-distributed-wkt-text-file" title="Permanent link">&para;</a></h4>
 <p>Use the following code to save an SpatialRDD as a distributed WKT text file:</p>
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">rawSpatialRDD</span><span class="o">.</span><span class="n">saveAsTextFile</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 <span class="n">object_rdd</span><span class="o">.</span><span class="n">saveAsWKT</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h4>Save to distributed WKB text file</h4>
+<h4 id="save-to-distributed-wkb-text-file">Save to distributed WKB text file<a class="headerlink" href="#save-to-distributed-wkb-text-file" title="Permanent link">&para;</a></h4>
 <p>Use the following code to save an SpatialRDD as a distributed WKB text file:</p>
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">saveAsWKB</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h4>Save to distributed GeoJSON text file</h4>
+<h4 id="save-to-distributed-geojson-text-file">Save to distributed GeoJSON text file<a class="headerlink" href="#save-to-distributed-geojson-text-file" title="Permanent link">&para;</a></h4>
 <p>Use the following code to save an SpatialRDD as a distributed GeoJSON text file:</p>
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">saveAsGeoJSON</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h4>Save to distributed object file</h4>
+<h4 id="save-to-distributed-object-file">Save to distributed object file<a class="headerlink" href="#save-to-distributed-object-file" title="Permanent link">&para;</a></h4>
 <p>Use the following code to save an SpatialRDD as a distributed object file:</p>
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">rawJvmSpatialRDD</span><span class="o">.</span><span class="n">saveAsObjectFile</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -4069,7 +4083,7 @@ Example:
 </div>
 <h3 id="save-an-spatialrdd-indexed">Save an SpatialRDD (indexed)<a class="headerlink" href="#save-an-spatialrdd-indexed" title="Permanent link">&para;</a></h3>
 <p>Indexed typed SpatialRDD and generic SpatialRDD can be saved to permanent storage. However, the indexed SpatialRDD has to be stored as a distributed object file.</p>
-<h4>Save to distributed object file</h4>
+<h4 id="save-to-distributed-object-file_1">Save to distributed object file<a class="headerlink" href="#save-to-distributed-object-file_1" title="Permanent link">&para;</a></h4>
 <p>Use the following code to save an SpatialRDD as a distributed object file:</p>
 <div class="highlight"><pre><span></span><code><span class="n">object_rdd</span><span class="o">.</span><span class="n">indexedRawRDD</span><span class="o">.</span><span class="n">saveAsObjectFile</span><span class="p">(</span><span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -4077,7 +4091,7 @@ Example:
 <p>A spatial partitioned RDD can be saved to permanent storage but Spark is not able to maintain the same RDD partition Id of the original RDD. This will lead to wrong join query results. We are working on some solutions. Stay tuned!</p>
 <h3 id="reload-a-saved-spatialrdd">Reload a saved SpatialRDD<a class="headerlink" href="#reload-a-saved-spatialrdd" title="Permanent link">&para;</a></h3>
 <p>You can easily reload an SpatialRDD that has been saved to <mark>a distributed object file</mark>.</p>
-<h4>Load to a typed SpatialRDD</h4>
+<h4 id="load-to-a-typed-spatialrdd">Load to a typed SpatialRDD<a class="headerlink" href="#load-to-a-typed-spatialrdd" title="Permanent link">&para;</a></h4>
 <p>Use the following code to reload the PointRDD/PolygonRDD/LineStringRDD:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">geospark.core.formatMapper.disc_utils</span> <span class="kn">import</span> <span class="n">load_spatial_rdd_from_disc</span><span class="p">,</span> <span class="n">GeoType</span>
 
@@ -4085,7 +4099,7 @@ Example:
 <span class="n">point_rdd</span> <span class="o">=</span> <span class="n">load_spatial_rdd_from_disc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">,</span> <span class="n">GeoType</span><span class="o">.</span><span class="n">POINT</span><span class="p">)</span>
 <span class="n">linestring_rdd</span> <span class="o">=</span> <span class="n">load_spatial_rdd_from_disc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">,</span> <span class="n">GeoType</span><span class="o">.</span><span class="n">LINESTRING</span><span class="p">)</span>
 </code></pre></div>
-<h4>Load to a generic SpatialRDD</h4>
+<h4 id="load-to-a-generic-spatialrdd">Load to a generic SpatialRDD<a class="headerlink" href="#load-to-a-generic-spatialrdd" title="Permanent link">&para;</a></h4>
 <p>Use the following code to reload the SpatialRDD:</p>
 <div class="highlight"><pre><span></span><code><span class="n">saved_rdd</span> <span class="o">=</span> <span class="n">load_spatial_rdd_from_disc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">&quot;hdfs://PATH&quot;</span><span class="p">,</span> <span class="n">GeoType</span><span class="o">.</span><span class="n">GEOMETRY</span><span class="p">)</span>
 </code></pre></div>
@@ -4250,7 +4264,7 @@ Apache Sedona is an effort undergoing incubation at <a href="http://www.apache.o
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5413a266.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.467223ff.min.js"></script>
       
     
   </body>

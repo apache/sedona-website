@@ -39,19 +39,12 @@ sedona_read_shapefile(sc, location, storage_level = "MEMORY_ONLY")
 </table>
 
 
-<h3>Value</h3>
-
-<p>A SpatialRDD.
-</p>
-
-
 <h3>See Also</h3>
 
 <p>Other Sedona data inferface functions: 
 <code>sedona_read_dsv_to_typed_rdd()</code>,
 <code>sedona_read_geojson_to_typed_rdd()</code>,
 <code>sedona_read_geojson()</code>,
-<code>sedona_read_shapefile_to_typed_rdd()</code>,
 <code>sedona_read_wkb()</code>,
 <code>sedona_read_wkt()</code>,
 <code>sedona_save_spatial_rdd()</code>,
@@ -73,8 +66,7 @@ if (!inherits(sc, "test_connection")) {
   input_location &lt;- "/dev/null" # replace it with the path to your input file
   rdd &lt;- sedona_read_shapefile(sc, location = input_location)
 }
-
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>apache.sedona</em> version 1.1.1 ]</div>
+<hr /><div style="text-align: center;">[Package <em>apache.sedona</em> version 1.1.0 ]</div>
 </div></body></html>

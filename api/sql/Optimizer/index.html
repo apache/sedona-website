@@ -11,7 +11,7 @@
       
       
       <link rel="icon" href="https://www.apache.org/logos/res/sedona/sedona.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
@@ -800,6 +800,20 @@
     <li class="md-nav__item">
       <a href="../../../setup/publish/" class="md-nav__link">
         Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/vote/" class="md-nav__link">
+        Vote the release
       </a>
     </li>
   
@@ -2942,17 +2956,17 @@
 <h2 id="range-join">Range join<a class="headerlink" href="#range-join" title="Permanent link">&para;</a></h2>
 <p>Introduction: Find geometries from A and geometries from B such that each geometry pair satisfies a certain predicate. Most predicates supported by SedonaSQL can trigger a range join.</p>
 <p>Spark SQL Example:</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="p">,</span><span class="w"> </span><span class="n">pointdf</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Contains</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">,</span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">polygondf</span><span class="p">,</span> <span class="n">pointdf</span>
+<span class="k">WHERE</span> <span class="n">ST_Contains</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">,</span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="p">,</span><span class="w"> </span><span class="n">pointdf</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">,</span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">polygondf</span><span class="p">,</span> <span class="n">pointdf</span>
+<span class="k">WHERE</span> <span class="n">ST_Intersects</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">,</span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">)</span>
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="p">,</span><span class="w"> </span><span class="n">polygondf</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Within</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">,</span><span class="w"> </span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">)</span><span class="w"></span>
+<p><div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">pointdf</span><span class="p">,</span> <span class="n">polygondf</span>
+<span class="k">WHERE</span> <span class="n">ST_Within</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">,</span> <span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">)</span>
 </code></pre></div>
 Spark SQL Physical plan:
 <div class="highlight"><pre><span></span><code>== Physical Plan ==
@@ -2970,14 +2984,14 @@ RangeJoin polygonshape#20: geometry, pointshape#43: geometry, false
 <p>Introduction: Find geometries from A and geometries from B such that the internal Euclidean distance of each geometry pair is less or equal than a certain distance</p>
 <p>Spark SQL Example:</p>
 <p><em>Only consider <mark>fully within a certain distance</mark></em>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf1</span><span class="p">,</span><span class="w"> </span><span class="n">pointdf2</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Distance</span><span class="p">(</span><span class="n">pointdf1</span><span class="p">.</span><span class="n">pointshape1</span><span class="p">,</span><span class="n">pointdf2</span><span class="p">.</span><span class="n">pointshape2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">pointdf1</span><span class="p">,</span> <span class="n">pointdf2</span>
+<span class="k">WHERE</span> <span class="n">ST_Distance</span><span class="p">(</span><span class="n">pointdf1</span><span class="p">.</span><span class="n">pointshape1</span><span class="p">,</span><span class="n">pointdf2</span><span class="p">.</span><span class="n">pointshape2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span>
 </code></pre></div></p>
 <p><em>Consider <mark>intersects within a certain distance</mark></em>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf1</span><span class="p">,</span><span class="w"> </span><span class="n">pointdf2</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Distance</span><span class="p">(</span><span class="n">pointdf1</span><span class="p">.</span><span class="n">pointshape1</span><span class="p">,</span><span class="n">pointdf2</span><span class="p">.</span><span class="n">pointshape2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">pointdf1</span><span class="p">,</span> <span class="n">pointdf2</span>
+<span class="k">WHERE</span> <span class="n">ST_Distance</span><span class="p">(</span><span class="n">pointdf1</span><span class="p">.</span><span class="n">pointshape1</span><span class="p">,</span><span class="n">pointdf2</span><span class="p">.</span><span class="n">pointshape2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span>
 </code></pre></div></p>
 <p>Spark SQL Physical plan:
 <div class="highlight"><pre><span></span><code>== Physical Plan ==
@@ -3020,10 +3034,10 @@ BroadcastIndexJoin pointshape#52: geometry, BuildRight, BuildLeft, true, 2.0 ST_
 <h2 id="predicate-pushdown">Predicate pushdown<a class="headerlink" href="#predicate-pushdown" title="Permanent link">&para;</a></h2>
 <p>Introduction: Given a join query and a predicate in the same WHERE clause, first executes the Predicate as a filter, then executes the join query*</p>
 <p>Spark SQL Example:</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="p">,</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Contains</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">,</span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">)</span><span class="w"></span>
-<span class="k">AND</span><span class="w"> </span><span class="n">ST_Contains</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">501</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">601</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">polygondf</span><span class="p">,</span> <span class="n">pointdf</span> 
+<span class="k">WHERE</span> <span class="n">ST_Contains</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">,</span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">)</span>
+<span class="k">AND</span> <span class="n">ST_Contains</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">501</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">601</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">)</span>
 </code></pre></div>
 <p>Spark SQL Physical plan:</p>
 <div class="highlight"><pre><span></span><code>== Physical Plan ==
@@ -3142,7 +3156,7 @@ Apache Sedona is an effort undergoing incubation at <a href="http://www.apache.o
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5413a266.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.467223ff.min.js"></script>
       
     
   </body>

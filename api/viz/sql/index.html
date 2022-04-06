@@ -11,7 +11,7 @@
       
       
       <link rel="icon" href="https://www.apache.org/logos/res/sedona/sedona.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
@@ -800,6 +800,20 @@
     <li class="md-nav__item">
       <a href="../../../setup/publish/" class="md-nav__link">
         Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/vote/" class="md-nav__link">
+        Vote the release
       </a>
     </li>
   
@@ -3045,8 +3059,8 @@
 <p>Format: <code>ST_Pixelize (A:geometry, ResolutionX:int, ResolutionY:int, Boundary:geometry)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Pixelize</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">ST_Envelope_Aggr</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pointtable</span><span class="p">))</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_Pixelize</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="n">ST_Envelope_Aggr</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">pointtable</span><span class="p">))</span>
+<span class="k">FROM</span> <span class="n">polygondf</span>
 </code></pre></div></p>
 <h3 id="st_tilename">ST_TileName<a class="headerlink" href="#st_tilename" title="Permanent link">&para;</a></h3>
 <p>Introduction: Return the map tile name for a given zoom level. Please refer to <a href="http://wiki.openstreetmap.org/wiki/Zoom_levels">OpenStreetMap ZoomLevel</a> and <a href="https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames">OpenStreetMap tile name</a>.</p>
@@ -3057,8 +3071,8 @@
 <p>Format: <code>ST_TileName (A:pixel, ZoomLevel:int)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_TileName</span><span class="p">(</span><span class="n">pixels</span><span class="p">.</span><span class="n">px</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pixels</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_TileName</span><span class="p">(</span><span class="n">pixels</span><span class="p">.</span><span class="n">px</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">pixels</span>
 </code></pre></div></p>
 <h3 id="st_colorize">ST_Colorize<a class="headerlink" href="#st_colorize" title="Permanent link">&para;</a></h3>
 <p>Introduction: Given the weight of a pixel, return the corresponding color. The weight can be the spatial aggregation of spatial objects or spatial observations such as temperature and humidity.</p>
@@ -3068,17 +3082,17 @@
 </div>
 <p>Format: <code>ST_Colorize (weight:Double, maxWeight:Double, mandatory color: string (Optional))</code></p>
 <p>Since: <code>v1.0.0</code></p>
-<h4>Produce various colors - heat map</h4>
+<h4 id="produce-various-colors-heat-map">Produce various colors - heat map<a class="headerlink" href="#produce-various-colors-heat-map" title="Permanent link">&para;</a></h4>
 <p>This function will normalize the weight according to the max weight among all pixels. Different pixel obtains different color.</p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">pixels</span><span class="p">.</span><span class="n">px</span><span class="p">,</span><span class="w"> </span><span class="n">ST_Colorize</span><span class="p">(</span><span class="n">pixels</span><span class="p">.</span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="mi">999</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">color</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pixels</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">pixels</span><span class="p">.</span><span class="n">px</span><span class="p">,</span> <span class="n">ST_Colorize</span><span class="p">(</span><span class="n">pixels</span><span class="p">.</span><span class="n">weight</span><span class="p">,</span> <span class="mi">999</span><span class="p">)</span> <span class="k">AS</span> <span class="n">color</span>
+<span class="k">FROM</span> <span class="n">pixels</span>
 </code></pre></div></p>
-<h4>Produce uniform colors - scatter plot</h4>
+<h4 id="produce-uniform-colors-scatter-plot">Produce uniform colors - scatter plot<a class="headerlink" href="#produce-uniform-colors-scatter-plot" title="Permanent link">&para;</a></h4>
 <p>If a mandatory color name is put as the third input argument, this function will directly ouput this color, without considering the weights. In this case, every pixel will possess the same color.</p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">pixels</span><span class="p">.</span><span class="n">px</span><span class="p">,</span><span class="w"> </span><span class="n">ST_Colorize</span><span class="p">(</span><span class="n">pixels</span><span class="p">.</span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;red&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">color</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pixels</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">pixels</span><span class="p">.</span><span class="n">px</span><span class="p">,</span> <span class="n">ST_Colorize</span><span class="p">(</span><span class="n">pixels</span><span class="p">.</span><span class="n">weight</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">color</span>
+<span class="k">FROM</span> <span class="n">pixels</span>
 </code></pre></div></p>
 <p>Here are some example color names can be entered:
 <div class="highlight"><pre><span></span><code>&quot;firebrick&quot;
@@ -3092,8 +3106,8 @@
 <p>Format: <code>ST_EncodeImage (A:image)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_EncodeImage</span><span class="p">(</span><span class="n">images</span><span class="p">.</span><span class="n">img</span><span class="p">)</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">images</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_EncodeImage</span><span class="p">(</span><span class="n">images</span><span class="p">.</span><span class="n">img</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">images</span>
 </code></pre></div></p>
 <h2 id="aggregate-functions">Aggregate functions<a class="headerlink" href="#aggregate-functions" title="Permanent link">&para;</a></h2>
 <h3 id="st_render">ST_Render<a class="headerlink" href="#st_render" title="Permanent link">&para;</a></h3>
@@ -3101,9 +3115,9 @@
 <p>Format: <code>ST_Render (A:pixel, B:color, C:Integer - optional zoom level)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">tilename</span><span class="p">,</span><span class="w"> </span><span class="n">ST_Render</span><span class="p">(</span><span class="n">pixels</span><span class="p">.</span><span class="n">px</span><span class="p">,</span><span class="w"> </span><span class="n">pixels</span><span class="p">.</span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">tileimg</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pixels</span><span class="w"></span>
-<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">tilename</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">tilename</span><span class="p">,</span> <span class="n">ST_Render</span><span class="p">(</span><span class="n">pixels</span><span class="p">.</span><span class="n">px</span><span class="p">,</span> <span class="n">pixels</span><span class="p">.</span><span class="n">color</span><span class="p">)</span> <span class="k">AS</span> <span class="n">tileimg</span>
+<span class="k">FROM</span> <span class="n">pixels</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">tilename</span>
 </code></pre></div></p>
 
   <hr>
@@ -3213,7 +3227,7 @@ Apache Sedona is an effort undergoing incubation at <a href="http://www.apache.o
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5413a266.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.467223ff.min.js"></script>
       
     
   </body>

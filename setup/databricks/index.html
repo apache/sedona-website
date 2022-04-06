@@ -11,7 +11,7 @@
       
       
       <link rel="icon" href="https://www.apache.org/logos/res/sedona/sedona.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
@@ -888,6 +888,20 @@
     <li class="md-nav__item">
       <a href="../publish/" class="md-nav__link">
         Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vote/" class="md-nav__link">
+        Vote the release
       </a>
     </li>
   
@@ -2974,12 +2988,12 @@
    * ST_SubDivideExplode</p>
 </blockquote>
 <p><strong>Sedona <code>1.1.1-incubating</code> is overall the recommended version to use. It is generally backwards compatible with earlier Spark releases but you should be aware of what Spark version Sedona was compiled against versus which is being executed in case you hit issues.</strong></p>
-<h4>Databricks 10.x+ (Recommended)</h4>
+<h4 id="databricks-10x-recommended">Databricks 10.x+ (Recommended)<a class="headerlink" href="#databricks-10x-recommended" title="Permanent link">&para;</a></h4>
 <ul>
 <li>You need to use Sedona version <code>1.1.1-incubating</code> or higher. </li>
 <li>In order to activate the Kryo serializer (this speeds up the serialization and deserialization of geometry types) you need to install the libraries via init script as described below.</li>
 </ul>
-<h4>Databricks DBR 7.x - 9.x</h4>
+<h4 id="databricks-dbr-7x-9x">Databricks DBR 7.x - 9.x<a class="headerlink" href="#databricks-dbr-7x-9x" title="Permanent link">&para;</a></h4>
 <ul>
 <li>If you are using the commercial version of Databricks you can install the Sedona jars and Sedona Python using the Databricks default web UI. DBR 7 matches with Sedona <code>1.1.0-incubating</code> and DBR 9 matches better with Sedona <code>1.1.1-incubating</code> due to Databricks cherry-picking some Spark 3.2 private APIs.</li>
 </ul>
@@ -3159,7 +3173,7 @@ Apache Sedona is an effort undergoing incubation at <a href="http://www.apache.o
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5413a266.min.js"></script>
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
       
     
   </body>

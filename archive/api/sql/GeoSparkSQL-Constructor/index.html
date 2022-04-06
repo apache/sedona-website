@@ -11,7 +11,7 @@
       
       
       <link rel="icon" href="https://www.apache.org/logos/res/sedona/sedona.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
@@ -800,6 +800,20 @@
     <li class="md-nav__item">
       <a href="../../../../setup/publish/" class="md-nav__link">
         Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../setup/vote/" class="md-nav__link">
+        Vote the release
       </a>
     </li>
   
@@ -3045,10 +3059,10 @@
 <code>ST_GeomFromWKT (Wkt:string, UUID1, UUID2, ...)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">polygontable</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span> <span class="k">AS</span> <span class="n">polygonshape</span>
+<span class="k">FROM</span> <span class="n">polygontable</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POINT(40.7128,-74.0060)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geometry</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POINT(40.7128,-74.0060)&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">geometry</span>
 </code></pre></div>
 <h2 id="st_geomfromwkb">ST_GeomFromWKB<a class="headerlink" href="#st_geomfromwkb" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Geometry from WKB string. Unlimited UUID strings can be appended.</p>
@@ -3056,8 +3070,8 @@
 <code>ST_GeomFromWKB (Wkb:string, UUID1, UUID2, ...)</code></p>
 <p>Since: <code>v1.2.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKB</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">polygontable</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_GeomFromWKB</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span> <span class="k">AS</span> <span class="n">polygonshape</span>
+<span class="k">FROM</span> <span class="n">polygontable</span>
 </code></pre></div></p>
 <h2 id="st_geomfromgeojson">ST_GeomFromGeoJSON<a class="headerlink" href="#st_geomfromgeojson" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Geometry from GeoJson. Unlimited UUID strings can be appended.</p>
@@ -3120,55 +3134,55 @@ via <code>geospark.global.charset</code> system property before the call to <cod
 <p>Format: <code>ST_Point (X:decimal, Y:decimal, UUID1, UUID2, ...)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Point</span><span class="p">(</span><span class="k">CAST</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c0</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)),</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pointshape</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointtable</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_Point</span><span class="p">(</span><span class="k">CAST</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c0</span> <span class="k">AS</span> <span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)),</span> <span class="k">CAST</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c1</span> <span class="k">AS</span> <span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span> <span class="k">AS</span> <span class="n">pointshape</span>
+<span class="k">FROM</span> <span class="n">pointtable</span>
 </code></pre></div></p>
 <h2 id="st_pointfromtext">ST_PointFromText<a class="headerlink" href="#st_pointfromtext" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Point from Text, delimited by Delimiter. Unlimited UUID strings can be appended.</p>
 <p>Format: <code>ST_PointFromText (Text:string, Delimiter:char, UUID1, UUID2, ...)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_PointFromText</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c0</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pointshape</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointtable</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_PointFromText</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c0</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">pointshape</span>
+<span class="k">FROM</span> <span class="n">pointtable</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_PointFromText</span><span class="p">(</span><span class="s1">&#39;40.7128,-74.0060&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pointshape</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_PointFromText</span><span class="p">(</span><span class="s1">&#39;40.7128,-74.0060&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">pointshape</span>
 </code></pre></div>
 <h2 id="st_polygonfromtext">ST_PolygonFromText<a class="headerlink" href="#st_polygonfromtext" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Polygon from Text, delimited by Delimiter. Path must be closed. Unlimited UUID strings can be appended.</p>
 <p>Format: <code>ST_PolygonFromText (Text:string, Delimiter:char, UUID1, UUID2, ...)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_PolygonFromText</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">polygontable</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_PolygonFromText</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">polygonshape</span>
+<span class="k">FROM</span> <span class="n">polygontable</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_PolygonFromText</span><span class="p">(</span><span class="s1">&#39;-74.0428197,40.6867969,-74.0421975,40.6921336,-74.0508020,40.6912794,-74.0428197,40.6867969&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_PolygonFromText</span><span class="p">(</span><span class="s1">&#39;-74.0428197,40.6867969,-74.0421975,40.6921336,-74.0508020,40.6912794,-74.0428197,40.6867969&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">polygonshape</span>
 </code></pre></div>
 <h2 id="st_linestringfromtext">ST_LineStringFromText<a class="headerlink" href="#st_linestringfromtext" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a LineString from Text, delimited by Delimiter. Unlimited UUID strings can be appended.</p>
 <p>Format: <code>ST_LineStringFromText (Text:string, Delimiter:char, UUID1, UUID2, ...)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_LineStringFromText</span><span class="p">(</span><span class="n">linestringtable</span><span class="p">.</span><span class="n">_c0</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">linestringshape</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">linestringtable</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_LineStringFromText</span><span class="p">(</span><span class="n">linestringtable</span><span class="p">.</span><span class="n">_c0</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">linestringshape</span>
+<span class="k">FROM</span> <span class="n">linestringtable</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_LineStringFromText</span><span class="p">(</span><span class="s1">&#39;-74.0428197,40.6867969,-74.0421975,40.6921336,-74.0508020,40.6912794&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">linestringshape</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_LineStringFromText</span><span class="p">(</span><span class="s1">&#39;-74.0428197,40.6867969,-74.0421975,40.6921336,-74.0508020,40.6912794&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">linestringshape</span>
 </code></pre></div>
 <h2 id="st_polygonfromenvelope">ST_PolygonFromEnvelope<a class="headerlink" href="#st_polygonfromenvelope" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Polygon from MinX, MinY, MaxX, MaxY. Unlimited UUID strings can be appended.</p>
 <p>Format: <code>ST_PolygonFromEnvelope (MinX:decimal, MinY:decimal, MaxX:decimal, MaxY:decimal, UUID1, UUID2, ...)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Contains</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">pointdf</span>
+<span class="k">WHERE</span> <span class="n">ST_Contains</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">)</span>
 </code></pre></div></p>
 <h2 id="st_circle">ST_Circle<a class="headerlink" href="#st_circle" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Circle from A with a Radius.</p>
 <p>Format: <code>ST_Circle (A:Geometry, Radius:decimal)</code></p>
 <p>Since: <code>v1.0.0</code> - <code>v1.1.3</code></p>
 <p>Spark SQL example:</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Circle</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">ST_Circle</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">pointdf</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3282,7 +3296,7 @@ Apache Sedona is an effort undergoing incubation at <a href="http://www.apache.o
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.5413a266.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.467223ff.min.js"></script>
       
     
   </body>

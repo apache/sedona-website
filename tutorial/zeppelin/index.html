@@ -11,7 +11,7 @@
       
       
       <link rel="icon" href="https://www.apache.org/logos/res/sedona/sedona.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
@@ -800,6 +800,20 @@
     <li class="md-nav__item">
       <a href="../../setup/publish/" class="md-nav__link">
         Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/vote/" class="md-nav__link">
+        Vote the release
       </a>
     </li>
   
@@ -2925,9 +2939,9 @@
 <span class="s">  &quot;&quot;&quot;</span><span class="p">.</span><span class="n">stripMargin</span><span class="p">)</span>
 </code></pre></div>
 <p>Then create an SQL paragraph to fetch the data
-<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="k">sql</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">wktpoint</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="k">sql</span>
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">wktpoint</span>
 </code></pre></div></p>
 <p>Select the geometry column to visualize:</p>
 <p><img alt="" src="../../image/sql-zeppelin.gif" /></p>
@@ -2943,9 +2957,9 @@
   &quot;&quot;&quot;.stripMargin)
 </code></pre></div>
 <p>Then create an SQL paragraph to fetch the data
-<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="k">sql</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;I am the map center!&#39;</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">images</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="k">sql</span>
+<span class="k">SELECT</span> <span class="o">*</span><span class="p">,</span> <span class="s1">&#39;I am the map center!&#39;</span>
+<span class="k">FROM</span> <span class="n">images</span>
 </code></pre></div></p>
 <p>Select the image and its geospatial boundary:</p>
 <p><img alt="" src="../../image/viz-zeppelin.gif" /></p>
@@ -3060,7 +3074,7 @@ Apache Sedona is an effort undergoing incubation at <a href="http://www.apache.o
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5413a266.min.js"></script>
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
       
     
   </body>

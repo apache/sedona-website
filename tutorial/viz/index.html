@@ -11,7 +11,7 @@
       
       
       <link rel="icon" href="https://www.apache.org/logos/res/sedona/sedona.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
@@ -800,6 +800,20 @@
     <li class="md-nav__item">
       <a href="../../setup/publish/" class="md-nav__link">
         Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/vote/" class="md-nav__link">
+        Vote the release
       </a>
     </li>
   
@@ -3249,9 +3263,9 @@ This will register SedonaViz Kryo serializer.</p>
 |-88.221102| 32.35078|
 </code></pre></div>
 <p>You first need to create a Geometry type column.</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">pointtable</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Point</span><span class="p">(</span><span class="k">cast</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c0</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)),</span><span class="k">cast</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c1</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">shape</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointtable</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="n">TEMP</span> <span class="k">VIEW</span> <span class="n">pointtable</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">ST_Point</span><span class="p">(</span><span class="k">cast</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c0</span> <span class="k">as</span> <span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)),</span><span class="k">cast</span><span class="p">(</span><span class="n">pointtable</span><span class="p">.</span><span class="n">_c1</span> <span class="k">as</span> <span class="nb">Decimal</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span> <span class="k">as</span> <span class="n">shape</span>
+<span class="k">FROM</span> <span class="n">pointtable</span>
 </code></pre></div>
 <p>As you know, Sedona provides many different methods to load various spatial data formats. Please read <a href="../sql">Write an Spatial DataFrame application</a>.</p>
 <h2 id="generate-a-single-image">Generate a single image<a class="headerlink" href="#generate-a-single-image" title="Permanent link">&para;</a></h2>
@@ -3259,19 +3273,19 @@ This will register SedonaViz Kryo serializer.</p>
 <h3 id="pixelize-spatial-objects">Pixelize spatial objects<a class="headerlink" href="#pixelize-spatial-objects" title="Permanent link">&para;</a></h3>
 <p>To put spatial objects on a map image, you first need to convert them to pixels.</p>
 <p>First, compute the spatial boundary of this column.</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">boundtable</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Envelope_Aggr</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">bound</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pointtable</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="n">TEMP</span> <span class="k">VIEW</span> <span class="n">boundtable</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">ST_Envelope_Aggr</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="k">as</span> <span class="n">bound</span> <span class="k">FROM</span> <span class="n">pointtable</span>
 </code></pre></div>
 <p>Then use ST_Pixelize to convert them to pixels.</p>
 <p>This example is for Sedona before v1.0.1. ST_Pixelize extends Generator so it can directly flatten the array without the <strong>explode</strong> function.</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">pixels</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">pixel</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pointtable</span><span class="w"></span>
-<span class="k">LATERAL</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">ST_Pixelize</span><span class="p">(</span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">,</span><span class="s1">&#39;epsg:3857&#39;</span><span class="p">),</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">,</span><span class="s1">&#39;epsg:3857&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">boundtable</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pixel</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="n">TEMP</span> <span class="k">VIEW</span> <span class="n">pixels</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">pixel</span><span class="p">,</span> <span class="n">shape</span> <span class="k">FROM</span> <span class="n">pointtable</span>
+<span class="k">LATERAL</span> <span class="k">VIEW</span> <span class="n">ST_Pixelize</span><span class="p">(</span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;epsg:4326&#39;</span><span class="p">,</span><span class="s1">&#39;epsg:3857&#39;</span><span class="p">),</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">ST_Transform</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="s1">&#39;epsg:4326&#39;</span><span class="p">,</span><span class="s1">&#39;epsg:3857&#39;</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">boundtable</span><span class="p">))</span> <span class="k">AS</span> <span class="n">pixel</span>
 </code></pre></div>
 <p>This example is for Sedona on and after v1.0.1. ST_Pixelize returns an array of pixels. You need to use <strong>explode</strong> to flatten it.</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">pixels</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">pixel</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pointtable</span><span class="w"></span>
-<span class="k">LATERAL</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">explode</span><span class="p">(</span><span class="n">ST_Pixelize</span><span class="p">(</span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">,</span><span class="s1">&#39;epsg:3857&#39;</span><span class="p">),</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">,</span><span class="s1">&#39;epsg:3857&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">boundtable</span><span class="p">)))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pixel</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="n">TEMP</span> <span class="k">VIEW</span> <span class="n">pixels</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">pixel</span><span class="p">,</span> <span class="n">shape</span> <span class="k">FROM</span> <span class="n">pointtable</span>
+<span class="k">LATERAL</span> <span class="k">VIEW</span> <span class="n">explode</span><span class="p">(</span><span class="n">ST_Pixelize</span><span class="p">(</span><span class="n">ST_Transform</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;epsg:4326&#39;</span><span class="p">,</span><span class="s1">&#39;epsg:3857&#39;</span><span class="p">),</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">ST_Transform</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="s1">&#39;epsg:4326&#39;</span><span class="p">,</span><span class="s1">&#39;epsg:3857&#39;</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">boundtable</span><span class="p">)))</span> <span class="k">AS</span> <span class="n">pixel</span>
 </code></pre></div>
 <p>This will give you a 256*256 resolution image after you run ST_Render at the end of this tutorial.</p>
 <div class="admonition warning">
@@ -3280,24 +3294,24 @@ This will register SedonaViz Kryo serializer.</p>
 </div>
 <h3 id="aggregate-pixels">Aggregate pixels<a class="headerlink" href="#aggregate-pixels" title="Permanent link">&para;</a></h3>
 <p>Many objects may be pixelized to the same pixel locations. You now need to aggregate them based on either their spatial aggregation or spatial observations such as temperature or humidity.</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">pixelaggregates</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">pixel</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">weight</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pixels</span><span class="w"></span>
-<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">pixel</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="n">TEMP</span> <span class="k">VIEW</span> <span class="n">pixelaggregates</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">pixel</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">weight</span>
+<span class="k">FROM</span> <span class="n">pixels</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">pixel</span>
 </code></pre></div>
 <p>The weight indicates the degree of spatial aggregation or spatial observations. Later on, it will determine the color of this pixel.</p>
 <h3 id="colorize-pixels">Colorize pixels<a class="headerlink" href="#colorize-pixels" title="Permanent link">&para;</a></h3>
 <p>Run the following command to assign colors for pixels based on their weights.</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">pixelaggregates</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">pixel</span><span class="p">,</span><span class="w"> </span><span class="n">ST_Colorize</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pixelaggregates</span><span class="p">))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">color</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pixelaggregates</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="n">TEMP</span> <span class="k">VIEW</span> <span class="n">pixelaggregates</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">pixel</span><span class="p">,</span> <span class="n">ST_Colorize</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">max</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">pixelaggregates</span><span class="p">))</span> <span class="k">as</span> <span class="n">color</span>
+<span class="k">FROM</span> <span class="n">pixelaggregates</span>
 </code></pre></div>
 <p>Please read <a href="../../api/viz/sql/#st_colorize">ST_Colorize</a> for a detailed API description.</p>
 <h3 id="render-the-image">Render the image<a class="headerlink" href="#render-the-image" title="Permanent link">&para;</a></h3>
 <p>Use ST_Render to plot all pixels on a single image.</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">images</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Render</span><span class="p">(</span><span class="n">pixel</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">image</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">boundtable</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">boundary</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pixelaggregates</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="n">TEMP</span> <span class="k">VIEW</span> <span class="n">images</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">ST_Render</span><span class="p">(</span><span class="n">pixel</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span> <span class="k">AS</span> <span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">boundtable</span><span class="p">)</span> <span class="k">AS</span> <span class="n">boundary</span>
+<span class="k">FROM</span> <span class="n">pixelaggregates</span>
 </code></pre></div>
 <p>This DataFrame will contain a Image type column which has only one image.</p>
 <h3 id="store-the-image-on-disk">Store the image on disk<a class="headerlink" href="#store-the-image-on-disk" title="Permanent link">&para;</a></h3>
@@ -3314,19 +3328,19 @@ This will register SedonaViz Kryo serializer.</p>
 <p>Please first do pixelization and pixel aggregation using the same commands in single image generation. In ST_Pixelize, you need specify a very high resolution, such as 1000*1000. Note that, each dimension should be divisible by 2^zoom-level </p>
 <h3 id="create-tile-name">Create tile name<a class="headerlink" href="#create-tile-name" title="Permanent link">&para;</a></h3>
 <p>Run the following command to compute the tile name for every pixels</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">pixelaggregates</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">pixel</span><span class="p">,</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">ST_TileName</span><span class="p">(</span><span class="n">pixel</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pid</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pixelaggregates</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="n">TEMP</span> <span class="k">VIEW</span> <span class="n">pixelaggregates</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">pixel</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">ST_TileName</span><span class="p">(</span><span class="n">pixel</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">AS</span> <span class="n">pid</span>
+<span class="k">FROM</span> <span class="n">pixelaggregates</span>
 </code></pre></div>
 <p>"3" is the zoom level for these map tiles.</p>
 <h3 id="colorize-pixels_1">Colorize pixels<a class="headerlink" href="#colorize-pixels_1" title="Permanent link">&para;</a></h3>
 <p>Use the same command explained in single image generation to assign colors.</p>
 <h3 id="render-map-tiles">Render map tiles<a class="headerlink" href="#render-map-tiles" title="Permanent link">&para;</a></h3>
 <p>You now need to group pixels by tiles and then render map tile images in parallel.</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">images</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Render</span><span class="p">(</span><span class="n">pixel</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">image</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pixelaggregates</span><span class="w"></span>
-<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">pid</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="n">TEMP</span> <span class="k">VIEW</span> <span class="n">images</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">ST_Render</span><span class="p">(</span><span class="n">pixel</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">AS</span> <span class="n">image</span>
+<span class="k">FROM</span> <span class="n">pixelaggregates</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">pid</span>
 </code></pre></div>
 <p>"3" is the zoom level for these map tiles.</p>
 <h3 id="store-map-tiles-on-disk">Store map tiles on disk<a class="headerlink" href="#store-map-tiles-on-disk" title="Permanent link">&para;</a></h3>
@@ -3439,7 +3453,7 @@ Apache Sedona is an effort undergoing incubation at <a href="http://www.apache.o
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5413a266.min.js"></script>
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
       
     
   </body>
