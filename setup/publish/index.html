@@ -3329,7 +3329,7 @@ rm report.txt
 <li>Make sure your armored PGP public key (must be encrypted by RSA-4096) is included in the <code>KEYS</code> file: <a href="https://dist.apache.org/repos/dist/dev/incubator/sedona/KEYS">https://dist.apache.org/repos/dist/dev/incubator/sedona/KEYS</a>, and publish in major key servers: <a href="https://pgp.mit.edu/">https://pgp.mit.edu/</a>, <a href="https://keyserver.ubuntu.com/">https://keyserver.ubuntu.com/</a>, <a href="http://keys.gnupg.net/">http://keys.gnupg.net/</a></li>
 <li>Create a folder on SVN, such as <code>sedona-1.2.0-incubating-rc2</code>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1
+svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2
 </code></pre></div></li>
 <li>In a folder other than the Sedona git repo, run the following script to create six files and two folders.
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -3361,12 +3361,12 @@ gpg -ab apache-sedona-1.2.0-incubating-bin.tar.gz
 </code></pre></div></li>
 <li>Upload six files to SVN and delete all created files using the following script
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz.sha512
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz.sha512
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-src.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-src.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-src.tar.gz.sha512
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-bin.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-bin.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-bin.tar.gz.sha512
 rm apache-sedona-1.2.0-incubating-src.tar.gz
 rm apache-sedona-1.2.0-incubating-src.tar.gz.asc
 rm apache-sedona-1.2.0-incubating-src.tar.gz.sha512
@@ -3384,11 +3384,11 @@ rm -rf apache-sedona-1.2.0-incubating-bin
 <li>Call for a vote in Sedona community and Apache incubator. Then close the staging repo.</li>
 </ol>
 <p>Here is a generated vote email. Please add changes at the end if needed:</p>
-<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.2.0-incubating-rc1
+<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.2.0-incubating-rc2
 
 Hi all,
 
-This is a call for vote on Apache Sedona 1.2.0-incubating-rc1. Please refer to the changes listed at the bottom of this email.
+This is a call for vote on Apache Sedona 1.2.0-incubating-rc2. Please refer to the changes listed at the bottom of this email.
 
 Release notes:
 https://github.com/apache/incubator-sedona/blob/sedona-1.2.0-incubating-rc2/docs/setup/release-notes.md
@@ -3403,7 +3403,7 @@ GPG public key to verify the Release:
 https://downloads.apache.org/incubator/sedona/KEYS
 
 Source code and binaries:
-https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/
+https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/
 
 The vote will be open for at least 72 hours or until a majority of at least 3 &quot;approve&quot; PMC votes are cast
 
@@ -3434,7 +3434,7 @@ Changes according to the comments on the previous release
 Original comment (Permalink from https://lists.apache.org/list.html): 
 </code></pre></div>
 <p>Here is a generated "pass" email:</p>
-<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.2.0-incubating-rc1
+<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.2.0-incubating-rc2
 
 Dear all,
 
@@ -3451,11 +3451,11 @@ approval by the IPMC. If this vote passes too, the release is accepted and will 
 </code></pre></div>
 <h3 id="vote-in-general-incubatorapacheorg">Vote in general incubator.apache.org<a class="headerlink" href="#vote-in-general-incubatorapacheorg" title="Permanent link">&para;</a></h3>
 <p>Here is a generated vote email. Please add changes at the end if needed:</p>
-<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.2.0-incubating-rc1
+<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.2.0-incubating-rc2
 
 Hi all,
 
-This is a call for vote on Apache Sedona 1.2.0-incubating-rc1. Please refer to the changes listed at the bottom of this email.
+This is a call for vote on Apache Sedona 1.2.0-incubating-rc2. Please refer to the changes listed at the bottom of this email.
 
 Sedona Community vote thread (Permalink from https://lists.apache.org/list.html):
 
@@ -3474,7 +3474,7 @@ GPG public key to verify the Release:
 https://downloads.apache.org/incubator/sedona/KEYS
 
 Source code and binaries:
-https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/
+https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/
 
 The vote will be open for at least 72 hours or until a majority of at least 3 &quot;approve&quot; PMC votes are cast
 
@@ -3505,7 +3505,7 @@ Changes according to the comments on the previous release
 Original comment (Permalink from https://lists.apache.org/list.html): 
 </code></pre></div>
 <p>Here is a generated "pass" email:</p>
-<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.2.0-incubating-rc1
+<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.2.0-incubating-rc2
 
 Dear all,
 
@@ -3561,12 +3561,12 @@ Apache Sedona (incubating) Team
 <li>Move all files in <a href="https://dist.apache.org/repos/dist/dev/incubator/sedona">https://dist.apache.org/repos/dist/dev/incubator/sedona</a> to <a href="https://dist.apache.org/repos/dist/release/incubator/sedona">https://dist.apache.org/repos/dist/release/incubator/sedona</a>, using svn
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz.asc
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz.sha512
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz.asc
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz.sha512
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-src.tar.gz
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-src.tar.gz.asc
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-src.tar.gz.sha512
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-bin.tar.gz
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-bin.tar.gz.asc
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.0-incubating-rc2/apache-sedona-1.2.0-incubating-bin.tar.gz.sha512
 svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating/apache-sedona-1.2.0-incubating-src.tar.gz
 svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating/apache-sedona-1.2.0-incubating-src.tar.gz.asc
 svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating/apache-sedona-1.2.0-incubating-src.tar.gz.sha512
