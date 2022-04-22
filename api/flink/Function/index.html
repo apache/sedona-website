@@ -792,34 +792,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../setup/publish/" class="md-nav__link">
-        Publish the code
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../setup/vote/" class="md-nav__link">
-        Vote the release
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -1983,6 +1955,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#st_asewkt" class="md-nav__link">
+    ST_AsEWKT
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2073,9 +2054,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2">
+          Contributor Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributor Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Contributor Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../community/rule/" class="md-nav__link">
-        Contributing rule
+        Rules
       </a>
     </li>
   
@@ -2088,9 +2095,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../community/contributor/" class="md-nav__link">
-        Committers
+      <a href="../../../community/develop/" class="md-nav__link">
+        Develop
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" type="checkbox" id="__nav_6_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          Committer Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Committer Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Committer Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/contributor/" class="md-nav__link">
+        PMC List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/publish/" class="md-nav__link">
+        Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/vote/" class="md-nav__link">
+        Vote the release
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2973,6 +3062,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#st_asewkt" class="md-nav__link">
+    ST_AsEWKT
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3097,13 +3195,25 @@
 </code></pre></div>
 <p>Input: <code>POLYGON ((-0.5 -0.5, -0.5 0.5, 0.5 0.5, 0.5 -0.5, -0.5 -0.5))</code></p>
 <p>Output: <code>POLYGON ((-0.5 -0.5, 0.5 -0.5, 0.5 0.5, -0.5 0.5, -0.5 -0.5))</code></p>
+<h2 id="st_asewkt">ST_AsEWKT<a class="headerlink" href="#st_asewkt" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return the Extended Well-Known Text representation of a geometry.
+EWKT is an extended version of WKT which includes the SRID of the geometry.
+The format originated in PostGIS but is supported by many GIS tools.
+If the geometry is lacking SRID a WKT format is produced.
+<a href="#ST_SetSRID">See ST_SetSRID</a></p>
+<p>Format: <code>ST_AsEWKT (A:geometry)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_AsEWKT</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="w"></span>
+</code></pre></div></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 13, 2022 16:28:36</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 20, 2022 15:35:46</span>
       
     
   </small>

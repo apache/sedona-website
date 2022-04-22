@@ -792,34 +792,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../setup/publish/" class="md-nav__link">
-        Publish the code
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../setup/vote/" class="md-nav__link">
-        Vote the release
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -1686,6 +1658,21 @@
   </a>  
   
   
+    <nav class="md-nav" aria-label="RS_HTML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#geotiff-dataframe-writer" class="md-nav__link">
+    Geotiff Dataframe Writer
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2057,9 +2044,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2">
+          Contributor Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributor Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Contributor Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../community/rule/" class="md-nav__link">
-        Contributing rule
+        Rules
       </a>
     </li>
   
@@ -2072,9 +2085,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../community/contributor/" class="md-nav__link">
-        Committers
+      <a href="../../../community/develop/" class="md-nav__link">
+        Develop
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" type="checkbox" id="__nav_6_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          Committer Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Committer Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Committer Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/contributor/" class="md-nav__link">
+        PMC List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/publish/" class="md-nav__link">
+        Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/vote/" class="md-nav__link">
+        Vote the release
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2937,6 +3032,21 @@
   </a>  
   
   
+    <nav class="md-nav" aria-label="RS_HTML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#geotiff-dataframe-writer" class="md-nav__link">
+    Geotiff Dataframe Writer
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2982,8 +3092,27 @@ as a Sedona geometry and is transformed to WGS84 (EPSG:4326) reference system.</
  |    |-- data: array (nullable = true)
  |    |    |-- element: double (containsNull = true)
 </code></pre></div>
+<p>There are three more optional parameters for reading GeoTiff:</p>
+<div class="highlight"><pre><span></span><code> |-- readfromCRS: Coordinate reference system of the geometry coordinates representing the location of the Geotiff. An example value of readfromCRS is EPSG:4326.
+ |-- readToCRS: If you want to tranform the Geotiff location geometry coordinates to a different coordinate reference system, you can define the target coordinate reference system with this option.
+ |-- disableErrorInCRS: (Default value false) =&gt; Indicates whether to ignore errors in CRS transformation.
+</code></pre></div>
+<p>An example with all GeoTiff read options:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">geotiffDF</span> <span class="o">=</span> <span class="n">sparkSession</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geotiff&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;dropInvalid&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;readFromCRS&quot;</span><span class="p">,</span> <span class="s">&quot;EPSG:4499&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;readToCRS&quot;</span><span class="p">,</span> <span class="s">&quot;EPSG:4326&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;disableErrorInCRS&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;YOUR_PATH&quot;</span><span class="p">)</span>
+<span class="n">geotiffDF</span><span class="p">.</span><span class="n">printSchema</span><span class="p">()</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code> |-- image: struct (nullable = true)
+ |    |-- origin: string (nullable = true)
+ |    |-- Geometry: geometry (nullable = true)
+ |    |-- height: integer (nullable = true)
+ |    |-- width: integer (nullable = true)
+ |    |-- nBands: integer (nullable = true)
+ |    |-- data: array (nullable = true)
+ |    |    |-- element: double (containsNull = true)
+</code></pre></div>
 <p>You can also select sub-attributes individually to construct a new DataFrame</p>
-<div class="highlight"><pre><span></span><code><span class="n">geotiffDF</span> <span class="o">=</span> <span class="n">geotiffDF</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">&quot;image.origin as origin&quot;</span><span class="p">,</span><span class="s">&quot;ST_GeomFromWkt(image.wkt) as Geom&quot;</span><span class="p">,</span> <span class="s">&quot;image.height as height&quot;</span><span class="p">,</span> <span class="s">&quot;image.width as width&quot;</span><span class="p">,</span> <span class="s">&quot;image.data as data&quot;</span><span class="p">,</span> <span class="s">&quot;image.nBands as bands&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">geotiffDF</span> <span class="o">=</span> <span class="n">geotiffDF</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">&quot;image.origin as origin&quot;</span><span class="p">,</span><span class="s">&quot;ST_GeomFromWkt(image.geometry) as Geom&quot;</span><span class="p">,</span> <span class="s">&quot;image.height as height&quot;</span><span class="p">,</span> <span class="s">&quot;image.width as width&quot;</span><span class="p">,</span> <span class="s">&quot;image.data as data&quot;</span><span class="p">,</span> <span class="s">&quot;image.nBands as bands&quot;</span><span class="p">)</span>
 <span class="n">geotiffDF</span><span class="p">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s">&quot;GeotiffDataframe&quot;</span><span class="p">)</span>
 <span class="n">geotiffDF</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
@@ -3054,13 +3183,65 @@ optional: alphaBand: Array[Double])</code></p>
 <span class="s">|&lt;img src=&quot;</span><span class="na">data:im</span><span class="err">...|</span>
 <span class="err">+</span><span class="na">--------------------</span><span class="err">+</span>
 </code></pre></div>
+<h3 id="geotiff-dataframe-writer">Geotiff Dataframe Writer<a class="headerlink" href="#geotiff-dataframe-writer" title="Permanent link">&para;</a></h3>
+<p>Introduction: You can write a GeoTiff dataframe as GeoTiff images using the spark <code>write</code> feature with the format <code>geotiff</code>.</p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Spark SQL example:</p>
+<p>The schema of the GeoTiff dataframe to be written can be one of the following two schemas:</p>
+<div class="highlight"><pre><span></span><code> |-- image: struct (nullable = true)
+ |    |-- origin: string (nullable = true)
+ |    |-- Geometry: geometry (nullable = true)
+ |    |-- height: integer (nullable = true)
+ |    |-- width: integer (nullable = true)
+ |    |-- nBands: integer (nullable = true)
+ |    |-- data: array (nullable = true)
+ |    |    |-- element: double (containsNull = true)
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code> |-- origin: string (nullable = true)
+ |-- Geometry: geometry (nullable = true)
+ |-- height: integer (nullable = true)
+ |-- width: integer (nullable = true)
+ |-- nBands: integer (nullable = true)
+ |-- data: array (nullable = true)
+ |    |-- element: double (containsNull = true)
+</code></pre></div>
+<p>Field names can be renamed, but schema should exactly match with one of the above two schemas. The output path could be a path to a directory where GeoTiff images will be saved. If the directory already exists, <code>write</code> should be called in <code>overwrite</code> mode.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">dfToWrite</span> <span class="o">=</span> <span class="n">sparkSession</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geotiff&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;dropInvalid&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;readToCRS&quot;</span><span class="p">,</span> <span class="s">&quot;EPSG:4326&quot;</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;PATH_TO_INPUT_GEOTIFF_IMAGES&quot;</span><span class="p">)</span>
+<span class="n">dfToWrite</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geotiff&quot;</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="s">&quot;DESTINATION_PATH&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>You can override an existing path with the following approach:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dfToWrite</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="s">&quot;overwrite&quot;</span><span class="p">).</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geotiff&quot;</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="s">&quot;DESTINATION_PATH&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>You can also extract the columns nested within <code>image</code> column and write the dataframe as GeoTiff image.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dfToWrite</span> <span class="o">=</span> <span class="n">dfToWrite</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">&quot;image.origin as origin&quot;</span><span class="p">,</span><span class="s">&quot;image.geometry as geometry&quot;</span><span class="p">,</span> <span class="s">&quot;image.height as height&quot;</span><span class="p">,</span> <span class="s">&quot;image.width as width&quot;</span><span class="p">,</span> <span class="s">&quot;image.data as data&quot;</span><span class="p">,</span> <span class="s">&quot;image.nBands as nBands&quot;</span><span class="p">)</span>
+<span class="n">dfToWrite</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="s">&quot;overwrite&quot;</span><span class="p">).</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geotiff&quot;</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="s">&quot;DESTINATION_PATH&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>If you want the saved GeoTiff images not to be distributed into multiple partitions, you can call coalesce to merge all files in a single partition.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dfToWrite</span><span class="p">.</span><span class="n">coalesce</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">write</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="s">&quot;overwrite&quot;</span><span class="p">).</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geotiff&quot;</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="s">&quot;DESTINATION_PATH&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>In case, you rename the columns of GeoTiff dataframe, you can set the corresponding column names with the <code>option</code> parameter. All available optional parameters are listed below:</p>
+<div class="highlight"><pre><span></span><code> |-- writeToCRS: (Default value &quot;EPSG:4326&quot;) =&gt; Coordinate reference system of the geometry coordinates representing the location of the Geotiff.
+ |-- fieldImage: (Default value &quot;image&quot;) =&gt; Indicates the image column of GeoTiff DataFrame.
+ |-- fieldOrigin: (Default value &quot;origin&quot;) =&gt; Indicates the origin column of GeoTiff DataFrame.
+ |-- fieldNBands: (Default value &quot;nBands&quot;) =&gt; Indicates the nBands column of GeoTiff DataFrame.
+ |-- fieldWidth: (Default value &quot;width&quot;) =&gt; Indicates the width column of GeoTiff DataFrame.
+ |-- fieldHeight: (Default value &quot;height&quot;) =&gt; Indicates the height column of GeoTiff DataFrame.
+ |-- fieldGeometry: (Default value &quot;geometry&quot;) =&gt; Indicates the geometry column of GeoTiff DataFrame.
+ |-- fieldData: (Default value &quot;data&quot;) =&gt; Indicates the data column of GeoTiff DataFrame.
+</code></pre></div>
+<p>An example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dfToWrite</span> <span class="o">=</span> <span class="n">sparkSession</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geotiff&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;dropInvalid&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;readToCRS&quot;</span><span class="p">,</span> <span class="s">&quot;EPSG:4326&quot;</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;PATH_TO_INPUT_GEOTIFF_IMAGES&quot;</span><span class="p">)</span>
+<span class="n">dfToWrite</span> <span class="o">=</span> <span class="n">dfToWrite</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">&quot;image.origin as source&quot;</span><span class="p">,</span><span class="s">&quot;ST_GeomFromWkt(image.geometry) as geom&quot;</span><span class="p">,</span> <span class="s">&quot;image.height as height&quot;</span><span class="p">,</span> <span class="s">&quot;image.width as width&quot;</span><span class="p">,</span> <span class="s">&quot;image.data as data&quot;</span><span class="p">,</span> <span class="s">&quot;image.nBands as bands&quot;</span><span class="p">)</span>
+<span class="n">dfToWrite</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="s">&quot;overwrite&quot;</span><span class="p">).</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geotiff&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;writeToCRS&quot;</span><span class="p">,</span> <span class="s">&quot;EPSG:4326&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;fieldOrigin&quot;</span><span class="p">,</span> <span class="s">&quot;source&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;fieldGeometry&quot;</span><span class="p">,</span> <span class="s">&quot;geom&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;fieldNBands&quot;</span><span class="p">,</span> <span class="s">&quot;bands&quot;</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="s">&quot;DESTINATION_PATH&quot;</span><span class="p">)</span>
+</code></pre></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 1, 2021 23:21:11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 20, 2022 21:35:04</span>
       
     
   </small>

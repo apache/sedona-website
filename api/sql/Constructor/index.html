@@ -792,34 +792,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../setup/publish/" class="md-nav__link">
-        Publish the code
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../setup/vote/" class="md-nav__link">
-        Vote the release
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -1614,6 +1586,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_linefromtext" class="md-nav__link">
+    ST_LineFromText
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_polygonfromenvelope" class="md-nav__link">
     ST_PolygonFromEnvelope
   </a>  
@@ -2102,9 +2083,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2">
+          Contributor Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributor Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Contributor Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../community/rule/" class="md-nav__link">
-        Contributing rule
+        Rules
       </a>
     </li>
   
@@ -2117,9 +2124,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../community/contributor/" class="md-nav__link">
-        Committers
+      <a href="../../../community/develop/" class="md-nav__link">
+        Develop
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" type="checkbox" id="__nav_6_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          Committer Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Committer Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Committer Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/contributor/" class="md-nav__link">
+        PMC List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/publish/" class="md-nav__link">
+        Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/vote/" class="md-nav__link">
+        Vote the release
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -3013,6 +3102,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_linefromtext" class="md-nav__link">
+    ST_LineFromText
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_polygonfromenvelope" class="md-nav__link">
     ST_PolygonFromEnvelope
   </a>  
@@ -3166,6 +3264,17 @@ Format: <code>ST_Point (X:decimal, Y:decimal, Z:decimal)</code></p>
 </code></pre></div></p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_LineStringFromText</span><span class="p">(</span><span class="s1">&#39;-74.0428197,40.6867969,-74.0421975,40.6921336,-74.0508020,40.6912794&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">linestringshape</span><span class="w"></span>
 </code></pre></div>
+<h2 id="st_linefromtext">ST_LineFromText<a class="headerlink" href="#st_linefromtext" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Line from Wkt text</p>
+<p>Format:
+<code>ST_LineFromText (Wkt:string)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_LineFromText</span><span class="p">(</span><span class="n">linetable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">lineshape</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">linetable</span><span class="w"></span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_LineFromText</span><span class="p">(</span><span class="s1">&#39;Linestring(1 2, 3 4)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">line</span><span class="w"></span>
+</code></pre></div>
 <h2 id="st_polygonfromenvelope">ST_PolygonFromEnvelope<a class="headerlink" href="#st_polygonfromenvelope" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Polygon from MinX, MinY, MaxX, MaxY.</p>
 <p>Format: <code>ST_PolygonFromEnvelope (MinX:decimal, MinY:decimal, MaxX:decimal, MaxY:decimal)</code></p>
@@ -3195,7 +3304,7 @@ Format: <code>ST_Point (X:decimal, Y:decimal, Z:decimal)</code></p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">December 3, 2021 07:59:03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 20, 2022 18:16:58</span>
       
     
   </small>

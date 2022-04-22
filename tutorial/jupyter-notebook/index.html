@@ -792,34 +792,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../setup/publish/" class="md-nav__link">
-        Publish the code
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../setup/vote/" class="md-nav__link">
-        Vote the release
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -1988,9 +1960,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2">
+          Contributor Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributor Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Contributor Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../community/rule/" class="md-nav__link">
-        Contributing rule
+        Rules
       </a>
     </li>
   
@@ -2003,9 +2001,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../../community/contributor/" class="md-nav__link">
-        Committers
+      <a href="../../community/develop/" class="md-nav__link">
+        Develop
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" type="checkbox" id="__nav_6_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          Committer Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Committer Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Committer Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/contributor/" class="md-nav__link">
+        PMC List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/publish/" class="md-nav__link">
+        Publish the code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/vote/" class="md-nav__link">
+        Vote the release
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2843,8 +2923,8 @@
 <p>Please use the following steps to run Jupyter notebook with Pipenv on your machine</p>
 <ol>
 <li>Clone Sedona GitHub repo or download the source code</li>
-<li>Install Sedona Python from PyPi or GitHub source: Read <a href="/download/overview/#install-sedona">Install Sedona Python</a> to learn.</li>
-<li>Prepare python-adapter jar: Read <a href="/download/overview/#prepare-python-adapter-jar">Install Sedona Python</a> to learn.</li>
+<li>Install Sedona Python from PyPi or GitHub source: Read <a href="/setup/install-sedona">Install Sedona Python</a> to learn.</li>
+<li>Prepare python-adapter jar: Read <a href="/setup/install-python/#prepare-python-adapter-jar">Install Sedona Python</a> to learn.</li>
 <li>Setup pipenv python version. For Spark 3.0, Sedona supports 3.7 - 3.9
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> binder
 pipenv --python <span class="m">3</span>.8
@@ -2860,7 +2940,7 @@ pipenv shell
 <li>In the pipenv shell, do
 <div class="highlight"><pre><span></span><code>python -m ipykernel install --user --name<span class="o">=</span>apache-sedona
 </code></pre></div></li>
-<li>Setup environment variables <code>SPARK_HOME</code> and <code>PYTHONPATH</code> if you didn't do it before. Read <a href="/download/overview/#setup-environment-variables">Install Sedona Python</a> to learn.</li>
+<li>Setup environment variables <code>SPARK_HOME</code> and <code>PYTHONPATH</code> if you didn't do it before. Read <a href="/setup/install-python/#setup-environment-variables">Install Sedona Python</a> to learn.</li>
 <li>Launch jupyter notebook: <code>jupyter notebook</code></li>
 <li>Select Sedona notebook. In your notebook, Kernel -&gt; Change Kernel. Your kernel should now be an option.</li>
 </ol>
@@ -2870,7 +2950,7 @@ pipenv shell
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 27, 2021 18:55:27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 22, 2022 01:55:00</span>
       
     
   </small>
