@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. Sedona extends Apache Spark and Apache Flink with a set of out-of-the-box distributed Spatial Datasets and Spatial SQL that efficiently load, process, and analyze large-scale spatial data across machines.">
+        <meta name="description" content="Apache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. Sedona extends existing cluster computing systems, such as Apache Spark and Apache Flink, with a set of out-of-the-box distributed Spatial Datasets and Spatial SQL that efficiently load, process, and analyze large-scale spatial data across machines.">
       
       
       
@@ -1517,529 +1517,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      
-        Table of contents
-      
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_distance" class="md-nav__link">
-    ST_Distance
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_3ddistance" class="md-nav__link">
-    ST_3DDistance
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_convexhull" class="md-nav__link">
-    ST_ConvexHull
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_envelope" class="md-nav__link">
-    ST_Envelope
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_length" class="md-nav__link">
-    ST_Length
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_area" class="md-nav__link">
-    ST_Area
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_centroid" class="md-nav__link">
-    ST_Centroid
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_transform" class="md-nav__link">
-    ST_Transform
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_intersection" class="md-nav__link">
-    ST_Intersection
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_isvalid" class="md-nav__link">
-    ST_IsValid
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_makevalid" class="md-nav__link">
-    ST_MakeValid
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_precisionreduce" class="md-nav__link">
-    ST_PrecisionReduce
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_issimple" class="md-nav__link">
-    ST_IsSimple
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_buffer" class="md-nav__link">
-    ST_Buffer
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_astext" class="md-nav__link">
-    ST_AsText
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_asgeojson" class="md-nav__link">
-    ST_AsGeoJSON
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_asbinary" class="md-nav__link">
-    ST_AsBinary
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_asewkb" class="md-nav__link">
-    ST_AsEWKB
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_asewkt" class="md-nav__link">
-    ST_AsEWKT
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_srid" class="md-nav__link">
-    ST_SRID
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_setsrid" class="md-nav__link">
-    ST_SetSRID
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_npoints" class="md-nav__link">
-    ST_NPoints
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_simplifypreservetopology" class="md-nav__link">
-    ST_SimplifyPreserveTopology
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_geometrytype" class="md-nav__link">
-    ST_GeometryType
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_linemerge" class="md-nav__link">
-    ST_LineMerge
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_azimuth" class="md-nav__link">
-    ST_Azimuth
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_x" class="md-nav__link">
-    ST_X
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_y" class="md-nav__link">
-    ST_Y
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_z" class="md-nav__link">
-    ST_Z
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_startpoint" class="md-nav__link">
-    ST_StartPoint
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_endpoint" class="md-nav__link">
-    ST_EndPoint
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_boundary" class="md-nav__link">
-    ST_Boundary
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_exteriorring" class="md-nav__link">
-    ST_ExteriorRing
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_geometryn" class="md-nav__link">
-    ST_GeometryN
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_interiorringn" class="md-nav__link">
-    ST_InteriorRingN
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_dump" class="md-nav__link">
-    ST_Dump
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_dumppoints" class="md-nav__link">
-    ST_DumpPoints
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_isclosed" class="md-nav__link">
-    ST_IsClosed
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_numinteriorrings" class="md-nav__link">
-    ST_NumInteriorRings
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_addpoint" class="md-nav__link">
-    ST_AddPoint
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_removepoint" class="md-nav__link">
-    ST_RemovePoint
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_isring" class="md-nav__link">
-    ST_IsRing
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_numgeometries" class="md-nav__link">
-    ST_NumGeometries
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_flipcoordinates" class="md-nav__link">
-    ST_FlipCoordinates
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_minimumboundingradius" class="md-nav__link">
-    ST_MinimumBoundingRadius
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_minimumboundingcircle" class="md-nav__link">
-    ST_MinimumBoundingCircle
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_subdivide" class="md-nav__link">
-    ST_SubDivide
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_subdivideexplode" class="md-nav__link">
-    ST_SubDivideExplode
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_makepolygon" class="md-nav__link">
-    ST_MakePolygon
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_geohash" class="md-nav__link">
-    ST_GeoHash
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_collect" class="md-nav__link">
-    ST_Collect
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_multi" class="md-nav__link">
-    ST_Multi
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_difference" class="md-nav__link">
-    ST_Difference
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_symdifference" class="md-nav__link">
-    ST_SymDifference
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_union" class="md-nav__link">
-    ST_Union
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_pointonsurface" class="md-nav__link">
-    ST_PointOnSurface
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_reverse" class="md-nav__link">
-    ST_Reverse
-  </a>  
-  
-  
-</li>
-      
-    </ul>
   
 </nav>
       
@@ -3433,529 +2912,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      
-        Table of contents
-      
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_distance" class="md-nav__link">
-    ST_Distance
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_3ddistance" class="md-nav__link">
-    ST_3DDistance
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_convexhull" class="md-nav__link">
-    ST_ConvexHull
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_envelope" class="md-nav__link">
-    ST_Envelope
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_length" class="md-nav__link">
-    ST_Length
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_area" class="md-nav__link">
-    ST_Area
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_centroid" class="md-nav__link">
-    ST_Centroid
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_transform" class="md-nav__link">
-    ST_Transform
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_intersection" class="md-nav__link">
-    ST_Intersection
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_isvalid" class="md-nav__link">
-    ST_IsValid
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_makevalid" class="md-nav__link">
-    ST_MakeValid
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_precisionreduce" class="md-nav__link">
-    ST_PrecisionReduce
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_issimple" class="md-nav__link">
-    ST_IsSimple
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_buffer" class="md-nav__link">
-    ST_Buffer
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_astext" class="md-nav__link">
-    ST_AsText
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_asgeojson" class="md-nav__link">
-    ST_AsGeoJSON
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_asbinary" class="md-nav__link">
-    ST_AsBinary
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_asewkb" class="md-nav__link">
-    ST_AsEWKB
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_asewkt" class="md-nav__link">
-    ST_AsEWKT
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_srid" class="md-nav__link">
-    ST_SRID
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_setsrid" class="md-nav__link">
-    ST_SetSRID
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_npoints" class="md-nav__link">
-    ST_NPoints
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_simplifypreservetopology" class="md-nav__link">
-    ST_SimplifyPreserveTopology
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_geometrytype" class="md-nav__link">
-    ST_GeometryType
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_linemerge" class="md-nav__link">
-    ST_LineMerge
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_azimuth" class="md-nav__link">
-    ST_Azimuth
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_x" class="md-nav__link">
-    ST_X
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_y" class="md-nav__link">
-    ST_Y
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_z" class="md-nav__link">
-    ST_Z
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_startpoint" class="md-nav__link">
-    ST_StartPoint
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_endpoint" class="md-nav__link">
-    ST_EndPoint
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_boundary" class="md-nav__link">
-    ST_Boundary
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_exteriorring" class="md-nav__link">
-    ST_ExteriorRing
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_geometryn" class="md-nav__link">
-    ST_GeometryN
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_interiorringn" class="md-nav__link">
-    ST_InteriorRingN
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_dump" class="md-nav__link">
-    ST_Dump
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_dumppoints" class="md-nav__link">
-    ST_DumpPoints
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_isclosed" class="md-nav__link">
-    ST_IsClosed
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_numinteriorrings" class="md-nav__link">
-    ST_NumInteriorRings
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_addpoint" class="md-nav__link">
-    ST_AddPoint
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_removepoint" class="md-nav__link">
-    ST_RemovePoint
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_isring" class="md-nav__link">
-    ST_IsRing
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_numgeometries" class="md-nav__link">
-    ST_NumGeometries
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_flipcoordinates" class="md-nav__link">
-    ST_FlipCoordinates
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_minimumboundingradius" class="md-nav__link">
-    ST_MinimumBoundingRadius
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_minimumboundingcircle" class="md-nav__link">
-    ST_MinimumBoundingCircle
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_subdivide" class="md-nav__link">
-    ST_SubDivide
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_subdivideexplode" class="md-nav__link">
-    ST_SubDivideExplode
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_makepolygon" class="md-nav__link">
-    ST_MakePolygon
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_geohash" class="md-nav__link">
-    ST_GeoHash
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_collect" class="md-nav__link">
-    ST_Collect
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_multi" class="md-nav__link">
-    ST_Multi
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_difference" class="md-nav__link">
-    ST_Difference
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_symdifference" class="md-nav__link">
-    ST_SymDifference
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_union" class="md-nav__link">
-    ST_Union
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_pointonsurface" class="md-nav__link">
-    ST_PointOnSurface
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_reverse" class="md-nav__link">
-    ST_Reverse
-  </a>  
-  
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -3975,8 +2933,6 @@
 
 
 
-  <h1>Function</h1>
-
 <h2 id="st_distance">ST_Distance<a class="headerlink" href="#st_distance" title="Permanent link">&para;</a></h2>
 <p>Introduction: Return the Euclidean distance between A and B</p>
 <p>Format: <code>ST_Distance (A:geometry, B:geometry)</code></p>
@@ -3985,6 +2941,22 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Distance</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">,</span><span class="w"> </span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span><span class="w"></span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="w"></span>
 </code></pre></div></p>
+<h2 id="st_ymin">ST_YMin<a class="headerlink" href="#st_ymin" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return the minimum Y coordinate of A</p>
+<p>Format: <code>ST_Y_Min (A:geometry)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_YMin</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POLYGON((0 0 1, 1 1 1, 1 2 1, 1 1 1, 0 0 1))&#39;</span><span class="p">))</span><span class="w"></span>
+</code></pre></div></p>
+<p>Output : 0</p>
+<h2 id="st_ymax">ST_YMax<a class="headerlink" href="#st_ymax" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return the minimum Y coordinate of A</p>
+<p>Format: <code>ST_YMax (A:geometry)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_YMax</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POLYGON((0 0 1, 1 1 1, 1 2 1, 1 1 1, 0 0 1))&#39;</span><span class="p">))</span><span class="w"></span>
+</code></pre></div></p>
+<p>Output: 2</p>
 <h2 id="st_3ddistance">ST_3DDistance<a class="headerlink" href="#st_3ddistance" title="Permanent link">&para;</a></h2>
 <p>Introduction: Return the 3-dimensional minimum cartesian distance between A and B</p>
 <p>Format: <code>ST_3DDistance (A:geometry, B:geometry)</code></p>
@@ -4072,6 +3044,14 @@
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_IsValid</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="w"></span>
+</code></pre></div>
+<h2 id="st_isempty">ST_IsEmpty<a class="headerlink" href="#st_isempty" title="Permanent link">&para;</a></h2>
+<p>Introduction: Test if a geometry is empty geometry</p>
+<p>Format: <code>ST_IsEmpty (A:geometry)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Spark SQL example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_IsEmpty</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span><span class="w"></span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="w"></span>
 </code></pre></div>
 <h2 id="st_makevalid">ST_MakeValid<a class="headerlink" href="#st_makevalid" title="Permanent link">&para;</a></h2>
@@ -4639,13 +3619,80 @@ SELECT ST_AsText(ST_PointOnSurface(ST_GeomFromText(&#39;LINESTRING(0 5 1, 0 0 1,
 |LINESTRING (3 6, 2 4, 1 2, 0 0)                                |
 +---------------------------------------------------------------+
 </code></pre></div>
+<h2 id="st_pointn">ST_PointN<a class="headerlink" href="#st_pointn" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return the Nth point in a single linestring or circular linestring in the geometry. Negative values are counted backwards from the end of the LineString, so that -1 is the last point. Returns NULL if there is no linestring in the geometry.</p>
+<p>Format: <code>ST_PointN(geom: geometry, n: integer)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_PointN</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="ss">&quot;LINESTRING(0 0, 1 2, 2 4, 3 6)&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
+</code></pre></div></p>
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code>+---------------------------------------------------------------+
+|geom                                                           |
++---------------------------------------------------------------+
+|POINT (1 2)                                                    |
++---------------------------------------------------------------+
+</code></pre></div>
+<h1 id="result">Result:<a class="headerlink" href="#result" title="Permanent link">&para;</a></h1>
+<h2 id="st_force_2d">ST_Force_2D<a class="headerlink" href="#st_force_2d" title="Permanent link">&para;</a></h2>
+<p>Introduction: Forces the geometries into a "2-dimensional mode" so that all output representations will only have the X and Y coordinates</p>
+<p>Format: <code>ST_Force_2D (A:geometry)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_AsText</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">ST_Force_2D</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POLYGON((0 0 2,0 5 2,5 0 2,0 0 2),(1 1 2,3 1 2,1 3 2,1 1 2))&#39;</span><span class="p">))</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
+</code></pre></div>
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code>+---------------------------------------------------------------+
+|geom                                                           |
++---------------------------------------------------------------+
+|POLYGON((0 0,0 5,5 0,0 0),(1 1,3 1,1 3,1 1))                   |
++---------------------------------------------------------------+
+</code></pre></div>
+<h2 id="st_xmax">ST_XMax<a class="headerlink" href="#st_xmax" title="Permanent link">&para;</a></h2>
+<p>Introduction: Returns the maximum X coordinate of a geometry</p>
+<p>Format: <code>ST_XMax (A:geometry)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_XMax</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">geometry</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">xmax</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">df</span><span class="w"></span>
+</code></pre></div>
+<p>Input: <code>POLYGON ((-1 -11, 0 10, 1 11, 2 12, -1 -11))</code></p>
+<p>Output: <code>2</code></p>
+<h2 id="st_xmin">ST_XMin<a class="headerlink" href="#st_xmin" title="Permanent link">&para;</a></h2>
+<p>Introduction: Returns the minimum X coordinate of a geometry</p>
+<p>Format: <code>ST_XMin (A:geometry)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_XMin</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">geometry</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">xmin</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">df</span><span class="w"></span>
+</code></pre></div>
+<p>Input: <code>POLYGON ((-1 -11, 0 10, 1 11, 2 12, -1 -11))</code></p>
+<p>Output: <code>-1</code></p>
+<h2 id="st_buildarea">ST_BuildArea<a class="headerlink" href="#st_buildarea" title="Permanent link">&para;</a></h2>
+<p>Introduction: Returns the areal geometry formed by the constituent linework of the input geometry.</p>
+<p>Format: <code>ST_BuildArea (A:geometry)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_BuildArea</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;MULTILINESTRING((0 0, 20 0, 20 20, 0 20, 0 0),(2 2, 18 2, 18 18, 2 18, 2 2))&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
+</code></pre></div>
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code>+----------------------------------------------------------------------------+
+|geom                                                                        |
++----------------------------------------------------------------------------+
+|POLYGON((0 0,0 20,20 20,20 0,0 0),(2 2,18 2,18 18,2 18,2 2))                |
++----------------------------------------------------------------------------+
+</code></pre></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 20, 2022 15:35:46</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 10, 2022 09:44:46</span>
       
     
   </small>

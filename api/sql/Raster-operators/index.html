@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. Sedona extends Apache Spark and Apache Flink with a set of out-of-the-box distributed Spatial Datasets and Spatial SQL that efficiently load, process, and analyze large-scale spatial data across machines.">
+        <meta name="description" content="Apache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. Sedona extends existing cluster computing systems, such as Apache Spark and Apache Flink, with a set of out-of-the-box distributed Spatial Datasets and Spatial SQL that efficiently load, process, and analyze large-scale spatial data across machines.">
       
       
       
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rs_addbands" class="md-skip">
+        <a href="#rs_add" class="md-skip">
           Skip to content
         </a>
       
@@ -1631,8 +1631,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_addbands" class="md-nav__link">
-    RS_AddBands
+  <a href="#rs_add" class="md-nav__link">
+    RS_Add
   </a>  
   
   
@@ -1640,8 +1640,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_subtractbands" class="md-nav__link">
-    RS_SubtractBands
+  <a href="#rs_subtract" class="md-nav__link">
+    RS_Subtract
   </a>  
   
   
@@ -1649,8 +1649,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_multiplybands" class="md-nav__link">
-    RS_MultiplyBands
+  <a href="#rs_multiply" class="md-nav__link">
+    RS_Multiply
   </a>  
   
   
@@ -1658,8 +1658,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_dividebands" class="md-nav__link">
-    RS_DivideBands
+  <a href="#rs_divide" class="md-nav__link">
+    RS_Divide
   </a>  
   
   
@@ -1813,6 +1813,15 @@
   
   <a href="#rs_normalize" class="md-nav__link">
     RS_Normalize
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#rs_append" class="md-nav__link">
+    RS_Append
   </a>  
   
   
@@ -3120,8 +3129,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_addbands" class="md-nav__link">
-    RS_AddBands
+  <a href="#rs_add" class="md-nav__link">
+    RS_Add
   </a>  
   
   
@@ -3129,8 +3138,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_subtractbands" class="md-nav__link">
-    RS_SubtractBands
+  <a href="#rs_subtract" class="md-nav__link">
+    RS_Subtract
   </a>  
   
   
@@ -3138,8 +3147,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_multiplybands" class="md-nav__link">
-    RS_MultiplyBands
+  <a href="#rs_multiply" class="md-nav__link">
+    RS_Multiply
   </a>  
   
   
@@ -3147,8 +3156,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_dividebands" class="md-nav__link">
-    RS_DivideBands
+  <a href="#rs_divide" class="md-nav__link">
+    RS_Divide
   </a>  
   
   
@@ -3307,6 +3316,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#rs_append" class="md-nav__link">
+    RS_Append
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3329,33 +3347,33 @@
 
   <h1>Raster operators</h1>
 
-<h2 id="rs_addbands">RS_AddBands<a class="headerlink" href="#rs_addbands" title="Permanent link">&para;</a></h2>
+<h2 id="rs_add">RS_Add<a class="headerlink" href="#rs_add" title="Permanent link">&para;</a></h2>
 <p>Introduction: Add two spectral bands in a Geotiff image </p>
-<p>Format: <code>RS_AddBands (Band1: Array[Double], Band2: Array[Double])</code></p>
+<p>Format: <code>RS_Add (Band1: Array[Double], Band2: Array[Double])</code></p>
 <p>Since: <code>v1.1.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">sumDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_AddBands(band1, band2) as sumOfBands from dataframe&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">sumDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_Add(band1, band2) as sumOfBands from dataframe&quot;</span><span class="p">)</span>
 </code></pre></div></p>
-<h2 id="rs_subtractbands">RS_SubtractBands<a class="headerlink" href="#rs_subtractbands" title="Permanent link">&para;</a></h2>
+<h2 id="rs_subtract">RS_Subtract<a class="headerlink" href="#rs_subtract" title="Permanent link">&para;</a></h2>
 <p>Introduction: Subtract two spectral bands in a Geotiff image(band2 - band1)</p>
-<p>Format: <code>RS_SubtractBands (Band1: Array[Double], Band2: Array[Double])</code></p>
+<p>Format: <code>RS_Subtract (Band1: Array[Double], Band2: Array[Double])</code></p>
 <p>Since: <code>v1.1.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">subtractDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_SubtractBands(band1, band2) as differenceOfOfBands from dataframe&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">subtractDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_Subtract(band1, band2) as differenceOfOfBands from dataframe&quot;</span><span class="p">)</span>
 </code></pre></div></p>
-<h2 id="rs_multiplybands">RS_MultiplyBands<a class="headerlink" href="#rs_multiplybands" title="Permanent link">&para;</a></h2>
+<h2 id="rs_multiply">RS_Multiply<a class="headerlink" href="#rs_multiply" title="Permanent link">&para;</a></h2>
 <p>Introduction: Multiply two spectral bands in a Geotiff image</p>
-<p>Format: <code>RS_MultiplyBands (Band1: Array[Double], Band2: Array[Double])</code></p>
+<p>Format: <code>RS_Multiply (Band1: Array[Double], Band2: Array[Double])</code></p>
 <p>Since: <code>v1.1.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">multiplyDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_MultiplyBands(band1, band2) as multiplyBands from dataframe&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">multiplyDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_Multiply(band1, band2) as multiplyBands from dataframe&quot;</span><span class="p">)</span>
 </code></pre></div></p>
-<h2 id="rs_dividebands">RS_DivideBands<a class="headerlink" href="#rs_dividebands" title="Permanent link">&para;</a></h2>
+<h2 id="rs_divide">RS_Divide<a class="headerlink" href="#rs_divide" title="Permanent link">&para;</a></h2>
 <p>Introduction: Divide band1 with band2 from a geotiff image</p>
-<p>Format: <code>RS_DivideBands (Band1: Array[Double], Band2: Array[Double])</code></p>
+<p>Format: <code>RS_Divide (Band1: Array[Double], Band2: Array[Double])</code></p>
 <p>Since: <code>v1.1.0</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">multiplyDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_DivideBands(band1, band2) as divideBands from dataframe&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">multiplyDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_Divide(band1, band2) as divideBands from dataframe&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <h2 id="rs_multiplyfactor">RS_MultiplyFactor<a class="headerlink" href="#rs_multiplyfactor" title="Permanent link">&para;</a></h2>
 <p>Introduction: Multiply a factor to a spectral band in a geotiff image</p>
@@ -3475,13 +3493,20 @@
 <p>Spark SQL example
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">RS_Normalize</span><span class="p">(</span><span class="n">band</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></p>
+<h2 id="rs_append">RS_Append<a class="headerlink" href="#rs_append" title="Permanent link">&para;</a></h2>
+<p>Introduction: Appends a new band to the end of Geotiff image data and returns the new data. The new band to be appended can be a normalized difference index between two bands (example: NBR, NDBI). Normalized difference index between two bands can be calculated with RS_NormalizedDifference operator described earlier in this page. Specific bands can be retrieved using RS_GetBand operator described <a href="../Raster-loader/">here</a>.</p>
+<p>Format: <code>RS_Append(data: Array[Double], newBand: Array[Double], nBands: Int)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">dfAppended</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_Append(data, normalizedDifference, nBands) as dataEdited from dataframe&quot;</span><span class="p">)</span>
+</code></pre></div></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">January 11, 2022 17:52:03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 22, 2022 20:54:59</span>
       
     
   </small>

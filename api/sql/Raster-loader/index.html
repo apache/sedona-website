@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. Sedona extends Apache Spark and Apache Flink with a set of out-of-the-box distributed Spatial Datasets and Spatial SQL that efficiently load, process, and analyze large-scale spatial data across machines.">
+        <meta name="description" content="Apache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. Sedona extends existing cluster computing systems, such as Apache Spark and Apache Flink, with a set of out-of-the-box distributed Spatial Datasets and Spatial SQL that efficiently load, process, and analyze large-scale spatial data across machines.">
       
       
       
@@ -1658,20 +1658,14 @@
   </a>  
   
   
-    <nav class="md-nav" aria-label="RS_HTML">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   
   <a href="#geotiff-dataframe-writer" class="md-nav__link">
     Geotiff Dataframe Writer
   </a>  
   
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3032,20 +3026,14 @@
   </a>  
   
   
-    <nav class="md-nav" aria-label="RS_HTML">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   
   <a href="#geotiff-dataframe-writer" class="md-nav__link">
     Geotiff Dataframe Writer
   </a>  
   
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3129,6 +3117,10 @@ as a Sedona geometry and is transformed to WGS84 (EPSG:4326) reference system.</
 <p>The number of total bands can be obtained from the GeoTiff loader</p>
 <p>Format: <code>RS_GetBand (allBandValues: Array[Double], targetBand:Int, totalBands:Int)</code></p>
 <p>Since: <code>v1.1.0</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Index of targetBand starts from 1 (instead of 0). Index of the first band is 1.</p>
+</div>
 <p>Spark SQL example:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="nc">BandDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_GetBand(data, 2, Band) as targetBand from GeotiffDataframe&quot;</span><span class="p">)</span>
 <span class="nc">BandDF</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
@@ -3183,7 +3175,7 @@ optional: alphaBand: Array[Double])</code></p>
 <span class="s">|&lt;img src=&quot;</span><span class="na">data:im</span><span class="err">...|</span>
 <span class="err">+</span><span class="na">--------------------</span><span class="err">+</span>
 </code></pre></div>
-<h3 id="geotiff-dataframe-writer">Geotiff Dataframe Writer<a class="headerlink" href="#geotiff-dataframe-writer" title="Permanent link">&para;</a></h3>
+<h2 id="geotiff-dataframe-writer">Geotiff Dataframe Writer<a class="headerlink" href="#geotiff-dataframe-writer" title="Permanent link">&para;</a></h2>
 <p>Introduction: You can write a GeoTiff dataframe as GeoTiff images using the spark <code>write</code> feature with the format <code>geotiff</code>.</p>
 <p>Since: <code>v1.2.1</code></p>
 <p>Spark SQL example:</p>
@@ -3241,7 +3233,7 @@ optional: alphaBand: Array[Double])</code></p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 20, 2022 21:35:04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 20, 2022 16:20:13</span>
       
     
   </small>
