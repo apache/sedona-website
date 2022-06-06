@@ -2157,6 +2157,15 @@
         
           <li class="md-nav__item">
   
+  <a href="#update-mkdocsyml" class="md-nav__link">
+    Update mkdocs.yml
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
   <a href="#update-sedona-python-r-and-zeppelin-versions" class="md-nav__link">
     Update Sedona Python, R and Zeppelin versions
   </a>  
@@ -3174,6 +3183,15 @@
         
           <li class="md-nav__item">
   
+  <a href="#update-mkdocsyml" class="md-nav__link">
+    Update mkdocs.yml
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
   <a href="#update-sedona-python-r-and-zeppelin-versions" class="md-nav__link">
     Update Sedona Python, R and Zeppelin versions
   </a>  
@@ -3304,7 +3322,7 @@
 <li>Wait at least 30  minutes for an email inviting you to Apache GitHub Organization and accept invitation</li>
 </ul>
 </li>
-<li>After accepting the Github Invitation verify that you are a member of the team <a href="https://github.com/orgs/apache/teams/openwhisk-committers">https://github.com/orgs/apache/teams/openwhisk-committers</a></li>
+<li>After accepting the Github Invitation, verify that you are a member of the team <a href="https://github.com/orgs/apache/teams/sedona-committers">https://github.com/orgs/apache/teams/sedona-committers</a></li>
 <li>Additionally, if you have been elected to the Sedona PPMC, verify you are part of the LDAP Sedona PPMC <a href="https://whimsy.apache.org/roster/ppmc/sedona">https://whimsy.apache.org/roster/ppmc/sedona</a></li>
 </ol>
 <h2 id="prepare-secret-gpg-key">Prepare Secret GPG key<a class="headerlink" href="#prepare-secret-gpg-key" title="Permanent link">&para;</a></h2>
@@ -3379,6 +3397,8 @@ rm report.txt
 <p>Please read the following guidelines first: 1. ASF Incubator Distribution Guidelines: <a href="https://incubator.apache.org/guides/distribution.html">https://incubator.apache.org/guides/distribution.html</a> 2. ASF Release Guidelines: <a href="https://infra.apache.org/release-publishing.html">https://infra.apache.org/release-publishing.html</a> 3. ASF Incubator Release Votes Guidelines: <a href="https://issues.apache.org/jira/browse/LEGAL-469">https://issues.apache.org/jira/browse/LEGAL-469</a></p>
 </div>
 <h2 id="publish-releases">Publish releases<a class="headerlink" href="#publish-releases" title="Permanent link">&para;</a></h2>
+<h3 id="update-mkdocsyml">Update mkdocs.yml<a class="headerlink" href="#update-mkdocsyml" title="Permanent link">&para;</a></h3>
+<p>Please change the <code>sedona.current_version</code>, <code>sedona.current_rc</code>, <code>sedona.current_git_tag</code> and <code>sedona.current_snapshot</code> in <code>mkdocs.yml</code> to the version you want to publish. Do NOT change <code>sedona.next_version</code> at this moment. Then compile the website by <code>mkdocs serve</code>. This will generate the scripts listed on this page in your local browser.</p>
 <h3 id="update-sedona-python-r-and-zeppelin-versions">Update Sedona Python, R and Zeppelin versions<a class="headerlink" href="#update-sedona-python-r-and-zeppelin-versions" title="Permanent link">&para;</a></h3>
 <p>Make sure the Sedona version in the following files are 1.2.0-incubating. Note that: Python and R versions cannot have "incubating" postfix.</p>
 <ol>
@@ -3465,6 +3485,7 @@ rm -rf apache-sedona-1.2.0-incubating-bin
 <li>Check the status of the staging repo: <a href="https://central.sonatype.org/pages/releasing-the-deployment.html#locate-and-examine-your-staging-repository">Locate and Examine Your Staging Repository
 </a>. You should see 12 Sedona modules in total.</li>
 <li>Call for a vote in Sedona community and Apache incubator. Then close the staging repo.</li>
+<li>The vote will be open for at least 72 hours or until at least 3 "+1" PMC votes are cast</li>
 </ol>
 <p>Here is a generated vote email. Please add changes at the end if needed:</p>
 <div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.2.1-incubating-rc1
@@ -3488,7 +3509,7 @@ https://downloads.apache.org/incubator/sedona/KEYS
 Source code and binaries:
 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/
 
-The vote will be open for at least 72 hours or until a majority of at least 3 &quot;approve&quot; PMC votes are cast
+The vote will be open for at least 72 hours or until at least 3 &quot;+1&quot; PMC votes are cast
 
 Please vote accordingly:
 
@@ -3533,7 +3554,8 @@ I will now bring the vote to general@incubator.apache.org to get
 approval by the IPMC. If this vote passes too, the release is accepted and will be published.
 </code></pre></div>
 <h3 id="vote-in-general-incubatorapacheorg">Vote in general incubator.apache.org<a class="headerlink" href="#vote-in-general-incubatorapacheorg" title="Permanent link">&para;</a></h3>
-<p>Here is a generated vote email. Please add changes at the end if needed:</p>
+<p>Here is a generated vote email. Please add changes at the end if needed.</p>
+<p>The vote will be open for at least 72 hours or until at least 3 "+1" PMC votes are cast.</p>
 <div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.2.1-incubating-rc1
 
 Hi all,
@@ -3559,7 +3581,7 @@ https://downloads.apache.org/incubator/sedona/KEYS
 Source code and binaries:
 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/
 
-The vote will be open for at least 72 hours or until a majority of at least 3 &quot;approve&quot; PMC votes are cast
+The vote will be open for at least 72 hours or until at least 3 &quot;+1&quot; PMC votes are cast
 
 Please vote accordingly:
 
@@ -3784,6 +3806,7 @@ admin is your Apache ID username and admin123 is your Apache ID password. You ca
 <p>Once the staging repo is closed, click "Release" on the web interface.</p>
 <h2 id="publish-the-doc-website">Publish the doc website<a class="headerlink" href="#publish-the-doc-website" title="Permanent link">&para;</a></h2>
 <ol>
+<li>Update <code>sedona.next_version</code> in <code>mkdocs.yml</code> to the next version. Note that: the next version means the version after the version you want to release.</li>
 <li>Run <code>mkdocs build</code> in Sedona root directory. Copy all content in the <code>site</code> folder.</li>
 <li>Check out GitHub incubator-sedona-website <a href="https://github.com/apache/incubator-sedona-website/tree/asf-site">asf-site branch</a></li>
 <li>Use the copied content to replace all content in <code>asf-site</code> branch and upload to GitHub. Then <code>sedona.apache.org</code> will be automatically updated.</li>
@@ -3818,7 +3841,7 @@ Rscript generate-docs.R
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 22, 2022 01:55:00</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 6, 2022 00:43:19</span>
       
     
   </small>
