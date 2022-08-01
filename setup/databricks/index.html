@@ -3144,6 +3144,9 @@ spark.kryo.registrator org.apache.sedona.core.serde.SedonaKryoRegistrator
 <p>From your cluster configuration (<code>Cluster</code> -&gt; <code>Edit</code> -&gt; <code>Configuration</code> -&gt; <code>Advanced options</code> -&gt; <code>Init Scripts</code>) add the newly created init script 
 <div class="highlight"><pre><span></span><code>dbfs:/FileStore/sedona/sedona-init.sh
 </code></pre></div></p>
+<p>For enabling python support, from the Libraries tab install from PyPI
+<div class="highlight"><pre><span></span><code>apache-sedona
+</code></pre></div></p>
 <p><em>Note: You need to install the Sedona libraries via init script because the libraries installed via UI are installed after the cluster has already started, and therefore the classes specified by the config <code>spark.sql.extensions</code>, <code>spark.serializer</code>, and <code>spark.kryo.registrator</code> are not available at startup time.</em></p>
 
   <hr>
@@ -3151,7 +3154,7 @@ spark.kryo.registrator org.apache.sedona.core.serde.SedonaKryoRegistrator
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">January 29, 2022 01:20:36</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 15, 2022 14:30:24</span>
       
     
   </small>

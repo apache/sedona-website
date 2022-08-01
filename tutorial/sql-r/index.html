@@ -2947,7 +2947,7 @@ Sedona can inter-operate seamlessly with other functions supported in
 <code>sparklyr</code>’s dbplyr SQL translation env. For example, the code below
 finds the average area of all polygons in <code>polygon_sdf</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">mean_area_sdf</span> <span class="o">&lt;-</span> <span class="n">polygon_sdf</span> <span class="o">%&gt;%</span>
-  <span class="n">dplyr</span><span class="o">::</span><span class="nf">summarize</span><span class="p">(</span><span class="n">dplyr</span><span class="o">::</span><span class="nf">summarize</span><span class="p">(</span><span class="n">mean_area</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="nf">ST_Area</span><span class="p">(</span><span class="n">geometry</span><span class="p">))))</span>
+  <span class="n">dplyr</span><span class="o">::</span><span class="nf">summarize</span><span class="p">(</span><span class="n">mean_area</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="nf">ST_Area</span><span class="p">(</span><span class="n">geometry</span><span class="p">)))</span>
 <span class="nf">print</span><span class="p">(</span><span class="n">mean_area_sdf</span><span class="p">)</span>
 </code></pre></div>
 <div class="codehilite"><pre><span></span><code><span class="err">##</span> <span class="err">#</span> <span class="nx">Source</span><span class="o">:</span> <span class="nx">spark</span><span class="cp">&lt;?</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">??</span> <span class="nx">x</span> <span class="mi">1</span><span class="p">]</span>
@@ -2974,7 +2974,7 @@ between any predicted geometry and the corresponding ground truth.</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">September 28, 2021 21:57:22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 30, 2022 22:46:22</span>
       
     
   </small>

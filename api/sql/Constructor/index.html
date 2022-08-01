@@ -3161,9 +3161,10 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POINT(40.7128 -74.0060)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geometry</span><span class="w"></span>
 </code></pre></div>
 <h2 id="st_geomfromwkb">ST_GeomFromWKB<a class="headerlink" href="#st_geomfromwkb" title="Permanent link">&para;</a></h2>
-<p>Introduction: Construct a Geometry from WKB string</p>
+<p>Introduction: Construct a Geometry from WKB string or Binary</p>
 <p>Format:
-<code>ST_GeomFromWKB (Wkb:string)</code></p>
+<code>ST_GeomFromWKB (Wkb:string)</code>
+<code>ST_GeomFromWKB (Wkb:binary)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKB</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
@@ -3304,7 +3305,7 @@ Format: <code>ST_Point (X:decimal, Y:decimal, Z:decimal)</code></p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 20, 2022 18:16:58</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 8, 2022 10:58:54</span>
       
     
   </small>

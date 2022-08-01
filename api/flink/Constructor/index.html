@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#st_geomfromwkt" class="md-skip">
+        <a href="#st_point" class="md-skip">
           Skip to content
         </a>
       
@@ -1880,8 +1880,26 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_point" class="md-nav__link">
+    ST_Point
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_geomfromwkt" class="md-nav__link">
     ST_GeomFromWKT
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_geomfromtext" class="md-nav__link">
+    ST_GeomFromText
   </a>  
   
   
@@ -1909,6 +1927,24 @@
   
   <a href="#st_pointfromtext" class="md-nav__link">
     ST_PointFromText
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_linefromtext" class="md-nav__link">
+    ST_LineFromText
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_linestringfromtext" class="md-nav__link">
+    ST_LineStringFromText
   </a>  
   
   
@@ -2992,8 +3028,26 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_point" class="md-nav__link">
+    ST_Point
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_geomfromwkt" class="md-nav__link">
     ST_GeomFromWKT
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_geomfromtext" class="md-nav__link">
+    ST_GeomFromText
   </a>  
   
   
@@ -3021,6 +3075,24 @@
   
   <a href="#st_pointfromtext" class="md-nav__link">
     ST_PointFromText
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_linefromtext" class="md-nav__link">
+    ST_LineFromText
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_linestringfromtext" class="md-nav__link">
+    ST_LineStringFromText
   </a>  
   
   
@@ -3075,6 +3147,14 @@
 
   <h1>Constructor</h1>
 
+<h2 id="st_point">ST_Point<a class="headerlink" href="#st_point" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Point from X and Y</p>
+<p>Format: <code>ST_Point (X:decimal, Y:decimal)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pointshape</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pointtable</span><span class="w"></span>
+</code></pre></div></p>
 <h2 id="st_geomfromwkt">ST_GeomFromWKT<a class="headerlink" href="#st_geomfromwkt" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Geometry from Wkt</p>
 <p>Format:
@@ -3083,11 +3163,27 @@
 <p>SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POINT(40.7128 -74.0060)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geometry</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="st_geomfromwkb">ST_GeomFromWKB<a class="headerlink" href="#st_geomfromwkb" title="Permanent link">&para;</a></h2>
-<p>Introduction: Construct a Geometry from WKB string</p>
+<h2 id="st_geomfromtext">ST_GeomFromText<a class="headerlink" href="#st_geomfromtext" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Geometry from Wkt. Alias of  <a href="#ST_GeomFromWKT">ST_GeomFromWKT</a></p>
 <p>Format:
-<code>ST_GeomFromWKB (Wkb:string)</code></p>
+<code>ST_GeomFromText (Wkt:string)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(40.7128 -74.0060)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geometry</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="st_geomfromwkb">ST_GeomFromWKB<a class="headerlink" href="#st_geomfromwkb" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Geometry from WKB string or Binary</p>
+<p>Format:
+<code>ST_GeomFromWKB (Wkb:string)</code>
+<code>ST_GeomFromWKB (Wkb:binary)</code></p>
 <p>Since: <code>v1.2.0</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKB</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">polygontable</span><span class="w"></span>
+</code></pre></div></p>
+<p>Format:
+<code>ST_GeomFromWKB (Wkb:bytes)</code></p>
+<p>Since: <code>v1.2.1</code></p>
 <p>SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKB</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">polygontable</span><span class="w"></span>
@@ -3106,6 +3202,20 @@
 <p>Since: <code>v1.2.0</code></p>
 <p>SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_PointFromText</span><span class="p">(</span><span class="s1">&#39;40.7128,-74.0060&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pointshape</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="st_linefromtext">ST_LineFromText<a class="headerlink" href="#st_linefromtext" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a LineString from Text, delimited by Delimiter (Optional)</p>
+<p>Format: <code>ST_LineFromText (Text:string, Delimiter:char)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_LineFromText</span><span class="p">(</span><span class="s1">&#39;Linestring(1 2, 3 4)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">line</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="st_linestringfromtext">ST_LineStringFromText<a class="headerlink" href="#st_linestringfromtext" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a LineString from Text, delimited by Delimiter (Optional). Alias of  <a href="#ST_LineFromText">ST_LineFromText</a></p>
+<p>Format: <code>ST_LineStringFromText (Text:string, Delimiter:char)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_LineStringFromText</span><span class="p">(</span><span class="s1">&#39;Linestring(1 2, 3 4)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">line</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="st_polygonfromtext">ST_PolygonFromText<a class="headerlink" href="#st_polygonfromtext" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Polygon from Text, delimited by Delimiter. Path must be closed</p>
@@ -3136,7 +3246,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 29, 2022 13:11:56</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 15, 2022 14:36:00</span>
       
     
   </small>
