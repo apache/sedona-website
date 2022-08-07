@@ -3400,7 +3400,7 @@ rm report.txt
 <h3 id="update-mkdocsyml">Update mkdocs.yml<a class="headerlink" href="#update-mkdocsyml" title="Permanent link">&para;</a></h3>
 <p>Please change the <code>sedona.current_version</code>, <code>sedona.current_rc</code>, <code>sedona.current_git_tag</code> and <code>sedona.current_snapshot</code> in <code>mkdocs.yml</code> to the version you want to publish. Do NOT change <code>sedona.next_version</code> at this moment. Then compile the website by <code>mkdocs serve</code>. This will generate the scripts listed on this page in your local browser.</p>
 <h3 id="update-sedona-python-r-and-zeppelin-versions">Update Sedona Python, R and Zeppelin versions<a class="headerlink" href="#update-sedona-python-r-and-zeppelin-versions" title="Permanent link">&para;</a></h3>
-<p>Make sure the Sedona version in the following files are 1.2.0-incubating. Note that: Python and R versions cannot have "incubating" postfix.</p>
+<p>Make sure the Sedona version in the following files are 1.2.1-incubating. Note that: Python and R versions cannot have "incubating" postfix.</p>
 <ol>
 <li><a href="https://github.com/apache/incubator-sedona/blob/master/python/sedona/version.py">https://github.com/apache/incubator-sedona/blob/master/python/sedona/version.py</a></li>
 <li><a href="https://github.com/apache/incubator-sedona/blob/master/R/DESCRIPTION">https://github.com/apache/incubator-sedona/blob/master/R/DESCRIPTION</a></li>
@@ -3410,7 +3410,7 @@ rm report.txt
 <p>This step is to stage the release to <a href="https://repository.apache.org">https://repository.apache.org</a></p>
 <h4>For Spark 3.0 and Scala 2.12</h4>
 <ol>
-<li>Prepare a release. Manually enter the following variables in the terminal: release id: <code>1.2.0-incubating</code>, scm tag id: <code>sedona-1.2.1-incubating-rc1</code>. You also need to provide GitHub username and password three times.
+<li>Prepare a release. Manually enter the following variables in the terminal: release id: <code>1.2.1-incubating</code>, scm tag id: <code>sedona-1.2.1-incubating-rc1</code>. You also need to provide GitHub username and password three times.
 <div class="highlight"><pre><span></span><code>mvn clean release:prepare -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span>
 </code></pre></div></li>
 <li>Stage a release
@@ -3435,49 +3435,49 @@ svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apac
 </code></pre></div></li>
 <li>In a folder other than the Sedona git repo, run the following script to create six files and two folders.
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-git clone --shared --branch sedona-1.2.1-incubating-rc1 https://github.com/apache/incubator-sedona.git apache-sedona-1.2.0-incubating-src
-rm -rf apache-sedona-1.2.0-incubating-src/.git
-tar czf apache-sedona-1.2.0-incubating-src.tar.gz apache-sedona-1.2.0-incubating-src
-mkdir apache-sedona-1.2.0-incubating-bin
-<span class="nb">cd</span> apache-sedona-1.2.0-incubating-src <span class="o">&amp;&amp;</span> mvn clean install -DskipTests -Dscala<span class="o">=</span><span class="m">2</span>.12 -Dspark<span class="o">=</span><span class="m">3</span>.0 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-cp apache-sedona-1.2.0-incubating-src/core/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/sql/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/viz/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/python-adapter/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/flink/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-<span class="nb">cd</span> apache-sedona-1.2.0-incubating-src <span class="o">&amp;&amp;</span> mvn clean install -DskipTests -Dscala<span class="o">=</span><span class="m">2</span>.11 -Dspark<span class="o">=</span><span class="m">2</span>.4 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-cp apache-sedona-1.2.0-incubating-src/core/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/sql/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/viz/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/python-adapter/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/flink/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-<span class="nb">cd</span> apache-sedona-1.2.0-incubating-src <span class="o">&amp;&amp;</span> mvn clean install -DskipTests -Dscala<span class="o">=</span><span class="m">2</span>.12 -Dspark<span class="o">=</span><span class="m">2</span>.4 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-cp apache-sedona-1.2.0-incubating-src/core/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/sql/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/viz/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-cp apache-sedona-1.2.0-incubating-src/python-adapter/target/sedona-*1.2.0-incubating.jar apache-sedona-1.2.0-incubating-bin/
-tar czf apache-sedona-1.2.0-incubating-bin.tar.gz apache-sedona-1.2.0-incubating-bin
-shasum -a <span class="m">512</span> apache-sedona-1.2.0-incubating-src.tar.gz &gt; apache-sedona-1.2.0-incubating-src.tar.gz.sha512
-shasum -a <span class="m">512</span> apache-sedona-1.2.0-incubating-bin.tar.gz &gt; apache-sedona-1.2.0-incubating-bin.tar.gz.sha512
-gpg -ab apache-sedona-1.2.0-incubating-src.tar.gz
-gpg -ab apache-sedona-1.2.0-incubating-bin.tar.gz
+git clone --shared --branch sedona-1.2.1-incubating-rc1 https://github.com/apache/incubator-sedona.git apache-sedona-1.2.1-incubating-src
+rm -rf apache-sedona-1.2.1-incubating-src/.git
+tar czf apache-sedona-1.2.1-incubating-src.tar.gz apache-sedona-1.2.1-incubating-src
+mkdir apache-sedona-1.2.1-incubating-bin
+<span class="nb">cd</span> apache-sedona-1.2.1-incubating-src <span class="o">&amp;&amp;</span> mvn clean install -DskipTests -Dscala<span class="o">=</span><span class="m">2</span>.12 -Dspark<span class="o">=</span><span class="m">3</span>.0 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+cp apache-sedona-1.2.1-incubating-src/core/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/sql/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/viz/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/python-adapter/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/flink/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+<span class="nb">cd</span> apache-sedona-1.2.1-incubating-src <span class="o">&amp;&amp;</span> mvn clean install -DskipTests -Dscala<span class="o">=</span><span class="m">2</span>.11 -Dspark<span class="o">=</span><span class="m">2</span>.4 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+cp apache-sedona-1.2.1-incubating-src/core/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/sql/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/viz/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/python-adapter/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/flink/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+<span class="nb">cd</span> apache-sedona-1.2.1-incubating-src <span class="o">&amp;&amp;</span> mvn clean install -DskipTests -Dscala<span class="o">=</span><span class="m">2</span>.12 -Dspark<span class="o">=</span><span class="m">2</span>.4 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+cp apache-sedona-1.2.1-incubating-src/core/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/sql/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/viz/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+cp apache-sedona-1.2.1-incubating-src/python-adapter/target/sedona-*1.2.1-incubating.jar apache-sedona-1.2.1-incubating-bin/
+tar czf apache-sedona-1.2.1-incubating-bin.tar.gz apache-sedona-1.2.1-incubating-bin
+shasum -a <span class="m">512</span> apache-sedona-1.2.1-incubating-src.tar.gz &gt; apache-sedona-1.2.1-incubating-src.tar.gz.sha512
+shasum -a <span class="m">512</span> apache-sedona-1.2.1-incubating-bin.tar.gz &gt; apache-sedona-1.2.1-incubating-bin.tar.gz.sha512
+gpg -ab apache-sedona-1.2.1-incubating-src.tar.gz
+gpg -ab apache-sedona-1.2.1-incubating-bin.tar.gz
 </code></pre></div></li>
 <li>Upload six files to SVN and delete all created files using the following script
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz.sha512
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz.sha512
-rm apache-sedona-1.2.0-incubating-src.tar.gz
-rm apache-sedona-1.2.0-incubating-src.tar.gz.asc
-rm apache-sedona-1.2.0-incubating-src.tar.gz.sha512
-rm apache-sedona-1.2.0-incubating-bin.tar.gz
-rm apache-sedona-1.2.0-incubating-bin.tar.gz.asc
-rm apache-sedona-1.2.0-incubating-bin.tar.gz.sha512
-rm -rf apache-sedona-1.2.0-incubating-src
-rm -rf apache-sedona-1.2.0-incubating-bin
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-src.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-src.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-src.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-src.tar.gz.sha512
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-bin.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-bin.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-bin.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-bin.tar.gz.sha512
+rm apache-sedona-1.2.1-incubating-src.tar.gz
+rm apache-sedona-1.2.1-incubating-src.tar.gz.asc
+rm apache-sedona-1.2.1-incubating-src.tar.gz.sha512
+rm apache-sedona-1.2.1-incubating-bin.tar.gz
+rm apache-sedona-1.2.1-incubating-bin.tar.gz.asc
+rm apache-sedona-1.2.1-incubating-bin.tar.gz.sha512
+rm -rf apache-sedona-1.2.1-incubating-src
+rm -rf apache-sedona-1.2.1-incubating-bin
 </code></pre></div></li>
 </ol>
 <h3 id="vote-in-dev-sedonaapacheorg">Vote in dev sedona.apache.org<a class="headerlink" href="#vote-in-dev-sedonaapacheorg" title="Permanent link">&para;</a></h3>
@@ -3625,11 +3625,11 @@ The vote thread (Permalink from https://lists.apache.org/list.html):
 I will publish the release and make an annoucement once it is done.
 </code></pre></div>
 <p>Here is a generated "announce" email. This email should be CCed to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#101;&#118;&#64;&#115;&#101;&#100;&#111;&#110;&#97;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#100;&#101;&#118;&#64;&#115;&#101;&#100;&#111;&#110;&#97;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a>:</p>
-<div class="highlight"><pre><span></span><code>Subject: [ANNOUNCE] Apache Sedona 1.2.0-incubating released
+<div class="highlight"><pre><span></span><code>Subject: [ANNOUNCE] Apache Sedona 1.2.1-incubating released
 
 Dear all,
 
-We are happy to report that we have released Apache Sedona (incubating) 1.2.0-incubating. Thank you again for your help.
+We are happy to report that we have released Apache Sedona (incubating) 1.2.1-incubating. Thank you again for your help.
 
 Apache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. 
 
@@ -3644,10 +3644,10 @@ Website:
 http://sedona.apache.org/
 
 Release notes:
-https://github.com/apache/incubator-sedona/blob/sedona-1.2.0-incubating/docs/setup/release-notes.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.2.1-incubating/docs/setup/release-notes.md
 
 Download links:
-https://github.com/apache/incubator-sedona/releases/tag/sedona-1.2.0-incubating
+https://github.com/apache/incubator-sedona/releases/tag/sedona-1.2.1-incubating
 
 Additional resources:
 Get started: http://sedona.apache.org/setup/overview/
@@ -3660,38 +3660,38 @@ Regards,
 Apache Sedona (incubating) Team
 </code></pre></div>
 <h3 id="failed-vote">Failed vote<a class="headerlink" href="#failed-vote" title="Permanent link">&para;</a></h3>
-<p>If a vote failed, please first drop the staging repo on <code>repository.apache.org</code>. Then redo all the steps above. Make sure you use a new scm tag for the new release candidate when use maven-release-plugin (i.e., <code>1.2.0-incubating-rc2</code>). You can change the <code>sedona.current_rc</code> and <code>sedona.current_git_tag</code> in <code>mkdocs.yml</code> to generate the script listed on this webpage.</p>
+<p>If a vote failed, please first drop the staging repo on <code>repository.apache.org</code>. Then redo all the steps above. Make sure you use a new scm tag for the new release candidate when use maven-release-plugin (i.e., <code>1.2.1-incubating-rc2</code>). You can change the <code>sedona.current_rc</code> and <code>sedona.current_git_tag</code> in <code>mkdocs.yml</code> to generate the script listed on this webpage.</p>
 <h3 id="release-the-package">Release the package<a class="headerlink" href="#release-the-package" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Move all files in <a href="https://dist.apache.org/repos/dist/dev/incubator/sedona">https://dist.apache.org/repos/dist/dev/incubator/sedona</a> to <a href="https://dist.apache.org/repos/dist/release/incubator/sedona">https://dist.apache.org/repos/dist/release/incubator/sedona</a>, using svn
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz.asc
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-src.tar.gz.sha512
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz.asc
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.0-incubating-bin.tar.gz.sha512
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating/apache-sedona-1.2.0-incubating-src.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating/apache-sedona-1.2.0-incubating-src.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating/apache-sedona-1.2.0-incubating-src.tar.gz.sha512
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating/apache-sedona-1.2.0-incubating-bin.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating/apache-sedona-1.2.0-incubating-bin.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.0-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.0-incubating/apache-sedona-1.2.0-incubating-bin.tar.gz.sha512
-rm apache-sedona-1.2.0-incubating-src.tar.gz
-rm apache-sedona-1.2.0-incubating-src.tar.gz.asc
-rm apache-sedona-1.2.0-incubating-src.tar.gz.sha512
-rm apache-sedona-1.2.0-incubating-bin.tar.gz
-rm apache-sedona-1.2.0-incubating-bin.tar.gz.asc
-rm apache-sedona-1.2.0-incubating-bin.tar.gz.sha512
+svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.1-incubating
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-src.tar.gz
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-src.tar.gz.asc
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-src.tar.gz.sha512
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-bin.tar.gz
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-bin.tar.gz.asc
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.2.1-incubating-rc1/apache-sedona-1.2.1-incubating-bin.tar.gz.sha512
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-src.tar.gz https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.1-incubating/apache-sedona-1.2.1-incubating-src.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.1-incubating/apache-sedona-1.2.1-incubating-src.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.1-incubating/apache-sedona-1.2.1-incubating-src.tar.gz.sha512
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-bin.tar.gz https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.1-incubating/apache-sedona-1.2.1-incubating-bin.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.1-incubating/apache-sedona-1.2.1-incubating-bin.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.2.1-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/release/incubator/sedona/1.2.1-incubating/apache-sedona-1.2.1-incubating-bin.tar.gz.sha512
+rm apache-sedona-1.2.1-incubating-src.tar.gz
+rm apache-sedona-1.2.1-incubating-src.tar.gz.asc
+rm apache-sedona-1.2.1-incubating-src.tar.gz.sha512
+rm apache-sedona-1.2.1-incubating-bin.tar.gz
+rm apache-sedona-1.2.1-incubating-bin.tar.gz.asc
+rm apache-sedona-1.2.1-incubating-bin.tar.gz.sha512
 </code></pre></div></li>
 <li>Add the download link to <a href="/download#versions">Download page</a> and create a GitHub release.</li>
 <li>(1) Publish Python project to PyPi using twine. You must have the maintainer priviledge of <a href="https://pypi.org/project/apache-sedona/">https://pypi.org/project/apache-sedona/</a>. (2) Publish Zeppelin plugin to NPM
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-git clone --shared --branch sedona-1.2.1-incubating-rc1 https://github.com/apache/incubator-sedona.git apache-sedona-1.2.0-incubating-src
-<span class="nb">cd</span> apache-sedona-1.2.0-incubating-src/python <span class="o">&amp;&amp;</span> python3 setup.py sdist bdist_wheel <span class="o">&amp;&amp;</span> twine upload dist/* <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+git clone --shared --branch sedona-1.2.1-incubating-rc1 https://github.com/apache/incubator-sedona.git apache-sedona-1.2.1-incubating-src
+<span class="nb">cd</span> apache-sedona-1.2.1-incubating-src/python <span class="o">&amp;&amp;</span> python3 setup.py sdist bdist_wheel <span class="o">&amp;&amp;</span> twine upload dist/* <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
 <span class="nb">cd</span> zeppelin <span class="o">&amp;&amp;</span> npm publish <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-rm -rf apache-sedona-1.2.0-incubating-src
+rm -rf apache-sedona-1.2.1-incubating-src
 </code></pre></div></li>
 <li>Publish Sedona R to CRAN. More details to be added.
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -3715,12 +3715,12 @@ R CMD check --as-cran apache.sedona_*.tar.gz
 <h4>Fix the error when close the staged repo</h4>
 <p>In the last step, you may see 6 errors similar to the following:
 <div class="highlight"><pre><span></span><code>typeId  signature-staging
-failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-python-adapter-2.4_2.12/1.2.0-incubating/sedona-python-adapter-2.4_2.12-1.2.0-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-python-adapter-2.4_2.12-1.2.0-incubating.pom&#39;.
-failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-python-adapter-2.4_2.11/1.2.0-incubating/sedona-python-adapter-2.4_2.11-1.2.0-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-python-adapter-2.4_2.11-1.2.0-incubating.pom&#39;.
-failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.2.0-incubating/sedona-python-adapter-3.0_2.12-1.2.0-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-python-adapter-3.0_2.12-1.2.0-incubating.pom&#39;.
-failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-2.4_2.12/1.2.0-incubating/sedona-viz-2.4_2.12-1.2.0-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-2.4_2.12-1.2.0-incubating.pom&#39;.
-failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-3.0_2.12/1.2.0-incubating/sedona-viz-3.0_2.12-1.2.0-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-3.0_2.12-1.2.0-incubating.pom&#39;.
-failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-2.4_2.11/1.2.0-incubating/sedona-viz-2.4_2.11-1.2.0-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-2.4_2.11-1.2.0-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-python-adapter-2.4_2.12/1.2.1-incubating/sedona-python-adapter-2.4_2.12-1.2.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-python-adapter-2.4_2.12-1.2.1-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-python-adapter-2.4_2.11/1.2.1-incubating/sedona-python-adapter-2.4_2.11-1.2.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-python-adapter-2.4_2.11-1.2.1-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.2.1-incubating/sedona-python-adapter-3.0_2.12-1.2.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-python-adapter-3.0_2.12-1.2.1-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-2.4_2.12/1.2.1-incubating/sedona-viz-2.4_2.12-1.2.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-2.4_2.12-1.2.1-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-3.0_2.12/1.2.1-incubating/sedona-viz-3.0_2.12-1.2.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-3.0_2.12-1.2.1-incubating.pom&#39;.
+failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-2.4_2.11/1.2.1-incubating/sedona-viz-2.4_2.11-1.2.1-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-2.4_2.11-1.2.1-incubating.pom&#39;.
 </code></pre></div></p>
 <p>This is caused by a bug in the resolved-pom-maven-plugin in POM.xml. You will have to upload the signatures of the POM files mannualy.</p>
 <p>Please run the following script to reupload ASC files to the staging repo. Please make sure you use the correct Sedona staging repo ID, ASF username and password.</p>
@@ -3729,78 +3729,78 @@ failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-2.4_2.11/1
 <span class="nv">password</span><span class="o">=</span>admin123
 <span class="nv">stagingid</span><span class="o">=</span><span class="m">1016</span>
 
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.11/1.2.0-incubating/sedona-core-2.4_2.11-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.12/1.2.0-incubating/sedona-core-2.4_2.12-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.2.0-incubating/sedona-core-3.0_2.12-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.11/1.2.0-incubating/sedona-sql-2.4_2.11-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.12/1.2.0-incubating/sedona-sql-2.4_2.12-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.12/1.2.0-incubating/sedona-sql-3.0_2.12-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-2.4_2.11/1.2.0-incubating/sedona-viz-2.4_2.11-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-2.4_2.12/1.2.0-incubating/sedona-viz-2.4_2.12-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.12/1.2.0-incubating/sedona-viz-3.0_2.12-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.11/1.2.0-incubating/sedona-python-adapter-2.4_2.11-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.12/1.2.0-incubating/sedona-python-adapter-2.4_2.12-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.2.0-incubating/sedona-python-adapter-3.0_2.12-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.12/1.2.0-incubating/sedona-flink_2.12-1.2.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.11/1.2.0-incubating/sedona-flink_2.11-1.2.0-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.11/1.2.1-incubating/sedona-core-2.4_2.11-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.12/1.2.1-incubating/sedona-core-2.4_2.12-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.2.1-incubating/sedona-core-3.0_2.12-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.11/1.2.1-incubating/sedona-sql-2.4_2.11-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.12/1.2.1-incubating/sedona-sql-2.4_2.12-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.12/1.2.1-incubating/sedona-sql-3.0_2.12-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-2.4_2.11/1.2.1-incubating/sedona-viz-2.4_2.11-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-2.4_2.12/1.2.1-incubating/sedona-viz-2.4_2.12-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.12/1.2.1-incubating/sedona-viz-3.0_2.12-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.11/1.2.1-incubating/sedona-python-adapter-2.4_2.11-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.12/1.2.1-incubating/sedona-python-adapter-2.4_2.12-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.2.1-incubating/sedona-python-adapter-3.0_2.12-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.12/1.2.1-incubating/sedona-flink_2.12-1.2.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.11/1.2.1-incubating/sedona-flink_2.11-1.2.1-incubating.pom
 
-gpg -ab sedona-core-2.4_2.11-1.2.0-incubating.pom
-gpg -ab sedona-core-2.4_2.12-1.2.0-incubating.pom
-gpg -ab sedona-core-3.0_2.12-1.2.0-incubating.pom
-gpg -ab sedona-sql-2.4_2.11-1.2.0-incubating.pom
-gpg -ab sedona-sql-2.4_2.12-1.2.0-incubating.pom
-gpg -ab sedona-sql-3.0_2.12-1.2.0-incubating.pom
-gpg -ab sedona-viz-2.4_2.11-1.2.0-incubating.pom
-gpg -ab sedona-viz-2.4_2.12-1.2.0-incubating.pom
-gpg -ab sedona-viz-3.0_2.12-1.2.0-incubating.pom
-gpg -ab sedona-python-adapter-2.4_2.11-1.2.0-incubating.pom
-gpg -ab sedona-python-adapter-2.4_2.12-1.2.0-incubating.pom
-gpg -ab sedona-python-adapter-3.0_2.12-1.2.0-incubating.pom
-gpg -ab sedona-flink_2.12-1.2.0-incubating.pom
-gpg -ab sedona-flink_2.11-1.2.0-incubating.pom
+gpg -ab sedona-core-2.4_2.11-1.2.1-incubating.pom
+gpg -ab sedona-core-2.4_2.12-1.2.1-incubating.pom
+gpg -ab sedona-core-3.0_2.12-1.2.1-incubating.pom
+gpg -ab sedona-sql-2.4_2.11-1.2.1-incubating.pom
+gpg -ab sedona-sql-2.4_2.12-1.2.1-incubating.pom
+gpg -ab sedona-sql-3.0_2.12-1.2.1-incubating.pom
+gpg -ab sedona-viz-2.4_2.11-1.2.1-incubating.pom
+gpg -ab sedona-viz-2.4_2.12-1.2.1-incubating.pom
+gpg -ab sedona-viz-3.0_2.12-1.2.1-incubating.pom
+gpg -ab sedona-python-adapter-2.4_2.11-1.2.1-incubating.pom
+gpg -ab sedona-python-adapter-2.4_2.12-1.2.1-incubating.pom
+gpg -ab sedona-python-adapter-3.0_2.12-1.2.1-incubating.pom
+gpg -ab sedona-flink_2.12-1.2.1-incubating.pom
+gpg -ab sedona-flink_2.11-1.2.1-incubating.pom
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-2.4_2.11-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.11/1.2.0-incubating/sedona-python-adapter-2.4_2.11-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-2.4_2.11-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.11/1.2.1-incubating/sedona-python-adapter-2.4_2.11-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-2.4_2.12-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.12/1.2.0-incubating/sedona-python-adapter-2.4_2.12-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-2.4_2.12-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-2.4_2.12/1.2.1-incubating/sedona-python-adapter-2.4_2.12-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-3.0_2.12-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.2.0-incubating/sedona-python-adapter-3.0_2.12-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-3.0_2.12-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.2.1-incubating/sedona-python-adapter-3.0_2.12-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-2.4_2.11-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-2.4_2.11/1.2.0-incubating/sedona-viz-2.4_2.11-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-2.4_2.11-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-2.4_2.11/1.2.1-incubating/sedona-viz-2.4_2.11-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-2.4_2.12-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-2.4_2.12/1.2.0-incubating/sedona-viz-2.4_2.12-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-2.4_2.12-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-2.4_2.12/1.2.1-incubating/sedona-viz-2.4_2.12-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-3.0_2.12-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.12/1.2.0-incubating/sedona-viz-3.0_2.12-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-3.0_2.12-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.12/1.2.1-incubating/sedona-viz-3.0_2.12-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-2.4_2.11-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.11/1.2.0-incubating/sedona-core-2.4_2.11-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-2.4_2.11-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.11/1.2.1-incubating/sedona-core-2.4_2.11-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-2.4_2.12-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.12/1.2.0-incubating/sedona-core-2.4_2.12-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-2.4_2.12-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-2.4_2.12/1.2.1-incubating/sedona-core-2.4_2.12-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-3.0_2.12-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.2.0-incubating/sedona-core-3.0_2.12-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-3.0_2.12-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.2.1-incubating/sedona-core-3.0_2.12-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-2.4_2.11-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.11/1.2.0-incubating/sedona-sql-2.4_2.11-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-2.4_2.11-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.11/1.2.1-incubating/sedona-sql-2.4_2.11-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-2.4_2.12-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.12/1.2.0-incubating/sedona-sql-2.4_2.12-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-2.4_2.12-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-2.4_2.12/1.2.1-incubating/sedona-sql-2.4_2.12-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-3.0_2.12-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.12/1.2.0-incubating/sedona-sql-3.0_2.12-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-3.0_2.12-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.12/1.2.1-incubating/sedona-sql-3.0_2.12-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-flink_2.12-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.12/1.2.0-incubating/sedona-flink_2.12-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-flink_2.12-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.12/1.2.1-incubating/sedona-flink_2.12-1.2.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-flink_2.11-1.2.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.11/1.2.0-incubating/sedona-flink_2.11-1.2.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-flink_2.11-1.2.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.11/1.2.1-incubating/sedona-flink_2.11-1.2.1-incubating.pom.asc
 
-rm sedona-core-2.4_2.11-1.2.0-incubating.pom.asc
-rm sedona-core-2.4_2.12-1.2.0-incubating.pom.asc
-rm sedona-core-3.0_2.12-1.2.0-incubating.pom.asc
-rm sedona-sql-2.4_2.11-1.2.0-incubating.pom.asc
-rm sedona-sql-2.4_2.12-1.2.0-incubating.pom.asc
-rm sedona-sql-3.0_2.12-1.2.0-incubating.pom.asc
-rm sedona-viz-2.4_2.11-1.2.0-incubating.pom.asc
-rm sedona-viz-2.4_2.12-1.2.0-incubating.pom.asc
-rm sedona-viz-3.0_2.12-1.2.0-incubating.pom.asc
-rm sedona-python-adapter-2.4_2.11-1.2.0-incubating.pom.asc
-rm sedona-python-adapter-2.4_2.12-1.2.0-incubating.pom.asc
-rm sedona-python-adapter-3.0_2.12-1.2.0-incubating.pom.asc
-rm sedona-flink_2.12-1.2.0-incubating.pom.asc
-rm sedona-flink_2.11-1.2.0-incubating.pom.asc
+rm sedona-core-2.4_2.11-1.2.1-incubating.pom.asc
+rm sedona-core-2.4_2.12-1.2.1-incubating.pom.asc
+rm sedona-core-3.0_2.12-1.2.1-incubating.pom.asc
+rm sedona-sql-2.4_2.11-1.2.1-incubating.pom.asc
+rm sedona-sql-2.4_2.12-1.2.1-incubating.pom.asc
+rm sedona-sql-3.0_2.12-1.2.1-incubating.pom.asc
+rm sedona-viz-2.4_2.11-1.2.1-incubating.pom.asc
+rm sedona-viz-2.4_2.12-1.2.1-incubating.pom.asc
+rm sedona-viz-3.0_2.12-1.2.1-incubating.pom.asc
+rm sedona-python-adapter-2.4_2.11-1.2.1-incubating.pom.asc
+rm sedona-python-adapter-2.4_2.12-1.2.1-incubating.pom.asc
+rm sedona-python-adapter-3.0_2.12-1.2.1-incubating.pom.asc
+rm sedona-flink_2.12-1.2.1-incubating.pom.asc
+rm sedona-flink_2.11-1.2.1-incubating.pom.asc
 </code></pre></div>
 admin is your Apache ID username and admin123 is your Apache ID password. You can find the correct upload path from the web interface.</p>
 <p>Once the staging repo is closed, click "Release" on the web interface.</p>
