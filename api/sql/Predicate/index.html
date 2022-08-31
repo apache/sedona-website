@@ -1551,53 +1551,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_intersects" class="md-nav__link">
-    ST_Intersects
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_within" class="md-nav__link">
-    ST_Within
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_equals" class="md-nav__link">
-    ST_Equals
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
   <a href="#st_crosses" class="md-nav__link">
     ST_Crosses
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_touches" class="md-nav__link">
-    ST_Touches
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_overlaps" class="md-nav__link">
-    ST_Overlaps
   </a>  
   
   
@@ -1614,8 +1569,53 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_equals" class="md-nav__link">
+    ST_Equals
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_intersects" class="md-nav__link">
+    ST_Intersects
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_orderingequals" class="md-nav__link">
     ST_OrderingEquals
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_overlaps" class="md-nav__link">
+    ST_Overlaps
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_touches" class="md-nav__link">
+    ST_Touches
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_within" class="md-nav__link">
+    ST_Within
   </a>  
   
   
@@ -1978,6 +1978,20 @@
     <li class="md-nav__item">
       <a href="../../flink/Function/" class="md-nav__link">
         Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flink/Aggregator/" class="md-nav__link">
+        Aggregator
       </a>
     </li>
   
@@ -3021,53 +3035,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_intersects" class="md-nav__link">
-    ST_Intersects
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_within" class="md-nav__link">
-    ST_Within
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_equals" class="md-nav__link">
-    ST_Equals
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
   <a href="#st_crosses" class="md-nav__link">
     ST_Crosses
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_touches" class="md-nav__link">
-    ST_Touches
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_overlaps" class="md-nav__link">
-    ST_Overlaps
   </a>  
   
   
@@ -3084,8 +3053,53 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_equals" class="md-nav__link">
+    ST_Equals
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_intersects" class="md-nav__link">
+    ST_Intersects
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_orderingequals" class="md-nav__link">
     ST_OrderingEquals
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_overlaps" class="md-nav__link">
+    ST_Overlaps
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_touches" class="md-nav__link">
+    ST_Touches
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_within" class="md-nav__link">
+    ST_Within
   </a>  
   
   
@@ -3122,23 +3136,23 @@
 <span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Contains</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="st_intersects">ST_Intersects<a class="headerlink" href="#st_intersects" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return true if A intersects B</p>
-<p>Format: <code>ST_Intersects (A:geometry, B:geometry)</code></p>
+<h2 id="st_crosses">ST_Crosses<a class="headerlink" href="#st_crosses" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A crosses B</p>
+<p>Format: <code>ST_Crosses (A:geometry, B:geometry)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Crosses</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="st_within">ST_Within<a class="headerlink" href="#st_within" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return true if A is fully contained by B</p>
-<p>Format: <code>ST_Within (A:geometry, B:geometry)</code></p>
-<p>Since: <code>v1.0.0</code></p>
+<h2 id="st_disjoint">ST_Disjoint<a class="headerlink" href="#st_disjoint" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A and B are disjoint</p>
+<p>Format: <code>ST_Disjoint (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.2.1</code></p>
 <p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Within</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Disjoinnt</span><span class="p">(</span><span class="n">geom</span><span class="p">.</span><span class="n">geom_a</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="p">.</span><span class="n">geom_b</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="st_equals">ST_Equals<a class="headerlink" href="#st_equals" title="Permanent link">&para;</a></h2>
 <p>Introduction: Return true if A equals to B</p>
@@ -3149,40 +3163,14 @@
 <span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Equals</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="st_crosses">ST_Crosses<a class="headerlink" href="#st_crosses" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return true if A crosses B</p>
-<p>Format: <code>ST_Crosses (A:geometry, B:geometry)</code></p>
+<h2 id="st_intersects">ST_Intersects<a class="headerlink" href="#st_intersects" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A intersects B</p>
+<p>Format: <code>ST_Intersects (A:geometry, B:geometry)</code></p>
 <p>Since: <code>v1.0.0</code></p>
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Crosses</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
-</code></pre></div></p>
-<h2 id="st_touches">ST_Touches<a class="headerlink" href="#st_touches" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return true if A touches B</p>
-<p>Format: <code>ST_Touches (A:geometry, B:geometry)</code></p>
-<p>Since: <code>v1.0.0</code></p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Touches</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
-</code></pre></div>
-<h2 id="st_overlaps">ST_Overlaps<a class="headerlink" href="#st_overlaps" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return true if A overlaps B</p>
-<p>Format: <code>ST_Overlaps (A:geometry, B:geometry)</code></p>
-<p>Since: <code>v1.0.0</code></p>
-<p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Overlaps</span><span class="p">(</span><span class="n">geom</span><span class="p">.</span><span class="n">geom_a</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="p">.</span><span class="n">geom_b</span><span class="p">)</span><span class="w"></span>
-</code></pre></div></p>
-<h2 id="st_disjoint">ST_Disjoint<a class="headerlink" href="#st_disjoint" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return true if A and B are disjoint</p>
-<p>Format: <code>ST_Disjoint (A:geometry, B:geometry)</code></p>
-<p>Since: <code>v1.2.1</code></p>
-<p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Disjoinnt</span><span class="p">(</span><span class="n">geom</span><span class="p">.</span><span class="n">geom_a</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="p">.</span><span class="n">geom_b</span><span class="p">)</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="st_orderingequals">ST_OrderingEquals<a class="headerlink" href="#st_orderingequals" title="Permanent link">&para;</a></h2>
 <p>Introduction: Returns true if the geometries are equal and the coordinates are in the same order</p>
@@ -3196,13 +3184,39 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_OrderingEquals</span><span class="p">(</span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POLYGON((2 0, 0 2, -2 0, 2 0))&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POLYGON((0 2, -2 0, 2 0, 0 2))&#39;</span><span class="p">))</span><span class="w"></span>
 </code></pre></div></p>
 <p>Output: <code>false</code></p>
+<h2 id="st_overlaps">ST_Overlaps<a class="headerlink" href="#st_overlaps" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A overlaps B</p>
+<p>Format: <code>ST_Overlaps (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.0.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Overlaps</span><span class="p">(</span><span class="n">geom</span><span class="p">.</span><span class="n">geom_a</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="p">.</span><span class="n">geom_b</span><span class="p">)</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="st_touches">ST_Touches<a class="headerlink" href="#st_touches" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A touches B</p>
+<p>Format: <code>ST_Touches (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.0.0</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Touches</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
+</code></pre></div>
+<h2 id="st_within">ST_Within<a class="headerlink" href="#st_within" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A is fully contained by B</p>
+<p>Format: <code>ST_Within (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.0.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Within</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
+</code></pre></div></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 10, 2022 09:44:46</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 16, 2022 01:03:14</span>
       
     
   </small>

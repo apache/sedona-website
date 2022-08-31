@@ -1880,6 +1880,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/flink/Aggregator/" class="md-nav__link">
+        Aggregator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/flink/Predicate/" class="md-nav__link">
         Predicate
       </a>
@@ -2899,6 +2913,10 @@
   <h1>Language wrappers</h1>
 
 <p>Sedona binary releases are compiled by Java 1.8 and Scala 2.11/2.12 and tested in the following environments:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Support of Spark 2.X and Scala 2.11 will be removed in Sedona 1.3.0+ although some parts of the source code might still be compatible. Sedona 1.3.0+ will release binary for both Scala 2.12 and 2.13.</p>
+</div>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Sedona Scala/Java</label><label for="__tabbed_1_2">Sedona Python</label><label for="__tabbed_1_3">Sedona R</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2910,12 +2928,14 @@
 <th align="center">Spark 3.0</th>
 <th align="center">Spark 3.1</th>
 <th align="center">Spark 3.2</th>
+<th align="center">Spark 3.3</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="center">Scala 2.11</td>
 <td align="center">✅</td>
+<td align="center">not tested</td>
 <td align="center">not tested</td>
 <td align="center">not tested</td>
 <td align="center">not tested</td>
@@ -2926,12 +2946,14 @@
 <td align="center">✅</td>
 <td align="center">✅</td>
 <td align="center">✅</td>
+<td align="center">✅</td>
 </tr>
 <tr>
 <td align="center">Scala 2.13</td>
 <td align="center">not tested</td>
 <td align="center">not tested</td>
 <td align="center">not tested</td>
+<td align="center">✅ but no release</td>
 <td align="center">✅ but no release</td>
 </tr>
 </tbody>
@@ -2946,11 +2968,13 @@
 <th align="center">Spark 3.0 (Scala 2.12)</th>
 <th align="center">Spark 3.1 (Scala 2.12)</th>
 <th align="center">Spark 3.2 (Scala 2.12)</th>
+<th align="center">Spark 3.3 (Scala 2.12)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="center">Python 3.7</td>
+<td align="center">✅</td>
 <td align="center">✅</td>
 <td align="center">✅</td>
 <td align="center">✅</td>
@@ -2961,10 +2985,20 @@
 <td align="center">not tested</td>
 <td align="center">not tested</td>
 <td align="center">not tested</td>
+<td align="center">not tested</td>
 <td align="center">✅</td>
 </tr>
 <tr>
 <td align="center">Python 3.9</td>
+<td align="center">not tested</td>
+<td align="center">not tested</td>
+<td align="center">not tested</td>
+<td align="center">not tested</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">Python 3.10</td>
+<td align="center">not tested</td>
 <td align="center">not tested</td>
 <td align="center">not tested</td>
 <td align="center">not tested</td>
@@ -2982,12 +3016,14 @@
 <th align="center">Spark 3.0</th>
 <th align="center">Spark 3.1</th>
 <th align="center">Spark 3.2</th>
+<th align="center">Spark 3.3</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="center">Scala 2.11</td>
 <td align="center">✅</td>
+<td align="center">not tested</td>
 <td align="center">not tested</td>
 <td align="center">not tested</td>
 <td align="center">not tested</td>
@@ -2998,15 +3034,12 @@
 <td align="center">✅</td>
 <td align="center">✅</td>
 <td align="center">✅</td>
+<td align="center">✅</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Sedona Scala/Java/Python/R also work with Spark 2.3, Python 3.6 but we have no plan to officially support it.</p>
 </div>
 
   <hr>
@@ -3014,7 +3047,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 6, 2022 01:51:33</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 30, 2022 18:53:20</span>
       
     
   </small>

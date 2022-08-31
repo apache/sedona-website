@@ -1626,8 +1626,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_getband" class="md-nav__link">
-    RS_GetBand
+  <a href="#geotiff-dataframe-writer" class="md-nav__link">
+    Geotiff Dataframe Writer
   </a>  
   
   
@@ -1653,8 +1653,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_html" class="md-nav__link">
-    RS_HTML
+  <a href="#rs_getband" class="md-nav__link">
+    RS_GetBand
   </a>  
   
   
@@ -1662,8 +1662,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#geotiff-dataframe-writer" class="md-nav__link">
-    Geotiff Dataframe Writer
+  <a href="#rs_html" class="md-nav__link">
+    RS_HTML
   </a>  
   
   
@@ -1951,6 +1951,20 @@
     <li class="md-nav__item">
       <a href="../../flink/Function/" class="md-nav__link">
         Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flink/Aggregator/" class="md-nav__link">
+        Aggregator
       </a>
     </li>
   
@@ -2994,8 +3008,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_getband" class="md-nav__link">
-    RS_GetBand
+  <a href="#geotiff-dataframe-writer" class="md-nav__link">
+    Geotiff Dataframe Writer
   </a>  
   
   
@@ -3021,8 +3035,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#rs_html" class="md-nav__link">
-    RS_HTML
+  <a href="#rs_getband" class="md-nav__link">
+    RS_GetBand
   </a>  
   
   
@@ -3030,8 +3044,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#geotiff-dataframe-writer" class="md-nav__link">
-    Geotiff Dataframe Writer
+  <a href="#rs_html" class="md-nav__link">
+    RS_HTML
   </a>  
   
   
@@ -3059,7 +3073,7 @@
 
   <h1>Raster input and output</h1>
 
-<h3 id="geotiff-dataframe-loader">Geotiff Dataframe Loader<a class="headerlink" href="#geotiff-dataframe-loader" title="Permanent link">&para;</a></h3>
+<h2 id="geotiff-dataframe-loader">Geotiff Dataframe Loader<a class="headerlink" href="#geotiff-dataframe-loader" title="Permanent link">&para;</a></h2>
 <p>Introduction: The GeoTiff loader of Sedona is a Spark built-in data source. It can read a single geotiff image or 
 a number of geotiff images into a DataFrame.</p>
 <p>Since: <code>v1.1.0</code></p>
@@ -3111,69 +3125,6 @@ as a Sedona geometry and is transformed to WGS84 (EPSG:4326) reference system.</
 |file:///home/hp/D...|POLYGON ((-58.699...|    32|   32|[1058.0, 1039.0, ...|    4|
 |file:///home/hp/D...|POLYGON ((-58.297...|    32|   32|[1258.0, 1298.0, ...|    4|
 +--------------------+--------------------+------+-----+--------------------+-----+
-</code></pre></div>
-<h2 id="rs_getband">RS_GetBand<a class="headerlink" href="#rs_getband" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return a particular band from Geotiff Dataframe</p>
-<p>The number of total bands can be obtained from the GeoTiff loader</p>
-<p>Format: <code>RS_GetBand (allBandValues: Array[Double], targetBand:Int, totalBands:Int)</code></p>
-<p>Since: <code>v1.1.0</code></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Index of targetBand starts from 1 (instead of 0). Index of the first band is 1.</p>
-</div>
-<p>Spark SQL example:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="nc">BandDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_GetBand(data, 2, Band) as targetBand from GeotiffDataframe&quot;</span><span class="p">)</span>
-<span class="nc">BandDF</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>
-<p>Output:</p>
-<div class="highlight"><pre><span></span><code>+--------------------+
-|          targetBand|
-+--------------------+
-|[1058.0, 1039.0, ...|
-|[1258.0, 1298.0, ...|
-+--------------------+
-</code></pre></div>
-<h2 id="rs_array">RS_Array<a class="headerlink" href="#rs_array" title="Permanent link">&para;</a></h2>
-<p>Introduction: Create an array that is filled by the given value</p>
-<p>Format: <code>RS_Array(length:Int, value: Decimal)</code></p>
-<p>Since: <code>v1.1.0</code></p>
-<p>Spark SQL example:</p>
-<div class="highlight"><pre><span></span><code><span class="nc">SELECT</span> <span class="nc">RS_Array</span><span class="p">(</span><span class="n">height</span> <span class="o">*</span> <span class="n">width</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="rs_base64">RS_Base64<a class="headerlink" href="#rs_base64" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return a Base64 String from a geotiff image</p>
-<p>Format: <code>RS_Base64 (height:Int, width:Int, redBand: Array[Double], greenBand: Array[Double], blackBand: Array[Double], 
-optional: alphaBand: Array[Double])</code></p>
-<p>Since: <code>v1.1.0</code></p>
-<p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="nc">BandDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_Base64(h, w, band1, band2, RS_Array(h*w, 0)) as baseString from dataframe&quot;</span><span class="p">)</span>
-<span class="nc">BandDF</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></p>
-<p>Output:</p>
-<div class="highlight"><pre><span></span><code>+--------------------+
-|          baseString|
-+--------------------+
-|QJCIAAAAAABAkDwAA...|
-|QJOoAAAAAABAlEgAA...|
-+--------------------+
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Although the 3 RGB bands are mandatory, you can use <a href="#rs_array">RS_Array(h*w, 0.0)</a> to create an array (zeroed out, size = h * w) as input.</p>
-</div>
-<h2 id="rs_html">RS_HTML<a class="headerlink" href="#rs_html" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return a html img tag with the base64 string embedded</p>
-<p>Format: <code>RS_HTML(base64:String, optional: width_in_px:String)</code></p>
-<p>Spark SQL example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">&quot;RS_HTML(encodedstring, &#39;300&#39;) as htmlstring&quot;</span> <span class="p">).</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>
-<p>Output:</p>
-<div class="highlight"><pre><span></span><code>+--------------------+
-|          htmlstring|
-+--------------------+
-|<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;data:im...|</span>
-<span class="s">|&lt;img src=&quot;</span><span class="na">data:im</span><span class="err">...|</span>
-<span class="err">+</span><span class="na">--------------------</span><span class="err">+</span>
 </code></pre></div>
 <h2 id="geotiff-dataframe-writer">Geotiff Dataframe Writer<a class="headerlink" href="#geotiff-dataframe-writer" title="Permanent link">&para;</a></h2>
 <p>Introduction: You can write a GeoTiff dataframe as GeoTiff images using the spark <code>write</code> feature with the format <code>geotiff</code>.</p>
@@ -3227,13 +3178,76 @@ optional: alphaBand: Array[Double])</code></p>
 <span class="n">dfToWrite</span> <span class="o">=</span> <span class="n">dfToWrite</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">&quot;image.origin as source&quot;</span><span class="p">,</span><span class="s">&quot;ST_GeomFromWkt(image.geometry) as geom&quot;</span><span class="p">,</span> <span class="s">&quot;image.height as height&quot;</span><span class="p">,</span> <span class="s">&quot;image.width as width&quot;</span><span class="p">,</span> <span class="s">&quot;image.data as data&quot;</span><span class="p">,</span> <span class="s">&quot;image.nBands as bands&quot;</span><span class="p">)</span>
 <span class="n">dfToWrite</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="s">&quot;overwrite&quot;</span><span class="p">).</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geotiff&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;writeToCRS&quot;</span><span class="p">,</span> <span class="s">&quot;EPSG:4326&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;fieldOrigin&quot;</span><span class="p">,</span> <span class="s">&quot;source&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;fieldGeometry&quot;</span><span class="p">,</span> <span class="s">&quot;geom&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;fieldNBands&quot;</span><span class="p">,</span> <span class="s">&quot;bands&quot;</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="s">&quot;DESTINATION_PATH&quot;</span><span class="p">)</span>
 </code></pre></div>
+<h2 id="rs_array">RS_Array<a class="headerlink" href="#rs_array" title="Permanent link">&para;</a></h2>
+<p>Introduction: Create an array that is filled by the given value</p>
+<p>Format: <code>RS_Array(length:Int, value: Decimal)</code></p>
+<p>Since: <code>v1.1.0</code></p>
+<p>Spark SQL example:</p>
+<div class="highlight"><pre><span></span><code><span class="nc">SELECT</span> <span class="nc">RS_Array</span><span class="p">(</span><span class="n">height</span> <span class="o">*</span> <span class="n">width</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="rs_base64">RS_Base64<a class="headerlink" href="#rs_base64" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return a Base64 String from a geotiff image</p>
+<p>Format: <code>RS_Base64 (height:Int, width:Int, redBand: Array[Double], greenBand: Array[Double], blackBand: Array[Double],
+optional: alphaBand: Array[Double])</code></p>
+<p>Since: <code>v1.1.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="nc">BandDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_Base64(h, w, band1, band2, RS_Array(h*w, 0)) as baseString from dataframe&quot;</span><span class="p">)</span>
+<span class="nc">BandDF</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></p>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>+--------------------+
+|          baseString|
++--------------------+
+|QJCIAAAAAABAkDwAA...|
+|QJOoAAAAAABAlEgAA...|
++--------------------+
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Although the 3 RGB bands are mandatory, you can use <a href="#rs_array">RS_Array(h*w, 0.0)</a> to create an array (zeroed out, size = h * w) as input.</p>
+<h2 id="rs_getband">RS_GetBand<a class="headerlink" href="#rs_getband" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return a particular band from Geotiff Dataframe</p>
+<p>The number of total bands can be obtained from the GeoTiff loader</p>
+<p>Format: <code>RS_GetBand (allBandValues: Array[Double], targetBand:Int, totalBands:Int)</code></p>
+<p>Since: <code>v1.1.0</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Index of targetBand starts from 1 (instead of 0). Index of the first band is 1.</p>
+</div>
+<p>Spark SQL example:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="nc">BandDF</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;select RS_GetBand(data, 2, Band) as targetBand from GeotiffDataframe&quot;</span><span class="p">)</span>
+<span class="nc">BandDF</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>+--------------------+
+|          targetBand|
++--------------------+
+|[1058.0, 1039.0, ...|
+|[1258.0, 1298.0, ...|
++--------------------+
+</code></pre></div>
+<h2 id="rs_html">RS_HTML<a class="headerlink" href="#rs_html" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return a html img tag with the base64 string embedded</p>
+<p>Format: <code>RS_HTML(base64:String, optional: width_in_px:String)</code></p>
+<p>Spark SQL example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">&quot;RS_HTML(encodedstring, &#39;300&#39;) as htmlstring&quot;</span> <span class="p">).</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>+--------------------+
+|          htmlstring|
++--------------------+
+|<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;data:im...|</span>
+<span class="s">|&lt;img src=&quot;</span><span class="na">data:im</span><span class="err">...|</span>
+<span class="err">+</span><span class="na">--------------------</span><span class="err">+</span>
+</code></pre></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 20, 2022 16:20:13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 16, 2022 01:03:14</span>
       
     
   </small>

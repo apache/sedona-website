@@ -1565,8 +1565,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_union_aggr" class="md-nav__link">
-    ST_Union_Aggr
+  <a href="#st_intersection_aggr" class="md-nav__link">
+    ST_Intersection_Aggr
   </a>  
   
   
@@ -1574,8 +1574,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_intersection_aggr" class="md-nav__link">
-    ST_Intersection_Aggr
+  <a href="#st_union_aggr" class="md-nav__link">
+    ST_Union_Aggr
   </a>  
   
   
@@ -1924,6 +1924,20 @@
     <li class="md-nav__item">
       <a href="../../flink/Function/" class="md-nav__link">
         Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flink/Aggregator/" class="md-nav__link">
+        Aggregator
       </a>
     </li>
   
@@ -2967,8 +2981,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_union_aggr" class="md-nav__link">
-    ST_Union_Aggr
+  <a href="#st_intersection_aggr" class="md-nav__link">
+    ST_Intersection_Aggr
   </a>  
   
   
@@ -2976,8 +2990,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_intersection_aggr" class="md-nav__link">
-    ST_Intersection_Aggr
+  <a href="#st_union_aggr" class="md-nav__link">
+    ST_Union_Aggr
   </a>  
   
   
@@ -3013,14 +3027,6 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Envelope_Aggr</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="st_union_aggr">ST_Union_Aggr<a class="headerlink" href="#st_union_aggr" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return the polygon union of all polygons in A</p>
-<p>Format: <code>ST_Union_Aggr (A:geometryColumn)</code></p>
-<p>Since: <code>v1.0.0</code></p>
-<p>Spark SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Union_Aggr</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">)</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="w"></span>
-</code></pre></div></p>
 <h2 id="st_intersection_aggr">ST_Intersection_Aggr<a class="headerlink" href="#st_intersection_aggr" title="Permanent link">&para;</a></h2>
 <p>Introduction: Return the polygon intersection of all polygons in A</p>
 <p>Format: <code>ST_Intersection_Aggr (A:geometryColumn)</code></p>
@@ -3029,13 +3035,21 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Intersection_Aggr</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">)</span><span class="w"></span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="w"></span>
 </code></pre></div></p>
+<h2 id="st_union_aggr">ST_Union_Aggr<a class="headerlink" href="#st_union_aggr" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return the polygon union of all polygons in A</p>
+<p>Format: <code>ST_Union_Aggr (A:geometryColumn)</code></p>
+<p>Since: <code>v1.0.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Union_Aggr</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">polygonshape</span><span class="p">)</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="w"></span>
+</code></pre></div></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 18, 2021 19:30:39</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 16, 2022 01:03:14</span>
       
     
   </small>

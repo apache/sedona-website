@@ -990,6 +990,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#load-geoparquet" class="md-nav__link">
+    Load GeoParquet
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#transform-the-coordinate-reference-system" class="md-nav__link">
     Transform the Coordinate Reference System
   </a>  
@@ -1052,6 +1061,15 @@
   
   <a href="#save-to-permanent-storage" class="md-nav__link">
     Save to permanent storage
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#save-geoparquet" class="md-nav__link">
+    Save GeoParquet
   </a>  
   
   
@@ -2060,6 +2078,20 @@
     <li class="md-nav__item">
       <a href="../../api/flink/Function/" class="md-nav__link">
         Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/flink/Aggregator/" class="md-nav__link">
+        Aggregator
       </a>
     </li>
   
@@ -3148,6 +3180,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#load-geoparquet" class="md-nav__link">
+    Load GeoParquet
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#transform-the-coordinate-reference-system" class="md-nav__link">
     Transform the Coordinate Reference System
   </a>  
@@ -3210,6 +3251,15 @@
   
   <a href="#save-to-permanent-storage" class="md-nav__link">
     Save to permanent storage
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#save-geoparquet" class="md-nav__link">
+    Save GeoParquet
   </a>  
   
   
@@ -3378,6 +3428,32 @@ The file may have many other columns.</p>
 </div>
 <h2 id="load-shapefile-and-geojson">Load Shapefile and GeoJSON<a class="headerlink" href="#load-shapefile-and-geojson" title="Permanent link">&para;</a></h2>
 <p>Shapefile and GeoJSON must be loaded by SpatialRDD and converted to DataFrame using Adapter. Please read <a href="../rdd/#create-a-generic-spatialrdd">Load SpatialRDD</a> and <a href="#convert-between-dataframe-and-spatialrdd">DataFrame &lt;-&gt; RDD</a>.</p>
+<h2 id="load-geoparquet">Load GeoParquet<a class="headerlink" href="#load-geoparquet" title="Permanent link">&para;</a></h2>
+<p>GeoParquet must be loaded using DataFrame if default name is geometry.</p>
+<p><div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">sparkSession</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geoparquet&quot;</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">geoparquetdatalocation1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="n">printSchema</span><span class="p">()</span>
+</code></pre></div>
+The output will be as follows:</p>
+<p><div class="highlight"><pre><span></span><code>root
+ |-- pop_est: long (nullable = true)
+ |-- continent: string (nullable = true)
+ |-- name: string (nullable = true)
+ |-- iso_a3: string (nullable = true)
+ |-- gdp_md_est: double (nullable = true)
+ |-- geometry: geometry (nullable = true)
+</code></pre></div>
+If geometry column name is different</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">df</span> <span class="o">=</span> <span class="n">sparkSession</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geoparquet&quot;</span><span class="p">).</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;fieldGeometry&quot;</span><span class="p">,</span> <span class="s">&quot;new_geometry&quot;</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">geoparquetdatalocation1</span><span class="p">)</span>
+</code></pre></div>
+<p>The output will be as follows:</p>
+<div class="highlight"><pre><span></span><code>root
+ |-- pop_est: long (nullable = true)
+ |-- continent: string (nullable = true)
+ |-- name: string (nullable = true)
+ |-- iso_a3: string (nullable = true)
+ |-- gdp_md_est: double (nullable = true)
+ |-- new_geometry: geometry (nullable = true)
+</code></pre></div>
 <h2 id="transform-the-coordinate-reference-system">Transform the Coordinate Reference System<a class="headerlink" href="#transform-the-coordinate-reference-system" title="Permanent link">&para;</a></h2>
 <p>Sedona doesn't control the coordinate unit (degree-based or meter-based) of all geometries in a Geometry column. The unit of all related distances in SedonaSQL is same as the unit of all geometries in a Geometry column.</p>
 <p>To convert Coordinate Reference System of the Geometry column created before, use the following code:</p>
@@ -3449,6 +3525,10 @@ The file may have many other columns.</p>
 <p class="admonition-title">Note</p>
 <p>ST_AsGeoJSON is also available. We would like to invite you to contribute more functions</p>
 </div>
+<h2 id="save-geoparquet">Save GeoParquet<a class="headerlink" href="#save-geoparquet" title="Permanent link">&para;</a></h2>
+<p>GeoParquet can be saved as follows </p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geoparquet&quot;</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="n">geoparquetoutputlocation</span> <span class="o">+</span> <span class="s">&quot;/GeoParquet_File_Name.parquet&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="convert-between-dataframe-and-spatialrdd">Convert between DataFrame and SpatialRDD<a class="headerlink" href="#convert-between-dataframe-and-spatialrdd" title="Permanent link">&para;</a></h2>
 <h3 id="dataframe-to-spatialrdd">DataFrame to SpatialRDD<a class="headerlink" href="#dataframe-to-spatialrdd" title="Permanent link">&para;</a></h3>
 <p>Use SedonaSQL DataFrame-RDD Adapter to convert a DataFrame to an SpatialRDD. Please read <a href="/api/javadoc/sql/org/apache/sedona/sql/utils/index.html">Adapter Scaladoc</a></p>
@@ -3464,6 +3544,19 @@ The file may have many other columns.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">spatialDf</span> <span class="o">=</span> <span class="nc">Adapter</span><span class="p">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">spatialRDD</span><span class="p">,</span> <span class="n">sparkSession</span><span class="p">)</span>
 </code></pre></div>
 <p>All other attributes such as price and age will be also brought to the DataFrame as long as you specify <mark>carryOtherAttributes</mark> (see <a href="../rdd#read-other-attributes-in-an-spatialrdd">Read other attributes in an SpatialRDD</a>).</p>
+<p>You may also manually specify a schema for the resulting DataFrame in case you require different column names or data
+types. Note that string schemas and not all data types are supported&mdash;please check the
+<a href="/api/javadoc/sql/org/apache/sedona/sql/utils/index.html">Adapter Scaladoc</a> and
+<a href="/sql/src/main/scala/org/apache/sedona/sql/utils/Adapter.scala">source code</a> to confirm what is supported for your use
+case. At least one column for the user data must be provided.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">schema</span> <span class="o">=</span> <span class="nc">StructType</span><span class="p">(</span><span class="nc">Array</span><span class="p">(</span>
+  <span class="nc">StructField</span><span class="p">(</span><span class="s">&quot;county&quot;</span><span class="p">,</span> <span class="nc">GeometryUDT</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">),</span>
+  <span class="nc">StructField</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="nc">StringType</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">),</span>
+  <span class="nc">StructField</span><span class="p">(</span><span class="s">&quot;price&quot;</span><span class="p">,</span> <span class="nc">DoubleType</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">),</span>
+  <span class="nc">StructField</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span> <span class="nc">IntegerType</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+<span class="p">))</span>
+<span class="kd">val</span> <span class="n">spatialDf</span> <span class="o">=</span> <span class="nc">Adapter</span><span class="p">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">spatialRDD</span><span class="p">,</span> <span class="n">schema</span><span class="p">,</span> <span class="n">sparkSession</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="spatialpairrdd-to-dataframe">SpatialPairRDD to DataFrame<a class="headerlink" href="#spatialpairrdd-to-dataframe" title="Permanent link">&para;</a></h3>
 <p>PairRDD is the result of a spatial join query or distance join query. SedonaSQL DataFrame-RDD Adapter can convert the result to a DataFrame. But you need to provide the name of other attributes.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">joinResultDf</span> <span class="o">=</span> <span class="nc">Adapter</span><span class="p">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">joinResultPairRDD</span><span class="p">,</span> <span class="nc">Seq</span><span class="p">(</span><span class="s">&quot;left_attribute1&quot;</span><span class="p">,</span> <span class="s">&quot;left_attribute2&quot;</span><span class="p">),</span> <span class="nc">Seq</span><span class="p">(</span><span class="s">&quot;right_attribute1&quot;</span><span class="p">,</span> <span class="s">&quot;right_attribute2&quot;</span><span class="p">),</span> <span class="n">sparkSession</span><span class="p">)</span>
@@ -3473,13 +3566,28 @@ The file may have many other columns.</p>
 <span class="kd">var</span> <span class="n">joinResultDf</span> <span class="o">=</span> <span class="nc">Adapter</span><span class="p">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">joinResultPairRDD</span><span class="p">,</span> <span class="n">leftRdd</span><span class="p">.</span><span class="n">fieldNames</span><span class="p">,</span> <span class="n">rightRdd</span><span class="p">.</span><span class="n">fieldNames</span><span class="p">,</span> <span class="n">sparkSession</span><span class="p">)</span>
 </code></pre></div>
 <p>All other attributes such as price and age will be also brought to the DataFrame as long as you specify <mark>carryOtherAttributes</mark> (see <a href="../rdd#read-other-attributes-in-an-spatialrdd">Read other attributes in an SpatialRDD</a>).</p>
+<p>You may also manually specify a schema for the resulting DataFrame in case you require different column names or data
+types. Note that string schemas and not all data types are supported&mdash;please check the
+<a href="/api/javadoc/sql/org/apache/sedona/sql/utils/index.html">Adapter Scaladoc</a> and
+<a href="/sql/src/main/scala/org/apache/sedona/sql/utils/Adapter.scala">source code</a> to confirm what is supported for your use
+case. Columns for the left and right user data must be provided.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span> <span class="n">schema</span> <span class="o">=</span> <span class="nc">StructType</span><span class="p">(</span><span class="nc">Array</span><span class="p">(</span>
+  <span class="nc">StructField</span><span class="p">(</span><span class="s">&quot;leftGeometry&quot;</span><span class="p">,</span> <span class="nc">GeometryUDT</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">),</span>
+  <span class="nc">StructField</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="nc">StringType</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">),</span>
+  <span class="nc">StructField</span><span class="p">(</span><span class="s">&quot;price&quot;</span><span class="p">,</span> <span class="nc">DoubleType</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">),</span>
+  <span class="nc">StructField</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span> <span class="nc">IntegerType</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">),</span>
+  <span class="nc">StructField</span><span class="p">(</span><span class="s">&quot;rightGeometry&quot;</span><span class="p">,</span> <span class="nc">GeometryUDT</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">),</span>
+  <span class="nc">StructField</span><span class="p">(</span><span class="s">&quot;category&quot;</span><span class="p">,</span> <span class="nc">StringType</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+<span class="p">))</span>
+<span class="kd">val</span> <span class="n">joinResultDf</span> <span class="o">=</span> <span class="nc">Adapter</span><span class="p">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">joinResultPairRDD</span><span class="p">,</span> <span class="n">schema</span><span class="p">,</span> <span class="n">sparkSession</span><span class="p">)</span>
+</code></pre></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 22, 2021 22:53:29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 21, 2022 22:52:52</span>
       
     
   </small>

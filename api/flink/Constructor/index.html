@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#st_point" class="md-skip">
+        <a href="#st_geomfromgeohash" class="md-skip">
           Skip to content
         </a>
       
@@ -1880,8 +1880,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_point" class="md-nav__link">
-    ST_Point
+  <a href="#st_geomfromgeohash" class="md-nav__link">
+    ST_GeomFromGeoHash
   </a>  
   
   
@@ -1889,8 +1889,26 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_geomfromwkt" class="md-nav__link">
-    ST_GeomFromWKT
+  <a href="#st_geomfromgeojson" class="md-nav__link">
+    ST_GeomFromGeoJSON
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_geomfromgml" class="md-nav__link">
+    ST_GeomFromGML
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_geomfromkml" class="md-nav__link">
+    ST_GeomFromKML
   </a>  
   
   
@@ -1916,17 +1934,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_geomfromgeojson" class="md-nav__link">
-    ST_GeomFromGeoJSON
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_pointfromtext" class="md-nav__link">
-    ST_PointFromText
+  <a href="#st_geomfromwkt" class="md-nav__link">
+    ST_GeomFromWKT
   </a>  
   
   
@@ -1952,8 +1961,17 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_polygonfromtext" class="md-nav__link">
-    ST_PolygonFromText
+  <a href="#st_point" class="md-nav__link">
+    ST_Point
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_pointfromtext" class="md-nav__link">
+    ST_PointFromText
   </a>  
   
   
@@ -1970,8 +1988,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_geomfromgeohash" class="md-nav__link">
-    ST_GeomFromGeoHash
+  <a href="#st_polygonfromtext" class="md-nav__link">
+    ST_PolygonFromText
   </a>  
   
   
@@ -1994,6 +2012,20 @@
     <li class="md-nav__item">
       <a href="../Function/" class="md-nav__link">
         Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aggregator/" class="md-nav__link">
+        Aggregator
       </a>
     </li>
   
@@ -3028,8 +3060,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_point" class="md-nav__link">
-    ST_Point
+  <a href="#st_geomfromgeohash" class="md-nav__link">
+    ST_GeomFromGeoHash
   </a>  
   
   
@@ -3037,8 +3069,26 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_geomfromwkt" class="md-nav__link">
-    ST_GeomFromWKT
+  <a href="#st_geomfromgeojson" class="md-nav__link">
+    ST_GeomFromGeoJSON
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_geomfromgml" class="md-nav__link">
+    ST_GeomFromGML
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_geomfromkml" class="md-nav__link">
+    ST_GeomFromKML
   </a>  
   
   
@@ -3064,17 +3114,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_geomfromgeojson" class="md-nav__link">
-    ST_GeomFromGeoJSON
-  </a>  
-  
-  
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#st_pointfromtext" class="md-nav__link">
-    ST_PointFromText
+  <a href="#st_geomfromwkt" class="md-nav__link">
+    ST_GeomFromWKT
   </a>  
   
   
@@ -3100,8 +3141,17 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_polygonfromtext" class="md-nav__link">
-    ST_PolygonFromText
+  <a href="#st_point" class="md-nav__link">
+    ST_Point
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_pointfromtext" class="md-nav__link">
+    ST_PointFromText
   </a>  
   
   
@@ -3118,8 +3168,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_geomfromgeohash" class="md-nav__link">
-    ST_GeomFromGeoHash
+  <a href="#st_polygonfromtext" class="md-nav__link">
+    ST_PolygonFromText
   </a>  
   
   
@@ -3147,21 +3197,36 @@
 
   <h1>Constructor</h1>
 
-<h2 id="st_point">ST_Point<a class="headerlink" href="#st_point" title="Permanent link">&para;</a></h2>
-<p>Introduction: Construct a Point from X and Y</p>
-<p>Format: <code>ST_Point (X:decimal, Y:decimal)</code></p>
+<h2 id="st_geomfromgeohash">ST_GeomFromGeoHash<a class="headerlink" href="#st_geomfromgeohash" title="Permanent link">&para;</a></h2>
+<p>Introduction: Create Geometry from geohash string and optional precision</p>
+<p>Format: <code>ST_GeomFromGeoHash(geohash: string, precision: int)</code></p>
 <p>Since: <code>v1.2.1</code></p>
 <p>SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pointshape</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointtable</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromGeoHash</span><span class="p">(</span><span class="s1">&#39;s00twy01mt&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="st_geomfromwkt">ST_GeomFromWKT<a class="headerlink" href="#st_geomfromwkt" title="Permanent link">&para;</a></h2>
-<p>Introduction: Construct a Geometry from Wkt</p>
-<p>Format:
-<code>ST_GeomFromWKT (Wkt:string)</code></p>
+<h2 id="st_geomfromgeojson">ST_GeomFromGeoJSON<a class="headerlink" href="#st_geomfromgeojson" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Geometry from GeoJson</p>
+<p>Format: <code>ST_GeomFromGeoJSON (GeoJson:string)</code></p>
 <p>Since: <code>v1.2.0</code></p>
 <p>SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POINT(40.7128 -74.0060)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geometry</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromGeoJSON</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">polygontable</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="st_geomfromgml">ST_GeomFromGML<a class="headerlink" href="#st_geomfromgml" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Geometry from GML.</p>
+<p>Format:
+<code>ST_GeomFromGML (gml:string)</code></p>
+<p>Since: <code>v1.3.0</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromGML</span><span class="p">(</span><span class="s1">&#39;&lt;gml:LineString srsName=&quot;EPSG:4269&quot;&gt;&lt;gml:coordinates&gt;-71.16028,42.258729 -71.160837,42.259112 -71.161143,42.25932&lt;/gml:coordinates&gt;&lt;/gml:LineString&gt;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geometry</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="st_geomfromkml">ST_GeomFromKML<a class="headerlink" href="#st_geomfromkml" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Geometry from KML.</p>
+<p>Format:
+<code>ST_GeomFromKML (kml:string)</code></p>
+<p>Since: <code>v1.3.0</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromKML</span><span class="p">(</span><span class="s1">&#39;&lt;LineString&gt;&lt;coordinates&gt;-71.1663,42.2614 -71.1667,42.2616&lt;/coordinates&gt;&lt;/LineString&gt;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geometry</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="st_geomfromtext">ST_GeomFromText<a class="headerlink" href="#st_geomfromtext" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Geometry from Wkt. Alias of  <a href="#ST_GeomFromWKT">ST_GeomFromWKT</a></p>
@@ -3188,20 +3253,13 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKB</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">polygontable</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="st_geomfromgeojson">ST_GeomFromGeoJSON<a class="headerlink" href="#st_geomfromgeojson" title="Permanent link">&para;</a></h2>
-<p>Introduction: Construct a Geometry from GeoJson</p>
-<p>Format: <code>ST_GeomFromGeoJSON (GeoJson:string)</code></p>
+<h2 id="st_geomfromwkt">ST_GeomFromWKT<a class="headerlink" href="#st_geomfromwkt" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Geometry from Wkt</p>
+<p>Format:
+<code>ST_GeomFromWKT (Wkt:string)</code></p>
 <p>Since: <code>v1.2.0</code></p>
 <p>SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromGeoJSON</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">polygontable</span><span class="w"></span>
-</code></pre></div></p>
-<h2 id="st_pointfromtext">ST_PointFromText<a class="headerlink" href="#st_pointfromtext" title="Permanent link">&para;</a></h2>
-<p>Introduction: Construct a Point from Text, delimited by Delimiter</p>
-<p>Format: <code>ST_PointFromText (Text:string, Delimiter:char)</code></p>
-<p>Since: <code>v1.2.0</code></p>
-<p>SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_PointFromText</span><span class="p">(</span><span class="s1">&#39;40.7128,-74.0060&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pointshape</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POINT(40.7128 -74.0060)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geometry</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="st_linefromtext">ST_LineFromText<a class="headerlink" href="#st_linefromtext" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a LineString from Text, delimited by Delimiter (Optional)</p>
@@ -3217,12 +3275,20 @@
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_LineStringFromText</span><span class="p">(</span><span class="s1">&#39;Linestring(1 2, 3 4)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">line</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="st_polygonfromtext">ST_PolygonFromText<a class="headerlink" href="#st_polygonfromtext" title="Permanent link">&para;</a></h2>
-<p>Introduction: Construct a Polygon from Text, delimited by Delimiter. Path must be closed</p>
-<p>Format: <code>ST_PolygonFromText (Text:string, Delimiter:char)</code></p>
+<h2 id="st_point">ST_Point<a class="headerlink" href="#st_point" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Point from X and Y</p>
+<p>Format: <code>ST_Point (X:decimal, Y:decimal)</code></p>
+<p>Since: <code>v1.2.1</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pointshape</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pointtable</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="st_pointfromtext">ST_PointFromText<a class="headerlink" href="#st_pointfromtext" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Point from Text, delimited by Delimiter</p>
+<p>Format: <code>ST_PointFromText (Text:string, Delimiter:char)</code></p>
 <p>Since: <code>v1.2.0</code></p>
 <p>SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_PolygonFromText</span><span class="p">(</span><span class="s1">&#39;-74.0428197,40.6867969,-74.0421975,40.6921336,-74.0508020,40.6912794,-74.0428197,40.6867969&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_PointFromText</span><span class="p">(</span><span class="s1">&#39;40.7128,-74.0060&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pointshape</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="st_polygonfromenvelope">ST_PolygonFromEnvelope<a class="headerlink" href="#st_polygonfromenvelope" title="Permanent link">&para;</a></h2>
 <p>Introduction: Construct a Polygon from MinX, MinY, MaxX, MaxY.</p>
@@ -3233,12 +3299,12 @@
 <span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"></span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Contains</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">pointshape</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="st_geomfromgeohash">ST_GeomFromGeoHash<a class="headerlink" href="#st_geomfromgeohash" title="Permanent link">&para;</a></h2>
-<p>Introduction: Create Geometry from geohash string and optional precision</p>
-<p>Format: <code>ST_GeomFromGeoHash(geohash: string, precision: int)</code></p>
-<p>Since: <code>v1.2.1</code></p>
+<h2 id="st_polygonfromtext">ST_PolygonFromText<a class="headerlink" href="#st_polygonfromtext" title="Permanent link">&para;</a></h2>
+<p>Introduction: Construct a Polygon from Text, delimited by Delimiter. Path must be closed</p>
+<p>Format: <code>ST_PolygonFromText (Text:string, Delimiter:char)</code></p>
+<p>Since: <code>v1.2.0</code></p>
 <p>SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromGeoHash</span><span class="p">(</span><span class="s1">&#39;s00twy01mt&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_PolygonFromText</span><span class="p">(</span><span class="s1">&#39;-74.0428197,40.6867969,-74.0421975,40.6921336,-74.0508020,40.6912794,-74.0428197,40.6867969&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
 </code></pre></div></p>
 
   <hr>
@@ -3246,7 +3312,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 15, 2022 14:36:00</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 24, 2022 11:08:04</span>
       
     
   </small>

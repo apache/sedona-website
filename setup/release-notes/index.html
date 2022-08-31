@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sedona-120" class="md-skip">
+        <a href="#sedona-121" class="md-skip">
           Skip to content
         </a>
       
@@ -803,6 +803,39 @@
       
         <li class="md-nav__item">
   
+  <a href="#sedona-121" class="md-nav__link">
+    Sedona 1.2.1
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="Sedona 1.2.1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#sql-for-spark" class="md-nav__link">
+    SQL (for Spark)
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#flink" class="md-nav__link">
+    Flink
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#sedona-120" class="md-nav__link">
     Sedona 1.2.0
   </a>  
@@ -831,7 +864,7 @@
         
           <li class="md-nav__item">
   
-  <a href="#flink" class="md-nav__link">
+  <a href="#flink_1" class="md-nav__link">
     Flink
   </a>  
   
@@ -2326,6 +2359,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../api/flink/Aggregator/" class="md-nav__link">
+        Aggregator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/flink/Predicate/" class="md-nav__link">
         Predicate
       </a>
@@ -3348,6 +3395,39 @@
       
         <li class="md-nav__item">
   
+  <a href="#sedona-121" class="md-nav__link">
+    Sedona 1.2.1
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="Sedona 1.2.1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#sql-for-spark" class="md-nav__link">
+    SQL (for Spark)
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#flink" class="md-nav__link">
+    Flink
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#sedona-120" class="md-nav__link">
     Sedona 1.2.0
   </a>  
@@ -3376,7 +3456,7 @@
         
           <li class="md-nav__item">
   
-  <a href="#flink" class="md-nav__link">
+  <a href="#flink_1" class="md-nav__link">
     Flink
   </a>  
   
@@ -3791,6 +3871,63 @@
 
   <h1>Release notes</h1>
 
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Support of Spark 2.X and Scala 2.11 will be removed in Sedona 1.3.0+ although some parts of the source code might still be compatible. Sedona 1.3.0+ will release binary for both Scala 2.12 and 2.13.</p>
+</div>
+<h2 id="sedona-121">Sedona 1.2.1<a class="headerlink" href="#sedona-121" title="Permanent link">&para;</a></h2>
+<p>This version is a maintenance release on Sedona 1.2.0 line. It includes bug fixes.</p>
+<p>Sedona on Spark is now compiled against Spark 3.3, instead of Spark 2.2.</p>
+<h3 id="sql-for-spark">SQL (for Spark)<a class="headerlink" href="#sql-for-spark" title="Permanent link">&para;</a></h3>
+<p>Bug fixes:</p>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-104">SEDONA-104</a>: Bug in reading band values of GeoTiff images</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-118">SEDONA-118</a>: Fix the wrong result in ST_Within</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-123">SEDONA-123</a>: Fix the check for invalid lat/lon in ST_GeoHash</li>
+</ul>
+<p>Improvement:</p>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-96">SEDONA-96</a>: Refactor ST_MakeValid to use GeometryFixer</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-108">SEDONA-108</a>: Write support for GeoTiff images</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-122">SEDONA-122</a>: Overload ST_GeomFromWKB for BYTES column</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-127">SEDONA-127</a>: Add null safety to ST_GeomFromWKT/WKB/Text</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-129">SEDONA-129</a>: Support Spark 3.3</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-135">SEDONA-135</a>: Consolidate and upgrade hadoop dependency</li>
+</ul>
+<p>New features:</p>
+<ul>
+<li><a href="https://issues.apache.org/jira/projects/SEDONA/issues/SEDONA-107">SEDONA-107</a>: Add St_Reverse function</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-105">SEDONA-105</a>: Add ST_PointOnSurface function</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-95">SEDONA-95</a>: Add ST_Disjoint predicate</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-112">SEDONA-112</a>: Add ST_AsEWKT</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-106">SEDONA-106</a>: Add ST_LineFromText</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-117">SEDONA-117</a>: Add RS_AppendNormalizedDifference</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-97">SEDONA-97</a>: Add ST_Force_2D</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-98">SEDONA-98</a>: Add ST_IsEmpty</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-116">SEDONA-116</a>: Add ST_YMax and ST_Ymin</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-15">SEDONA-115</a>: Add ST_XMax and ST_Min</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-120">SEDONA-120</a>: Add ST_BuildArea</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-113">SEDONA-113</a>: Add ST_PointN</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-124">SEDONA-124</a>: Add ST_CollectionExtract</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-109">SEDONA-109</a>: Add ST_OrderingEquals</li>
+</ul>
+<h3 id="flink">Flink<a class="headerlink" href="#flink" title="Permanent link">&para;</a></h3>
+<p>New features:</p>
+<ul>
+<li><a href="https://issues.apache.org/jira/projects/SEDONA/issues/SEDONA-107">SEDONA-107</a>: Add St_Reverse function</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-105">SEDONA-105</a>: Add ST_PointOnSurface function</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-95">SEDONA-95</a>: Add ST_Disjoint predicate</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-112">SEDONA-112</a>: Add ST_AsEWKT</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-97">SEDONA-97</a>: Add ST_Force_2D</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-98">SEDONA-98</a>: Add ST_IsEmpty</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-116">SEDONA-116</a>: Add ST_YMax and ST_Ymin</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-15">SEDONA-115</a>: Add ST_XMax and ST_Min</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-120">SEDONA-120</a>: Add ST_BuildArea</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-113">SEDONA-113</a>: Add ST_PointN</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-110">SEDONA-110</a>: Add ST_GeomFromGeoHash</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-124">SEDONA-121</a>: More ST constructors to Flink</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-122">SEDONA-122</a>: Overload ST_GeomFromWKB for BYTES column</li>
+</ul>
 <h2 id="sedona-120">Sedona 1.2.0<a class="headerlink" href="#sedona-120" title="Permanent link">&para;</a></h2>
 <p>This version is a major release on Sedona 1.2.0 line. It includes bug fixes and new features: Sedona with Apache Flink.</p>
 <h3 id="rdd">RDD<a class="headerlink" href="#rdd" title="Permanent link">&para;</a></h3>
@@ -3819,7 +3956,7 @@
 <ul>
 <li><a href="https://issues.apache.org/jira/browse/SEDONA-89">SEDONA-89</a>: GeometryUDT equals should test equivalence of the other object</li>
 </ul>
-<h3 id="flink">Flink<a class="headerlink" href="#flink" title="Permanent link">&para;</a></h3>
+<h3 id="flink_1">Flink<a class="headerlink" href="#flink_1" title="Permanent link">&para;</a></h3>
 <p>Major update:</p>
 <ul>
 <li><a href="https://issues.apache.org/jira/browse/SEDONA-80">SEDONA-80</a>: Geospatial stream processing support in Flink Table API</li>
@@ -4363,7 +4500,7 @@ None</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 16, 2022 22:13:46</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 30, 2022 18:53:20</span>
       
     
   </small>

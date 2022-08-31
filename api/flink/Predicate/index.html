@@ -1875,6 +1875,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../Aggregator/" class="md-nav__link">
+        Aggregator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -1917,8 +1931,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_intersects" class="md-nav__link">
-    ST_Intersects
+  <a href="#st_disjoint" class="md-nav__link">
+    ST_Disjoint
   </a>  
   
   
@@ -1926,8 +1940,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_disjoint" class="md-nav__link">
-    ST_Disjoint
+  <a href="#st_intersects" class="md-nav__link">
+    ST_Intersects
   </a>  
   
   
@@ -2974,8 +2988,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_intersects" class="md-nav__link">
-    ST_Intersects
+  <a href="#st_disjoint" class="md-nav__link">
+    ST_Disjoint
   </a>  
   
   
@@ -2983,8 +2997,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#st_disjoint" class="md-nav__link">
-    ST_Disjoint
+  <a href="#st_intersects" class="md-nav__link">
+    ST_Intersects
   </a>  
   
   
@@ -3030,15 +3044,6 @@
 <span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Contains</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="st_intersects">ST_Intersects<a class="headerlink" href="#st_intersects" title="Permanent link">&para;</a></h2>
-<p>Introduction: Return true if A intersects B</p>
-<p>Format: <code>ST_Intersects (A:geometry, B:geometry)</code></p>
-<p>Since: <code>v1.2.0</code></p>
-<p>SQL example:
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
-</code></pre></div></p>
 <h2 id="st_disjoint">ST_Disjoint<a class="headerlink" href="#st_disjoint" title="Permanent link">&para;</a></h2>
 <p>Introduction: Return true if A and B are disjoint</p>
 <p>Format: <code>ST_Disjoint (A:geometry, B:geometry)</code></p>
@@ -3047,6 +3052,15 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Disjoinnt</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="st_intersects">ST_Intersects<a class="headerlink" href="#st_intersects" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A intersects B</p>
+<p>Format: <code>ST_Intersects (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.2.0</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="st_orderingequals">ST_OrderingEquals<a class="headerlink" href="#st_orderingequals" title="Permanent link">&para;</a></h2>
 <p>Introduction: Returns true if the geometries are equal and the coordinates are in the same order</p>
@@ -3066,7 +3080,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 10, 2022 09:44:46</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 16, 2022 01:03:14</span>
       
     
   </small>
@@ -3092,7 +3106,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../Function/" title="Function" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Aggregator/" title="Aggregator" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -3101,7 +3115,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Function
+                Aggregator
               </div>
             </div>
           </a>
