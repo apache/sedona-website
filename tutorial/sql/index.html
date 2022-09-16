@@ -3453,7 +3453,7 @@ The file may have many other columns.</p>
 <h2 id="load-shapefile-and-geojson">Load Shapefile and GeoJSON<a class="headerlink" href="#load-shapefile-and-geojson" title="Permanent link">&para;</a></h2>
 <p>Shapefile and GeoJSON must be loaded by SpatialRDD and converted to DataFrame using Adapter. Please read <a href="../rdd/#create-a-generic-spatialrdd">Load SpatialRDD</a> and <a href="#convert-between-dataframe-and-spatialrdd">DataFrame &lt;-&gt; RDD</a>.</p>
 <h2 id="load-geoparquet">Load GeoParquet<a class="headerlink" href="#load-geoparquet" title="Permanent link">&para;</a></h2>
-<p>GeoParquet must be loaded using DataFrame if default name is geometry.</p>
+<p>Since v<code>1.3.0</code>, Sedona natively supports loading GeoParquet file. GeoParquet must be loaded using DataFrame if default name is geometry.</p>
 <p><div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sparkSession</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geoparquet&quot;</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">geoparquetdatalocation1</span><span class="p">)</span><span class="w"></span>
 <span class="n">df</span><span class="p">.</span><span class="n">printSchema</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
@@ -3550,7 +3550,7 @@ If geometry column name is different</p>
 <p>ST_AsGeoJSON is also available. We would like to invite you to contribute more functions</p>
 </div>
 <h2 id="save-geoparquet">Save GeoParquet<a class="headerlink" href="#save-geoparquet" title="Permanent link">&para;</a></h2>
-<p>GeoParquet can be saved as follows </p>
+<p>Since v<code>1.3.0</code>, Sedona natively supports writing GeoParquet file. GeoParquet can be saved as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geoparquet&quot;</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="n">geoparquetoutputlocation</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/GeoParquet_File_Name.parquet&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h2 id="convert-between-dataframe-and-spatialrdd">Convert between DataFrame and SpatialRDD<a class="headerlink" href="#convert-between-dataframe-and-spatialrdd" title="Permanent link">&para;</a></h2>
