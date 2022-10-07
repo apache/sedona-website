@@ -2141,6 +2141,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_linefrommultipoint" class="md-nav__link">
+    ST_LineFromMultiPoint
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_normalize" class="md-nav__link">
     ST_Normalize
   </a>  
@@ -3632,6 +3641,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_linefrommultipoint" class="md-nav__link">
+    ST_LineFromMultiPoint
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_normalize" class="md-nav__link">
     ST_Normalize
   </a>  
@@ -4066,6 +4084,16 @@ If the geometry is lacking SRID a WKT format is produced.
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Length</span><span class="p">(</span><span class="n">polygondf</span><span class="p">.</span><span class="n">countyshape</span><span class="p">)</span><span class="w"></span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">polygondf</span><span class="w"></span>
 </code></pre></div>
+<h2 id="st_linefrommultipoint">ST_LineFromMultiPoint<a class="headerlink" href="#st_linefrommultipoint" title="Permanent link">&para;</a></h2>
+<p>Introduction: Creates a LineString from a MultiPoint geometry.</p>
+<p>Format: <code>ST_LineFromMultiPoint (A:geometry)</code></p>
+<p>Since: <code>v1.3.0</code></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_LineFromMultiPoint</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">geometry</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">df</span><span class="w"></span>
+</code></pre></div>
+<p>Input: <code>MULTIPOINT((10 40), (40 30), (20 20), (30 10))</code></p>
+<p>Output: <code>LINESTRING (10 40, 40 30, 20 20, 30 10)</code></p>
 <h2 id="st_normalize">ST_Normalize<a class="headerlink" href="#st_normalize" title="Permanent link">&para;</a></h2>
 <p>Introduction: Returns the input geometry in its normalized form.</p>
 <p>Format</p>
@@ -4271,7 +4299,7 @@ If the geometry is lacking SRID a WKT format is produced.
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">September 20, 2022 17:42:38</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 7, 2022 01:32:19</span>
       
     
   </small>

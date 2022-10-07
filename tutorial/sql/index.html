@@ -1112,6 +1112,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#dataframe-style-api" class="md-nav__link">
+    DataFrame Style API
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3330,6 +3339,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#dataframe-style-api" class="md-nav__link">
+    DataFrame Style API
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3605,13 +3623,32 @@ case. Columns for the left and right user data must be provided.</p>
 <span class="p">))</span><span class="w"></span>
 <span class="kd">val</span><span class="w"> </span><span class="n">joinResultDf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Adapter</span><span class="p">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">joinResultPairRDD</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p">,</span><span class="w"> </span><span class="n">sparkSession</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<h2 id="dataframe-style-api">DataFrame Style API<a class="headerlink" href="#dataframe-style-api" title="Permanent link">&para;</a></h2>
+<p>Sedona functions can be used in a DataFrame style API similar to Spark functions.
+The following objects contain the exposed functions: <code>org.apache.spark.sql.sedona_sql.expressions.st_functions</code>, <code>org.apache.spark.sql.sedona_sql.expressions.st_constructors</code>, <code>org.apache.spark.sql.sedona_sql.expressions.st_predicates</code>, and <code>org.apache.spark.sql.sedona_sql.expressions.st_aggregates</code>.
+Every functions can take all <code>Column</code> arguments.
+Additionally, overloaded forms can commonly take a mix of <code>String</code> and other Scala types (such as <code>Double</code>) as arguments.
+In general the following rules apply (although check the documentation of specific functions for any exceptions):
+1. Every function returns a <code>Column</code> so that it can be used interchangeably with Spark functions as well as <code>DataFrame</code> methods such as <code>DataFrame.select</code> or <code>DataFrame.join</code>.
+1. Every function has a form that takes all <code>Column</code> arguments.
+These are the most versatile of the forms.
+1. Most functions have a form that takes a mix of <code>String</code> arguments with other Scala types.
+The exact mixture of argument types allowed is function specific.
+However, in these instances, all <code>String</code> arguments are assumed to be the names of columns and will be wrapped in a <code>Column</code> automatically.
+Non-<code>String</code> arguments are assumed to be literals that are passed to the sedona function. If you need to pass a <code>String</code> literal then you should use the all <code>Column</code> form of the sedona function and wrap the <code>String</code> literal in a <code>Column</code> with the <code>lit</code> Spark function.</p>
+<p>A short example of using this API (uses the <code>array_min</code> and <code>array_max</code> Spark functions):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">values_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT array(0.0, 1.0, 2.0) AS values&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">val</span><span class="w"> </span><span class="n">min_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array_min</span><span class="p">(</span><span class="s">&quot;values&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">val</span><span class="w"> </span><span class="n">max_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array_max</span><span class="p">(</span><span class="s">&quot;values&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">val</span><span class="w"> </span><span class="n">point_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values_df</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="nc">ST_Point</span><span class="p">(</span><span class="n">min_value</span><span class="p">,</span><span class="w"> </span><span class="n">max_value</span><span class="p">).</span><span class="n">as</span><span class="p">(</span><span class="s">&quot;point&quot;</span><span class="p">))</span><span class="w"></span>
+</code></pre></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">September 16, 2022 05:57:27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 2, 2022 18:33:53</span>
       
     
   </small>
