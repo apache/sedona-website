@@ -3673,20 +3673,31 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">rddWithOtherAttributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">objectRDD</span><span class="p">.</span><span class="n">rawSpatialRDD</span><span class="p">.</span><span class="n">rdd</span><span class="p">.</span><span class="n">map</span><span class="p">[</span><span class="nc">String</span><span class="p">](</span><span class="n">f</span><span class="o">=&gt;</span><span class="n">f</span><span class="p">.</span><span class="n">getUserData</span><span class="p">.</span><span class="k">asInstanceOf</span><span class="p">[</span><span class="nc">String</span><span class="p">])</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="write-a-spatial-range-query">Write a Spatial Range Query<a class="headerlink" href="#write-a-spatial-range-query" title="Permanent link">&para;</a></h2>
-<p>A spatial range query takes as input a range query window and an SpatialRDD and returns all geometries that intersect / are fully covered by the query window.</p>
+<p>A spatial range query takes as input a range query window and an SpatialRDD and returns all geometries that have specified relationship with the query window.</p>
 <p>Assume you now have an SpatialRDD (typed or generic). You can use the following code to issue an Spatial Range Query on it.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">rangeQueryWindow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nc">Envelope</span><span class="p">(</span><span class="o">-</span><span class="mf">90.01</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">80.01</span><span class="p">,</span><span class="w"> </span><span class="mf">30.01</span><span class="p">,</span><span class="w"> </span><span class="mf">40.01</span><span class="p">)</span><span class="w"></span>
-<span class="kd">val</span><span class="w"> </span><span class="n">considerBoundaryIntersection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c1">// Only return gemeotries fully covered by the window</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">spatialPredicate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">SpatialPredicate</span><span class="p">.</span><span class="nc">COVERED_BY</span><span class="w"> </span><span class="c1">// Only return gemeotries fully covered by the window</span>
 <span class="kd">val</span><span class="w"> </span><span class="n">usingIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">queryResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RangeQuery</span><span class="p">.</span><span class="nc">SpatialRangeQuery</span><span class="p">(</span><span class="n">spatialRDD</span><span class="p">,</span><span class="w"> </span><span class="n">rangeQueryWindow</span><span class="p">,</span><span class="w"> </span><span class="n">considerBoundaryIntersection</span><span class="p">,</span><span class="w"> </span><span class="n">usingIndex</span><span class="p">)</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">queryResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RangeQuery</span><span class="p">.</span><span class="nc">SpatialRangeQuery</span><span class="p">(</span><span class="n">spatialRDD</span><span class="p">,</span><span class="w"> </span><span class="n">rangeQueryWindow</span><span class="p">,</span><span class="w"> </span><span class="n">spatialPredicate</span><span class="p">,</span><span class="w"> </span><span class="n">usingIndex</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p><mark>considerBoundaryIntersection</mark> can be set to TRUE to return all geometries intersect with query window.</p>
+<p><mark>spatialPredicate</mark> can be set to <code>SpatialPredicate.INTERSECTS</code> to return all geometries intersect with query window. Supported spatial predicates are:</p>
+<ul>
+<li><code>CONTAINS</code>: geometry is completely inside the query window</li>
+<li><code>INTERSECTS</code>: geometry have at least one point in common with the query window</li>
+<li><code>WITHIN</code>: geometry is completely within the query window (no touching edges)</li>
+<li><code>COVERS</code>: query window has no point outside of the geometry</li>
+<li><code>COVERED_BY</code>: geometry has no point outside of the query window</li>
+<li><code>OVERLAPS</code>: geometry and the query window spatially overlap</li>
+<li><code>CROSSES</code>: geometry and the query window spatially cross</li>
+<li><code>TOUCHES</code>: the only points shared between geometry and the query window are on the boundary of geometry and the query window</li>
+<li><code>EQUALS</code>: geometry and the query window are spatially equal</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Spatial range query is equal to <mark>ST_Within</mark> and <mark>ST_Intersects</mark> in Spatial SQL. An example query is as follows:
+<p>Spatial range query is equivalent with a SELECT query with spatial predicate as search condition in Spatial SQL. An example query is as follows:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">checkin</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">queryWindow</span><span class="p">,</span><span class="w"> </span><span class="n">checkin</span><span class="p">.</span><span class="k">location</span><span class="p">)</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">checkin</span><span class="p">.</span><span class="k">location</span><span class="p">,</span><span class="w"> </span><span class="n">queryWindow</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></p>
 </div>
 <h3 id="range-query-window">Range query window<a class="headerlink" href="#range-query-window" title="Permanent link">&para;</a></h3>
@@ -3718,13 +3729,13 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 <p>Sedona provides two types of spatial indexes, Quad-Tree and R-Tree. Once you specify an index type, Sedona will build a local tree index on each of the SpatialRDD partition.</p>
 <p>To utilize a spatial index in a spatial range query, use the following code:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">rangeQueryWindow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nc">Envelope</span><span class="p">(</span><span class="o">-</span><span class="mf">90.01</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">80.01</span><span class="p">,</span><span class="w"> </span><span class="mf">30.01</span><span class="p">,</span><span class="w"> </span><span class="mf">40.01</span><span class="p">)</span><span class="w"></span>
-<span class="kd">val</span><span class="w"> </span><span class="n">considerBoundaryIntersection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c1">// Only return gemeotries fully covered by the window</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">spatialPredicate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">SpatialPredicate</span><span class="p">.</span><span class="nc">COVERED_BY</span><span class="w"> </span><span class="c1">// Only return gemeotries fully covered by the window</span>
 
 <span class="kd">val</span><span class="w"> </span><span class="n">buildOnSpatialPartitionedRDD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c1">// Set to TRUE only if run join query</span>
 <span class="n">spatialRDD</span><span class="p">.</span><span class="n">buildIndex</span><span class="p">(</span><span class="nc">IndexType</span><span class="p">.</span><span class="nc">QUADTREE</span><span class="p">,</span><span class="w"> </span><span class="n">buildOnSpatialPartitionedRDD</span><span class="p">)</span><span class="w"></span>
 
 <span class="kd">val</span><span class="w"> </span><span class="n">usingIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">queryResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RangeQuery</span><span class="p">.</span><span class="nc">SpatialRangeQuery</span><span class="p">(</span><span class="n">spatialRDD</span><span class="p">,</span><span class="w"> </span><span class="n">rangeQueryWindow</span><span class="p">,</span><span class="w"> </span><span class="n">considerBoundaryIntersection</span><span class="p">,</span><span class="w"> </span><span class="n">usingIndex</span><span class="p">)</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">queryResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RangeQuery</span><span class="p">.</span><span class="nc">SpatialRangeQuery</span><span class="p">(</span><span class="n">spatialRDD</span><span class="p">,</span><span class="w"> </span><span class="n">rangeQueryWindow</span><span class="p">,</span><span class="w"> </span><span class="n">spatialPredicate</span><span class="p">,</span><span class="w"> </span><span class="n">usingIndex</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -3775,7 +3786,7 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 <h2 id="write-a-spatial-join-query">Write a Spatial Join Query<a class="headerlink" href="#write-a-spatial-join-query" title="Permanent link">&para;</a></h2>
 <p>A spatial join query takes as input two Spatial RDD A and B. For each geometry in A, finds the geometries (from B) covered/intersected by it. A and B can be any geometry type and are not necessary to have the same geometry type.</p>
 <p>Assume you now have two SpatialRDDs (typed or generic). You can use the following code to issue an Spatial Join Query on them.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">considerBoundaryIntersection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c1">// Only return gemeotries fully covered by each query window in queryWindowRDD</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">spatialPredicate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">SpatialPredicate</span><span class="p">.</span><span class="nc">COVERED_BY</span><span class="w"> </span><span class="c1">// Only return gemeotries fully covered by each query window in queryWindowRDD</span>
 <span class="kd">val</span><span class="w"> </span><span class="n">usingIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
 
 <span class="n">objectRDD</span><span class="p">.</span><span class="n">analyze</span><span class="p">()</span><span class="w"></span>
@@ -3783,7 +3794,7 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 <span class="n">objectRDD</span><span class="p">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="nc">GridType</span><span class="p">.</span><span class="nc">KDBTREE</span><span class="p">)</span><span class="w"></span>
 <span class="n">queryWindowRDD</span><span class="p">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">objectRDD</span><span class="p">.</span><span class="n">getPartitioner</span><span class="p">)</span><span class="w"></span>
 
-<span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">JoinQuery</span><span class="p">.</span><span class="nc">SpatialJoinQuery</span><span class="p">(</span><span class="n">objectRDD</span><span class="p">,</span><span class="w"> </span><span class="n">queryWindowRDD</span><span class="p">,</span><span class="w"> </span><span class="n">usingIndex</span><span class="p">,</span><span class="w"> </span><span class="n">considerBoundaryIntersection</span><span class="p">)</span><span class="w"></span>
+<span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">JoinQuery</span><span class="p">.</span><span class="nc">SpatialJoinQuery</span><span class="p">(</span><span class="n">objectRDD</span><span class="p">,</span><span class="w"> </span><span class="n">queryWindowRDD</span><span class="p">,</span><span class="w"> </span><span class="n">usingIndex</span><span class="p">,</span><span class="w"> </span><span class="n">spatialPredicate</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3813,7 +3824,7 @@ Find the super heros in each city</p>
 <span class="kd">val</span><span class="w"> </span><span class="n">usingIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
 <span class="n">queryWindowRDD</span><span class="p">.</span><span class="n">buildIndex</span><span class="p">(</span><span class="nc">IndexType</span><span class="p">.</span><span class="nc">QUADTREE</span><span class="p">,</span><span class="w"> </span><span class="n">buildOnSpatialPartitionedRDD</span><span class="p">)</span><span class="w"></span>
 
-<span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">JoinQuery</span><span class="p">.</span><span class="nc">SpatialJoinQueryFlat</span><span class="p">(</span><span class="n">objectRDD</span><span class="p">,</span><span class="w"> </span><span class="n">queryWindowRDD</span><span class="p">,</span><span class="w"> </span><span class="n">usingIndex</span><span class="p">,</span><span class="w"> </span><span class="n">considerBoundaryIntersection</span><span class="p">)</span><span class="w"></span>
+<span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">JoinQuery</span><span class="p">.</span><span class="nc">SpatialJoinQueryFlat</span><span class="p">(</span><span class="n">objectRDD</span><span class="p">,</span><span class="w"> </span><span class="n">queryWindowRDD</span><span class="p">,</span><span class="w"> </span><span class="n">usingIndex</span><span class="p">,</span><span class="w"> </span><span class="n">spatialPredicate</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>The index should be built on either one of two SpatialRDDs. In general, you should build it on the larger SpatialRDD.</p>
 <h3 id="output-format_2">Output format<a class="headerlink" href="#output-format_2" title="Permanent link">&para;</a></h3>
@@ -3828,6 +3839,7 @@ Polygon,LineString
 </code></pre></div>
 <p>Each object on the left is covered/intersected by the object on the right.</p>
 <h2 id="write-a-distance-join-query">Write a Distance Join Query<a class="headerlink" href="#write-a-distance-join-query" title="Permanent link">&para;</a></h2>
+<p>!!!warning RDD distance joins are only reliable for points. For other geometry types, please use Spatial SQL.</p>
 <p>A distance join query takes as input two Spatial RDD A and B and a distance. For each geometry in A, finds the geometries (from B) are within the given distance to it. A and B can be any geometry type and are not necessary to have the same geometry type. The unit of the distance is explained <a href="#transform-the-coordinate-reference-system">here</a>.</p>
 <p>Assume you now have two SpatialRDDs (typed or generic). You can use the following code to issue an Distance Join Query on them.</p>
 <div class="highlight"><pre><span></span><code><span class="n">objectRddA</span><span class="p">.</span><span class="n">analyze</span><span class="p">()</span><span class="w"></span>
@@ -3837,12 +3849,12 @@ Polygon,LineString
 <span class="n">circleRDD</span><span class="p">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="nc">GridType</span><span class="p">.</span><span class="nc">KDBTREE</span><span class="p">)</span><span class="w"></span>
 <span class="n">objectRddB</span><span class="p">.</span><span class="n">spatialPartitioning</span><span class="p">(</span><span class="n">circleRDD</span><span class="p">.</span><span class="n">getPartitioner</span><span class="p">)</span><span class="w"></span>
 
-<span class="kd">val</span><span class="w"> </span><span class="n">considerBoundaryIntersection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c1">// Only return gemeotries fully covered by each query window in queryWindowRDD</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">spatialPredicate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">SpatialPredicate</span><span class="p">.</span><span class="nc">COVERED_BY</span><span class="w"> </span><span class="c1">// Only return gemeotries fully covered by each query window in queryWindowRDD</span>
 <span class="kd">val</span><span class="w"> </span><span class="n">usingIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
 
-<span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">JoinQuery</span><span class="p">.</span><span class="nc">DistanceJoinQueryFlat</span><span class="p">(</span><span class="n">objectRddB</span><span class="p">,</span><span class="w"> </span><span class="n">circleRDD</span><span class="p">,</span><span class="w"> </span><span class="n">usingIndex</span><span class="p">,</span><span class="w"> </span><span class="n">considerBoundaryIntersection</span><span class="p">)</span><span class="w"></span>
+<span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">JoinQuery</span><span class="p">.</span><span class="nc">DistanceJoinQueryFlat</span><span class="p">(</span><span class="n">objectRddB</span><span class="p">,</span><span class="w"> </span><span class="n">circleRDD</span><span class="p">,</span><span class="w"> </span><span class="n">usingIndex</span><span class="p">,</span><span class="w"> </span><span class="n">spatialPredicate</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p>The rest part of the join query is same as the spatial join query.</p>
+<p>Distance join can only accept <code>COVERED_BY</code> and <code>INTERSECTS</code> as spatial predicates. The rest part of the join query is same as the spatial join query.</p>
 <p>The details of spatial partitioning in join query is <a href="#use-spatial-partitioning">here</a>.</p>
 <p>The details of using spatial indexes in join query is <a href="#use-spatial-indexes_2">here</a>.</p>
 <p>The output format of the distance join query is <a href="#output-format_2">here</a>.</p>
@@ -3917,7 +3929,7 @@ Find the super heros within 10 miles of each city</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">December 11, 2021 04:34:35</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 21, 2022 02:58:11</span>
       
     
   </small>

@@ -1944,8 +1944,35 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_within" class="md-nav__link">
+    ST_Within
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_orderingequals" class="md-nav__link">
     ST_OrderingEquals
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_covers" class="md-nav__link">
+    ST_Covers
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_coveredby" class="md-nav__link">
+    ST_CoveredBy
   </a>  
   
   
@@ -3029,8 +3056,35 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_within" class="md-nav__link">
+    ST_Within
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_orderingequals" class="md-nav__link">
     ST_OrderingEquals
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_covers" class="md-nav__link">
+    ST_Covers
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_coveredby" class="md-nav__link">
+    ST_CoveredBy
   </a>  
   
   
@@ -3086,6 +3140,15 @@
 <span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></p>
+<h2 id="st_within">ST_Within<a class="headerlink" href="#st_within" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A is within B</p>
+<p>Format: <code>ST_Within (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.3.0</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Within</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
+</code></pre></div></p>
 <h2 id="st_orderingequals">ST_OrderingEquals<a class="headerlink" href="#st_orderingequals" title="Permanent link">&para;</a></h2>
 <p>Introduction: Returns true if the geometries are equal and the coordinates are in the same order</p>
 <p>Format: <code>ST_OrderingEquals(A: geometry, B: geometry)</code></p>
@@ -3098,13 +3161,31 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_OrderingEquals</span><span class="p">(</span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POLYGON((2 0, 0 2, -2 0, 2 0))&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POLYGON((0 2, -2 0, 2 0, 0 2))&#39;</span><span class="p">))</span><span class="w"></span>
 </code></pre></div></p>
 <p>Output: <code>false</code></p>
+<h2 id="st_covers">ST_Covers<a class="headerlink" href="#st_covers" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A covers B</p>
+<p>Format: <code>ST_Covers (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.3.0</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Covers</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="st_coveredby">ST_CoveredBy<a class="headerlink" href="#st_coveredby" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A is covered by B</p>
+<p>Format: <code>ST_CoveredBy (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.3.0</code></p>
+<p>SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_CoveredBy</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
+</code></pre></div></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 16, 2022 08:03:14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 9, 2022 20:14:02</span>
       
     
   </small>

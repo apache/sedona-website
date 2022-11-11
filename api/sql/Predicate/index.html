@@ -1616,6 +1616,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#st_covers" class="md-nav__link">
+    ST_Covers
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_coveredby" class="md-nav__link">
+    ST_CoveredBy
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3128,6 +3146,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  
+  <a href="#st_covers" class="md-nav__link">
+    ST_Covers
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#st_coveredby" class="md-nav__link">
+    ST_CoveredBy
+  </a>  
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3234,13 +3270,31 @@
 <span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Within</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
 </code></pre></div></p>
+<h2 id="st_covers">ST_Covers<a class="headerlink" href="#st_covers" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A covers B</p>
+<p>Format: <code>ST_Covers (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.3.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_Covers</span><span class="p">(</span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">)</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="st_coveredby">ST_CoveredBy<a class="headerlink" href="#st_coveredby" title="Permanent link">&para;</a></h2>
+<p>Introduction: Return true if A is covered by B</p>
+<p>Format: <code>ST_CoveredBy (A:geometry, B:geometry)</code></p>
+<p>Since: <code>v1.3.0</code></p>
+<p>Spark SQL example:
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pointdf</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">ST_CoveredBy</span><span class="p">(</span><span class="n">pointdf</span><span class="p">.</span><span class="n">arealandmark</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromEnvelope</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w"></span>
+</code></pre></div></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 16, 2022 08:03:14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 9, 2022 20:14:02</span>
       
     
   </small>

@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sedona-121" class="md-skip">
+        <a href="#sedona-130" class="md-skip">
           Skip to content
         </a>
       
@@ -795,6 +795,66 @@
       
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  
+  <a href="#sedona-130" class="md-nav__link">
+    Sedona 1.3.0
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="Sedona 1.3.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#highlights" class="md-nav__link">
+    Highlights
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#bug-fixes" class="md-nav__link">
+    Bug fixes
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#new-features" class="md-nav__link">
+    New Features
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#improvement" class="md-nav__link">
+    Improvement
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#task" class="md-nav__link">
+    Task
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   
@@ -3418,6 +3478,66 @@
       
         <li class="md-nav__item">
   
+  <a href="#sedona-130" class="md-nav__link">
+    Sedona 1.3.0
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="Sedona 1.3.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#highlights" class="md-nav__link">
+    Highlights
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#bug-fixes" class="md-nav__link">
+    Bug fixes
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#new-features" class="md-nav__link">
+    New Features
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#improvement" class="md-nav__link">
+    Improvement
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#task" class="md-nav__link">
+    Task
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#sedona-121" class="md-nav__link">
     Sedona 1.2.1
   </a>  
@@ -3899,9 +4019,103 @@
 <p class="admonition-title">Warning</p>
 <p>Support of Spark 2.X and Scala 2.11 will be removed in Sedona 1.3.0+ although some parts of the source code might still be compatible. Sedona 1.3.0+ will release binary for both Scala 2.12 and 2.13.</p>
 </div>
+<h2 id="sedona-130">Sedona 1.3.0<a class="headerlink" href="#sedona-130" title="Permanent link">&para;</a></h2>
+<p>This version is a major release on Sedona 1.3.0 line and consists of 46 PRs. It includes many new functions, optimization and bug fixes.</p>
+<h3 id="highlights">Highlights<a class="headerlink" href="#highlights" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Sedona on Spark in this release is compiled against Spark 3.3.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Sedona on Flink in this release is compiled against Flink 1.14.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Scala 2.11 support is removed.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Spark 2.X support is removed.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Python 3.10 support is added.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Aggregators in Flink are added</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Correctness fixes for corner cases in range join and distance join.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Native GeoParquet read and write.<ul>
+<li><code>df = spark.read.format("geoparquet").option("fieldGeometry", "myGeometryColumn").load("PATH/TO/MYFILE.parquet")</code></li>
+<li><code>df.write.format("geoparquet").save("PATH/TO/MYFILE.parquet")</code></li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> DataFrame style API<ul>
+<li><code>df.select(ST_Point(min_value, max_value).as("point"))</code></li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Allow WKT format CRS in ST_Transform<ul>
+<li><code>ST_Transform(geom, "srcWktString", "tgtWktString")</code></li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GEOGCS[&quot;WGS 84&quot;,</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">DATUM[&quot;WGS_1984&quot;,</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">PRIMEM[&quot;Greenwich&quot;,0,</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">UNIT[&quot;degree&quot;,0.0174532925199433,</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</span><span class="w"></span>
+</code></pre></div>
+<h3 id="bug-fixes">Bug fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-119">SEDONA-119</a> - ST_Touches join query returns true for polygons whose interiors intersect</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-136">SEDONA-136</a> - Enable testAsEWKT for Flink</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-137">SEDONA-137</a> - Fix ST_Buffer for Flink to work</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-138">SEDONA-138</a> - Fix ST_GeoHash for Flink to work</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-153">SEDONA-153</a> - Python Serialization Fails with Nulls</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-158">SEDONA-158</a> - Fix wrong description about ST_GeometryN in the API docs</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-169">SEDONA-169</a> - Fix ST_RemovePoint in accordance with the API document</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-178">SEDONA-178</a> - Correctness issue in distance join queries</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-182">SEDONA-182</a> - ST_AsText should not return SRID</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-186">SEDONA-186</a> - collecting result rows of a spatial join query with SELECT * fails with serde error</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-188">SEDONA-188</a> - Python warns about missing <code>jars</code> even when some are found</li>
+</ul>
+<h3 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-94">SEDONA-94</a> - GeoParquet  Support For Sedona</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-125">SEDONA-125</a> - Allows customized CRS in ST_Transform</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-166">SEDONA-166</a> - Provide Type-safe DataFrame Style API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-168">SEDONA-168</a> - Add ST_Normalize to Apache Sedona</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-171">SEDONA-171</a> - Add ST_SetPoint to Apache Sedona</li>
+</ul>
+<h3 id="improvement">Improvement<a class="headerlink" href="#improvement" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-121">SEDONA-121</a> - Add equivalent constructors left over from Spark to Flink</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-132">SEDONA-132</a> - Create common module for SQL functions</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-133">SEDONA-133</a> - Allow user-defined schemas in Adapter.toDf()</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-139">SEDONA-139</a> - Fix wrong argument order in Flink unit tests</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-140">SEDONA-140</a> - Update Sedona Dependencies in R Package</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-143">SEDONA-143</a> - Add missing unit tests for the Flink predicates</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-144">SEDONA-144</a> - Add ST_AsGeoJSON to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-145">SEDONA-145</a> - Fix ST_AsEWKT to reserve the Z coordinate</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-146">SEDONA-146</a> - Add missing output funtions to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-147">SEDONA-147</a> - Add SRID functions to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-148">SEDONA-148</a> - Add boolean functions to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-149">SEDONA-149</a> - Add Python 3.10 support</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-151">SEDONA-151</a> - Add ST aggregators to Sedona Flink</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-152">SEDONA-152</a> - Add reader/writer functions for GML and KML</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-154">SEDONA-154</a> - Add measurement functions to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-157">SEDONA-157</a> - Add coordinate accessors to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-159">SEDONA-159</a> - Add Nth accessor functions to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-160">SEDONA-160</a> - Fix geoparquetIOTests.scala to cleanup after test</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-161">SEDONA-161</a> - Add ST_Boundary to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-162">SEDONA-162</a> - Add ST_Envelope to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-163">SEDONA-163</a> - Better handle of unsupported types in shapefile reader</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-164">SEDONA-164</a> - Add geometry count functions to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-165">SEDONA-165</a> - Upgrade Apache Rat to 0.14</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-170">SEDONA-170</a> - Add ST_AddPoint and ST_RemovePoint to the Flink API</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-172">SEDONA-172</a> - Add ST_LineFromMultiPoint to Apache Sedona</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-176">SEDONA-176</a> - Make ST_Contains conform with OGC standard, and add ST_Covers and ST_CoveredBy functions.</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-177">SEDONA-177</a> - Support spatial predicates other than INTERSECTS and COVERS/COVERED_BY in RangeQuery.SpatialRangeQuery and JoinQuery.SpatialJoinQuery</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-181">SEDONA-181</a> - Build fails with java.lang.IllegalAccessError: class org.apache.spark.storage.StorageUtils$</li>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-189">SEDONA-189</a> - Prepare geometries in broadcast join</li>
+</ul>
+<h3 id="task">Task<a class="headerlink" href="#task" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SEDONA-150">SEDONA-150</a> - Drop Spark 2.4 and Scala 2.11 support</li>
+</ul>
 <h2 id="sedona-121">Sedona 1.2.1<a class="headerlink" href="#sedona-121" title="Permanent link">&para;</a></h2>
 <p>This version is a maintenance release on Sedona 1.2.0 line. It includes bug fixes.</p>
-<p>Sedona on Spark is now compiled against Spark 3.3, instead of Spark 2.2.</p>
+<p>Sedona on Spark is now compiled against Spark 3.3, instead of Spark 3.2.</p>
 <h3 id="sql-for-spark">SQL (for Spark)<a class="headerlink" href="#sql-for-spark" title="Permanent link">&para;</a></h3>
 <p>Bug fixes:</p>
 <ul>
@@ -4524,7 +4738,7 @@ None</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 31, 2022 01:53:20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 11, 2022 09:16:57</span>
       
     
   </small>

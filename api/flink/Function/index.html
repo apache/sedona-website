@@ -2222,6 +2222,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_setpoint" class="md-nav__link">
+    ST_SetPoint
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_setsrid" class="md-nav__link">
     ST_SetSRID
   </a>  
@@ -3722,6 +3731,15 @@
       
         <li class="md-nav__item">
   
+  <a href="#st_setpoint" class="md-nav__link">
+    ST_SetPoint
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
   <a href="#st_setsrid" class="md-nav__link">
     ST_SetSRID
   </a>  
@@ -4192,6 +4210,20 @@ If the geometry is lacking SRID a WKT format is produced.
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_RemovePoint</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="ss">&quot;LINESTRING(0 0, 1 1, 1 0)&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></p>
 <p>Output: <code>LINESTRING(0 0, 1 0)</code></p>
+<h2 id="st_setpoint">ST_SetPoint<a class="headerlink" href="#st_setpoint" title="Permanent link">&para;</a></h2>
+<p>Introduction: Replace Nth point of linestring with given point. Index is 0-based. Negative index are counted backwards, e.g., -1 is last point.</p>
+<p>Format: <code>ST_SetPoint (linestring: geometry, index: integer, point: geometry)</code></p>
+<p>Since: <code>v1.3.0</code></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_SetPoint</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;LINESTRING (0 0, 0 1, 1 1)&#39;</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT (1 0)&#39;</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geom</span><span class="w"></span>
+</code></pre></div>
+<p>Result:</p>
+<div class="highlight"><pre><span></span><code>+--------------------------------+
+|                           geom |
++--------------------------------+
+|     LINESTRING (0 0, 0 1, 1 0) |
++--------------------------------+
+</code></pre></div>
 <h2 id="st_setsrid">ST_SetSRID<a class="headerlink" href="#st_setsrid" title="Permanent link">&para;</a></h2>
 <p>Introduction: Sets the spatial refence system identifier (SRID) of the geometry.</p>
 <p>Format: <code>ST_SetSRID (A:geometry, srid: integer)</code></p>
@@ -4210,7 +4242,8 @@ If the geometry is lacking SRID a WKT format is produced.
 </code></pre></div></p>
 <h2 id="st_transform">ST_Transform<a class="headerlink" href="#st_transform" title="Permanent link">&para;</a></h2>
 <p>Introduction:</p>
-<p>Transform the Spatial Reference System / Coordinate Reference System of A, from SourceCRS to TargetCRS</p>
+<p>Transform the Spatial Reference System / Coordinate Reference System of A, from SourceCRS to TargetCRS
+For SourceCRS and TargetCRS, WKT format is also available since v1.3.1.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 </div>
@@ -4299,7 +4332,7 @@ If the geometry is lacking SRID a WKT format is produced.
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 7, 2022 01:32:19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 10, 2022 05:33:36</span>
       
     
   </small>
