@@ -2208,7 +2208,35 @@
   
     <li class="md-nav__item">
       <a href="../../../community/contributor/" class="md-nav__link">
-        PMC List
+        Project Management Committee
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/release-manager/" class="md-nav__link">
+        Become a release manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/snapshot/" class="md-nav__link">
+        Publish a snapshot version
       </a>
     </li>
   
@@ -2222,7 +2250,7 @@
   
     <li class="md-nav__item">
       <a href="../../../community/publish/" class="md-nav__link">
-        Publish the code
+        Make a release
       </a>
     </li>
   
@@ -2236,7 +2264,7 @@
   
     <li class="md-nav__item">
       <a href="../../../community/vote/" class="md-nav__link">
-        Vote the release
+        Vote a release
       </a>
     </li>
   
@@ -3328,10 +3356,12 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromKML</span><span class="p">(</span><span class="s1">&#39;&lt;LineString&gt;&lt;coordinates&gt;-71.1663,42.2614 -71.1667,42.2616&lt;/coordinates&gt;&lt;/LineString&gt;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geometry</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="st_geomfromtext">ST_GeomFromText<a class="headerlink" href="#st_geomfromtext" title="Permanent link">&para;</a></h2>
-<p>Introduction: Construct a Geometry from Wkt. Alias of <a href="#ST_GeomFromWKT">ST_GeomFromWKT</a></p>
+<p>Introduction: Construct a Geometry from Wkt. If srid is not set, it defaults to 0 (unknown). Alias of <a href="#ST_GeomFromWKT">ST_GeomFromWKT</a></p>
 <p>Format:
-<code>ST_GeomFromText (Wkt:string)</code></p>
+<code>ST_GeomFromText (Wkt:string)</code>
+<code>ST_GeomFromText (Wkt:string, srid:integer)</code></p>
 <p>Since: <code>v1.0.0</code></p>
+<p>The optional srid parameter was added in <code>v1.3.1</code></p>
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(40.7128 -74.0060)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geometry</span><span class="w"></span>
 </code></pre></div></p>
@@ -3346,10 +3376,12 @@ via <code>sedona.global.charset</code> system property before the call to <code>
 <span class="k">FROM</span><span class="w"> </span><span class="n">polygontable</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="st_geomfromwkt">ST_GeomFromWKT<a class="headerlink" href="#st_geomfromwkt" title="Permanent link">&para;</a></h2>
-<p>Introduction: Construct a Geometry from Wkt</p>
+<p>Introduction: Construct a Geometry from Wkt. If srid is not set, it defaults to 0 (unknown).</p>
 <p>Format:
-<code>ST_GeomFromWKT (Wkt:string)</code></p>
+<code>ST_GeomFromWKT (Wkt:string)</code>
+<code>ST_GeomFromWKT (Wkt:string, srid:integer)</code></p>
 <p>Since: <code>v1.0.0</code></p>
+<p>The optional srid parameter was added in <code>v1.3.1</code></p>
 <p>Spark SQL example:
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="n">polygontable</span><span class="p">.</span><span class="n">_c0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polygonshape</span><span class="w"></span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">polygontable</span><span class="w"></span>
@@ -3421,7 +3453,7 @@ Format: <code>ST_Point (X:decimal, Y:decimal, Z:decimal)</code></p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 24, 2022 18:08:04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 16, 2022 19:24:53</span>
       
     
   </small>

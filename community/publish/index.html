@@ -15,7 +15,7 @@
     
     
       
-        <title>Publish the code - Apache Sedona&trade; (incubating)</title>
+        <title>Make a release - Apache Sedona&trade; (incubating)</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#publish-sedona" class="md-skip">
+        <a href="#make-a-sedona-release" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Publish the code
+              Make a release
             
           </span>
         </div>
@@ -2048,7 +2048,35 @@
   
     <li class="md-nav__item">
       <a href="../contributor/" class="md-nav__link">
-        PMC List
+        Project Management Committee
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-manager/" class="md-nav__link">
+        Become a release manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snapshot/" class="md-nav__link">
+        Publish a snapshot version
       </a>
     </li>
   
@@ -2071,12 +2099,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Publish the code
+          Make a release
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Publish the code
+        Make a release
       </a>
       
         
@@ -2096,8 +2124,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#obtain-write-access-to-sedona-github-repo" class="md-nav__link">
-    Obtain Write Access to Sedona GitHub repo
+  <a href="#0-prepare-an-empty-script-file" class="md-nav__link">
+    0. Prepare an empty script file
   </a>  
   
   
@@ -2105,8 +2133,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#prepare-secret-gpg-key" class="md-nav__link">
-    Prepare Secret GPG key
+  <a href="#1-check-asf-copyright-in-all-file-headers" class="md-nav__link">
+    1. Check ASF copyright in all file headers
   </a>  
   
   
@@ -2114,8 +2142,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#set-up-asf-username-for-maven" class="md-nav__link">
-    Set up ASF username for Maven
+  <a href="#2-update-sedona-python-r-and-zeppelin-versions" class="md-nav__link">
+    2. Update Sedona Python, R and Zeppelin versions
   </a>  
   
   
@@ -2123,18 +2151,45 @@
       
         <li class="md-nav__item">
   
-  <a href="#publish-snapshots" class="md-nav__link">
-    Publish SNAPSHOTs
+  <a href="#3-update-mkdocsyml" class="md-nav__link">
+    3. Update mkdocs.yml
   </a>  
   
   
-    <nav class="md-nav" aria-label="Publish SNAPSHOTs">
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#4-stage-and-upload-release-candidates" class="md-nav__link">
+    4. Stage and upload release candidates
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#5-vote-in-dev-sedonaapacheorg" class="md-nav__link">
+    5. Vote in dev sedona.apache.org
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="5. Vote in dev sedona.apache.org">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   
-  <a href="#publish-maven-snapshots" class="md-nav__link">
-    Publish Maven SNAPSHOTs
+  <a href="#vote-email" class="md-nav__link">
+    Vote email
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#pass-email" class="md-nav__link">
+    Pass email
   </a>  
   
   
@@ -2147,27 +2202,18 @@
       
         <li class="md-nav__item">
   
-  <a href="#check-asf-copyright-in-all-file-headers" class="md-nav__link">
-    Check ASF copyright in all file headers
+  <a href="#6-vote-in-general-incubatorapacheorg" class="md-nav__link">
+    6. Vote in general incubator.apache.org
   </a>  
   
   
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#publish-releases" class="md-nav__link">
-    Publish releases
-  </a>  
-  
-  
-    <nav class="md-nav" aria-label="Publish releases">
+    <nav class="md-nav" aria-label="6. Vote in general incubator.apache.org">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   
-  <a href="#update-mkdocsyml" class="md-nav__link">
-    Update mkdocs.yml
+  <a href="#vote-email_1" class="md-nav__link">
+    Vote email
   </a>  
   
   
@@ -2175,8 +2221,8 @@
         
           <li class="md-nav__item">
   
-  <a href="#update-sedona-python-r-and-zeppelin-versions" class="md-nav__link">
-    Update Sedona Python, R and Zeppelin versions
+  <a href="#pass-email_1" class="md-nav__link">
+    Pass email
   </a>  
   
   
@@ -2184,53 +2230,8 @@
         
           <li class="md-nav__item">
   
-  <a href="#stage-the-release-candidate" class="md-nav__link">
-    Stage the Release Candidate
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#upload-release-candidate" class="md-nav__link">
-    Upload Release Candidate
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#vote-in-dev-sedonaapacheorg" class="md-nav__link">
-    Vote in dev sedona.apache.org
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#vote-in-general-incubatorapacheorg" class="md-nav__link">
-    Vote in general incubator.apache.org
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#failed-vote" class="md-nav__link">
-    Failed vote
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#release-the-package" class="md-nav__link">
-    Release the package
+  <a href="#announce-email" class="md-nav__link">
+    Announce email
   </a>  
   
   
@@ -2243,12 +2244,81 @@
       
         <li class="md-nav__item">
   
-  <a href="#publish-the-doc-website" class="md-nav__link">
-    Publish the doc website
+  <a href="#7-failed-vote" class="md-nav__link">
+    7. Failed vote
   </a>  
   
   
-    <nav class="md-nav" aria-label="Publish the doc website">
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#8-release-source-code-and-maven-package" class="md-nav__link">
+    8. Release source code and Maven package
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="8. Release source code and Maven package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#upload-releases" class="md-nav__link">
+    Upload releases
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#fix-signature-issues" class="md-nav__link">
+    Fix signature issues
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#manually-close-and-release-the-package" class="md-nav__link">
+    Manually close and release the package
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#9-release-sedona-python-and-zeppelin" class="md-nav__link">
+    9. Release Sedona Python and Zeppelin
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#10-release-sedona-r-to-cran" class="md-nav__link">
+    10. Release Sedona R to CRAN.
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#11-publish-the-doc-website" class="md-nav__link">
+    11. Publish the doc website
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="11. Publish the doc website">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2290,7 +2360,7 @@
   
     <li class="md-nav__item">
       <a href="../vote/" class="md-nav__link">
-        Vote the release
+        Vote a release
       </a>
     </li>
   
@@ -3150,8 +3220,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#obtain-write-access-to-sedona-github-repo" class="md-nav__link">
-    Obtain Write Access to Sedona GitHub repo
+  <a href="#0-prepare-an-empty-script-file" class="md-nav__link">
+    0. Prepare an empty script file
   </a>  
   
   
@@ -3159,8 +3229,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#prepare-secret-gpg-key" class="md-nav__link">
-    Prepare Secret GPG key
+  <a href="#1-check-asf-copyright-in-all-file-headers" class="md-nav__link">
+    1. Check ASF copyright in all file headers
   </a>  
   
   
@@ -3168,8 +3238,8 @@
       
         <li class="md-nav__item">
   
-  <a href="#set-up-asf-username-for-maven" class="md-nav__link">
-    Set up ASF username for Maven
+  <a href="#2-update-sedona-python-r-and-zeppelin-versions" class="md-nav__link">
+    2. Update Sedona Python, R and Zeppelin versions
   </a>  
   
   
@@ -3177,18 +3247,45 @@
       
         <li class="md-nav__item">
   
-  <a href="#publish-snapshots" class="md-nav__link">
-    Publish SNAPSHOTs
+  <a href="#3-update-mkdocsyml" class="md-nav__link">
+    3. Update mkdocs.yml
   </a>  
   
   
-    <nav class="md-nav" aria-label="Publish SNAPSHOTs">
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#4-stage-and-upload-release-candidates" class="md-nav__link">
+    4. Stage and upload release candidates
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#5-vote-in-dev-sedonaapacheorg" class="md-nav__link">
+    5. Vote in dev sedona.apache.org
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="5. Vote in dev sedona.apache.org">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   
-  <a href="#publish-maven-snapshots" class="md-nav__link">
-    Publish Maven SNAPSHOTs
+  <a href="#vote-email" class="md-nav__link">
+    Vote email
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#pass-email" class="md-nav__link">
+    Pass email
   </a>  
   
   
@@ -3201,27 +3298,18 @@
       
         <li class="md-nav__item">
   
-  <a href="#check-asf-copyright-in-all-file-headers" class="md-nav__link">
-    Check ASF copyright in all file headers
+  <a href="#6-vote-in-general-incubatorapacheorg" class="md-nav__link">
+    6. Vote in general incubator.apache.org
   </a>  
   
   
-</li>
-      
-        <li class="md-nav__item">
-  
-  <a href="#publish-releases" class="md-nav__link">
-    Publish releases
-  </a>  
-  
-  
-    <nav class="md-nav" aria-label="Publish releases">
+    <nav class="md-nav" aria-label="6. Vote in general incubator.apache.org">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   
-  <a href="#update-mkdocsyml" class="md-nav__link">
-    Update mkdocs.yml
+  <a href="#vote-email_1" class="md-nav__link">
+    Vote email
   </a>  
   
   
@@ -3229,8 +3317,8 @@
         
           <li class="md-nav__item">
   
-  <a href="#update-sedona-python-r-and-zeppelin-versions" class="md-nav__link">
-    Update Sedona Python, R and Zeppelin versions
+  <a href="#pass-email_1" class="md-nav__link">
+    Pass email
   </a>  
   
   
@@ -3238,53 +3326,8 @@
         
           <li class="md-nav__item">
   
-  <a href="#stage-the-release-candidate" class="md-nav__link">
-    Stage the Release Candidate
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#upload-release-candidate" class="md-nav__link">
-    Upload Release Candidate
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#vote-in-dev-sedonaapacheorg" class="md-nav__link">
-    Vote in dev sedona.apache.org
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#vote-in-general-incubatorapacheorg" class="md-nav__link">
-    Vote in general incubator.apache.org
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#failed-vote" class="md-nav__link">
-    Failed vote
-  </a>  
-  
-  
-</li>
-        
-          <li class="md-nav__item">
-  
-  <a href="#release-the-package" class="md-nav__link">
-    Release the package
+  <a href="#announce-email" class="md-nav__link">
+    Announce email
   </a>  
   
   
@@ -3297,12 +3340,81 @@
       
         <li class="md-nav__item">
   
-  <a href="#publish-the-doc-website" class="md-nav__link">
-    Publish the doc website
+  <a href="#7-failed-vote" class="md-nav__link">
+    7. Failed vote
   </a>  
   
   
-    <nav class="md-nav" aria-label="Publish the doc website">
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#8-release-source-code-and-maven-package" class="md-nav__link">
+    8. Release source code and Maven package
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="8. Release source code and Maven package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  
+  <a href="#upload-releases" class="md-nav__link">
+    Upload releases
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#fix-signature-issues" class="md-nav__link">
+    Fix signature issues
+  </a>  
+  
+  
+</li>
+        
+          <li class="md-nav__item">
+  
+  <a href="#manually-close-and-release-the-package" class="md-nav__link">
+    Manually close and release the package
+  </a>  
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#9-release-sedona-python-and-zeppelin" class="md-nav__link">
+    9. Release Sedona Python and Zeppelin
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#10-release-sedona-r-to-cran" class="md-nav__link">
+    10. Release Sedona R to CRAN.
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#11-publish-the-doc-website" class="md-nav__link">
+    11. Publish the doc website
+  </a>  
+  
+  
+    <nav class="md-nav" aria-label="11. Publish the doc website">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3349,138 +3461,93 @@
   </a>
 
 
-<h1 id="publish-sedona">Publish Sedona<a class="headerlink" href="#publish-sedona" title="Permanent link">&para;</a></h1>
+<h1 id="make-a-sedona-release">Make a Sedona release<a class="headerlink" href="#make-a-sedona-release" title="Permanent link">&para;</a></h1>
 <p>This page is for Sedona PPMC to publish Sedona releases.</p>
-<h2 id="obtain-write-access-to-sedona-github-repo">Obtain Write Access to Sedona GitHub repo<a class="headerlink" href="#obtain-write-access-to-sedona-github-repo" title="Permanent link">&para;</a></h2>
+<p>You can read ASF guidelines: 1. ASF Incubator Distribution Guidelines: <a href="https://incubator.apache.org/guides/distribution.html">https://incubator.apache.org/guides/distribution.html</a> 2. ASF Release Guidelines: <a href="https://infra.apache.org/release-publishing.html">https://infra.apache.org/release-publishing.html</a> 3. ASF Incubator Release Votes Guidelines: <a href="https://issues.apache.org/jira/browse/LEGAL-469">https://issues.apache.org/jira/browse/LEGAL-469</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All scripts on this page should be run in your local Sedona Git repo under master branch via a single script file.</p>
+</div>
+<h2 id="0-prepare-an-empty-script-file">0. Prepare an empty script file<a class="headerlink" href="#0-prepare-an-empty-script-file" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Verify you have a Github ID enabled with 2FA <a href="https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/">https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/</a></li>
-<li>Enter your Github ID into your Apache ID profile <a href="https://id.apache.org/">https://id.apache.org/</a></li>
-<li>Merge your Apache and GitHub accounts using GitBox (Apache Account Linking utility): <a href="https://gitbox.apache.org/setup/">https://gitbox.apache.org/setup/</a><ul>
-<li>You should see 3 green checks in GitBox</li>
-<li>Wait at least 30  minutes for an email inviting you to Apache GitHub Organization and accept invitation</li>
-</ul>
-</li>
-<li>After accepting the Github Invitation, verify that you are a member of the team <a href="https://github.com/orgs/apache/teams/sedona-committers">https://github.com/orgs/apache/teams/sedona-committers</a></li>
-<li>Additionally, if you have been elected to the Sedona PPMC, verify you are part of the LDAP Sedona PPMC <a href="https://whimsy.apache.org/roster/ppmc/sedona">https://whimsy.apache.org/roster/ppmc/sedona</a></li>
-</ol>
-<h2 id="prepare-secret-gpg-key">Prepare Secret GPG key<a class="headerlink" href="#prepare-secret-gpg-key" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Install GNUGPG if it was not installed before. On Mac: <code>brew install gnupg gnupg2</code></li>
-<li>Generate a secret key. It must be RSA4096 (4096 bits long). <ul>
-<li>Run <code>gpg --full-generate-key</code>. If not work, run <code>gpg --default-new-key-algo rsa4096 --gen-key</code></li>
-<li>At the prompt, specify the kind of key you want: Select <code>RSA</code>, then press <code>enter</code></li>
-<li>At the prompt, specify the key size you want: Enter <code>4096</code></li>
-<li>At the prompt, enter the length of time the key should be valid: Press <code>enter</code> to make the key never expire.</li>
-<li>Verify that your selections are correct.</li>
-<li>Enter your user ID information: use your real name and Apache email address.</li>
-<li>Type a secure passphrase.</li>
-<li>Use the <code>gpg --list-secret-keys --keyid-format=long</code> command to list the long form of the GPG keys.</li>
-<li>From the list of GPG keys, copy the long form of the GPG key ID you'd like to use (e.g., <code>3AA5C34371567BD2</code>)</li>
-<li>Run <code>gpg --export --armor 3AA5C34371567BD2</code>, substituting in the GPG key ID you'd like to use.</li>
-<li>Copy your GPG key, beginning with <code>-----BEGIN PGP PUBLIC KEY BLOCK-----</code> and ending with <code>-----END PGP PUBLIC KEY BLOCK-----</code>.</li>
-</ul>
-</li>
-<li>Publish your armored key in major key servers: <a href="https://keyserver.pgp.com/">https://keyserver.pgp.com/</a></li>
-<li>Append your armored PGP public key to the <code>KEYS</code> file: <a href="https://dist.apache.org/repos/dist/dev/incubator/sedona/KEYS">https://dist.apache.org/repos/dist/dev/incubator/sedona/KEYS</a></li>
-</ol>
-<h2 id="set-up-asf-username-for-maven">Set up ASF username for Maven<a class="headerlink" href="#set-up-asf-username-for-maven" title="Permanent link">&para;</a></h2>
-<p>In your <code>~/.m2/settings.xml</code> file, add the following content. Please create one if it does not exist. Please replace ASF_ID and ASF_PASSWORD with your own ASF ID and password.</p>
-<div class="highlight"><pre><span></span><code>&lt;settings&gt;
-  &lt;servers&gt;
-    &lt;server&gt;
-      &lt;id&gt;apache.snapshots.https&lt;/id&gt;
-      &lt;username&gt;YOUR_ASF_ID&lt;/username&gt;
-      &lt;password&gt;YOUR_ASF_PASSWORD&lt;/password&gt;
-    &lt;/server&gt;
-    &lt;server&gt;
-      &lt;id&gt;apache.releases.https&lt;/id&gt;
-      &lt;username&gt;YOUR_ASF_ID&lt;/username&gt;
-      &lt;password&gt;YOUR_ASF_PASSWORD&lt;/password&gt;
-    &lt;/server&gt;
-  &lt;/servers&gt;
-&lt;/settings&gt;
-</code></pre></div>
-<h2 id="publish-snapshots">Publish SNAPSHOTs<a class="headerlink" href="#publish-snapshots" title="Permanent link">&para;</a></h2>
-<h3 id="publish-maven-snapshots">Publish Maven SNAPSHOTs<a class="headerlink" href="#publish-maven-snapshots" title="Permanent link">&para;</a></h3>
-<p>This step is to publish the SNAPSHOTs to <a href="https://repository.apache.org">https://repository.apache.org</a></p>
-<p>The detailed requirement is on <a href="https://infra.apache.org/publishing-maven-artifacts.html">ASF Infra website</a></p>
-<h4 id="prepare-for-spark-30-and-scala-212">Prepare for Spark 3.0 and Scala 2.12<a class="headerlink" href="#prepare-for-spark-30-and-scala-212" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Prepare the SNAPSHOTs
-<div class="highlight"><pre><span></span><code>mvn clean -Darguments=&quot;-DskipTests&quot; release:prepare -DdryRun=true -DautoVersionSubmodules=true -Dresume=false
+<li>In your local Sedona Git repo under master branch, run
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;#!/bin/bash&quot;</span> &gt; create-release.sh
+chmod <span class="m">777</span> create-release.sh
 </code></pre></div></li>
-<li>Deploy the SNAPSHOTs
-<div class="highlight"><pre><span></span><code>mvn deploy -DskipTests
-</code></pre></div></li>
+<li>Use your favourite GUI text editor to open <code>create-release.sh</code>.</li>
+<li>Then keep copying the scripts on this web page to replace all content in this script file.</li>
+<li>Do NOT directly copy/paste the scripts to your terminal because a bug in <code>clipboard.js</code> will create link breaks in such case. </li>
+<li>Each time when you copy content to this script file, run <code>./create-release.sh</code> to execute it.</li>
 </ol>
-<p>If you are using Mac and see <code>sign artifacts failed</code>, please enter the following command in your terminal and re-compile again.</p>
-<div class="highlight"><pre><span></span><code><span class="nv">GPG_TTY</span><span class="o">=</span><span class="k">$(</span>tty<span class="k">)</span>
-<span class="nb">export</span> GPG_TTY
-</code></pre></div>
-<h4 id="prepare-for-spark-30-and-scala-213">Prepare for Spark 3.0 and Scala 2.13<a class="headerlink" href="#prepare-for-spark-30-and-scala-213" title="Permanent link">&para;</a></h4>
+<h2 id="1-check-asf-copyright-in-all-file-headers">1. Check ASF copyright in all file headers<a class="headerlink" href="#1-check-asf-copyright-in-all-file-headers" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Prepare the SNAPSHOTs
-<div class="highlight"><pre><span></span><code>mvn clean -Darguments=&quot;-DskipTests -Dscala=2.13&quot; release:prepare -DdryRun=true -DautoVersionSubmodules=true -Dresume=false
-</code></pre></div></li>
-<li>Deploy the SNAPSHOTs
-<div class="highlight"><pre><span></span><code>mvn deploy -DskipTests -Dscala=2.13
-</code></pre></div></li>
-</ol>
-<h2 id="check-asf-copyright-in-all-file-headers">Check ASF copyright in all file headers<a class="headerlink" href="#check-asf-copyright-in-all-file-headers" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Download <a href="https://creadur.apache.org/rat/download_rat.cgi">Apache Rat binary (.jar file)</a>.</li>
-<li>Run the following terminal script:
+<li>Run the following script:
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+wget -q https://dlcdn.apache.org//creadur/apache-rat-<span class="nv">$RAT_VERSION</span>/apache-rat-0.15-bin.tar.gz
+tar -xvf  apache-rat-0.15-bin.tar.gz
 git clone --shared --branch master https://github.com/apache/incubator-sedona.git sedona-src
-java -jar apache-rat-0.14.jar -d sedona-src &gt; report.txt
+java -jar apache-rat-0.15.jar -d sedona-src &gt; report.txt
 </code></pre></div></li>
 <li>Read the generated report.txt file and make sure all source code files have ASF header.</li>
 <li>Delete the generated report and cloned files
-<div class="highlight"><pre><span></span><code>rm -rf sedona-src
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+rm -rf sedona-src
 rm report.txt
 </code></pre></div></li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Please read the following guidelines first: 1. ASF Incubator Distribution Guidelines: <a href="https://incubator.apache.org/guides/distribution.html">https://incubator.apache.org/guides/distribution.html</a> 2. ASF Release Guidelines: <a href="https://infra.apache.org/release-publishing.html">https://infra.apache.org/release-publishing.html</a> 3. ASF Incubator Release Votes Guidelines: <a href="https://issues.apache.org/jira/browse/LEGAL-469">https://issues.apache.org/jira/browse/LEGAL-469</a></p>
-</div>
-<h2 id="publish-releases">Publish releases<a class="headerlink" href="#publish-releases" title="Permanent link">&para;</a></h2>
-<h3 id="update-mkdocsyml">Update mkdocs.yml<a class="headerlink" href="#update-mkdocsyml" title="Permanent link">&para;</a></h3>
-<p>Please change the <code>sedona.current_version</code>, <code>sedona.current_rc</code>, <code>sedona.current_git_tag</code> and <code>sedona.current_snapshot</code> in <code>mkdocs.yml</code> to the version you want to publish. Do NOT change <code>sedona.next_version</code> at this moment. Then compile the website by <code>mkdocs serve</code>. This will generate the scripts listed on this page in your local browser.</p>
-<h3 id="update-sedona-python-r-and-zeppelin-versions">Update Sedona Python, R and Zeppelin versions<a class="headerlink" href="#update-sedona-python-r-and-zeppelin-versions" title="Permanent link">&para;</a></h3>
+<h2 id="2-update-sedona-python-r-and-zeppelin-versions">2. Update Sedona Python, R and Zeppelin versions<a class="headerlink" href="#2-update-sedona-python-r-and-zeppelin-versions" title="Permanent link">&para;</a></h2>
 <p>Make sure the Sedona version in the following files are 1.3.0-incubating. Note that: Python and R versions cannot have "incubating" postfix.</p>
 <ol>
 <li><a href="https://github.com/apache/incubator-sedona/blob/master/python/sedona/version.py">https://github.com/apache/incubator-sedona/blob/master/python/sedona/version.py</a></li>
 <li><a href="https://github.com/apache/incubator-sedona/blob/master/R/DESCRIPTION">https://github.com/apache/incubator-sedona/blob/master/R/DESCRIPTION</a></li>
 <li><a href="https://github.com/apache/incubator-sedona/blob/master/zeppelin/package.json">https://github.com/apache/incubator-sedona/blob/master/zeppelin/package.json</a></li>
 </ol>
-<h3 id="stage-the-release-candidate">Stage the Release Candidate<a class="headerlink" href="#stage-the-release-candidate" title="Permanent link">&para;</a></h3>
-<p>This step is to stage the release to <a href="https://repository.apache.org">https://repository.apache.org</a></p>
-<h4 id="for-spark-30-and-scala-212">For Spark 3.0 and Scala 2.12<a class="headerlink" href="#for-spark-30-and-scala-212" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Prepare a release. Manually enter the following variables in the terminal: release id: <code>1.3.0-incubating</code>, scm tag id: <code>sedona-1.3.0-incubating-rc1</code>. You also need to provide GitHub username and password three times.
-<div class="highlight"><pre><span></span><code>mvn clean release:prepare -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span>
-</code></pre></div></li>
-<li>Stage a release
-<div class="highlight"><pre><span></span><code>mvn clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span> 
-</code></pre></div></li>
-<li>Now the releases are staged. A tag and two commits will be created on Sedona GitHub repo.</li>
-</ol>
-<p>Now let's repeat the process to other Sedona modules. Make sure you use the correct SCM Git tag id <code>sedona-1.3.0-incubating-rc1</code> (see below).</p>
-<h4 id="for-spark-30-and-scala-213">For Spark 3.0 and Scala 2.13<a class="headerlink" href="#for-spark-30-and-scala-213" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>mvn org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl=scm:git:https://github.com/apache/incubator-sedona.git -Dtag=sedona-1.3.0-incubating-rc1 -DautoVersionSubmodules=true -Dresume=false -Darguments=&quot;-DskipTests -Dscala=2.13&quot;
-</code></pre></div>
-<h3 id="upload-release-candidate">Upload Release Candidate<a class="headerlink" href="#upload-release-candidate" title="Permanent link">&para;</a></h3>
-<p>All release candidates must be first placed in ASF Dist Dev SVN before vote: <a href="https://dist.apache.org/repos/dist/dev/incubator/sedona">https://dist.apache.org/repos/dist/dev/incubator/sedona</a></p>
-<ol>
-<li>Make sure your armored PGP public key (must be encrypted by RSA-4096) is included in the <code>KEYS</code> file: <a href="https://dist.apache.org/repos/dist/dev/incubator/sedona/KEYS">https://dist.apache.org/repos/dist/dev/incubator/sedona/KEYS</a>, and publish in major key servers: <a href="https://keyserver.pgp.com/">https://keyserver.pgp.com/</a></li>
-<li>Create a folder on SVN, such as <code>sedona-1.3.0-incubating-rc1</code>
+<h2 id="3-update-mkdocsyml">3. Update mkdocs.yml<a class="headerlink" href="#3-update-mkdocsyml" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Please change the following variables in <code>mkdocs.yml</code> to the version you want to publish.<ul>
+<li><code>sedona_create_release.current_version</code></li>
+<li><code>sedona_create_release.current_rc</code></li>
+<li><code>sedona_create_release.current_git_tag</code></li>
+<li><code>sedona_create_release.current_snapshot</code></li>
+</ul>
+</li>
+<li>Then compile the website by <code>mkdocs serve</code>. This will generate the scripts listed on this page in your local browser.</li>
+<li>You can also publish this website if needed. See the instruction at bottom.</li>
+</ul>
+<h2 id="4-stage-and-upload-release-candidates">4. Stage and upload release candidates<a class="headerlink" href="#4-stage-and-upload-release-candidates" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1
-</code></pre></div></li>
-<li>In a folder other than the Sedona git repo, run the following script to create six files and two folders.
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-git clone --shared --branch sedona-1.3.0-incubating-rc1 https://github.com/apache/incubator-sedona.git apache-sedona-1.3.0-incubating-src
+
+<span class="nb">source</span> ~/.bashrc
+
+git checkout master
+git pull
+
+<span class="nb">echo</span> <span class="s2">&quot;Step 1. Stage the Release Candidate to GitHub.&quot;</span>
+
+mvn -q -B clean release:prepare -Dtag<span class="o">=</span>sedona-1.3.0-incubating-rc2 -DreleaseVersion<span class="o">=</span><span class="m">1</span>.3.0-incubating <span class="se">\</span>
+-DdevelopmentVersion<span class="o">=</span><span class="m">1</span>.3.1-incubating-SNAPSHOT -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Now the releases are staged. A tag and two commits have been created on Sedona GitHub repo&quot;</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Step 2: Upload the Release Candidate to https://repository.apache.org.&quot;</span>
+
+<span class="c1"># For Spark 3.0 and Scala 2.12</span>
+mvn -q clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span> 
+
+<span class="c1"># For Spark 3.0 and Scala 2.13</span>
+mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform <span class="se">\</span>
+-DconnectionUrl<span class="o">=</span>scm:git:https://github.com/apache/incubator-sedona.git -Dtag<span class="o">=</span>sedona-1.3.0-incubating-rc2 <span class="se">\</span>
+-DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.13&quot;</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Step 3: Upload Release Candidate on ASF SVN: https://dist.apache.org/repos/dist/dev/incubator/sedona&quot;</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Creating a folder on SVN...&quot;</span>
+
+svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2
+
+<span class="nb">echo</span> <span class="s2">&quot;Creating release files locally...&quot;</span>
+
+git clone --shared --branch sedona-1.3.0-incubating-rc2 https://github.com/apache/incubator-sedona.git apache-sedona-1.3.0-incubating-src
 rm -rf apache-sedona-1.3.0-incubating-src/.git
 tar czf apache-sedona-1.3.0-incubating-src.tar.gz apache-sedona-1.3.0-incubating-src
 mkdir apache-sedona-1.3.0-incubating-bin
@@ -3501,15 +3568,18 @@ shasum -a <span class="m">512</span> apache-sedona-1.3.0-incubating-src.tar.gz &
 shasum -a <span class="m">512</span> apache-sedona-1.3.0-incubating-bin.tar.gz &gt; apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
 gpg -ab apache-sedona-1.3.0-incubating-src.tar.gz
 gpg -ab apache-sedona-1.3.0-incubating-bin.tar.gz
-</code></pre></div></li>
-<li>Upload six files to SVN and delete all created files using the following script
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-src.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-src.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-src.tar.gz.sha512
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-bin.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-bin.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
+
+<span class="nb">echo</span> <span class="s2">&quot;Uploading local release files...&quot;</span>
+
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz.sha512
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
+
+<span class="nb">echo</span> <span class="s2">&quot;Removing local release files...&quot;</span>
+
 rm apache-sedona-1.3.0-incubating-src.tar.gz
 rm apache-sedona-1.3.0-incubating-src.tar.gz.asc
 rm apache-sedona-1.3.0-incubating-src.tar.gz.sha512
@@ -3518,36 +3588,30 @@ rm apache-sedona-1.3.0-incubating-bin.tar.gz.asc
 rm apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
 rm -rf apache-sedona-1.3.0-incubating-src
 rm -rf apache-sedona-1.3.0-incubating-bin
-</code></pre></div></li>
-</ol>
-<h3 id="vote-in-dev-sedonaapacheorg">Vote in dev sedona.apache.org<a class="headerlink" href="#vote-in-dev-sedonaapacheorg" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Check the status of the staging repo: <a href="https://central.sonatype.org/pages/releasing-the-deployment.html#locate-and-examine-your-staging-repository">Locate and Examine Your Staging Repository
-</a>. You should see 12 Sedona modules in total.</li>
-<li>Call for a vote in Sedona community and Apache incubator. Then close the staging repo.</li>
-<li>The vote will be open for at least 72 hours or until at least 3 "+1" PMC votes are cast</li>
-</ol>
-<p>Here is a generated vote email. Please add changes at the end if needed:</p>
-<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.3.0-incubating-rc1
+</code></pre></div>
+<h2 id="5-vote-in-dev-sedonaapacheorg">5. Vote in dev sedona.apache.org<a class="headerlink" href="#5-vote-in-dev-sedonaapacheorg" title="Permanent link">&para;</a></h2>
+<h3 id="vote-email">Vote email<a class="headerlink" href="#vote-email" title="Permanent link">&para;</a></h3>
+<p>Please add changes at the end if needed:</p>
+<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.3.0-incubating-rc2
 
 Hi all,
 
-This is a call for vote on Apache Sedona 1.3.0-incubating-rc1. Please refer to the changes listed at the bottom of this email.
+This is a call for vote on Apache Sedona 1.3.0-incubating-rc2. Please refer to the changes listed at the bottom of this email.
 
 Release notes:
-https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc1/docs/setup/release-notes.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc2/docs/setup/release-notes.md
 
 Build instructions:
-https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc1/docs/setup/compile.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc2/docs/setup/compile.md
 
 GitHub tag:
-https://github.com/apache/incubator-sedona/releases/tag/sedona-1.3.0-incubating-rc1
+https://github.com/apache/incubator-sedona/releases/tag/sedona-1.3.0-incubating-rc2
 
 GPG public key to verify the Release:
 https://downloads.apache.org/incubator/sedona/KEYS
 
 Source code and binaries:
-https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/
+https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/
 
 The vote will be open for at least 72 hours or until at least 3 &quot;+1&quot; PMC votes are cast
 
@@ -3582,8 +3646,9 @@ https://cwiki.apache.org/confluence/display/INCUBATOR/Incubator+Release+Checklis
 Changes according to the comments on the previous release
 Original comment (Permalink from https://lists.apache.org/list.html): 
 </code></pre></div>
-<p>Here is a generated "pass" email:</p>
-<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.3.0-incubating-rc1
+<h3 id="pass-email">Pass email<a class="headerlink" href="#pass-email" title="Permanent link">&para;</a></h3>
+<p>Please count the votes and add the Permalink of the vote thread at the end.</p>
+<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.3.0-incubating-rc2
 
 Dear all,
 
@@ -3598,33 +3663,37 @@ The vote thread (Permalink from https://lists.apache.org/list.html):
 I will now bring the vote to general@incubator.apache.org to get
 approval by the IPMC. If this vote passes too, the release is accepted and will be published.
 </code></pre></div>
-<h3 id="vote-in-general-incubatorapacheorg">Vote in general incubator.apache.org<a class="headerlink" href="#vote-in-general-incubatorapacheorg" title="Permanent link">&para;</a></h3>
-<p>Here is a generated vote email. Please add changes at the end if needed.</p>
-<p>The vote will be open for at least 72 hours or until at least 3 "+1" PMC votes are cast.</p>
-<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.3.0-incubating-rc1
+<h2 id="6-vote-in-general-incubatorapacheorg">6. Vote in general incubator.apache.org<a class="headerlink" href="#6-vote-in-general-incubatorapacheorg" title="Permanent link">&para;</a></h2>
+<h3 id="vote-email_1">Vote email<a class="headerlink" href="#vote-email_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Please add the permalink of Sedona Community vote thread</li>
+<li>Please add the permalink of Sedona Community vote result thread</li>
+<li>Please add changes at the end if needed.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.3.0-incubating-rc2
 
 Hi all,
 
-This is a call for vote on Apache Sedona 1.3.0-incubating-rc1. Please refer to the changes listed at the bottom of this email.
+This is a call for vote on Apache Sedona 1.3.0-incubating-rc2. Please refer to the changes listed at the bottom of this email.
 
 Sedona Community vote thread (Permalink from https://lists.apache.org/list.html):
 
 Sedona community vote result thread (Permalink from https://lists.apache.org/list.html):
 
 Release notes:
-https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc1/docs/setup/release-notes.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc2/docs/setup/release-notes.md
 
 Build instructions:
-https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc1/docs/setup/compile.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc2/docs/setup/compile.md
 
 GitHub tag:
-https://github.com/apache/incubator-sedona/releases/tag/sedona-1.3.0-incubating-rc1
+https://github.com/apache/incubator-sedona/releases/tag/sedona-1.3.0-incubating-rc2
 
 GPG public key to verify the Release:
 https://downloads.apache.org/incubator/sedona/KEYS
 
 Source code and binaries:
-https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/
+https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/
 
 The vote will be open for at least 72 hours or until at least 3 &quot;+1&quot; PMC votes are cast
 
@@ -3654,8 +3723,9 @@ https://cwiki.apache.org/confluence/display/INCUBATOR/Incubator+Release+Checklis
 Changes according to the comments on the previous release
 Original comment (Permalink from https://lists.apache.org/list.html): 
 </code></pre></div>
-<p>Here is a generated "pass" email:</p>
-<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.3.0-incubating-rc1
+<h3 id="pass-email_1">Pass email<a class="headerlink" href="#pass-email_1" title="Permanent link">&para;</a></h3>
+<p>Please count the votes and add the permalink of the vote thread.</p>
+<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.3.0-incubating-rc2
 
 Dear all,
 
@@ -3669,7 +3739,12 @@ The vote thread (Permalink from https://lists.apache.org/list.html):
 
 I will publish the release and make an annoucement once it is done.
 </code></pre></div>
-<p>Here is a generated "announce" email. This email should be CCed to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#101;&#118;&#64;&#115;&#101;&#100;&#111;&#110;&#97;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#100;&#101;&#118;&#64;&#115;&#101;&#100;&#111;&#110;&#97;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a>:</p>
+<h3 id="announce-email">Announce email<a class="headerlink" href="#announce-email" title="Permanent link">&para;</a></h3>
+<ol>
+<li>This email should be CCed to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#101;&#118;&#64;&#115;&#101;&#100;&#111;&#110;&#97;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#100;&#101;&#118;&#64;&#115;&#101;&#100;&#111;&#110;&#97;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a></li>
+<li>Please add the permalink of the incubator vote thread</li>
+<li>Please add the permalink of the incubator vote result thread</li>
+</ol>
 <div class="highlight"><pre><span></span><code>Subject: [ANNOUNCE] Apache Sedona 1.3.0-incubating released
 
 Dear all,
@@ -3704,19 +3779,24 @@ Gitter: https://gitter.im/apache/sedona
 Regards,
 Apache Sedona (incubating) Team
 </code></pre></div>
-<h3 id="failed-vote">Failed vote<a class="headerlink" href="#failed-vote" title="Permanent link">&para;</a></h3>
-<p>If a vote failed, please first drop the staging repo on <code>repository.apache.org</code>. Then redo all the steps above. Make sure you use a new scm tag for the new release candidate when use maven-release-plugin (i.e., <code>1.3.0-incubating-rc2</code>). You can change the <code>sedona.current_rc</code> and <code>sedona.current_git_tag</code> in <code>mkdocs.yml</code> to generate the script listed on this webpage.</p>
-<h3 id="release-the-package">Release the package<a class="headerlink" href="#release-the-package" title="Permanent link">&para;</a></h3>
+<h2 id="7-failed-vote">7. Failed vote<a class="headerlink" href="#7-failed-vote" title="Permanent link">&para;</a></h2>
+<p>If a vote failed, do the following:</p>
 <ol>
-<li>Move all files in <a href="https://dist.apache.org/repos/dist/dev/incubator/sedona">https://dist.apache.org/repos/dist/dev/incubator/sedona</a> to <a href="https://dist.apache.org/repos/dist/release/incubator/sedona">https://dist.apache.org/repos/dist/release/incubator/sedona</a>, using svn
+<li>In the vote email, say that we will create another release candidate.</li>
+<li>Restart from Step 3 <code>Update mkdocs.yml</code>. Please increment the release candidate ID (e.g., <code>1.3.0-incubating-rc2</code>) and update <code>sedona_create_release.current_rc</code> and <code>sedona_create_release.current_git_tag</code> in <code>mkdocs.yml</code> to generate the script listed on this webpage.</li>
+</ol>
+<h2 id="8-release-source-code-and-maven-package">8. Release source code and Maven package<a class="headerlink" href="#8-release-source-code-and-maven-package" title="Permanent link">&para;</a></h2>
+<h3 id="upload-releases">Upload releases<a class="headerlink" href="#upload-releases" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Move all files in https://dist.apache.org/repos/dist/dev/incubator/sedona to https://dist.apache.org/repos/dist/release/incubator/sedona, using svn&quot;</span>
 svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-src.tar.gz
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-src.tar.gz.asc
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-src.tar.gz.sha512
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-bin.tar.gz
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-bin.tar.gz.asc
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc1/apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz.asc
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz.sha512
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz.asc
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
 svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating/apache-sedona-1.3.0-incubating-src.tar.gz
 svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating/apache-sedona-1.3.0-incubating-src.tar.gz.asc
 svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating/apache-sedona-1.3.0-incubating-src.tar.gz.sha512
@@ -3729,44 +3809,23 @@ rm apache-sedona-1.3.0-incubating-src.tar.gz.sha512
 rm apache-sedona-1.3.0-incubating-bin.tar.gz
 rm apache-sedona-1.3.0-incubating-bin.tar.gz.asc
 rm apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
-</code></pre></div></li>
-<li>Add the download link to <a href="/download#versions">Download page</a> and create a GitHub release.</li>
-<li>(1) Publish Python project to PyPi using twine. You must have the maintainer priviledge of <a href="https://pypi.org/project/apache-sedona/">https://pypi.org/project/apache-sedona/</a>. (2) Publish Zeppelin plugin to NPM
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-git clone --shared --branch sedona-1.3.0-incubating-rc1 https://github.com/apache/incubator-sedona.git apache-sedona-1.3.0-incubating-src
-<span class="nb">cd</span> apache-sedona-1.3.0-incubating-src/python <span class="o">&amp;&amp;</span> python3 setup.py sdist bdist_wheel <span class="o">&amp;&amp;</span> twine upload dist/* <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-<span class="nb">cd</span> zeppelin <span class="o">&amp;&amp;</span> npm publish <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-rm -rf apache-sedona-1.3.0-incubating-src
-</code></pre></div></li>
-<li>Publish Sedona R to CRAN. More details to be added.
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-R CMD build .
-R CMD check --as-cran apache.sedona_*.tar.gz
-</code></pre></div></li>
-<li>Instructions on how to submit a R package to CRAN are at the bottom of the <a href="https://cran.r-project.org/">CRAN front page</a>, “Submitting to CRAN.” Submission is now via <a href="https://xmpalantir.wu.ac.at/cransubmit/">a web form</a>.</li>
-<li>Close the staging repo on <a href="https://repository.apache.org">https://repository.apache.org</a>. If the staging repo has been automatically closed by the system, please read below.</li>
-</ol>
-<h4 id="use-maven-release-plugin-directly-from-an-existing-tag">Use Maven Release Plugin directly from an existing tag<a class="headerlink" href="#use-maven-release-plugin-directly-from-an-existing-tag" title="Permanent link">&para;</a></h4>
-<p>The staging repo on repository.apache.org is usually automatically closed before the voting is closed. If so, you need to do <code>mvn release:perform</code> from an existing tag. Note that: you have to use <code>org.apache.maven.plugins:maven-release-plugin:2.3.2:perform</code> due to a bug in maven release plugin from v2.4 (<a href="https://issues.apache.org/jira/browse/SCM-729">https://issues.apache.org/jira/browse/SCM-729</a>). Make sure you use the correct scm tag (i.e.,  <code>sedona-1.3.0-incubating-rc1</code>).</p>
-<h5 id="for-spark-30-and-scala-212_1">For Spark 3.0 and Scala 2.12<a class="headerlink" href="#for-spark-30-and-scala-212_1" title="Permanent link">&para;</a></h5>
-<div class="highlight"><pre><span></span><code>mvn org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl=scm:git:https://github.com/apache/incubator-sedona.git -Dtag=sedona-1.3.0-incubating-rc1 -DautoVersionSubmodules=true -Dresume=false -Darguments=&quot;-DskipTests&quot;
+
+<span class="nb">echo</span> <span class="s2">&quot;Re-staging releases to https://repository.apache.org&quot;</span>
+<span class="c1"># For Spark 3.0 and Scala 2.12</span>
+mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl<span class="o">=</span>scm:git:https://github.com/apache/incubator-sedona.git -Dtag<span class="o">=</span>sedona-1.3.0-incubating-rc2 -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span>
+<span class="c1"># For Spark 3.0 and Scala 2.13</span>
+mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl<span class="o">=</span>scm:git:https://github.com/apache/incubator-sedona.git -Dtag<span class="o">=</span>sedona-1.3.0-incubating-rc2 -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.13&quot;</span>
 </code></pre></div>
-<h5 id="for-spark-30-and-scala-213_1">For Spark 3.0 and Scala 2.13<a class="headerlink" href="#for-spark-30-and-scala-213_1" title="Permanent link">&para;</a></h5>
-<div class="highlight"><pre><span></span><code>mvn org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl=scm:git:https://github.com/apache/incubator-sedona.git -Dtag=sedona-1.3.0-incubating-rc1 -DautoVersionSubmodules=true -Dresume=false -Darguments=&quot;-DskipTests -Dscala=2.13&quot;
-</code></pre></div>
-<h4 id="fix-the-error-when-close-the-staged-repo">Fix the error when close the staged repo<a class="headerlink" href="#fix-the-error-when-close-the-staged-repo" title="Permanent link">&para;</a></h4>
-<p>In the last step, you may see many errors similar to the following:
-<div class="highlight"><pre><span></span><code>typeId  signature-staging
-failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.3.0-incubating/sedona-python-adapter-3.0_2.12-1.3.0-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-python-adapter-3.0_2.12-1.3.0-incubating.pom&#39;.
-failureMessage  Invalid Signature: &#39;/org/apache/sedona/sedona-viz-3.0_2.12/1.3.0-incubating/sedona-viz-3.0_2.12-1.3.0-incubating.pom.asc&#39; is not a valid signature for &#39;sedona-viz-3.0_2.12-1.3.0-incubating.pom&#39;.
-</code></pre></div></p>
-<p>This is caused by a bug in the resolved-pom-maven-plugin in POM.xml. You will have to upload the signatures of the POM files mannualy.</p>
-<p>Please run the following script to reupload ASC files to the staging repo. Please make sure you use the correct Sedona staging repo ID, ASF username and password.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<h3 id="fix-signature-issues">Fix signature issues<a class="headerlink" href="#fix-signature-issues" title="Permanent link">&para;</a></h3>
+<p>Please find the Sedona staging id on <a href="https://repository.apache.org">https://repository.apache.org</a> under <code>staging repository</code>.</p>
+<p>Then run the following script. Replace <code>admin</code>, <code>admind123</code> with your Apache ID username and Apache ID password. Replace <code>stagingid</code> with the correct id.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nv">username</span><span class="o">=</span>admin
 <span class="nv">password</span><span class="o">=</span>admin123
 <span class="nv">stagingid</span><span class="o">=</span><span class="m">1016</span>
 
+
+<span class="nb">echo</span> <span class="s2">&quot;Re-uploading signatures to fix *failureMessage    Invalid Signature*&quot;</span>
 wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-common/1.3.0-incubating/sedona-common-1.3.0-incubating.pom
 wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.3.0-incubating/sedona-core-3.0_2.12-1.3.0-incubating.pom
 wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.13/1.3.0-incubating/sedona-core-3.0_2.13-1.3.0-incubating.pom
@@ -3810,22 +3869,31 @@ curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> -
 
 curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-3.0_2.13-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.13/1.3.0-incubating/sedona-sql-3.0_2.13-1.3.0-incubating.pom.asc
 
-rm sedona-common-1.3.0-incubating.pom.asc
-rm sedona-core-3.0_2.12-1.3.0-incubating.pom.asc
-rm sedona-sql-3.0_2.12-1.3.0-incubating.pom.asc
-rm sedona-viz-3.0_2.12-1.3.0-incubating.pom.asc
-rm sedona-python-adapter-3.0_2.12-1.3.0-incubating.pom.asc
-rm sedona-flink_2.12-1.3.0-incubating.pom.asc
-rm sedona-core-3.0_2.13-1.3.0-incubating.pom.asc
-rm sedona-sql-3.0_2.13-1.3.0-incubating.pom.asc
-rm sedona-viz-3.0_2.13-1.3.0-incubating.pom.asc
-rm sedona-python-adapter-3.0_2.13-1.3.0-incubating.pom.asc
+rm *.pom
+rm *.asc
 </code></pre></div>
-admin is your Apache ID username and admin123 is your Apache ID password. You can find the correct upload path from the web interface.</p>
-<p>Once the staging repo is closed, click "Release" on the web interface.</p>
-<h2 id="publish-the-doc-website">Publish the doc website<a class="headerlink" href="#publish-the-doc-website" title="Permanent link">&para;</a></h2>
+<h3 id="manually-close-and-release-the-package">Manually close and release the package<a class="headerlink" href="#manually-close-and-release-the-package" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Update <code>sedona.next_version</code> in <code>mkdocs.yml</code> to the next version. Note that: the next version means the version after the version you want to release.</li>
+<li>Click <code>Close</code> on the Sedona staging repo on <a href="https://repository.apache.org">https://repository.apache.org</a> under <code>staging repository</code></li>
+<li>Once the staging repo is closed, click <code>Release</code> on this repo.</li>
+</ol>
+<h2 id="9-release-sedona-python-and-zeppelin">9. Release Sedona Python and Zeppelin<a class="headerlink" href="#9-release-sedona-python-and-zeppelin" title="Permanent link">&para;</a></h2>
+<p>You must have the maintainer priviledge of <code>https://pypi.org/project/apache-sedona/</code> and <code>https://www.npmjs.com/package/apache-sedona</code></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+git clone --shared --branch sedona-1.3.0-incubating-rc2 https://github.com/apache/incubator-sedona.git apache-sedona-1.3.0-incubating-src
+<span class="nb">cd</span> apache-sedona-1.3.0-incubating-src/python <span class="o">&amp;&amp;</span> python3 setup.py sdist bdist_wheel <span class="o">&amp;&amp;</span> twine upload dist/* <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+<span class="nb">cd</span> zeppelin <span class="o">&amp;&amp;</span> npm publish <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+rm -rf apache-sedona-1.3.0-incubating-src
+</code></pre></div>
+<h2 id="10-release-sedona-r-to-cran">10. Release Sedona R to CRAN.<a class="headerlink" href="#10-release-sedona-r-to-cran" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+R CMD build .
+R CMD check --as-cran apache.sedona_*.tar.gz
+</code></pre></div>
+<p>Then submit to CRAN using this <a href="https://xmpalantir.wu.ac.at/cransubmit/">web form</a>.</p>
+<h2 id="11-publish-the-doc-website">11. Publish the doc website<a class="headerlink" href="#11-publish-the-doc-website" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Add the download link to <a href="/download#versions">Download page</a> and create a GitHub release.</li>
 <li>Run <code>mkdocs build</code> in Sedona root directory. Copy all content in the <code>site</code> folder.</li>
 <li>Check out GitHub incubator-sedona-website <a href="https://github.com/apache/incubator-sedona-website/tree/asf-site">asf-site branch</a></li>
 <li>Use the copied content to replace all content in <code>asf-site</code> branch and upload to GitHub. Then <code>sedona.apache.org</code> will be automatically updated.</li>
@@ -3860,7 +3928,7 @@ Rscript generate-docs.R
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 11, 2022 09:16:57</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 16, 2022 19:23:40</span>
       
     
   </small>
@@ -3891,7 +3959,7 @@ Rscript generate-docs.R
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../contributor/" title="PMC List" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../snapshot/" title="Publish a snapshot version" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>
@@ -3900,19 +3968,19 @@ Rscript generate-docs.R
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                PMC List
+                Publish a snapshot version
               </div>
             </div>
           </a>
         
         
-          <a href="../vote/" title="Vote the release" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../vote/" title="Vote a release" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Vote the release
+                Vote a release
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
