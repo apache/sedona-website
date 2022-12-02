@@ -3496,7 +3496,7 @@ rm report.txt
 </code></pre></div></li>
 </ol>
 <h2 id="2-update-sedona-python-r-and-zeppelin-versions">2. Update Sedona Python, R and Zeppelin versions<a class="headerlink" href="#2-update-sedona-python-r-and-zeppelin-versions" title="Permanent link">&para;</a></h2>
-<p>Make sure the Sedona version in the following files are 1.3.0-incubating. Note that: Python and R versions cannot have "incubating" postfix.</p>
+<p>Make sure the Sedona version in the following files are 1.3.1-incubating. Note that: Python and R versions cannot have "incubating" postfix.</p>
 <ol>
 <li><a href="https://github.com/apache/incubator-sedona/blob/master/python/sedona/version.py">https://github.com/apache/incubator-sedona/blob/master/python/sedona/version.py</a></li>
 <li><a href="https://github.com/apache/incubator-sedona/blob/master/R/DESCRIPTION">https://github.com/apache/incubator-sedona/blob/master/R/DESCRIPTION</a></li>
@@ -3522,96 +3522,111 @@ rm report.txt
 git checkout master
 git pull
 
-<span class="nb">echo</span> <span class="s2">&quot;Step 1. Stage the Release Candidate to GitHub.&quot;</span>
+rm -f release.*
+rm -f pom.xml.*
 
-mvn -q -B clean release:prepare -Dtag<span class="o">=</span>sedona-1.3.0-incubating-rc2 -DreleaseVersion<span class="o">=</span><span class="m">1</span>.3.0-incubating <span class="se">\</span>
--DdevelopmentVersion<span class="o">=</span><span class="m">1</span>.3.1-incubating-SNAPSHOT -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;*****Step 1. Stage the Release Candidate to GitHub.&quot;</span>
+
+mvn -q -B clean release:prepare -Dtag<span class="o">=</span>sedona-1.3.1-incubating-rc1 -DreleaseVersion<span class="o">=</span><span class="m">1</span>.3.1-incubating -DdevelopmentVersion<span class="o">=</span><span class="m">1</span>.3.1-incubating-SNAPSHOT -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span>
+
+rm -f release.*
+rm -f pom.xml.*
 
 <span class="nb">echo</span> <span class="s2">&quot;Now the releases are staged. A tag and two commits have been created on Sedona GitHub repo&quot;</span>
 
-<span class="nb">echo</span> <span class="s2">&quot;Step 2: Upload the Release Candidate to https://repository.apache.org.&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;*****Step 2: Upload the Release Candidate to https://repository.apache.org.&quot;</span>
 
 <span class="c1"># For Spark 3.0 and Scala 2.12</span>
-mvn -q clean release:perform -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span> 
+mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl<span class="o">=</span>scm:git:https://github.com/apache/incubator-sedona.git -Dtag<span class="o">=</span>sedona-1.3.1-incubating-rc1 -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.12&quot;</span>
 
 <span class="c1"># For Spark 3.0 and Scala 2.13</span>
-mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform <span class="se">\</span>
--DconnectionUrl<span class="o">=</span>scm:git:https://github.com/apache/incubator-sedona.git -Dtag<span class="o">=</span>sedona-1.3.0-incubating-rc2 <span class="se">\</span>
--DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.13&quot;</span>
+mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl<span class="o">=</span>scm:git:https://github.com/apache/incubator-sedona.git -Dtag<span class="o">=</span>sedona-1.3.1-incubating-rc1 -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.13&quot;</span>
 
-<span class="nb">echo</span> <span class="s2">&quot;Step 3: Upload Release Candidate on ASF SVN: https://dist.apache.org/repos/dist/dev/incubator/sedona&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;*****Step 3: Upload Release Candidate on ASF SVN: https://dist.apache.org/repos/dist/dev/incubator/sedona&quot;</span>
 
-<span class="nb">echo</span> <span class="s2">&quot;Creating a folder on SVN...&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Creating 1.3.1-incubating-rc1 folder on SVN...&quot;</span>
 
-svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2
+svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1
 
 <span class="nb">echo</span> <span class="s2">&quot;Creating release files locally...&quot;</span>
 
-git clone --shared --branch sedona-1.3.0-incubating-rc2 https://github.com/apache/incubator-sedona.git apache-sedona-1.3.0-incubating-src
-rm -rf apache-sedona-1.3.0-incubating-src/.git
-tar czf apache-sedona-1.3.0-incubating-src.tar.gz apache-sedona-1.3.0-incubating-src
-mkdir apache-sedona-1.3.0-incubating-bin
-<span class="nb">cd</span> apache-sedona-1.3.0-incubating-src <span class="o">&amp;&amp;</span> mvn clean install -DskipTests -Dscala<span class="o">=</span><span class="m">2</span>.12 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-cp apache-sedona-1.3.0-incubating-src/core/target/sedona-*1.3.0-incubating.jar apache-sedona-1.3.0-incubating-bin/
-cp apache-sedona-1.3.0-incubating-src/sql/target/sedona-*1.3.0-incubating.jar apache-sedona-1.3.0-incubating-bin/
-cp apache-sedona-1.3.0-incubating-src/viz/target/sedona-*1.3.0-incubating.jar apache-sedona-1.3.0-incubating-bin/
-cp apache-sedona-1.3.0-incubating-src/python-adapter/target/sedona-*1.3.0-incubating.jar apache-sedona-1.3.0-incubating-bin/
-cp apache-sedona-1.3.0-incubating-src/flink/target/sedona-*1.3.0-incubating.jar apache-sedona-1.3.0-incubating-bin/
-<span class="nb">cd</span> apache-sedona-1.3.0-incubating-src <span class="o">&amp;&amp;</span> mvn clean install -DskipTests -Dscala<span class="o">=</span><span class="m">2</span>.13 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-cp apache-sedona-1.3.0-incubating-src/core/target/sedona-*1.3.0-incubating.jar apache-sedona-1.3.0-incubating-bin/
-cp apache-sedona-1.3.0-incubating-src/sql/target/sedona-*1.3.0-incubating.jar apache-sedona-1.3.0-incubating-bin/
-cp apache-sedona-1.3.0-incubating-src/viz/target/sedona-*1.3.0-incubating.jar apache-sedona-1.3.0-incubating-bin/
-cp apache-sedona-1.3.0-incubating-src/python-adapter/target/sedona-*1.3.0-incubating.jar apache-sedona-1.3.0-incubating-bin/
-cp apache-sedona-1.3.0-incubating-src/flink/target/sedona-*1.3.0-incubating.jar apache-sedona-1.3.0-incubating-bin/
-tar czf apache-sedona-1.3.0-incubating-bin.tar.gz apache-sedona-1.3.0-incubating-bin
-shasum -a <span class="m">512</span> apache-sedona-1.3.0-incubating-src.tar.gz &gt; apache-sedona-1.3.0-incubating-src.tar.gz.sha512
-shasum -a <span class="m">512</span> apache-sedona-1.3.0-incubating-bin.tar.gz &gt; apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
-gpg -ab apache-sedona-1.3.0-incubating-src.tar.gz
-gpg -ab apache-sedona-1.3.0-incubating-bin.tar.gz
+<span class="nb">echo</span> <span class="s2">&quot;Downloading source code...&quot;</span>
+
+wget https://github.com/apache/incubator-sedona/archive/refs/tags/sedona-1.3.1-incubating-rc1.tar.gz
+tar -xvf sedona-1.3.1-incubating-rc1.tar.gz
+mkdir apache-sedona-1.3.1-incubating-src
+cp -r incubator-sedona-sedona-1.3.1-incubating-rc1/* apache-sedona-1.3.1-incubating-src/
+tar czf apache-sedona-1.3.1-incubating-src.tar.gz apache-sedona-1.3.1-incubating-src
+rm sedona-1.3.1-incubating-rc1.tar.gz
+rm -rf incubator-sedona-sedona-1.3.1-incubating-rc1
+
+<span class="nb">echo</span> <span class="s2">&quot;Compiling the source code...&quot;</span>
+
+mkdir apache-sedona-1.3.1-incubating-bin
+
+<span class="nb">cd</span> apache-sedona-1.3.1-incubating-src <span class="o">&amp;&amp;</span> mvn -q clean install -DskipTests -Dscala<span class="o">=</span><span class="m">2</span>.12 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+cp apache-sedona-1.3.1-incubating-src/core/target/sedona-*1.3.1-incubating.jar apache-sedona-1.3.1-incubating-bin/
+cp apache-sedona-1.3.1-incubating-src/sql/target/sedona-*1.3.1-incubating.jar apache-sedona-1.3.1-incubating-bin/
+cp apache-sedona-1.3.1-incubating-src/viz/target/sedona-*1.3.1-incubating.jar apache-sedona-1.3.1-incubating-bin/
+cp apache-sedona-1.3.1-incubating-src/python-adapter/target/sedona-*1.3.1-incubating.jar apache-sedona-1.3.1-incubating-bin/
+cp apache-sedona-1.3.1-incubating-src/flink/target/sedona-*1.3.1-incubating.jar apache-sedona-1.3.1-incubating-bin/
+
+<span class="nb">cd</span> apache-sedona-1.3.1-incubating-src <span class="o">&amp;&amp;</span> mvn -q clean install -DskipTests -Dscala<span class="o">=</span><span class="m">2</span>.13 <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+cp apache-sedona-1.3.1-incubating-src/core/target/sedona-*1.3.1-incubating.jar apache-sedona-1.3.1-incubating-bin/
+cp apache-sedona-1.3.1-incubating-src/sql/target/sedona-*1.3.1-incubating.jar apache-sedona-1.3.1-incubating-bin/
+cp apache-sedona-1.3.1-incubating-src/viz/target/sedona-*1.3.1-incubating.jar apache-sedona-1.3.1-incubating-bin/
+cp apache-sedona-1.3.1-incubating-src/python-adapter/target/sedona-*1.3.1-incubating.jar apache-sedona-1.3.1-incubating-bin/
+cp apache-sedona-1.3.1-incubating-src/flink/target/sedona-*1.3.1-incubating.jar apache-sedona-1.3.1-incubating-bin/
+
+tar czf apache-sedona-1.3.1-incubating-bin.tar.gz apache-sedona-1.3.1-incubating-bin
+shasum -a <span class="m">512</span> apache-sedona-1.3.1-incubating-src.tar.gz &gt; apache-sedona-1.3.1-incubating-src.tar.gz.sha512
+shasum -a <span class="m">512</span> apache-sedona-1.3.1-incubating-bin.tar.gz &gt; apache-sedona-1.3.1-incubating-bin.tar.gz.sha512
+gpg -ab apache-sedona-1.3.1-incubating-src.tar.gz
+gpg -ab apache-sedona-1.3.1-incubating-bin.tar.gz
 
 <span class="nb">echo</span> <span class="s2">&quot;Uploading local release files...&quot;</span>
 
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz.sha512
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-src.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-src.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-src.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-src.tar.gz.sha512
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-bin.tar.gz https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-bin.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-bin.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-bin.tar.gz.sha512
 
 <span class="nb">echo</span> <span class="s2">&quot;Removing local release files...&quot;</span>
 
-rm apache-sedona-1.3.0-incubating-src.tar.gz
-rm apache-sedona-1.3.0-incubating-src.tar.gz.asc
-rm apache-sedona-1.3.0-incubating-src.tar.gz.sha512
-rm apache-sedona-1.3.0-incubating-bin.tar.gz
-rm apache-sedona-1.3.0-incubating-bin.tar.gz.asc
-rm apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
-rm -rf apache-sedona-1.3.0-incubating-src
-rm -rf apache-sedona-1.3.0-incubating-bin
+rm apache-sedona-1.3.1-incubating-src.tar.gz
+rm apache-sedona-1.3.1-incubating-src.tar.gz.asc
+rm apache-sedona-1.3.1-incubating-src.tar.gz.sha512
+rm apache-sedona-1.3.1-incubating-bin.tar.gz
+rm apache-sedona-1.3.1-incubating-bin.tar.gz.asc
+rm apache-sedona-1.3.1-incubating-bin.tar.gz.sha512
+rm -rf apache-sedona-1.3.1-incubating-src
+rm -rf apache-sedona-1.3.1-incubating-bin
 </code></pre></div>
 <h2 id="5-vote-in-dev-sedonaapacheorg">5. Vote in dev sedona.apache.org<a class="headerlink" href="#5-vote-in-dev-sedonaapacheorg" title="Permanent link">&para;</a></h2>
 <h3 id="vote-email">Vote email<a class="headerlink" href="#vote-email" title="Permanent link">&para;</a></h3>
 <p>Please add changes at the end if needed:</p>
-<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.3.0-incubating-rc2
+<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.3.1-incubating-rc1
 
 Hi all,
 
-This is a call for vote on Apache Sedona 1.3.0-incubating-rc2. Please refer to the changes listed at the bottom of this email.
+This is a call for vote on Apache Sedona 1.3.1-incubating-rc1. Please refer to the changes listed at the bottom of this email.
 
 Release notes:
-https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc2/docs/setup/release-notes.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.3.1-incubating-rc1/docs/setup/release-notes.md
 
 Build instructions:
-https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc2/docs/setup/compile.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.3.1-incubating-rc1/docs/setup/compile.md
 
 GitHub tag:
-https://github.com/apache/incubator-sedona/releases/tag/sedona-1.3.0-incubating-rc2
+https://github.com/apache/incubator-sedona/releases/tag/sedona-1.3.1-incubating-rc1
 
 GPG public key to verify the Release:
 https://downloads.apache.org/incubator/sedona/KEYS
 
 Source code and binaries:
-https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/
+https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/
 
 The vote will be open for at least 72 hours or until at least 3 &quot;+1&quot; PMC votes are cast
 
@@ -3648,7 +3663,7 @@ Original comment (Permalink from https://lists.apache.org/list.html):
 </code></pre></div>
 <h3 id="pass-email">Pass email<a class="headerlink" href="#pass-email" title="Permanent link">&para;</a></h3>
 <p>Please count the votes and add the Permalink of the vote thread at the end.</p>
-<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.3.0-incubating-rc2
+<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.3.1-incubating-rc1
 
 Dear all,
 
@@ -3670,30 +3685,30 @@ approval by the IPMC. If this vote passes too, the release is accepted and will 
 <li>Please add the permalink of Sedona Community vote result thread</li>
 <li>Please add changes at the end if needed.</li>
 </ol>
-<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.3.0-incubating-rc2
+<div class="highlight"><pre><span></span><code>Subject: [VOTE] Release Apache Sedona 1.3.1-incubating-rc1
 
 Hi all,
 
-This is a call for vote on Apache Sedona 1.3.0-incubating-rc2. Please refer to the changes listed at the bottom of this email.
+This is a call for vote on Apache Sedona 1.3.1-incubating-rc1. Please refer to the changes listed at the bottom of this email.
 
 Sedona Community vote thread (Permalink from https://lists.apache.org/list.html):
 
 Sedona community vote result thread (Permalink from https://lists.apache.org/list.html):
 
 Release notes:
-https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc2/docs/setup/release-notes.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.3.1-incubating-rc1/docs/setup/release-notes.md
 
 Build instructions:
-https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating-rc2/docs/setup/compile.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.3.1-incubating-rc1/docs/setup/compile.md
 
 GitHub tag:
-https://github.com/apache/incubator-sedona/releases/tag/sedona-1.3.0-incubating-rc2
+https://github.com/apache/incubator-sedona/releases/tag/sedona-1.3.1-incubating-rc1
 
 GPG public key to verify the Release:
 https://downloads.apache.org/incubator/sedona/KEYS
 
 Source code and binaries:
-https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/
+https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/
 
 The vote will be open for at least 72 hours or until at least 3 &quot;+1&quot; PMC votes are cast
 
@@ -3725,7 +3740,7 @@ Original comment (Permalink from https://lists.apache.org/list.html):
 </code></pre></div>
 <h3 id="pass-email_1">Pass email<a class="headerlink" href="#pass-email_1" title="Permanent link">&para;</a></h3>
 <p>Please count the votes and add the permalink of the vote thread.</p>
-<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.3.0-incubating-rc2
+<div class="highlight"><pre><span></span><code>Subject: [RESULT][VOTE] Release Apache Sedona 1.3.1-incubating-rc1
 
 Dear all,
 
@@ -3745,11 +3760,11 @@ I will publish the release and make an annoucement once it is done.
 <li>Please add the permalink of the incubator vote thread</li>
 <li>Please add the permalink of the incubator vote result thread</li>
 </ol>
-<div class="highlight"><pre><span></span><code>Subject: [ANNOUNCE] Apache Sedona 1.3.0-incubating released
+<div class="highlight"><pre><span></span><code>Subject: [ANNOUNCE] Apache Sedona 1.3.1-incubating released
 
 Dear all,
 
-We are happy to report that we have released Apache Sedona (incubating) 1.3.0-incubating. Thank you again for your help.
+We are happy to report that we have released Apache Sedona (incubating) 1.3.1-incubating. Thank you again for your help.
 
 Apache Sedona (incubating) is a cluster computing system for processing large-scale spatial data. 
 
@@ -3764,10 +3779,10 @@ Website:
 http://sedona.apache.org/
 
 Release notes:
-https://github.com/apache/incubator-sedona/blob/sedona-1.3.0-incubating/docs/setup/release-notes.md
+https://github.com/apache/incubator-sedona/blob/sedona-1.3.1-incubating/docs/setup/release-notes.md
 
 Download links:
-https://github.com/apache/incubator-sedona/releases/tag/sedona-1.3.0-incubating
+https://github.com/apache/incubator-sedona/releases/tag/sedona-1.3.1-incubating
 
 Additional resources:
 Get started: http://sedona.apache.org/setup/overview/
@@ -3783,38 +3798,38 @@ Apache Sedona (incubating) Team
 <p>If a vote failed, do the following:</p>
 <ol>
 <li>In the vote email, say that we will create another release candidate.</li>
-<li>Restart from Step 3 <code>Update mkdocs.yml</code>. Please increment the release candidate ID (e.g., <code>1.3.0-incubating-rc2</code>) and update <code>sedona_create_release.current_rc</code> and <code>sedona_create_release.current_git_tag</code> in <code>mkdocs.yml</code> to generate the script listed on this webpage.</li>
+<li>Restart from Step 3 <code>Update mkdocs.yml</code>. Please increment the release candidate ID (e.g., <code>1.3.1-incubating-rc2</code>) and update <code>sedona_create_release.current_rc</code> and <code>sedona_create_release.current_git_tag</code> in <code>mkdocs.yml</code> to generate the script listed on this webpage.</li>
 </ol>
 <h2 id="8-release-source-code-and-maven-package">8. Release source code and Maven package<a class="headerlink" href="#8-release-source-code-and-maven-package" title="Permanent link">&para;</a></h2>
 <h3 id="upload-releases">Upload releases<a class="headerlink" href="#upload-releases" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">echo</span> <span class="s2">&quot;Move all files in https://dist.apache.org/repos/dist/dev/incubator/sedona to https://dist.apache.org/repos/dist/release/incubator/sedona, using svn&quot;</span>
-svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz.asc
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-src.tar.gz.sha512
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz.asc
-wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.0-incubating-rc2/apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating/apache-sedona-1.3.0-incubating-src.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating/apache-sedona-1.3.0-incubating-src.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating/apache-sedona-1.3.0-incubating-src.tar.gz.sha512
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating/apache-sedona-1.3.0-incubating-bin.tar.gz
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating/apache-sedona-1.3.0-incubating-bin.tar.gz.asc
-svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.0-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.0-incubating/apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
-rm apache-sedona-1.3.0-incubating-src.tar.gz
-rm apache-sedona-1.3.0-incubating-src.tar.gz.asc
-rm apache-sedona-1.3.0-incubating-src.tar.gz.sha512
-rm apache-sedona-1.3.0-incubating-bin.tar.gz
-rm apache-sedona-1.3.0-incubating-bin.tar.gz.asc
-rm apache-sedona-1.3.0-incubating-bin.tar.gz.sha512
+svn mkdir -m <span class="s2">&quot;Adding folder&quot;</span> https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.1-incubating
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-src.tar.gz
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-src.tar.gz.asc
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-src.tar.gz.sha512
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-bin.tar.gz
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-bin.tar.gz.asc
+wget https://dist.apache.org/repos/dist/dev/incubator/sedona/1.3.1-incubating-rc1/apache-sedona-1.3.1-incubating-bin.tar.gz.sha512
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-src.tar.gz https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.1-incubating/apache-sedona-1.3.1-incubating-src.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-src.tar.gz.asc https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.1-incubating/apache-sedona-1.3.1-incubating-src.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-src.tar.gz.sha512 https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.1-incubating/apache-sedona-1.3.1-incubating-src.tar.gz.sha512
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-bin.tar.gz https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.1-incubating/apache-sedona-1.3.1-incubating-bin.tar.gz
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-bin.tar.gz.asc https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.1-incubating/apache-sedona-1.3.1-incubating-bin.tar.gz.asc
+svn import -m <span class="s2">&quot;Adding file&quot;</span> apache-sedona-1.3.1-incubating-bin.tar.gz.sha512 https://dist.apache.org/repos/dist/release/incubator/sedona/1.3.1-incubating/apache-sedona-1.3.1-incubating-bin.tar.gz.sha512
+rm apache-sedona-1.3.1-incubating-src.tar.gz
+rm apache-sedona-1.3.1-incubating-src.tar.gz.asc
+rm apache-sedona-1.3.1-incubating-src.tar.gz.sha512
+rm apache-sedona-1.3.1-incubating-bin.tar.gz
+rm apache-sedona-1.3.1-incubating-bin.tar.gz.asc
+rm apache-sedona-1.3.1-incubating-bin.tar.gz.sha512
 
 <span class="nb">echo</span> <span class="s2">&quot;Re-staging releases to https://repository.apache.org&quot;</span>
 <span class="c1"># For Spark 3.0 and Scala 2.12</span>
-mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl<span class="o">=</span>scm:git:https://github.com/apache/incubator-sedona.git -Dtag<span class="o">=</span>sedona-1.3.0-incubating-rc2 -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span>
+mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl<span class="o">=</span>scm:git:https://github.com/apache/incubator-sedona.git -Dtag<span class="o">=</span>sedona-1.3.1-incubating-rc1 -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests&quot;</span>
 <span class="c1"># For Spark 3.0 and Scala 2.13</span>
-mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl<span class="o">=</span>scm:git:https://github.com/apache/incubator-sedona.git -Dtag<span class="o">=</span>sedona-1.3.0-incubating-rc2 -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.13&quot;</span>
+mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionUrl<span class="o">=</span>scm:git:https://github.com/apache/incubator-sedona.git -Dtag<span class="o">=</span>sedona-1.3.1-incubating-rc1 -DautoVersionSubmodules<span class="o">=</span><span class="nb">true</span> -Dresume<span class="o">=</span><span class="nb">false</span> -Darguments<span class="o">=</span><span class="s2">&quot;-DskipTests -Dscala=2.13&quot;</span>
 </code></pre></div>
 <h3 id="fix-signature-issues">Fix signature issues<a class="headerlink" href="#fix-signature-issues" title="Permanent link">&para;</a></h3>
 <p>Please find the Sedona staging id on <a href="https://repository.apache.org">https://repository.apache.org</a> under <code>staging repository</code>.</p>
@@ -3826,48 +3841,48 @@ mvn -q org.apache.maven.plugins:maven-release-plugin:2.3.2:perform -DconnectionU
 
 
 <span class="nb">echo</span> <span class="s2">&quot;Re-uploading signatures to fix *failureMessage    Invalid Signature*&quot;</span>
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-common/1.3.0-incubating/sedona-common-1.3.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.3.0-incubating/sedona-core-3.0_2.12-1.3.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.13/1.3.0-incubating/sedona-core-3.0_2.13-1.3.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.12/1.3.0-incubating/sedona-sql-3.0_2.12-1.3.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.13/1.3.0-incubating/sedona-sql-3.0_2.13-1.3.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.12/1.3.0-incubating/sedona-viz-3.0_2.12-1.3.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.13/1.3.0-incubating/sedona-viz-3.0_2.13-1.3.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.3.0-incubating/sedona-python-adapter-3.0_2.12-1.3.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.13/1.3.0-incubating/sedona-python-adapter-3.0_2.13-1.3.0-incubating.pom
-wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.12/1.3.0-incubating/sedona-flink_2.12-1.3.0-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-common/1.3.1-incubating/sedona-common-1.3.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.3.1-incubating/sedona-core-3.0_2.12-1.3.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.13/1.3.1-incubating/sedona-core-3.0_2.13-1.3.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.12/1.3.1-incubating/sedona-sql-3.0_2.12-1.3.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.13/1.3.1-incubating/sedona-sql-3.0_2.13-1.3.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.12/1.3.1-incubating/sedona-viz-3.0_2.12-1.3.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.13/1.3.1-incubating/sedona-viz-3.0_2.13-1.3.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.3.1-incubating/sedona-python-adapter-3.0_2.12-1.3.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.13/1.3.1-incubating/sedona-python-adapter-3.0_2.13-1.3.1-incubating.pom
+wget https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.12/1.3.1-incubating/sedona-flink_2.12-1.3.1-incubating.pom
 
-gpg -ab sedona-common-1.3.0-incubating.pom
-gpg -ab sedona-core-3.0_2.12-1.3.0-incubating.pom
-gpg -ab sedona-sql-3.0_2.12-1.3.0-incubating.pom
-gpg -ab sedona-viz-3.0_2.12-1.3.0-incubating.pom
-gpg -ab sedona-python-adapter-3.0_2.12-1.3.0-incubating.pom
-gpg -ab sedona-flink_2.12-1.3.0-incubating.pom
-gpg -ab sedona-core-3.0_2.13-1.3.0-incubating.pom
-gpg -ab sedona-sql-3.0_2.13-1.3.0-incubating.pom
-gpg -ab sedona-viz-3.0_2.13-1.3.0-incubating.pom
-gpg -ab sedona-python-adapter-3.0_2.13-1.3.0-incubating.pom
+gpg -ab sedona-common-1.3.1-incubating.pom
+gpg -ab sedona-core-3.0_2.12-1.3.1-incubating.pom
+gpg -ab sedona-sql-3.0_2.12-1.3.1-incubating.pom
+gpg -ab sedona-viz-3.0_2.12-1.3.1-incubating.pom
+gpg -ab sedona-python-adapter-3.0_2.12-1.3.1-incubating.pom
+gpg -ab sedona-flink_2.12-1.3.1-incubating.pom
+gpg -ab sedona-core-3.0_2.13-1.3.1-incubating.pom
+gpg -ab sedona-sql-3.0_2.13-1.3.1-incubating.pom
+gpg -ab sedona-viz-3.0_2.13-1.3.1-incubating.pom
+gpg -ab sedona-python-adapter-3.0_2.13-1.3.1-incubating.pom
 
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-common-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-common/1.3.0-incubating/sedona-common-1.3.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-common-1.3.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-common/1.3.1-incubating/sedona-common-1.3.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-3.0_2.12-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.3.0-incubating/sedona-python-adapter-3.0_2.12-1.3.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-3.0_2.12-1.3.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.12/1.3.1-incubating/sedona-python-adapter-3.0_2.12-1.3.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-3.0_2.12-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.12/1.3.0-incubating/sedona-viz-3.0_2.12-1.3.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-3.0_2.12-1.3.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.12/1.3.1-incubating/sedona-viz-3.0_2.12-1.3.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-3.0_2.12-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.3.0-incubating/sedona-core-3.0_2.12-1.3.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-3.0_2.12-1.3.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.12/1.3.1-incubating/sedona-core-3.0_2.12-1.3.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-3.0_2.12-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.12/1.3.0-incubating/sedona-sql-3.0_2.12-1.3.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-3.0_2.12-1.3.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.12/1.3.1-incubating/sedona-sql-3.0_2.12-1.3.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-flink_2.12-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.12/1.3.0-incubating/sedona-flink_2.12-1.3.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-flink_2.12-1.3.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-flink_2.12/1.3.1-incubating/sedona-flink_2.12-1.3.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-3.0_2.13-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.13/1.3.0-incubating/sedona-python-adapter-3.0_2.12-1.3.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-python-adapter-3.0_2.13-1.3.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-python-adapter-3.0_2.13/1.3.1-incubating/sedona-python-adapter-3.0_2.12-1.3.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-3.0_2.13-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.13/1.3.0-incubating/sedona-viz-3.0_2.13-1.3.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-viz-3.0_2.13-1.3.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-viz-3.0_2.13/1.3.1-incubating/sedona-viz-3.0_2.13-1.3.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-3.0_2.13-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.13/1.3.0-incubating/sedona-core-3.0_2.13-1.3.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-core-3.0_2.13-1.3.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-core-3.0_2.13/1.3.1-incubating/sedona-core-3.0_2.13-1.3.1-incubating.pom.asc
 
-curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-3.0_2.13-1.3.0-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.13/1.3.0-incubating/sedona-sql-3.0_2.13-1.3.0-incubating.pom.asc
+curl -v -u <span class="nv">$username</span>:<span class="nv">$password</span> --upload-file sedona-sql-3.0_2.13-1.3.1-incubating.pom.asc https://repository.apache.org/service/local/repositories/orgapachesedona-<span class="nv">$stagingid</span>/content/org/apache/sedona/sedona-sql-3.0_2.13/1.3.1-incubating/sedona-sql-3.0_2.13-1.3.1-incubating.pom.asc
 
 rm *.pom
 rm *.asc
@@ -3880,10 +3895,10 @@ rm *.asc
 <h2 id="9-release-sedona-python-and-zeppelin">9. Release Sedona Python and Zeppelin<a class="headerlink" href="#9-release-sedona-python-and-zeppelin" title="Permanent link">&para;</a></h2>
 <p>You must have the maintainer priviledge of <code>https://pypi.org/project/apache-sedona/</code> and <code>https://www.npmjs.com/package/apache-sedona</code></p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-git clone --shared --branch sedona-1.3.0-incubating-rc2 https://github.com/apache/incubator-sedona.git apache-sedona-1.3.0-incubating-src
-<span class="nb">cd</span> apache-sedona-1.3.0-incubating-src/python <span class="o">&amp;&amp;</span> python3 setup.py sdist bdist_wheel <span class="o">&amp;&amp;</span> twine upload dist/* <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+git clone --shared --branch sedona-1.3.1-incubating-rc1 https://github.com/apache/incubator-sedona.git apache-sedona-1.3.1-incubating-src
+<span class="nb">cd</span> apache-sedona-1.3.1-incubating-src/python <span class="o">&amp;&amp;</span> python3 setup.py sdist bdist_wheel <span class="o">&amp;&amp;</span> twine upload dist/* <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
 <span class="nb">cd</span> zeppelin <span class="o">&amp;&amp;</span> npm publish <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-rm -rf apache-sedona-1.3.0-incubating-src
+rm -rf apache-sedona-1.3.1-incubating-src
 </code></pre></div>
 <h2 id="10-release-sedona-r-to-cran">10. Release Sedona R to CRAN.<a class="headerlink" href="#10-release-sedona-r-to-cran" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -3928,7 +3943,7 @@ Rscript generate-docs.R
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 16, 2022 19:23:40</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 17, 2022 07:38:09</span>
       
     
   </small>

@@ -89,14 +89,15 @@ sc &lt;- spark_connect(master = "spark://HOST:PORT")
 if (!inherits(sc, "test_connection")) {
   knn_query_pt_x &lt;- -84.01
   knn_query_pt_y &lt;- 34.01
-  knn_query_pt_tbl &lt;- DBI::dbGetQuery(
+  knn_query_pt_tbl &lt;- sdf_sql(
     sc,
     sprintf(
       "SELECT ST_GeomFromText(\"POINT(%f %f)\") AS `pt`",
       knn_query_pt_x,
       knn_query_pt_y
     )
-  )
+  ) %&gt;%
+      collect()
   knn_query_pt &lt;- knn_query_pt_tbl$pt[[1]]
   input_location &lt;- "/dev/null" # replace it with the path to your input file
   rdd &lt;- sedona_read_geojson_to_typed_rdd(
@@ -112,5 +113,5 @@ if (!inherits(sc, "test_connection")) {
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>apache.sedona</em> version 1.2.1 ]</div>
+<hr /><div style="text-align: center;">[Package <em>apache.sedona</em> version 1.3.0 ]</div>
 </div></body></html>
