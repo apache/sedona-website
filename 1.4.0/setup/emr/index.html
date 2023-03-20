@@ -2361,10 +2361,10 @@
 sudo mkdir /jars
 
 <span class="c1"># Download Sedona jar</span>
-sudo curl -o /jars/sedona-spark-shaded-3.0_2.12-1.3.1-incubating.jar <span class="s2">&quot;https://repo1.maven.org/maven2/org/apache/sedona/sedona-spark-shaded-3.0_2.12/1.3.1-incubating/sedona-spark-shaded-3.0_2.12-1.3.1-incubating.jar&quot;</span>
+sudo curl -o /jars/sedona-spark-shaded-3.0_2.12-1.4.0.jar <span class="s2">&quot;https://repo1.maven.org/maven2/org/apache/sedona/sedona-spark-shaded-3.0_2.12/1.4.0/sedona-spark-shaded-3.0_2.12-1.4.0.jar&quot;</span>
 
 <span class="c1"># Download GeoTools jar</span>
-sudo curl -o /jars/geotools-wrapper-1.3.0-27.2.jar <span class="s2">&quot;https://repo1.maven.org/maven2/org/datasyslab/geotools-wrapper/1.3.0-27.2/geotools-wrapper-1.3.0-27.2.jar&quot;</span>
+sudo curl -o /jars/geotools-wrapper-1.4.0-28.2.jar <span class="s2">&quot;https://repo1.maven.org/maven2/org/datasyslab/geotools-wrapper/1.4.0-28.2/geotools-wrapper-1.4.0-28.2.jar&quot;</span>
 
 <span class="c1"># Install necessary python libraries</span>
 sudo python3 -m pip install pandas <span class="nv">shapely</span><span class="o">==</span><span class="m">1</span>.8.5
@@ -2379,7 +2379,7 @@ sudo python3 -m pip install attrs matplotlib descartes apache-sedona<span class=
   <span class="o">{</span>
     <span class="s2">&quot;Classification&quot;</span>:<span class="s2">&quot;spark-defaults&quot;</span>, 
     <span class="s2">&quot;Properties&quot;</span>:<span class="o">{</span>
-      <span class="s2">&quot;spark.yarn.dist.jars&quot;</span>: <span class="s2">&quot;/jars/sedona-spark-shaded-3.0_2.12-1.3.1-incubating.jar,/jars/geotools-wrapper-1.3.0-27.2.jar&quot;</span>,
+      <span class="s2">&quot;spark.yarn.dist.jars&quot;</span>: <span class="s2">&quot;/jars/sedona-spark-shaded-3.0_2.12-1.4.0.jar,/jars/geotools-wrapper-1.4.0-28.2.jar&quot;</span>,
       <span class="s2">&quot;spark.serializer&quot;</span>: <span class="s2">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span>,
       <span class="s2">&quot;spark.kryo.registrator&quot;</span>: <span class="s2">&quot;org.apache.sedona.core.serde.SedonaKryoRegistrator&quot;</span>,
       <span class="s2">&quot;spark.sql.extensions&quot;</span>: <span class="s2">&quot;org.apache.sedona.viz.sql.SedonaVizExtensions,org.apache.sedona.sql.SedonaSqlExtensions&quot;</span>
