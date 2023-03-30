@@ -966,8 +966,17 @@
       
         <li class="md-nav__item">
   
-  <a href="#load-shapefile-and-geojson" class="md-nav__link">
-    Load Shapefile and GeoJSON
+  <a href="#load-geojson-using-spark-json-data-source" class="md-nav__link">
+    Load GeoJSON using Spark JSON Data Source
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#load-shapefile-and-geojson-using-spatialrdd" class="md-nav__link">
+    Load Shapefile and GeoJSON using SpatialRDD
   </a>  
   
   
@@ -977,6 +986,15 @@
   
   <a href="#load-geoparquet" class="md-nav__link">
     Load GeoParquet
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#load-data-from-jdbc-data-sources" class="md-nav__link">
+    Load data from JDBC data sources
   </a>  
   
   
@@ -1064,6 +1082,15 @@
   
   <a href="#sort-then-save-geoparquet" class="md-nav__link">
     Sort then Save GeoParquet
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#save-to-postgis" class="md-nav__link">
+    Save to Postgis
   </a>  
   
   
@@ -2530,8 +2557,17 @@
       
         <li class="md-nav__item">
   
-  <a href="#load-shapefile-and-geojson" class="md-nav__link">
-    Load Shapefile and GeoJSON
+  <a href="#load-geojson-using-spark-json-data-source" class="md-nav__link">
+    Load GeoJSON using Spark JSON Data Source
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#load-shapefile-and-geojson-using-spatialrdd" class="md-nav__link">
+    Load Shapefile and GeoJSON using SpatialRDD
   </a>  
   
   
@@ -2541,6 +2577,15 @@
   
   <a href="#load-geoparquet" class="md-nav__link">
     Load GeoParquet
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#load-data-from-jdbc-data-sources" class="md-nav__link">
+    Load data from JDBC data sources
   </a>  
   
   
@@ -2628,6 +2673,15 @@
   
   <a href="#sort-then-save-geoparquet" class="md-nav__link">
     Sort then Save GeoParquet
+  </a>  
+  
+  
+</li>
+      
+        <li class="md-nav__item">
+  
+  <a href="#save-to-postgis" class="md-nav__link">
+    Save to Postgis
   </a>  
   
   
@@ -2896,11 +2950,49 @@ The file may have many other columns.</p>
 <p class="admonition-title">Note</p>
 <p>SedonaSQL provides lots of functions to create a Geometry column, please read <a href="../../api/sql/Constructor/">SedonaSQL constructor API</a>.</p>
 </div>
-<h2 id="load-shapefile-and-geojson">Load Shapefile and GeoJSON<a class="headerlink" href="#load-shapefile-and-geojson" title="Permanent link">&para;</a></h2>
-<p>Shapefile and GeoJSON must be loaded by SpatialRDD and converted to DataFrame using Adapter. Please read <a href="../rdd/#create-a-generic-spatialrdd">Load SpatialRDD</a> and <a href="#convert-between-dataframe-and-spatialrdd">DataFrame &lt;-&gt; RDD</a>.</p>
+<h2 id="load-geojson-using-spark-json-data-source">Load GeoJSON using Spark JSON Data Source<a class="headerlink" href="#load-geojson-using-spark-json-data-source" title="Permanent link">&para;</a></h2>
+<p>Spark SQL's built-in JSON data source supports reading GeoJSON data.
+To ensure proper parsing of the geometry property, we can define a schema with the geometry property set to type 'string'.
+This prevents Spark from interpreting the property and allows us to use the ST_GeomFromGeoJSON function for accurate geometry parsing.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Scala</label><label for="__tabbed_6_2">Java</label><label for="__tabbed_6_3">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;type string, crs string, totalFeatures long, features array&lt;struct&lt;type string, geometry string, properties map&lt;string, string&gt;&gt;&gt;&quot;</span><span class="w"></span>
+<span class="n">sparkSession</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">schema</span><span class="p">(</span><span class="n">schema</span><span class="p">).</span><span class="n">json</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">&quot;explode(features) as features&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Explode the envelope to get one feature per row.</span>
+<span class="w">    </span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;features.*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Unpack the features struct.</span>
+<span class="w">    </span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">&quot;geometry&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p">(</span><span class="s">&quot;ST_GeomFromGeoJSON(geometry)&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1">// Convert the geometry string.</span>
+<span class="w">    </span><span class="p">.</span><span class="n">printSchema</span><span class="p">()</span><span class="w"></span>
+</code></pre></div>
+
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;type string, crs string, totalFeatures long, features array&lt;struct&lt;type string, geometry string, properties map&lt;string, string&gt;&gt;&gt;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="n">sparkSession</span><span class="p">.</span><span class="na">read</span><span class="p">.</span><span class="na">schema</span><span class="p">(</span><span class="n">schema</span><span class="p">).</span><span class="na">json</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">selectExpr</span><span class="p">(</span><span class="s">&quot;explode(features) as features&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Explode the envelope to get one feature per row.</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">select</span><span class="p">(</span><span class="s">&quot;features.*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Unpack the features struct.</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">withColumn</span><span class="p">(</span><span class="s">&quot;geometry&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p">(</span><span class="s">&quot;ST_GeomFromGeoJSON(geometry)&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1">// Convert the geometry string.</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">printSchema</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">schema</span> <span class="o">=</span> <span class="s2">&quot;type string, crs string, totalFeatures long, features array&lt;struct&lt;type string, geometry string, properties map&lt;string, string&gt;&gt;&gt;&quot;</span><span class="p">;</span>
+<span class="p">(</span><span class="n">sparkSession</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span> 
+    <span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;explode(features) as features&quot;</span><span class="p">)</span> <span class="c1"># Explode the envelope to get one feature per row.</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;features.*&quot;</span><span class="p">)</span> <span class="c1"># Unpack the features struct.</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_GeomFromGeoJSON(geometry)&quot;</span><span class="p">))</span> <span class="c1"># Convert the geometry string.</span>
+    <span class="o">.</span><span class="n">printSchema</span><span class="p">())</span>
+</code></pre></div>
+
+</div>
+</div>
+</div>
+<h2 id="load-shapefile-and-geojson-using-spatialrdd">Load Shapefile and GeoJSON using SpatialRDD<a class="headerlink" href="#load-shapefile-and-geojson-using-spatialrdd" title="Permanent link">&para;</a></h2>
+<p>Shapefile and GeoJSON can be loaded by SpatialRDD and converted to DataFrame using Adapter. Please read <a href="../rdd/#create-a-generic-spatialrdd">Load SpatialRDD</a> and <a href="#convert-between-dataframe-and-spatialrdd">DataFrame &lt;-&gt; RDD</a>.</p>
 <h2 id="load-geoparquet">Load GeoParquet<a class="headerlink" href="#load-geoparquet" title="Permanent link">&para;</a></h2>
 <p>Since v<code>1.3.0</code>, Sedona natively supports loading GeoParquet file. Sedona will infer geometry fields using the "geo" metadata in GeoParquet files.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Scala/Java</label><label for="__tabbed_6_2">Java</label><label for="__tabbed_6_3">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Scala/Java</label><label for="__tabbed_7_2">Java</label><label for="__tabbed_7_3">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sparkSession</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;geoparquet&quot;</span><span class="p">).</span><span class="n">load</span><span class="p">(</span><span class="n">geoparquetdatalocation1</span><span class="p">)</span><span class="w"></span>
@@ -2933,6 +3025,65 @@ The file may have many other columns.</p>
 </code></pre></div>
 
 <p>Sedona supports spatial predicate push-down for GeoParquet files, please refer to the <a href="../../api/sql/Optimizer/">SedonaSQL query optimizer</a> documentation for details.</p>
+<h2 id="load-data-from-jdbc-data-sources">Load data from JDBC data sources<a class="headerlink" href="#load-data-from-jdbc-data-sources" title="Permanent link">&para;</a></h2>
+<p>The 'query' option in Spark SQL's JDBC data source can be used to convert geometry columns to a format that Sedona can interpret.
+This should work for most spatial JDBC data sources.
+For Postgis there is no need to add a query to convert geometry types since it's already using EWKB as it's wire format.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Scala</label><label for="__tabbed_8_2">Java</label><label for="__tabbed_8_3">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// For any JDBC data source, inluding Postgis.</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sparkSession</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;jdbc&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Other options.</span>
+<span class="w">    </span><span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;query&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SELECT id, ST_AsBinary(geom) as geom FROM my_table&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">load</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">&quot;geom&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p">(</span><span class="s">&quot;ST_GeomFromWKB(geom)&quot;</span><span class="p">))</span><span class="w"></span>
+
+<span class="c1">// This is a simplified version that works for Postgis.</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sparkSession</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;jdbc&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Other options.</span>
+<span class="w">    </span><span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;dbtable&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_table&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">load</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">&quot;geom&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p">(</span><span class="s">&quot;ST_GeomFromWKB(geom)&quot;</span><span class="p">))</span><span class="w"></span>
+</code></pre></div>
+
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// For any JDBC data source, inluding Postgis.</span><span class="w"></span>
+<span class="n">Dataset</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">&gt;</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sparkSession</span><span class="p">.</span><span class="na">read</span><span class="p">().</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;jdbc&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Other options.</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">option</span><span class="p">(</span><span class="s">&quot;query&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SELECT id, ST_AsBinary(geom) as geom FROM my_table&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">load</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">withColumn</span><span class="p">(</span><span class="s">&quot;geom&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p">(</span><span class="s">&quot;ST_GeomFromWKB(geom)&quot;</span><span class="p">))</span><span class="w"></span>
+
+<span class="c1">// This is a simplified version that works for Postgis.</span><span class="w"></span>
+<span class="n">Dataset</span><span class="o">&lt;</span><span class="n">Row</span><span class="o">&gt;</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sparkSession</span><span class="p">.</span><span class="na">read</span><span class="p">().</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;jdbc&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Other options.</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">option</span><span class="p">(</span><span class="s">&quot;dbtable&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_table&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">load</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">withColumn</span><span class="p">(</span><span class="s">&quot;geom&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p">(</span><span class="s">&quot;ST_GeomFromWKB(geom)&quot;</span><span class="p">))</span><span class="w"></span>
+</code></pre></div>
+
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># For any JDBC data source, inluding Postgis.</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">sparkSession</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span>
+    <span class="c1"># Other options.</span>
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;SELECT id, ST_AsBinary(geom) as geom FROM my_table&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;geom&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_GeomFromWKB(geom)&quot;</span><span class="p">)))</span>
+
+<span class="c1"># This is a simplified version that works for Postgis.</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">sparkSession</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span>
+    <span class="c1"># Other options.</span>
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;dbtable&quot;</span><span class="p">,</span> <span class="s2">&quot;my_table&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;geom&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_GeomFromWKB(geom)&quot;</span><span class="p">)))</span>
+</code></pre></div>
+
+</div>
+</div>
+</div>
 <h2 id="transform-the-coordinate-reference-system">Transform the Coordinate Reference System<a class="headerlink" href="#transform-the-coordinate-reference-system" title="Permanent link">&para;</a></h2>
 <p>Sedona doesn't control the coordinate unit (degree-based or meter-based) of all geometries in a Geometry column. The unit of all related distances in SedonaSQL is same as the unit of all geometries in a Geometry column.</p>
 <p>To convert Coordinate Reference System of the Geometry column created before, use the following code:</p>
@@ -3003,10 +3154,30 @@ FROM spatialDf
 ORDER BY geohash
 </code></pre></div>
 
+<h2 id="save-to-postgis">Save to Postgis<a class="headerlink" href="#save-to-postgis" title="Permanent link">&para;</a></h2>
+<p>Unfortunately, the Spark SQL JDBC data source doesn't support creating geometry types in PostGIS using the 'createTableColumnTypes' option.
+Only the Spark built-in types are recognized.
+This means that you'll need to manage your PostGIS schema separately from Spark.
+One way to do this is to create the table with the correct geometry column before writing data to it with Spark.
+Alternatively, you can write your data to the table using Spark and then manually alter the column to be a geometry type afterward.</p>
+<p>Postgis uses EWKB to serialize geometries.
+If you convert your geometries to EWKB format in Sedona you don't have to do any additional conversion in Postgis.</p>
+<div class="highlight"><pre><span></span><code>my_postgis_db# create table my_table (id int8, geom geometry);
+
+df.withColumn(&quot;geom&quot;, expr(&quot;ST_AsEWKB(geom)&quot;)
+    .write.format(&quot;jdbc&quot;)
+    .option(&quot;truncate&quot;,&quot;true&quot;) // Don&#39;t let Spark recreate the table.
+    // Other options.
+    .save()
+
+// If you didn&#39;t create the table before writing you can change the type afterward.
+my_postgis_db# alter table my_table alter column geom type geometry;
+</code></pre></div>
+
 <h2 id="convert-between-dataframe-and-spatialrdd">Convert between DataFrame and SpatialRDD<a class="headerlink" href="#convert-between-dataframe-and-spatialrdd" title="Permanent link">&para;</a></h2>
 <h3 id="dataframe-to-spatialrdd">DataFrame to SpatialRDD<a class="headerlink" href="#dataframe-to-spatialrdd" title="Permanent link">&para;</a></h3>
 <p>Use SedonaSQL DataFrame-RDD Adapter to convert a DataFrame to an SpatialRDD. Please read <a href="../../api/javadoc/sql/org/apache/sedona/sql/utils/index.html">Adapter Scaladoc</a></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Scala</label><label for="__tabbed_7_2">Java</label><label for="__tabbed_7_3">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Scala</label><label for="__tabbed_9_2">Java</label><label for="__tabbed_9_3">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">spatialRDD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Adapter</span><span class="p">.</span><span class="n">toSpatialRdd</span><span class="p">(</span><span class="n">spatialDf</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;usacounty&quot;</span><span class="p">)</span><span class="w"></span>
@@ -3034,7 +3205,7 @@ ORDER BY geohash
 </div>
 <h3 id="spatialrdd-to-dataframe">SpatialRDD to DataFrame<a class="headerlink" href="#spatialrdd-to-dataframe" title="Permanent link">&para;</a></h3>
 <p>Use SedonaSQL DataFrame-RDD Adapter to convert a DataFrame to an SpatialRDD. Please read <a href="../../api/javadoc/sql/org/apache/sedona/sql/utils/index.html">Adapter Scaladoc</a></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Scala</label><label for="__tabbed_8_2">Java</label><label for="__tabbed_8_3">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Scala</label><label for="__tabbed_10_2">Java</label><label for="__tabbed_10_3">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">spatialDf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Adapter</span><span class="p">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">spatialRDD</span><span class="p">,</span><span class="w"> </span><span class="n">sparkSession</span><span class="p">)</span><span class="w"></span>
@@ -3060,7 +3231,7 @@ ORDER BY geohash
 types. Note that string schemas and not all data types are supported&mdash;please check the
 <a href="../../api/javadoc/sql/org/apache/sedona/sql/utils/index.html">Adapter Scaladoc</a> to confirm what is supported for your use
 case. At least one column for the user data must be provided.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Scala</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Scala</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">StructType</span><span class="p">(</span><span class="nc">Array</span><span class="p">(</span><span class="w"></span>
@@ -3077,7 +3248,7 @@ case. At least one column for the user data must be provided.</p>
 </div>
 <h3 id="spatialpairrdd-to-dataframe">SpatialPairRDD to DataFrame<a class="headerlink" href="#spatialpairrdd-to-dataframe" title="Permanent link">&para;</a></h3>
 <p>PairRDD is the result of a spatial join query or distance join query. SedonaSQL DataFrame-RDD Adapter can convert the result to a DataFrame. But you need to provide the name of other attributes.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Scala</label><label for="__tabbed_10_2">Java</label><label for="__tabbed_10_3">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:3"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Scala</label><label for="__tabbed_12_2">Java</label><label for="__tabbed_12_3">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">joinResultDf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Adapter</span><span class="p">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">joinResultPairRDD</span><span class="p">,</span><span class="w"> </span><span class="nc">Seq</span><span class="p">(</span><span class="s">&quot;left_attribute1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;left_attribute2&quot;</span><span class="p">),</span><span class="w"> </span><span class="nc">Seq</span><span class="p">(</span><span class="s">&quot;right_attribute1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;right_attribute2&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">sparkSession</span><span class="p">)</span><span class="w"></span>
@@ -3103,7 +3274,7 @@ case. At least one column for the user data must be provided.</p>
 </div>
 </div>
 <p>or you can use the attribute names directly from the input RDD</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Scala</label><label for="__tabbed_11_2">Java</label><label for="__tabbed_11_3">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:3"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Scala</label><label for="__tabbed_13_2">Java</label><label for="__tabbed_13_3">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">scala</span><span class="p">.</span><span class="nn">collection</span><span class="p">.</span><span class="nc">JavaConversions</span><span class="p">.</span><span class="n">_</span>
@@ -3131,7 +3302,7 @@ case. At least one column for the user data must be provided.</p>
 types. Note that string schemas and not all data types are supported&mdash;please check the
 <a href="../../api/javadoc/sql/org/apache/sedona/sql/utils/index.html">Adapter Scaladoc</a> to confirm what is supported for your use
 case. Columns for the left and right user data must be provided.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Scala</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Scala</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">StructType</span><span class="p">(</span><span class="nc">Array</span><span class="p">(</span><span class="w"></span>
@@ -3154,7 +3325,7 @@ case. Columns for the left and right user data must be provided.</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 16, 2023 00:00:53</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 27, 2023 08:02:49</span>
       
     
   </small>

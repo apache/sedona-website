@@ -3255,7 +3255,7 @@
 </div>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
-<p>Sedona Python currently only works with Shapely 1.x. If you use GeoPandas, please use &lt;= GeoPandas <code>0.11.1</code>. GeoPandas &gt; 0.11.1 will automatically installe Shapely 2.0. If you use Shapely, please use &lt;= <code>1.8.4</code>.</p>
+<p>Sedona Python currently only works with Shapely 1.x. If you use GeoPandas, please use &lt;= GeoPandas <code>0.11.1</code>. GeoPandas &gt; 0.11.1 will automatically install Shapely 2.0. If you use Shapely, please use &lt;= <code>1.8.4</code>.</p>
 </div>
 <h2 id="sedona-140">Sedona 1.4.0<a class="headerlink" href="#sedona-140" title="Permanent link">&para;</a></h2>
 <p>Sedona 1.4.0 is compiled against, Spark 3.3 / Flink 1.12, Java 8.</p>
@@ -3270,7 +3270,7 @@
 </ul>
 <h3 id="api-change">API change<a class="headerlink" href="#api-change" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Sedona Spark &amp; Flink</strong> Packaging strategy changed. See <a href="../maven-coordinates">Maven Coordinate</a>. Please change your Sedona dependencies if needed. We recommend <code>sedona-spark-shaded-3.0_2.12-1.4.0</code> and <code>sedona-flink-shaded-3.0_2.12-1.4.0</code></li>
+<li><strong>Sedona Spark &amp; Flink</strong> Packaging strategy changed. See <a href="../maven-coordinates">Maven Coordinate</a>. Please change your Sedona dependencies if needed. We recommend <code>sedona-spark-shaded-3.0_2.12-1.4.0</code> and <code>sedona-flink-shaded_2.12-1.4.0</code></li>
 <li><strong>Sedona Spark &amp; Flink</strong> GeoTools-wrapper version upgraded. Please use <code>geotools-wrapper-1.4.0-28.2</code>.</li>
 </ul>
 <h3 id="behavior-change">Behavior change<a class="headerlink" href="#behavior-change" title="Permanent link">&para;</a></h3>
@@ -3283,7 +3283,7 @@
 </ul>
 </li>
 </ul>
-<p>When <code>sedona.join.optimizationmode</code> is configured as <code>nonequi</code>, it won't optimize join queries such as <code>SELECT * FROM A, B WHERE A.x = B.x AND ST_Contains(A.geom, B.geom)</code>, since it is an equi-join with equi-condition <code>A.x = B.x</code>. Sedona will optimize for <code>SELECT * FROM A, B WHERE A.x = B.x AND ST_Contains(A.geom, B.geom)</code></p>
+<p>When <code>sedona.join.optimizationmode</code> is configured as <code>nonequi</code>, it won't optimize join queries such as <code>SELECT * FROM A, B WHERE A.x = B.x AND ST_Contains(A.geom, B.geom)</code>, since it is an equi-join with equi-condition <code>A.x = B.x</code>. Sedona will optimize for <code>SELECT * FROM A, B WHERE ST_Contains(A.geom, B.geom)</code></p>
 <h3 id="bug">Bug<a class="headerlink" href="#bug" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[<a href='https://issues.apache.org/jira/browse/SEDONA-218'>SEDONA-218</a>] -         Flaky test caused by improper handling of null struct values in Adapter.toDf
@@ -3780,7 +3780,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 19, 2023 23:59:09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 21, 2023 03:12:18</span>
       
     
   </small>
