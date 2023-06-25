@@ -2,14 +2,12 @@
   {
     "version": "latest-snapshot",
     "title": "latest-snapshot",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "1.4.1",
     "title": "1.4.1",
-    "aliases": []
+    "aliases": ["latest"]
   },
   {
     "version": "1.4.0",
