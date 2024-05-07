@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>org.apache.sedona:sedona-spark-common-3.0_2.12 1.6.0-SNAPSHOT API  - org.apache.spark.sql.sedona_sql.expressions</title>
-          <meta name="description" content="org.apache.sedona sedona - spark - common - 3.0 2.12 1.6.0 - SNAPSHOT API - org.apache.spark.sql.sedona sql.expressions" />
-          <meta name="keywords" content="org.apache.sedona sedona spark common 3.0 2.12 1.6.0 SNAPSHOT API org.apache.spark.sql.sedona sql.expressions" />
+          <title>org.apache.sedona:sedona-spark-common-3.0_2.12 1.6.0 API  - org.apache.spark.sql.sedona_sql.expressions</title>
+          <meta name="description" content="org.apache.sedona sedona - spark - common - 3.0 2.12 1.6.0 API - org.apache.spark.sql.sedona sql.expressions" />
+          <meta name="keywords" content="org.apache.sedona sedona spark common 3.0 2.12 1.6.0 API org.apache.spark.sql.sedona sql.expressions" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">org.apache.sedona:sedona-spark-common-3.0_2.12 1.6.0-SNAPSHOT API<span id="doc-version"></span></span>
+        <span id="doc-title">org.apache.sedona:sedona-spark-common-3.0_2.12 1.6.0 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -250,6 +250,10 @@
                         <a class="object" href="InferrableFunctionConverter$.html" title="Implicit conversions from Java/Scala functions to InferrableFunction."></a>
                         <a href="InferrableFunctionConverter$.html" title="Implicit conversions from Java/Scala functions to InferrableFunction.">InferrableFunctionConverter</a>
                       </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="InferrableRasterTypes$.html" title=""></a>
+                        <a href="InferrableRasterTypes$.html" title="">InferrableRasterTypes</a>
+                      </li><li class="current-entities indented6">
                         <a class="object" href="InferrableType$.html" title=""></a>
                         <a class="class" href="InferrableType.html" title=""></a>
                         <a href="InferrableType.html" title="">InferrableType</a>
@@ -257,6 +261,10 @@
                         <span class="separator"></span>
                         <a class="class" href="InferredExpression.html" title="This is the base class for wrapping Java/Scala functions as a catalyst expression in Spark SQL."></a>
                         <a href="InferredExpression.html" title="This is the base class for wrapping Java/Scala functions as a catalyst expression in Spark SQL.">InferredExpression</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="InferredRasterExpression$.html" title=""></a>
+                        <a href="InferredRasterExpression$.html" title="">InferredRasterExpression</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="object" href="InferredTypes$.html" title=""></a>
@@ -727,6 +735,10 @@
                         <a href="ST_PolygonFromText.html" title="Return a polygon from a string.">ST_PolygonFromText</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="ST_Polygonize.html" title=""></a>
+                        <a href="ST_Polygonize.html" title="">ST_Polygonize</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="class" href="ST_Predicate.html" title=""></a>
                         <a href="ST_Predicate.html" title="">ST_Predicate</a>
                       </li><li class="current-entities indented6">
@@ -1058,7 +1070,7 @@ expressions are foldable, then the expression itself is foldable.
       </a>
     </span>
       <span class="modifier_kind">
-        <span class="modifier">sealed </span>
+        <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
@@ -3003,6 +3015,22 @@ for single geometries will return 1</p><p>This method implements the SQL/MM spec
       
       <p class="shortcomment cmt">Return a polygon from a string.</p><div class="fullcomment"><div class="comment cmt"><p>Return a polygon from a string. The string must be plain string and each coordinate must be separated by a delimiter.
 </p></div></div>
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_Polygonize" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PolygonizeextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_Polygonize:ST_Polygonize"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/ST_Polygonize.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ST_Polygonize.html"><span class="name">ST_Polygonize</span></a><span class="params">(<span name="inputExpressions">inputExpressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <a href="InferredExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferredExpression">InferredExpression</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
     </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_Predicate" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ST_PredicateextendsExpressionwithFoldableExpressionwithExpectsInputTypeswithNullIntolerant"></a><a id="ST_Predicate:ST_Predicate"></a>
       <span class="permalink">
@@ -3639,6 +3667,22 @@ The simplification uses a maximum-distance difference algorithm similar to the D
       <p class="shortcomment cmt">Implicit conversions from Java/Scala functions to <a href="InferrableFunction.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferrableFunction">InferrableFunction</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Implicit conversions from Java/Scala functions to <a href="InferrableFunction.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferrableFunction">InferrableFunction</a>. This should be used in conjunction with
 <a href="InferredExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferredExpression">InferredExpression</a> to make wrapping Java/Scala functions as catalyst expressions much easier.
 </p></div></div>
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.InferrableRasterTypes" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InferrableRasterTypes"></a><a id="InferrableRasterTypes:InferrableRasterTypes"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/InferrableRasterTypes$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="InferrableRasterTypes$.html"><span class="name">InferrableRasterTypes</span></a>
+      </span>
+      
+      
     </li><li name="org.apache.spark.sql.sedona_sql.expressions.InferrableType" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="InferrableType"></a><a id="InferrableType:InferrableType"></a>
       <span class="permalink">
@@ -3652,6 +3696,22 @@ The simplification uses a maximum-distance difference algorithm similar to the D
       </span>
       <span class="symbol">
         <a title="" href="InferrableType$.html"><span class="name">InferrableType</span></a>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.InferredRasterExpression" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InferredRasterExpression"></a><a id="InferredRasterExpression:InferredRasterExpression"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/InferredRasterExpression$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="InferredRasterExpression$.html"><span class="name">InferredRasterExpression</span></a>
       </span>
       
       
