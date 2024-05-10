@@ -4,7 +4,7 @@
     If you use Sedona < 1.6.0, please use GeoPandas <= `0.11.1` since GeoPandas > 0.11.1 will automatically install Shapely 2.0. If you use Shapely, please use <= `1.8.5`.
 
 !!! warning
-	Sedona 1.6.0+ requires Java 11+ to compile and run. If you are using Java 8, please use Sedona <= 1.5.2.
+	Sedona 1.6.0+ requires Java 11+ to compile and run. If you are using Java 8, please use Sedona < 1.6.0. To learn how to set up Java 11+ on different platforms, please refer to the Java 11+ requirement in the corresponding platform setup guide.
 
 ## Sedona 1.6.0
 
@@ -116,6 +116,21 @@ df_raster.withColumn("mean", expr("mean_udf(rast)")).show()
 <li>[<a href='https://issues.apache.org/jira/browse/SEDONA-550'>SEDONA-550</a>] - Remove the version upper bound of Pandas, GeoPandas
 </li>
 <li>[<a href='https://issues.apache.org/jira/browse/SEDONA-551'>SEDONA-551</a>] - Upgrade GeoTools dependency to 31.0 for Apache SIS integration, Drop Java 8 support
+</li>
+</ul>
+
+## Sedona 1.5.3
+
+Sedona 1.5.3 is compiled against Spark 3.3 / Spark 3.4 / Spark 3.5, Flink 1.12, Snowflake 7+, Java 8.
+
+This release is a maintenance release that includes one bug fix on top of Sedona 1.5.2. No new features or major changes are added in this release.
+
+### Bug
+
+<ul>
+<li>[<a href='https://issues.apache.org/jira/browse/SEDONA-556'>SEDONA-556</a>] - Hidden requirement for geopandas in apache-sedona 1.5.2
+</li>
+<li>[<a href='https://issues.apache.org/jira/browse/SEDONA-555'>SEDONA-555</a>] - Snowflake Native App should not always create a new role
 </li>
 </ul>
 
