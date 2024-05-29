@@ -3513,6 +3513,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#st_forcerhr" class="md-nav__link">
+    <span class="md-ellipsis">
+      ST_ForceRHR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#st_frechetdistance" class="md-nav__link">
     <span class="md-ellipsis">
       ST_FrechetDistance
@@ -3828,6 +3837,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#st_numinteriorring" class="md-nav__link">
+    <span class="md-ellipsis">
+      ST_NumInteriorRing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#st_numinteriorrings" class="md-nav__link">
     <span class="md-ellipsis">
       ST_NumInteriorRings
@@ -4029,6 +4047,15 @@
   <a href="#st_translate" class="md-nav__link">
     <span class="md-ellipsis">
       ST_Translate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#st_triangulatepolygon" class="md-nav__link">
+    <span class="md-ellipsis">
+      ST_TriangulatePolygon
     </span>
   </a>
   
@@ -5296,6 +5323,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#st_forcerhr" class="md-nav__link">
+    <span class="md-ellipsis">
+      ST_ForceRHR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#st_frechetdistance" class="md-nav__link">
     <span class="md-ellipsis">
       ST_FrechetDistance
@@ -5611,6 +5647,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#st_numinteriorring" class="md-nav__link">
+    <span class="md-ellipsis">
+      ST_NumInteriorRing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#st_numinteriorrings" class="md-nav__link">
     <span class="md-ellipsis">
       ST_NumInteriorRings
@@ -5812,6 +5857,15 @@
   <a href="#st_translate" class="md-nav__link">
     <span class="md-ellipsis">
       ST_Translate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#st_triangulatepolygon" class="md-nav__link">
+    <span class="md-ellipsis">
+      ST_TriangulatePolygon
     </span>
   </a>
   
@@ -6530,6 +6584,15 @@ If the given geometry is empty, no change is performed on it.</p>
 <p>Output:</p>
 <div class="highlight"><pre><span></span><code>POLYGON ((20 35, 45 20, 30 5, 10 10, 10 30, 20 35), (30 20, 20 25, 20 15, 30 20))
 </code></pre></div>
+<h2 id="st_forcerhr">ST_ForceRHR<a class="headerlink" href="#st_forcerhr" title="Permanent link">&para;</a></h2>
+<p>Introduction: Sets the orientation of polygon vertex orderings to follow the Right-Hand-Rule convention. The exterior ring will have a clockwise winding order, while any interior rings are oriented counter-clockwise. This ensures the area bounded by the polygon falls on the right-hand side relative to the ring directions. The function is an alias for <a href="#st_forcepolygoncw">ST_ForcePolygonCW</a>.</p>
+<p>Format: <code>ST_ForceRHR(geom: Geometry)</code></p>
+<p>SQL Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">ST_ForceRHR</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POLYGON ((20 35, 10 30, 10 10, 30 5, 45 20, 20 35),(30 20, 20 15, 20 25, 30 20))&#39;</span><span class="p">)))</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>POLYGON ((20 35, 45 20, 30 5, 10 10, 10 30, 20 35), (30 20, 20 25, 20 15, 30 20))
+</code></pre></div>
 <h2 id="st_frechetdistance">ST_FrechetDistance<a class="headerlink" href="#st_frechetdistance" title="Permanent link">&para;</a></h2>
 <p>Introduction: Computes and returns discrete <a href="https://en.wikipedia.org/wiki/Fr%C3%A9chet_distance">Frechet Distance</a> between the given two geometries,
 based on <a href="http://www.kr.tuwien.ac.at/staff/eiter/et-archive/cdtr9464.pdf">Computing Discrete Frechet Distance</a></p>
@@ -6958,6 +7021,15 @@ If the geometry is not a Polygon or MultiPolygon, an IllegalArgument Exception i
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_NumGeometries</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">geometry</span><span class="p">)</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">df</span>
 </code></pre></div>
+<h2 id="st_numinteriorring">ST_NumInteriorRing<a class="headerlink" href="#st_numinteriorring" title="Permanent link">&para;</a></h2>
+<p>Introduction: Returns number of interior rings of polygon geometries. It is an alias of <a href="#st_numinteriorrings">ST_NumInteriorRings</a>.</p>
+<p>Format: <code>ST_NumInteriorRing(geom: Geometry)</code></p>
+<p>SQL Example</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_NumInteriorRing</span><span class="p">(</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POLYGON ((0 0, 0 5, 5 5, 5 0, 0 0), (1 1, 2 1, 2 2, 1 2, 1 1))&#39;</span><span class="p">))</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>1
+</code></pre></div>
 <h2 id="st_numinteriorrings">ST_NumInteriorRings<a class="headerlink" href="#st_numinteriorrings" title="Permanent link">&para;</a></h2>
 <p>Introduction: RETURNS number of interior rings of polygon geometries.</p>
 <p>Format: <code>ST_NumInteriorRings(geom: geometry)</code></p>
@@ -7138,11 +7210,11 @@ and with the components having the same topological relationship.</p>
 <p>Input geometry:</p>
 <p><img alt="" src="../../../../image/st_snap/st-snap-base-example.png" title="ST_Snap Base example" /></p>
 <p>SQL Example:</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Snap</span><span class="p">(</span>
-<span class="w">        </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POLYGON ((236877.58 -6.61, 236878.29 -8.35, 236879.98 -8.33, 236879.72 -7.63, 236880.35 -6.62, 236877.58 -6.61), (236878.45 -7.01, 236878.43 -7.52, 236879.29 -7.50, 236878.63 -7.22, 236878.76 -6.89, 236878.45 -7.01))&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span>
-<span class="w">        </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;LINESTRING (236880.53 -8.22, 236881.15 -7.68, 236880.69 -6.81)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">line</span><span class="p">,</span>
-<span class="w">       </span><span class="n">ST_Distance</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">01</span>
-<span class="w">       </span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">ST_Snap</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="n">ST_Distance</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">01</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">polySnapped</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POLYGON ((236877.58 -6.61, 236878.29 -8.35, 236879.98 -8.33, 236879.72 -7.63, 236880.35 -6.62, 236877.58 -6.61), (236878.45 -7.01, 236878.43 -7.52, 236879.29 -7.50, 236878.63 -7.22, 236878.76 -6.89, 236878.45 -7.01))&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;LINESTRING (236880.53 -8.22, 236881.15 -7.68, 236880.69 -6.81)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">line</span>
+<span class="p">)</span>
 </code></pre></div>
 <p>Output:</p>
 <p><img alt="" src="../../../../image/st_snap/st-snap-applied.png" title="ST_Snap applied example" /></p>
@@ -7253,6 +7325,17 @@ If the given geometry contains sub-geometries (GEOMETRY COLLECTION, MULTI POLYGO
 <p>Output: <code>GEOMETRYCOLLECTION(MULTIPOLYGON (((3 2, 3 3, 4 3, 4 2, 3 2)), ((3 4, 5 6, 5 7, 3 4))), POINT(3, 3, 4), LINESTRING EMPTY)</code></p>
 <p>Input: <code>ST_Translate(POINT(1, 3, 2), 1, 2)</code></p>
 <p>Output: <code>POINT(2, 5, 2)</code></p>
+<h2 id="st_triangulatepolygon">ST_TriangulatePolygon<a class="headerlink" href="#st_triangulatepolygon" title="Permanent link">&para;</a></h2>
+<p>Introduction: Generates the constrained Delaunay triangulation for the input Polygon. The constrained Delaunay triangulation is a set of triangles created from the Polygon's vertices that covers the Polygon area precisely, while maximizing the combined interior angles across all triangles compared to other possible triangulations. This produces the highest quality triangulation representation of the Polygon geometry. The function returns a GeometryCollection of Polygon geometries comprising this optimized constrained Delaunay triangulation. Polygons with holes and MultiPolygon types are supported. For any other geometry type provided, such as Point, LineString, etc., an empty GeometryCollection will be returned.</p>
+<p>Format: <code>ST_TriangulatePolygon(geom: Geometry)</code></p>
+<p>SQL Example</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_TriangulatePolygon</span><span class="p">(</span>
+<span class="w">        </span><span class="n">ST_GeomFromWKT</span><span class="p">(</span><span class="s1">&#39;POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0), (5 5, 5 8, 8 8, 8 5, 5 5))&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>GEOMETRYCOLLECTION (POLYGON ((0 0, 0 10, 5 5, 0 0)), POLYGON ((5 8, 5 5, 0 10, 5 8)), POLYGON ((10 0, 0 0, 5 5, 10 0)), POLYGON ((10 10, 5 8, 0 10, 10 10)), POLYGON ((10 0, 5 5, 8 5, 10 0)), POLYGON ((5 8, 10 10, 8 8, 5 8)), POLYGON ((10 10, 10 0, 8 5, 10 10)), POLYGON ((8 5, 8 8, 10 10, 8 5)))
+</code></pre></div>
 <h2 id="st_union">ST_Union<a class="headerlink" href="#st_union" title="Permanent link">&para;</a></h2>
 <p>Introduction: Return the union of geometry A and B</p>
 <p>Format: <code>ST_Union (A:geometry, B:geometry)</code></p>
@@ -7361,7 +7444,7 @@ If the given geometry contains sub-geometries (GEOMETRY COLLECTION, MULTI POLYGO
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 28, 2024 01:25:26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 28, 2024 20:37:20</span>
   </span>
 
     
