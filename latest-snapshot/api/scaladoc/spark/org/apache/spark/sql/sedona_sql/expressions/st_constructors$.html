@@ -491,6 +491,10 @@
                         <a href="ST_GeometricMedian.html" title="Returns a POINT Computes the approximate geometric median of a MultiPoint geometry using the Weiszfeld algorithm.">ST_GeometricMedian</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="ST_GeometryFromText.html" title="Return a Geometry from a WKT string."></a>
+                        <a href="ST_GeometryFromText.html" title="Return a Geometry from a WKT string.">ST_GeometryFromText</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="class" href="ST_GeometryN.html" title=""></a>
                         <a href="ST_GeometryN.html" title="">ST_GeometryN</a>
                       </li><li class="current-entities indented6">
@@ -513,6 +517,10 @@
                         <span class="separator"></span>
                         <a class="class" href="ST_H3ToGeom.html" title=""></a>
                         <a href="ST_H3ToGeom.html" title="">ST_H3ToGeom</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ST_HasM.html" title=""></a>
+                        <a href="ST_HasM.html" title="">ST_HasM</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="class" href="ST_HausdorffDistance.html" title=""></a>
@@ -587,6 +595,10 @@
                         <a href="ST_LineFromText.html" title="Return a line from a string.">ST_LineFromText</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="ST_LineFromWKB.html" title=""></a>
+                        <a href="ST_LineFromWKB.html" title="">ST_LineFromWKB</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="class" href="ST_LineInterpolatePoint.html" title="Returns a point interpolated along a line."></a>
                         <a href="ST_LineInterpolatePoint.html" title="Returns a point interpolated along a line.">ST_LineInterpolatePoint</a>
                       </li><li class="current-entities indented6">
@@ -613,6 +625,14 @@
                         <span class="separator"></span>
                         <a class="class" href="ST_MLineFromText.html" title="Return a Geometry from a WKT string"></a>
                         <a href="ST_MLineFromText.html" title="Return a Geometry from a WKT string">ST_MLineFromText</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ST_MMax.html" title=""></a>
+                        <a href="ST_MMax.html" title="">ST_MMax</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ST_MMin.html" title=""></a>
+                        <a href="ST_MMin.html" title="">ST_MMin</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="class" href="ST_MPolyFromText.html" title="Return a Geometry from a WKT string"></a>
@@ -695,6 +715,14 @@
                         <a href="ST_PointFromText.html" title="Return a point from a string.">ST_PointFromText</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="ST_PointFromWKB.html" title=""></a>
+                        <a href="ST_PointFromWKB.html" title="">ST_PointFromWKB</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ST_PointM.html" title="Return a Point from X, Y, M and srid"></a>
+                        <a href="ST_PointM.html" title="Return a Point from X, Y, M and srid">ST_PointM</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="class" href="ST_PointN.html" title="Returns the nth point in the geometry, provided it is a linestring"></a>
                         <a href="ST_PointN.html" title="Returns the nth point in the geometry, provided it is a linestring">ST_PointN</a>
                       </li><li class="current-entities indented6">
@@ -705,6 +733,10 @@
                         <span class="separator"></span>
                         <a class="class" href="ST_PointZ.html" title="Return a Point from X, Y, Z and srid"></a>
                         <a href="ST_PointZ.html" title="Return a Point from X, Y, Z and srid">ST_PointZ</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ST_PointZM.html" title=""></a>
+                        <a href="ST_PointZM.html" title="">ST_PointZM</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="class" href="ST_Polygon.html" title=""></a>
@@ -1406,6 +1438,70 @@
       </span>
       
       
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_GeometryFromText" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_GeometryFromText(wkt:String,srid:Int):org.apache.spark.sql.Column"></a><a id="ST_GeometryFromText(String,Int):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_GeometryFromText(wkt:String,srid:Int):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_GeometryFromText</span><span class="params">(<span name="wkt">wkt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="srid">srid: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_GeometryFromText" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_GeometryFromText(wkt:org.apache.spark.sql.Column,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_GeometryFromText(Column,Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_GeometryFromText(wkt:org.apache.spark.sql.Column,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_GeometryFromText</span><span class="params">(<span name="wkt">wkt: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="srid">srid: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_GeometryFromText" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_GeometryFromText(wkt:String):org.apache.spark.sql.Column"></a><a id="ST_GeometryFromText(String):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_GeometryFromText(wkt:String):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_GeometryFromText</span><span class="params">(<span name="wkt">wkt: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_GeometryFromText" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_GeometryFromText(wkt:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_GeometryFromText(Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_GeometryFromText(wkt:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_GeometryFromText</span><span class="params">(<span name="wkt">wkt: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
     </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_LineFromText" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ST_LineFromText(wkt:String):org.apache.spark.sql.Column"></a><a id="ST_LineFromText(String):Column"></a>
       <span class="permalink">
@@ -1435,6 +1531,70 @@
       </span>
       <span class="symbol">
         <span class="name">ST_LineFromText</span><span class="params">(<span name="wkt">wkt: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_LineFromWKB" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_LineFromWKB(wkb:String,srid:Int):org.apache.spark.sql.Column"></a><a id="ST_LineFromWKB(String,Int):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_LineFromWKB(wkb:String,srid:Int):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_LineFromWKB</span><span class="params">(<span name="wkb">wkb: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="srid">srid: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_LineFromWKB" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_LineFromWKB(wkb:org.apache.spark.sql.Column,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_LineFromWKB(Column,Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_LineFromWKB(wkb:org.apache.spark.sql.Column,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_LineFromWKB</span><span class="params">(<span name="wkb">wkb: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="srid">srid: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_LineFromWKB" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_LineFromWKB(wkb:String):org.apache.spark.sql.Column"></a><a id="ST_LineFromWKB(String):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_LineFromWKB(wkb:String):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_LineFromWKB</span><span class="params">(<span name="wkb">wkb: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_LineFromWKB" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_LineFromWKB(wkb:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_LineFromWKB(Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_LineFromWKB(wkb:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_LineFromWKB</span><span class="params">(<span name="wkb">wkb: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
       </span>
       
       
@@ -1822,6 +1982,166 @@
       </span>
       
       
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointFromWKB" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointFromWKB(wkb:String,srid:Int):org.apache.spark.sql.Column"></a><a id="ST_PointFromWKB(String,Int):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointFromWKB(wkb:String,srid:Int):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointFromWKB</span><span class="params">(<span name="wkb">wkb: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="srid">srid: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointFromWKB" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointFromWKB(wkb:org.apache.spark.sql.Column,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_PointFromWKB(Column,Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointFromWKB(wkb:org.apache.spark.sql.Column,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointFromWKB</span><span class="params">(<span name="wkb">wkb: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="srid">srid: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointFromWKB" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointFromWKB(wkb:String):org.apache.spark.sql.Column"></a><a id="ST_PointFromWKB(String):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointFromWKB(wkb:String):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointFromWKB</span><span class="params">(<span name="wkb">wkb: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointFromWKB" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointFromWKB(wkb:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_PointFromWKB(Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointFromWKB(wkb:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointFromWKB</span><span class="params">(<span name="wkb">wkb: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointM(x:Double,y:Double,m:Double,srid:Int):org.apache.spark.sql.Column"></a><a id="ST_PointM(Double,Double,Double,Int):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointM(x:Double,y:Double,m:Double,srid:Int):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointM</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Double">Double</span></span>, <span name="y">y: <span class="extype" name="scala.Double">Double</span></span>, <span name="m">m: <span class="extype" name="scala.Double">Double</span></span>, <span name="srid">srid: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointM(x:String,y:String,m:String,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_PointM(String,String,String,Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointM(x:String,y:String,m:String,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointM</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="y">y: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="m">m: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="srid">srid: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointM(x:org.apache.spark.sql.Column,y:org.apache.spark.sql.Column,m:org.apache.spark.sql.Column,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_PointM(Column,Column,Column,Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointM(x:org.apache.spark.sql.Column,y:org.apache.spark.sql.Column,m:org.apache.spark.sql.Column,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointM</span><span class="params">(<span name="x">x: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="y">y: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="m">m: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="srid">srid: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointM(x:Double,y:Double,m:Double):org.apache.spark.sql.Column"></a><a id="ST_PointM(Double,Double,Double):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointM(x:Double,y:Double,m:Double):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointM</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Double">Double</span></span>, <span name="y">y: <span class="extype" name="scala.Double">Double</span></span>, <span name="m">m: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointM(x:String,y:String,m:String):org.apache.spark.sql.Column"></a><a id="ST_PointM(String,String,String):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointM(x:String,y:String,m:String):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointM</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="y">y: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="m">m: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointM(x:org.apache.spark.sql.Column,y:org.apache.spark.sql.Column,m:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_PointM(Column,Column,Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointM(x:org.apache.spark.sql.Column,y:org.apache.spark.sql.Column,m:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointM</span><span class="params">(<span name="x">x: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="y">y: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="m">m: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
     </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointZ" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ST_PointZ(x:Double,y:Double,z:Double,srid:Int):org.apache.spark.sql.Column"></a><a id="ST_PointZ(Double,Double,Double,Int):Column"></a>
       <span class="permalink">
@@ -1915,6 +2235,102 @@
       </span>
       <span class="symbol">
         <span class="name">ST_PointZ</span><span class="params">(<span name="x">x: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="y">y: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="z">z: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointZM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointZM(x:Double,y:Double,z:Double,m:Double,srid:Int):org.apache.spark.sql.Column"></a><a id="ST_PointZM(Double,Double,Double,Double,Int):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointZM(x:Double,y:Double,z:Double,m:Double,srid:Int):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointZM</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Double">Double</span></span>, <span name="y">y: <span class="extype" name="scala.Double">Double</span></span>, <span name="z">z: <span class="extype" name="scala.Double">Double</span></span>, <span name="m">m: <span class="extype" name="scala.Double">Double</span></span>, <span name="srid">srid: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointZM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointZM(x:String,y:String,z:String,m:String,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_PointZM(String,String,String,String,Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointZM(x:String,y:String,z:String,m:String,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointZM</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="y">y: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="z">z: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="m">m: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="srid">srid: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointZM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointZM(x:org.apache.spark.sql.Column,y:org.apache.spark.sql.Column,z:org.apache.spark.sql.Column,m:org.apache.spark.sql.Column,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_PointZM(Column,Column,Column,Column,Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointZM(x:org.apache.spark.sql.Column,y:org.apache.spark.sql.Column,z:org.apache.spark.sql.Column,m:org.apache.spark.sql.Column,srid:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointZM</span><span class="params">(<span name="x">x: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="y">y: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="z">z: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="m">m: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="srid">srid: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointZM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointZM(x:Double,y:Double,z:Double,m:Double):org.apache.spark.sql.Column"></a><a id="ST_PointZM(Double,Double,Double,Double):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointZM(x:Double,y:Double,z:Double,m:Double):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointZM</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Double">Double</span></span>, <span name="y">y: <span class="extype" name="scala.Double">Double</span></span>, <span name="z">z: <span class="extype" name="scala.Double">Double</span></span>, <span name="m">m: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointZM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointZM(x:String,y:String,z:String,m:String):org.apache.spark.sql.Column"></a><a id="ST_PointZM(String,String,String,String):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointZM(x:String,y:String,z:String,m:String):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointZM</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="y">y: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="z">z: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="m">m: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.st_constructors#ST_PointZM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointZM(x:org.apache.spark.sql.Column,y:org.apache.spark.sql.Column,z:org.apache.spark.sql.Column,m:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="ST_PointZM(Column,Column,Column,Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/st_constructors$.html#ST_PointZM(x:org.apache.spark.sql.Column,y:org.apache.spark.sql.Column,z:org.apache.spark.sql.Column,m:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ST_PointZM</span><span class="params">(<span name="x">x: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="y">y: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="z">z: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>, <span name="m">m: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
       </span>
       
       

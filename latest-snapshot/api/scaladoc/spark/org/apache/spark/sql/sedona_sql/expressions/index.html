@@ -523,6 +523,10 @@
                         <a href="ST_GeometricMedian.html" title="Returns a POINT Computes the approximate geometric median of a MultiPoint geometry using the Weiszfeld algorithm.">ST_GeometricMedian</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="ST_GeometryFromText.html" title="Return a Geometry from a WKT string."></a>
+                        <a href="ST_GeometryFromText.html" title="Return a Geometry from a WKT string.">ST_GeometryFromText</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="class" href="ST_GeometryN.html" title=""></a>
                         <a href="ST_GeometryN.html" title="">ST_GeometryN</a>
                       </li><li class="current-entities indented6">
@@ -545,6 +549,10 @@
                         <span class="separator"></span>
                         <a class="class" href="ST_H3ToGeom.html" title=""></a>
                         <a href="ST_H3ToGeom.html" title="">ST_H3ToGeom</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ST_HasM.html" title=""></a>
+                        <a href="ST_HasM.html" title="">ST_HasM</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="class" href="ST_HausdorffDistance.html" title=""></a>
@@ -619,6 +627,10 @@
                         <a href="ST_LineFromText.html" title="Return a line from a string.">ST_LineFromText</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="ST_LineFromWKB.html" title=""></a>
+                        <a href="ST_LineFromWKB.html" title="">ST_LineFromWKB</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="class" href="ST_LineInterpolatePoint.html" title="Returns a point interpolated along a line."></a>
                         <a href="ST_LineInterpolatePoint.html" title="Returns a point interpolated along a line.">ST_LineInterpolatePoint</a>
                       </li><li class="current-entities indented6">
@@ -645,6 +657,14 @@
                         <span class="separator"></span>
                         <a class="class" href="ST_MLineFromText.html" title="Return a Geometry from a WKT string"></a>
                         <a href="ST_MLineFromText.html" title="Return a Geometry from a WKT string">ST_MLineFromText</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ST_MMax.html" title=""></a>
+                        <a href="ST_MMax.html" title="">ST_MMax</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ST_MMin.html" title=""></a>
+                        <a href="ST_MMin.html" title="">ST_MMin</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="class" href="ST_MPolyFromText.html" title="Return a Geometry from a WKT string"></a>
@@ -727,6 +747,14 @@
                         <a href="ST_PointFromText.html" title="Return a point from a string.">ST_PointFromText</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="ST_PointFromWKB.html" title=""></a>
+                        <a href="ST_PointFromWKB.html" title="">ST_PointFromWKB</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ST_PointM.html" title="Return a Point from X, Y, M and srid"></a>
+                        <a href="ST_PointM.html" title="Return a Point from X, Y, M and srid">ST_PointM</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="class" href="ST_PointN.html" title="Returns the nth point in the geometry, provided it is a linestring"></a>
                         <a href="ST_PointN.html" title="Returns the nth point in the geometry, provided it is a linestring">ST_PointN</a>
                       </li><li class="current-entities indented6">
@@ -737,6 +765,10 @@
                         <span class="separator"></span>
                         <a class="class" href="ST_PointZ.html" title="Return a Point from X, Y, Z and srid"></a>
                         <a href="ST_PointZ.html" title="Return a Point from X, Y, Z and srid">ST_PointZ</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ST_PointZM.html" title=""></a>
+                        <a href="ST_PointZM.html" title="">ST_PointZM</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="class" href="ST_Polygon.html" title=""></a>
@@ -2163,6 +2195,23 @@ expressions are foldable, then the expression itself is foldable.
       <p class="shortcomment cmt">Returns a POINT Computes the approximate geometric median of a MultiPoint geometry using the Weiszfeld algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a POINT Computes the approximate geometric median of a MultiPoint geometry using the Weiszfeld algorithm.
 The geometric median provides a centrality measure that is less sensitive to outlier points than the centroid.
 </p></div><dl class="paramcmts block"><dt class="param">inputExpressions</dt><dd class="cmt"><p>Geometry</p></dd></dl></div>
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_GeometryFromText" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ST_GeometryFromTextextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_GeometryFromText:ST_GeometryFromText"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/ST_GeometryFromText.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Return a Geometry from a WKT string." href="ST_GeometryFromText.html"><span class="name">ST_GeometryFromText</span></a><span class="params">(<span name="inputExpressions">inputExpressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <a href="InferredExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferredExpression">InferredExpression</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Return a Geometry from a WKT string.</p><div class="fullcomment"><div class="comment cmt"><p>Return a Geometry from a WKT string. Alias to ST_GeomFromWKT
+</p></div><dl class="paramcmts block"><dt class="param">inputExpressions</dt><dd class="cmt"><p>This function takes a geometry string and a srid. The string format must be WKT.</p></dd></dl></div>
     </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_GeometryN" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ST_GeometryNextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_GeometryN:ST_GeometryN"></a>
       <span class="permalink">
@@ -2256,6 +2305,22 @@ The geometric median provides a centrality measure that is less sensitive to out
       </span>
       <span class="symbol">
         <a title="" href="ST_H3ToGeom.html"><span class="name">ST_H3ToGeom</span></a><span class="params">(<span name="inputExpressions">inputExpressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <a href="InferredExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferredExpression">InferredExpression</a> with <a href="FoldableExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.FoldableExpression">FoldableExpression</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_HasM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_HasMextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_HasM:ST_HasM"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/ST_HasM.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ST_HasM.html"><span class="name">ST_HasM</span></a><span class="params">(<span name="inputExpressions">inputExpressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <a href="InferredExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferredExpression">InferredExpression</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       
@@ -2556,6 +2621,22 @@ If flag not specified, it defaults to OGC SFS validity semantics.
       
       <p class="shortcomment cmt">Return a line from a string.</p><div class="fullcomment"><div class="comment cmt"><p>Return a line from a string. The string must be plain string and each coordinate must be separated by a delimiter.
 </p></div></div>
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_LineFromWKB" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_LineFromWKBextendsExpressionwithFoldableExpressionwithImplicitCastInputTypeswithCodegenFallbackwithUserDataGeneratatorwithProductwithSerializable"></a><a id="ST_LineFromWKB:ST_LineFromWKB"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/ST_LineFromWKB.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ST_LineFromWKB.html"><span class="name">ST_LineFromWKB</span></a><span class="params">(<span name="inputExpressions">inputExpressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span> with <a href="FoldableExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.FoldableExpression">FoldableExpression</a> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ImplicitCastInputTypes">ImplicitCastInputTypes</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span> with <a href="UserDataGeneratator.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.UserDataGeneratator">UserDataGeneratator</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
     </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_LineInterpolatePoint" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ST_LineInterpolatePointextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_LineInterpolatePoint:ST_LineInterpolatePoint"></a>
       <span class="permalink">
@@ -2680,6 +2761,38 @@ Second and third arguments are Double values between 0 and 1. This only works wi
       <p class="shortcomment cmt">Return a Geometry from a WKT string
 </p><div class="fullcomment"><div class="comment cmt"><p>Return a Geometry from a WKT string
 </p></div><dl class="paramcmts block"><dt class="param">inputExpressions</dt><dd class="cmt"><p>This function takes a geometry string and a srid. The string format must be WKT.</p></dd></dl></div>
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_MMax" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_MMaxextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_MMax:ST_MMax"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/ST_MMax.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ST_MMax.html"><span class="name">ST_MMax</span></a><span class="params">(<span name="inputExpressions">inputExpressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <a href="InferredExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferredExpression">InferredExpression</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_MMin" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_MMinextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_MMin:ST_MMin"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/ST_MMin.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ST_MMin.html"><span class="name">ST_MMin</span></a><span class="params">(<span name="inputExpressions">inputExpressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <a href="InferredExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferredExpression">InferredExpression</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
     </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_MPolyFromText" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ST_MPolyFromTextextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_MPolyFromText:ST_MPolyFromText"></a>
       <span class="permalink">
@@ -3012,6 +3125,40 @@ for single geometries will return 1</p><p>This method implements the SQL/MM spec
       <p class="shortcomment cmt">Return a point from a string.</p><div class="fullcomment"><div class="comment cmt"><p>Return a point from a string. The string must be plain string and each coordinate must be separated by a delimiter.
 </p></div><dl class="paramcmts block"><dt class="param">inputExpressions</dt><dd class="cmt"><p>This function takes 2 parameters. The first parameter is the input geometry
                         string, the second parameter is the delimiter. String format should be similar to CSV/TSV</p></dd></dl></div>
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_PointFromWKB" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointFromWKBextendsExpressionwithFoldableExpressionwithImplicitCastInputTypeswithCodegenFallbackwithUserDataGeneratatorwithProductwithSerializable"></a><a id="ST_PointFromWKB:ST_PointFromWKB"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/ST_PointFromWKB.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ST_PointFromWKB.html"><span class="name">ST_PointFromWKB</span></a><span class="params">(<span name="inputExpressions">inputExpressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span> with <a href="FoldableExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.FoldableExpression">FoldableExpression</a> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ImplicitCastInputTypes">ImplicitCastInputTypes</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span> with <a href="UserDataGeneratator.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.UserDataGeneratator">UserDataGeneratator</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_PointM" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ST_PointMextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_PointM:ST_PointM"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/ST_PointM.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Return a Point from X, Y, M and srid" href="ST_PointM.html"><span class="name">ST_PointM</span></a><span class="params">(<span name="inputExpressions">inputExpressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <a href="InferredExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferredExpression">InferredExpression</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Return a Point from X, Y, M and srid
+</p><div class="fullcomment"><div class="comment cmt"><p>Return a Point from X, Y, M and srid
+</p></div><dl class="paramcmts block"><dt class="param">inputExpressions</dt><dd class="cmt"><p>This function takes 4 parameter which are point x, y, m and srid (default 0).</p></dd></dl></div>
     </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_PointN" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ST_PointNextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_PointN:ST_PointN"></a>
       <span class="permalink">
@@ -3065,6 +3212,22 @@ for single geometries will return 1</p><p>This method implements the SQL/MM spec
       <p class="shortcomment cmt">Return a Point from X, Y, Z and srid
 </p><div class="fullcomment"><div class="comment cmt"><p>Return a Point from X, Y, Z and srid
 </p></div><dl class="paramcmts block"><dt class="param">inputExpressions</dt><dd class="cmt"><p>This function takes 4 parameter which are point x, y, z and srid (default 0).</p></dd></dl></div>
+    </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_PointZM" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ST_PointZMextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_PointZM:ST_PointZM"></a>
+      <span class="permalink">
+      <a href="../../../../../../org/apache/spark/sql/sedona_sql/expressions/ST_PointZM.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ST_PointZM.html"><span class="name">ST_PointZM</span></a><span class="params">(<span name="inputExpressions">inputExpressions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <a href="InferredExpression.html" class="extype" name="org.apache.spark.sql.sedona_sql.expressions.InferredExpression">InferredExpression</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
     </li><li name="org.apache.spark.sql.sedona_sql.expressions.ST_Polygon" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ST_PolygonextendsInferredExpressionwithProductwithSerializable"></a><a id="ST_Polygon:ST_Polygon"></a>
       <span class="permalink">
