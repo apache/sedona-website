@@ -394,6 +394,38 @@ Output:
 1.0,1.0 8.0,1.0 8.0,8.0 1.0,8.0 1.0,1.0
 ```
 
+## ST_AsHEXEWKB
+
+Introduction: This function returns the input geometry encoded to a text representation in HEXEWKB format. The HEXEWKB encoding can use either little-endian (NDR) or big-endian (XDR) byte ordering. If no encoding is explicitly specified, the function defaults to using the little-endian (NDR) format.
+
+Format: `ST_AsHEXEWKB(geom: Geometry, endian: String = NDR)`
+
+Since: `vTBD`
+
+SQL Example
+
+```sql
+SELECT ST_AsHEXEWKB(ST_GeomFromWKT('POINT(1 2)'), 'XDR')
+```
+
+Output:
+
+```
+00000000013FF00000000000004000000000000000
+```
+
+SQL Example
+
+```sql
+SELECT ST_AsHEXEWKB(ST_GeomFromWKT('LINESTRING (30 20, 20 25, 20 15, 30 20)'))
+```
+
+Output:
+
+```
+0102000000040000000000000000003E4000000000000034400000000000003440000000000000394000000000000034400000000000002E400000000000003E400000000000003440
+```
+
 ## ST_AsKML
 
 Introduction: Return the [KML](https://www.ogc.org/standards/kml) string representation of a geometry
@@ -1580,6 +1612,28 @@ Output:
 True
 ```
 
+## ST_HasZ
+
+Introduction: Checks for the presence of Z coordinate values representing measures or linear references. Returns true if the input geometry includes an Z coordinate, false otherwise.
+
+Format: `ST_HasZ(geom: Geometry)`
+
+Since: `vTBD`
+
+SQL Example
+
+```sql
+SELECT ST_HasZ(
+        ST_GeomFromWKT('LINESTRING Z (30 10 5, 40 40 10, 20 40 15, 10 20 20)')
+)
+```
+
+Output:
+
+```
+True
+```
+
 ## ST_HausdorffDistance
 
 Introduction: Returns a discretized (and hence approximate) [Hausdorff distance](https://en.wikipedia.org/wiki/Hausdorff_distance) between the given 2 geometries.
@@ -2521,6 +2575,26 @@ SELECT ST_AsText(ST_PointOnSurface(ST_GeomFromText('LINESTRING(0 5 1, 0 0 1, 0 1
 ----------------
  POINT Z(0 0 1)
 
+```
+
+## ST_Points
+
+Introduction: Returns a MultiPoint geometry consisting of all the coordinates of the input geometry. It preserves duplicate points as well as M and Z coordinates.
+
+Format: `ST_Points(geom: Geometry)`
+
+Since: `vTBD`
+
+SQL Example
+
+```sql
+SELECT ST_AsText(ST_Points(ST_GeomFromEWKT('LINESTRING (2 4, 3 3, 4 2, 7 3)')));
+```
+
+Output:
+
+```
+MULTIPOINT ((2 4), (3 3), (4 2), (7,3))
 ```
 
 ## ST_Polygon
