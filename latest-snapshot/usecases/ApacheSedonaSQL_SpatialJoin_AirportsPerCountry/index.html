@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../image/sedona_logo_symbol.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.35">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.36">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.06209087.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -4717,7 +4717,6 @@ under the License.
 <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">explode</span><span class="p">,</span> <span class="nb">hex</span>
 
 
-
 <span class="kn">from</span> <span class="nn">sedona.spark</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">getConfig</span>
 </pre></div>
@@ -4726,7 +4725,6 @@ under the License.
 import geopandas as gpd
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, expr, when, explode, hex
-
 
 
 from sedona.spark import *
@@ -4766,23 +4764,31 @@ from utilities import getConfig</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">SedonaContext</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span> <span class="o">.</span>\
-    <span class="n">config</span><span class="p">(</span><span class="s1">'spark.jars.packages'</span><span class="p">,</span>
-           <span class="s1">'org.apache.sedona:sedona-spark-shaded-3.4_2.12:1.6.0,'</span>
-           <span class="s1">'org.datasyslab:geotools-wrapper:1.6.0-28.2,'</span>
-           <span class="s1">'uk.co.gresearch.spark:spark-extension_2.12:2.11.0-3.4'</span><span class="p">)</span><span class="o">.</span> \
-    <span class="n">getOrCreate</span><span class="p">()</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">SedonaContext</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="s2">"spark.jars.packages"</span><span class="p">,</span>
+        <span class="s2">"org.apache.sedona:sedona-spark-shaded-3.4_2.12:1.6.0,"</span>
+        <span class="s2">"org.datasyslab:geotools-wrapper:1.6.0-28.2,"</span>
+        <span class="s2">"uk.co.gresearch.spark:spark-extension_2.12:2.11.0-3.4"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="p">)</span>
 
 <span class="n">sedona</span> <span class="o">=</span> <span class="n">SedonaContext</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 <span class="n">sc</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sparkContext</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">setSystemProperty</span><span class="p">(</span><span class="s2">"sedona.global.charset"</span><span class="p">,</span> <span class="s2">"utf8"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">config = SedonaContext.builder() .\
-    config('spark.jars.packages',
-           'org.apache.sedona:sedona-spark-shaded-3.4_2.12:1.6.0,'
-           'org.datasyslab:geotools-wrapper:1.6.0-28.2,'
-           'uk.co.gresearch.spark:spark-extension_2.12:2.11.0-3.4'). \
-    getOrCreate()
+<div class="clipboard-copy-txt" id="cell-2">config = (
+    SedonaContext.builder()
+    .config(
+        "spark.jars.packages",
+        "org.apache.sedona:sedona-spark-shaded-3.4_2.12:1.6.0,"
+        "org.datasyslab:geotools-wrapper:1.6.0-28.2,"
+        "uk.co.gresearch.spark:spark-extension_2.12:2.11.0-3.4",
+    )
+    .getOrCreate()
+)
 
 sedona = SedonaContext.create(config)
 sc = sedona.sparkContext
@@ -4872,12 +4878,16 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="n">ShapefileReader</span><span class="o">.</span><span class="n">readToGeometryRDD</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">"data/ne_50m_admin_0_countries_lakes/"</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="n">ShapefileReader</span><span class="o">.</span><span class="n">readToGeometryRDD</span><span class="p">(</span>
+    <span class="n">sc</span><span class="p">,</span> <span class="s2">"data/ne_50m_admin_0_countries_lakes/"</span>
+<span class="p">)</span>
 <span class="n">countries_df</span> <span class="o">=</span> <span class="n">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">sedona</span><span class="p">)</span>
 <span class="n">countries_df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"country"</span><span class="p">)</span>
 <span class="n">countries_df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">countries = ShapefileReader.readToGeometryRDD(sc, "data/ne_50m_admin_0_countries_lakes/")
+<div class="clipboard-copy-txt" id="cell-3">countries = ShapefileReader.readToGeometryRDD(
+    sc, "data/ne_50m_admin_0_countries_lakes/"
+)
 countries_df = Adapter.toDf(countries, sedona)
 countries_df.createOrReplaceTempView("country")
 countries_df.printSchema()</div>
@@ -5101,9 +5111,13 @@ airports_df.printSchema()</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT c.geometry as country_geom, c.NAME_EN, a.geometry as airport_geom, a.name FROM country c, airport a WHERE ST_Contains(c.geometry, a.geometry)"</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
+    <span class="s2">"SELECT c.geometry as country_geom, c.NAME_EN, a.geometry as airport_geom, a.name FROM country c, airport a WHERE ST_Contains(c.geometry, a.geometry)"</span>
+<span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">result = sedona.sql("SELECT c.geometry as country_geom, c.NAME_EN, a.geometry as airport_geom, a.name FROM country c, airport a WHERE ST_Contains(c.geometry, a.geometry)")</div>
+<div class="clipboard-copy-txt" id="cell-5">result = sedona.sql(
+    "SELECT c.geometry as country_geom, c.NAME_EN, a.geometry as airport_geom, a.name FROM country c, airport a WHERE ST_Contains(c.geometry, a.geometry)"
+)</div>
 </div>
 </div>
 </div>
@@ -5156,13 +5170,19 @@ airports_df.printSchema()</div>
 <span class="n">considerBoundaryIntersection</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">airports_rdd</span><span class="o">.</span><span class="n">buildIndex</span><span class="p">(</span><span class="n">IndexType</span><span class="o">.</span><span class="n">QUADTREE</span><span class="p">,</span> <span class="n">buildOnSpatialPartitionedRDD</span><span class="p">)</span>
 
-<span class="n">result_pair_rdd</span> <span class="o">=</span> <span class="n">JoinQueryRaw</span><span class="o">.</span><span class="n">SpatialJoinQueryFlat</span><span class="p">(</span><span class="n">airports_rdd</span><span class="p">,</span> <span class="n">countries_rdd</span><span class="p">,</span> <span class="n">usingIndex</span><span class="p">,</span> <span class="n">considerBoundaryIntersection</span><span class="p">)</span>
+<span class="n">result_pair_rdd</span> <span class="o">=</span> <span class="n">JoinQueryRaw</span><span class="o">.</span><span class="n">SpatialJoinQueryFlat</span><span class="p">(</span>
+    <span class="n">airports_rdd</span><span class="p">,</span> <span class="n">countries_rdd</span><span class="p">,</span> <span class="n">usingIndex</span><span class="p">,</span> <span class="n">considerBoundaryIntersection</span>
+<span class="p">)</span>
 
-<span class="n">result2</span> <span class="o">=</span> <span class="n">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="p">(</span><span class="n">result_pair_rdd</span><span class="p">,</span> <span class="n">countries_rdd</span><span class="o">.</span><span class="n">fieldNames</span><span class="p">,</span> <span class="n">airports</span><span class="o">.</span><span class="n">fieldNames</span><span class="p">,</span> <span class="n">sedona</span><span class="p">)</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">Adapter</span><span class="o">.</span><span class="n">toDf</span><span class="p">(</span>
+    <span class="n">result_pair_rdd</span><span class="p">,</span> <span class="n">countries_rdd</span><span class="o">.</span><span class="n">fieldNames</span><span class="p">,</span> <span class="n">airports</span><span class="o">.</span><span class="n">fieldNames</span><span class="p">,</span> <span class="n">sedona</span>
+<span class="p">)</span>
 
 <span class="n">result2</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"join_result_with_all_cols"</span><span class="p">)</span>
 <span class="c1"># Select the columns needed in the join</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT leftgeometry as country_geom, NAME_EN, rightgeometry as airport_geom, name FROM join_result_with_all_cols"</span><span class="p">)</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
+    <span class="s2">"SELECT leftgeometry as country_geom, NAME_EN, rightgeometry as airport_geom, name FROM join_result_with_all_cols"</span>
+<span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-6">airports_rdd = Adapter.toSpatialRdd(airports_df, "geometry")
 # Drop the duplicate name column in countries_df
@@ -5181,13 +5201,19 @@ usingIndex = True
 considerBoundaryIntersection = True
 airports_rdd.buildIndex(IndexType.QUADTREE, buildOnSpatialPartitionedRDD)
 
-result_pair_rdd = JoinQueryRaw.SpatialJoinQueryFlat(airports_rdd, countries_rdd, usingIndex, considerBoundaryIntersection)
+result_pair_rdd = JoinQueryRaw.SpatialJoinQueryFlat(
+    airports_rdd, countries_rdd, usingIndex, considerBoundaryIntersection
+)
 
-result2 = Adapter.toDf(result_pair_rdd, countries_rdd.fieldNames, airports.fieldNames, sedona)
+result2 = Adapter.toDf(
+    result_pair_rdd, countries_rdd.fieldNames, airports.fieldNames, sedona
+)
 
 result2.createOrReplaceTempView("join_result_with_all_cols")
 # Select the columns needed in the join
-result2 = sedona.sql("SELECT leftgeometry as country_geom, NAME_EN, rightgeometry as airport_geom, name FROM join_result_with_all_cols")</div>
+result2 = sedona.sql(
+    "SELECT leftgeometry as country_geom, NAME_EN, rightgeometry as airport_geom, name FROM join_result_with_all_cols"
+)</div>
 </div>
 </div>
 </div>
@@ -5364,13 +5390,17 @@ only showing top 20 rows
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># result.createOrReplaceTempView("result")</span>
 <span class="n">result2</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"result"</span><span class="p">)</span>
-<span class="n">groupedresult</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT c.NAME_EN, c.country_geom, count(*) as AirportCount FROM result c GROUP BY c.NAME_EN, c.country_geom"</span><span class="p">)</span>
+<span class="n">groupedresult</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
+    <span class="s2">"SELECT c.NAME_EN, c.country_geom, count(*) as AirportCount FROM result c GROUP BY c.NAME_EN, c.country_geom"</span>
+<span class="p">)</span>
 <span class="n">groupedresult</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">groupedresult</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"grouped_result"</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-8"># result.createOrReplaceTempView("result")
 result2.createOrReplaceTempView("result")
-groupedresult = sedona.sql("SELECT c.NAME_EN, c.country_geom, count(*) as AirportCount FROM result c GROUP BY c.NAME_EN, c.country_geom")
+groupedresult = sedona.sql(
+    "SELECT c.NAME_EN, c.country_geom, count(*) as AirportCount FROM result c GROUP BY c.NAME_EN, c.country_geom"
+)
 groupedresult.show()
 groupedresult.createOrReplaceTempView("grouped_result")</div>
 </div>
@@ -5463,10 +5493,14 @@ only showing top 20 rows
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sedona_kepler_map</span> <span class="o">=</span> <span class="n">SedonaKepler</span><span class="o">.</span><span class="n">create_map</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">groupedresult</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"AirportCount"</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">getConfig</span><span class="p">())</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sedona_kepler_map</span> <span class="o">=</span> <span class="n">SedonaKepler</span><span class="o">.</span><span class="n">create_map</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">groupedresult</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"AirportCount"</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">getConfig</span><span class="p">()</span>
+<span class="p">)</span>
 <span class="n">sedona_kepler_map</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-9">sedona_kepler_map = SedonaKepler.create_map(df=groupedresult, name="AirportCount", config=getConfig())
+<div class="clipboard-copy-txt" id="cell-9">sedona_kepler_map = SedonaKepler.create_map(
+    df=groupedresult, name="AirportCount", config=getConfig()
+)
 sedona_kepler_map</div>
 </div>
 </div>
@@ -5529,10 +5563,14 @@ sedona_kepler_map</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sedona_pydeck_map</span> <span class="o">=</span> <span class="n">SedonaPyDeck</span><span class="o">.</span><span class="n">create_choropleth_map</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">groupedresult</span><span class="p">,</span> <span class="n">plot_col</span><span class="o">=</span><span class="s1">'AirportCount'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sedona_pydeck_map</span> <span class="o">=</span> <span class="n">SedonaPyDeck</span><span class="o">.</span><span class="n">create_choropleth_map</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">groupedresult</span><span class="p">,</span> <span class="n">plot_col</span><span class="o">=</span><span class="s2">"AirportCount"</span>
+<span class="p">)</span>
 <span class="n">sedona_pydeck_map</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-10">sedona_pydeck_map = SedonaPyDeck.create_choropleth_map(df=groupedresult, plot_col='AirportCount')
+<div class="clipboard-copy-txt" id="cell-10">sedona_pydeck_map = SedonaPyDeck.create_choropleth_map(
+    df=groupedresult, plot_col="AirportCount"
+)
 sedona_pydeck_map</div>
 </div>
 </div>
@@ -340002,10 +340040,14 @@ sedona_pydeck_map</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">h3_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT g.NAME_EN, g.country_geom, ST_H3CellIDs(g.country_geom, 3, false) as h3_cellID from grouped_result g"</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">h3_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
+    <span class="s2">"SELECT g.NAME_EN, g.country_geom, ST_H3CellIDs(g.country_geom, 3, false) as h3_cellID from grouped_result g"</span>
+<span class="p">)</span>
 <span class="n">h3_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-11">h3_df = sedona.sql("SELECT g.NAME_EN, g.country_geom, ST_H3CellIDs(g.country_geom, 3, false) as h3_cellID from grouped_result g")
+<div class="clipboard-copy-txt" id="cell-11">h3_df = sedona.sql(
+    "SELECT g.NAME_EN, g.country_geom, ST_H3CellIDs(g.country_geom, 3, false) as h3_cellID from grouped_result g"
+)
 h3_df.show(2)</div>
 </div>
 </div>
@@ -340074,10 +340116,14 @@ only showing top 2 rows
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">exploded_h3</span> <span class="o">=</span> <span class="n">h3_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">h3_df</span><span class="o">.</span><span class="n">NAME_EN</span><span class="p">,</span> <span class="n">h3_df</span><span class="o">.</span><span class="n">country_geom</span><span class="p">,</span> <span class="n">explode</span><span class="p">(</span><span class="n">h3_df</span><span class="o">.</span><span class="n">h3_cellID</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"h3"</span><span class="p">))</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">exploded_h3</span> <span class="o">=</span> <span class="n">h3_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">h3_df</span><span class="o">.</span><span class="n">NAME_EN</span><span class="p">,</span> <span class="n">h3_df</span><span class="o">.</span><span class="n">country_geom</span><span class="p">,</span> <span class="n">explode</span><span class="p">(</span><span class="n">h3_df</span><span class="o">.</span><span class="n">h3_cellID</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"h3"</span><span class="p">)</span>
+<span class="p">)</span>
 <span class="n">exploded_h3</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-12">exploded_h3 = h3_df.select(h3_df.NAME_EN, h3_df.country_geom, explode(h3_df.h3_cellID).alias("h3"))
+<div class="clipboard-copy-txt" id="cell-12">exploded_h3 = h3_df.select(
+    h3_df.NAME_EN, h3_df.country_geom, explode(h3_df.h3_cellID).alias("h3")
+)
 exploded_h3.show(2)</div>
 </div>
 </div>
@@ -340148,13 +340194,17 @@ only showing top 2 rows
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">exploded_h3</span> <span class="o">=</span> <span class="n">exploded_h3</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">exploded_h3</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"exploded_h3"</span><span class="p">)</span>
-<span class="n">hex_exploded_h3</span> <span class="o">=</span> <span class="n">exploded_h3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">exploded_h3</span><span class="o">.</span><span class="n">NAME_EN</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">exploded_h3</span><span class="o">.</span><span class="n">h3</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"ex_h3"</span><span class="p">))</span>
+<span class="n">hex_exploded_h3</span> <span class="o">=</span> <span class="n">exploded_h3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">exploded_h3</span><span class="o">.</span><span class="n">NAME_EN</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">exploded_h3</span><span class="o">.</span><span class="n">h3</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"ex_h3"</span><span class="p">)</span>
+<span class="p">)</span>
 <span class="n">hex_exploded_h3</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">hex_exploded_h3</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-13">exploded_h3 = exploded_h3.sample(0.3)
 exploded_h3.createOrReplaceTempView("exploded_h3")
-hex_exploded_h3 = exploded_h3.select(exploded_h3.NAME_EN, hex(exploded_h3.h3).alias("ex_h3"))
+hex_exploded_h3 = exploded_h3.select(
+    exploded_h3.NAME_EN, hex(exploded_h3.h3).alias("ex_h3")
+)
 hex_exploded_h3.show(2)
 hex_exploded_h3.printSchema()</div>
 </div>
@@ -340291,7 +340341,7 @@ sedona_kepler_h3</div>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 23, 2024 06:17:36</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">September 23, 2024 22:14:04</span>
   </span>
 
     
@@ -340427,7 +340477,7 @@ sedona_kepler_h3</div>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>

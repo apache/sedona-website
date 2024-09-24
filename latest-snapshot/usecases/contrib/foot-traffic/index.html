@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../image/sedona_logo_symbol.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.35">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.36">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.06209087.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -4626,31 +4626,35 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="kn">from</span> <span class="nn">sedona.register</span> <span class="kn">import</span> <span class="n">SedonaRegistrator</span>
 <span class="kn">from</span> <span class="nn">sedona.utils</span> <span class="kn">import</span> <span class="n">SedonaKryoRegistrator</span><span class="p">,</span> <span class="n">KryoSerializer</span>
 
-<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span> \
-    <span class="n">builder</span><span class="o">.</span> \
-    <span class="n">appName</span><span class="p">(</span><span class="s1">'sigspatial2021'</span><span class="p">)</span><span class="o">.</span> \
-    <span class="n">master</span><span class="p">(</span><span class="s2">"spark://data-ocean-lab-1:7077"</span><span class="p">)</span><span class="o">.</span>\
-    <span class="n">config</span><span class="p">(</span><span class="s2">"spark.serializer"</span><span class="p">,</span> <span class="n">KryoSerializer</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span><span class="o">.</span>\
-    <span class="n">config</span><span class="p">(</span><span class="s2">"spark.kryo.registrator"</span><span class="p">,</span> <span class="n">SedonaKryoRegistrator</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span> <span class="o">.</span>\
-    <span class="n">config</span><span class="p">(</span><span class="s1">'spark.jars.packages'</span><span class="p">,</span>
-           <span class="s1">'org.apache.sedona:sedona-python-adapter-3.0_2.12:1.2.0-incubating,'</span>
-           <span class="s1">'org.datasyslab:geotools-wrapper:1.1.0-25.2'</span><span class="p">)</span><span class="o">.</span> \
-    <span class="n">getOrCreate</span><span class="p">()</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">"sigspatial2021"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="s2">"spark://data-ocean-lab-1:7077"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.serializer"</span><span class="p">,</span> <span class="n">KryoSerializer</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">"spark.kryo.registrator"</span><span class="p">,</span> <span class="n">SedonaKryoRegistrator</span><span class="o">.</span><span class="n">getName</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="s2">"spark.jars.packages"</span><span class="p">,</span>
+        <span class="s2">"org.apache.sedona:sedona-python-adapter-3.0_2.12:1.2.0-incubating,"</span>
+        <span class="s2">"org.datasyslab:geotools-wrapper:1.1.0-25.2"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-1">from pyspark.sql import SparkSession
 from sedona.register import SedonaRegistrator
 from sedona.utils import SedonaKryoRegistrator, KryoSerializer
 
-spark = SparkSession. \
-    builder. \
-    appName('sigspatial2021'). \
-    master("spark://data-ocean-lab-1:7077").\
-    config("spark.serializer", KryoSerializer.getName).\
-    config("spark.kryo.registrator", SedonaKryoRegistrator.getName) .\
-    config('spark.jars.packages',
-           'org.apache.sedona:sedona-python-adapter-3.0_2.12:1.2.0-incubating,'
-           'org.datasyslab:geotools-wrapper:1.1.0-25.2'). \
-    getOrCreate()</div>
+spark = (
+    SparkSession.builder.appName("sigspatial2021")
+    .master("spark://data-ocean-lab-1:7077")
+    .config("spark.serializer", KryoSerializer.getName)
+    .config("spark.kryo.registrator", SedonaKryoRegistrator.getName)
+    .config(
+        "spark.jars.packages",
+        "org.apache.sedona:sedona-python-adapter-3.0_2.12:1.2.0-incubating,"
+        "org.datasyslab:geotools-wrapper:1.1.0-25.2",
+    )
+    .getOrCreate()
+)</div>
 </div>
 </div>
 </div>
@@ -4792,22 +4796,32 @@ import pandas as pd</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sample_csv_path</span> <span class="o">=</span> <span class="s1">'file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/seattle_coffee_monthly_patterns/'</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sample_csv_path</span> <span class="o">=</span> <span class="s2">"file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/seattle_coffee_monthly_patterns/"</span>
 <span class="n">sample</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"escape"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">sample_csv_path</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'date_range_start'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">to_date</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'date_range_start'</span><span class="p">)))</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'date_range_end'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">to_date</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'date_range_end'</span><span class="p">)))</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'visitor_home_cbgs'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="s1">'visitor_home_cbgs'</span><span class="p">,</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">MapType</span><span class="p">(</span><span class="n">StringType</span><span class="p">(),</span> <span class="n">IntegerType</span><span class="p">())))</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"distance_from_home"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"distance_from_home"</span><span class="p">))</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"escape"</span><span class="p">,</span> <span class="s1">'"'</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">sample_csv_path</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"date_range_start"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">to_date</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"date_range_start"</span><span class="p">)))</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"date_range_end"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">to_date</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"date_range_end"</span><span class="p">)))</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">"visitor_home_cbgs"</span><span class="p">,</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="s2">"visitor_home_cbgs"</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">MapType</span><span class="p">(</span><span class="n">StringType</span><span class="p">(),</span> <span class="n">IntegerType</span><span class="p">())),</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"distance_from_home"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"distance_from_home"</span><span class="p">))</span>
 <span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">sample_csv_path = 'file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/seattle_coffee_monthly_patterns/'
+<div class="clipboard-copy-txt" id="cell-3">sample_csv_path = "file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/seattle_coffee_monthly_patterns/"
 sample = (
-  spark.read.option("header", "true").option("escape", "\"").csv(sample_csv_path)
-  .withColumn('date_range_start', f.to_date(f.col('date_range_start')))
-  .withColumn('date_range_end', f.to_date(f.col('date_range_end')))
-  .withColumn('visitor_home_cbgs', f.from_json('visitor_home_cbgs', schema = MapType(StringType(), IntegerType())))
-  .withColumn("distance_from_home", f.col("distance_from_home"))
+    spark.read.option("header", "true")
+    .option("escape", '"')
+    .csv(sample_csv_path)
+    .withColumn("date_range_start", f.to_date(f.col("date_range_start")))
+    .withColumn("date_range_end", f.to_date(f.col("date_range_end")))
+    .withColumn(
+        "visitor_home_cbgs",
+        f.from_json("visitor_home_cbgs", schema=MapType(StringType(), IntegerType())),
+    )
+    .withColumn("distance_from_home", f.col("distance_from_home"))
 )</div>
 </div>
 </div>
@@ -5132,28 +5146,48 @@ import folium</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">Window</span><span class="p">()</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">)</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'date_range_start'</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">Window</span><span class="p">()</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s2">"placekey"</span><span class="p">)</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"date_range_start"</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span>
 
 <span class="n">cafes_latest</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">sample</span>
-  <span class="c1"># as our data improves, addresses or geocodes for a given location may change over time</span>
-  <span class="c1"># use a window function to keep only the most recent appearance of the given cafe</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'row_num'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">row_number</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
-  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'row_num'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="c1"># select the columns we need for mapping</span>
-  <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">,</span> <span class="s1">'location_name'</span><span class="p">,</span> <span class="s1">'brands'</span><span class="p">,</span> <span class="s1">'street_address'</span><span class="p">,</span> <span class="s1">'city'</span><span class="p">,</span> <span class="s1">'region'</span><span class="p">,</span> <span class="s1">'postal_code'</span><span class="p">,</span> <span class="s1">'latitude'</span><span class="p">,</span> <span class="s1">'longitude'</span><span class="p">,</span> <span class="s1">'open_hours'</span><span class="p">)</span>
+    <span class="n">sample</span>
+    <span class="c1"># as our data improves, addresses or geocodes for a given location may change over time</span>
+    <span class="c1"># use a window function to keep only the most recent appearance of the given cafe</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"row_num"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">row_number</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w</span><span class="p">))</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"row_num"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># select the columns we need for mapping</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="s2">"placekey"</span><span class="p">,</span>
+        <span class="s2">"location_name"</span><span class="p">,</span>
+        <span class="s2">"brands"</span><span class="p">,</span>
+        <span class="s2">"street_address"</span><span class="p">,</span>
+        <span class="s2">"city"</span><span class="p">,</span>
+        <span class="s2">"region"</span><span class="p">,</span>
+        <span class="s2">"postal_code"</span><span class="p">,</span>
+        <span class="s2">"latitude"</span><span class="p">,</span>
+        <span class="s2">"longitude"</span><span class="p">,</span>
+        <span class="s2">"open_hours"</span><span class="p">,</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-6">w = Window().partitionBy('placekey').orderBy(f.col('date_range_start').desc())
+<div class="clipboard-copy-txt" id="cell-6">w = Window().partitionBy("placekey").orderBy(f.col("date_range_start").desc())
 
 cafes_latest = (
-  sample
-  # as our data improves, addresses or geocodes for a given location may change over time
-  # use a window function to keep only the most recent appearance of the given cafe
-  .withColumn('row_num', f.row_number().over(w))
-  .filter(f.col('row_num') == 1)
-  # select the columns we need for mapping
-  .select('placekey', 'location_name', 'brands', 'street_address', 'city', 'region', 'postal_code', 'latitude', 'longitude', 'open_hours')
+    sample
+    # as our data improves, addresses or geocodes for a given location may change over time
+    # use a window function to keep only the most recent appearance of the given cafe
+    .withColumn("row_num", f.row_number().over(w)).filter(f.col("row_num") == 1)
+    # select the columns we need for mapping
+    .select(
+        "placekey",
+        "location_name",
+        "brands",
+        "street_address",
+        "city",
+        "region",
+        "postal_code",
+        "latitude",
+        "longitude",
+        "open_hours",
+    )
 )</div>
 </div>
 </div>
@@ -5181,11 +5215,19 @@ cafes_latest = (
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># create a geopandas geodataframe</span>
 <span class="n">cafes_gdf</span> <span class="o">=</span> <span class="n">cafes_latest</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
-<span class="n">cafes_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">cafes_gdf</span><span class="p">,</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">cafes_gdf</span><span class="p">[</span><span class="s1">'longitude'</span><span class="p">],</span> <span class="n">cafes_gdf</span><span class="p">[</span><span class="s1">'latitude'</span><span class="p">]),</span> <span class="n">crs</span> <span class="o">=</span> <span class="s1">'EPSG:4326'</span><span class="p">)</span>
+<span class="n">cafes_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="n">cafes_gdf</span><span class="p">,</span>
+    <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">cafes_gdf</span><span class="p">[</span><span class="s2">"longitude"</span><span class="p">],</span> <span class="n">cafes_gdf</span><span class="p">[</span><span class="s2">"latitude"</span><span class="p">]),</span>
+    <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-7"># create a geopandas geodataframe
 cafes_gdf = cafes_latest.toPandas()
-cafes_gdf = gpd.GeoDataFrame(cafes_gdf, geometry = gpd.points_from_xy(cafes_gdf['longitude'], cafes_gdf['latitude']), crs = 'EPSG:4326')</div>
+cafes_gdf = gpd.GeoDataFrame(
+    cafes_gdf,
+    geometry=gpd.points_from_xy(cafes_gdf["longitude"], cafes_gdf["latitude"]),
+    crs="EPSG:4326",
+)</div>
 </div>
 </div>
 </div>
@@ -5223,70 +5265,64 @@ cafes_gdf = gpd.GeoDataFrame(cafes_gdf, geometry = gpd.points_from_xy(cafes_gdf[
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">map_cafes</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
-  
-  <span class="c1"># map bounds</span>
-  <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-  <span class="n">ne</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
-  <span class="n">folium_bounds</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">,</span> <span class="n">ne</span><span class="p">]</span>
-  
-  <span class="c1"># map</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  <span class="n">y</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  
-  <span class="n">map_</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
-    <span class="n">location</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span>
-    <span class="n">tiles</span> <span class="o">=</span> <span class="s2">"OpenStreetMap"</span>
-  <span class="p">)</span>
-  
-  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    
-    <span class="n">tooltip</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"placekey: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'placekey'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;location_name: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'location_name'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;brands: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'brands'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;street_address: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'street_address'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;city: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'city'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;region: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'region'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;postal_code: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'postal_code'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;open_hours: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'open_hours'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
-    
-    <span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
-      <span class="p">[</span><span class="n">point</span><span class="p">[</span><span class="s1">'geometry'</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">point</span><span class="p">[</span><span class="s1">'geometry'</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">],</span>
-      <span class="n">radius</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span>
-      <span class="n">fill_color</span> <span class="o">=</span> <span class="s1">'blue'</span><span class="p">,</span>
-      <span class="n">color</span> <span class="o">=</span> <span class="s1">'blue'</span><span class="p">,</span>
-      <span class="n">fill_opacity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-      <span class="n">tooltip</span> <span class="o">=</span> <span class="n">tooltip</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_</span><span class="p">)</span>
 
-  <span class="n">map_</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">folium_bounds</span><span class="p">)</span> 
-  
-  <span class="k">return</span> <span class="n">map_</span>
+    <span class="c1"># map bounds</span>
+    <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">ne</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+    <span class="n">folium_bounds</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">,</span> <span class="n">ne</span><span class="p">]</span>
+
+    <span class="c1"># map</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">map_</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="n">tiles</span><span class="o">=</span><span class="s2">"OpenStreetMap"</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+
+        <span class="n">tooltip</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"placekey: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'placekey'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;location_name: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'location_name'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;brands: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'brands'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;street_address: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'street_address'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;city: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'city'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;region: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'region'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;postal_code: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'postal_code'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;open_hours: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'open_hours'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+
+        <span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">point</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">point</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">],</span>
+            <span class="n">radius</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+            <span class="n">fill_color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span>
+            <span class="n">fill_opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">tooltip</span><span class="o">=</span><span class="n">tooltip</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_</span><span class="p">)</span>
+
+    <span class="n">map_</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">folium_bounds</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">map_</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-8">def map_cafes(gdf):
-  
-  # map bounds
-  sw = [gdf.unary_union.bounds[1], gdf.unary_union.bounds[0]]
-  ne = [gdf.unary_union.bounds[3], gdf.unary_union.bounds[2]]
-  folium_bounds = [sw, ne]
-  
-  # map
-  x = gdf.centroid.x[0]
-  y = gdf.centroid.y[0]
-  
-  map_ = folium.Map(
-    location = [y, x],
-    tiles = "OpenStreetMap"
-  )
-  
-  for i, point in gdf.iterrows():
-    
-    tooltip = f"placekey: {point['placekey']}<br/>location_name: {point['location_name']}<br/>brands: {point['brands']}<br/>street_address: {point['street_address']}<br/>city: {point['city']}<br/>region: {point['region']}<br/>postal_code: {point['postal_code']}<br/>open_hours: {point['open_hours']}"
-    
-    folium.Circle(
-      [point['geometry'].y, point['geometry'].x],
-      radius = 40,
-      fill_color = 'blue',
-      color = 'blue',
-      fill_opacity = 1,
-      tooltip = tooltip
-    ).add_to(map_)
 
-  map_.fit_bounds(folium_bounds) 
-  
-  return map_</div>
+    # map bounds
+    sw = [gdf.unary_union.bounds[1], gdf.unary_union.bounds[0]]
+    ne = [gdf.unary_union.bounds[3], gdf.unary_union.bounds[2]]
+    folium_bounds = [sw, ne]
+
+    # map
+    x = gdf.centroid.x[0]
+    y = gdf.centroid.y[0]
+
+    map_ = folium.Map(location=[y, x], tiles="OpenStreetMap")
+
+    for i, point in gdf.iterrows():
+
+        tooltip = f"placekey: {point['placekey']}<br/>location_name: {point['location_name']}<br/>brands: {point['brands']}<br/>street_address: {point['street_address']}<br/>city: {point['city']}<br/>region: {point['region']}<br/>postal_code: {point['postal_code']}<br/>open_hours: {point['open_hours']}"
+
+        folium.Circle(
+            [point["geometry"].y, point["geometry"].x],
+            radius=40,
+            fill_color="blue",
+            color="blue",
+            fill_opacity=1,
+            tooltip=tooltip,
+        ).add_to(map_)
+
+    map_.fit_bounds(folium_bounds)
+
+    return map_</div>
 </div>
 </div>
 </div>
@@ -5386,37 +5422,39 @@ map_</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># the `distance_from_home` column tells us the median distance (as the crow flies), in meters, between the coffee shop and the visitors' homes </span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># the `distance_from_home` column tells us the median distance (as the crow flies), in meters, between the coffee shop and the visitors' homes</span>
 <span class="c1"># which coffee shop's visitors had the highest average median distance traveled since Jan 2018?</span>
 
 <span class="c1"># outlier values in this column distort the histogram</span>
 <span class="c1"># these outliers are likely due to a combination of (1) coffee shops in downtown areas that receive high numbers of out-of-town visitors and (2) quirks in the underlying GPS data</span>
 <span class="n">furthest_traveled</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">sample</span>
-  <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">,</span> <span class="s1">'location_name'</span><span class="p">,</span> <span class="s1">'street_address'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">'distance_from_home'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'avg_median_dist_from_home'</span><span class="p">))</span>
-  <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">'avg_median_dist_from_home'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">sample</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">"placekey"</span><span class="p">,</span> <span class="s2">"location_name"</span><span class="p">,</span> <span class="s2">"street_address"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">"distance_from_home"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"avg_median_dist_from_home"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">"avg_median_dist_from_home"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">furthest_traveled</span><span class="p">)</span>
-<span class="n">furthest_traveled</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"avg_median_dist_from_home"</span><span class="p">)</span><span class="o">.</span><span class="n">isNotNull</span><span class="p">())</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"avg_median_dist_from_home"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"avg_median_dist_from_home"</span><span class="p">)</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">furthest_traveled</span> <span class="o">=</span> <span class="n">furthest_traveled</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">'street_address'</span><span class="p">)</span>
+<span class="n">furthest_traveled</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"avg_median_dist_from_home"</span><span class="p">)</span><span class="o">.</span><span class="n">isNotNull</span><span class="p">())</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s2">"avg_median_dist_from_home"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"avg_median_dist_from_home"</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1000.0</span>
+<span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">furthest_traveled</span> <span class="o">=</span> <span class="n">furthest_traveled</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">"street_address"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-10"># the `distance_from_home` column tells us the median distance (as the crow flies), in meters, between the coffee shop and the visitors' homes 
+<div class="clipboard-copy-txt" id="cell-10"># the `distance_from_home` column tells us the median distance (as the crow flies), in meters, between the coffee shop and the visitors' homes
 # which coffee shop's visitors had the highest average median distance traveled since Jan 2018?
 
 # outlier values in this column distort the histogram
 # these outliers are likely due to a combination of (1) coffee shops in downtown areas that receive high numbers of out-of-town visitors and (2) quirks in the underlying GPS data
 furthest_traveled = (
-  sample
-  .groupBy('placekey', 'location_name', 'street_address')
-  .agg(f.mean('distance_from_home').alias('avg_median_dist_from_home'))
-  .orderBy('avg_median_dist_from_home', ascending = False)
+    sample.groupBy("placekey", "location_name", "street_address")
+    .agg(f.mean("distance_from_home").alias("avg_median_dist_from_home"))
+    .orderBy("avg_median_dist_from_home", ascending=False)
 )
 
 display(furthest_traveled)
-furthest_traveled.filter(f.col("avg_median_dist_from_home").isNotNull()).withColumn("avg_median_dist_from_home", f.col("avg_median_dist_from_home")/1000.0).show(truncate=False)
-furthest_traveled = furthest_traveled.drop('street_address')</div>
+furthest_traveled.filter(f.col("avg_median_dist_from_home").isNotNull()).withColumn(
+    "avg_median_dist_from_home", f.col("avg_median_dist_from_home") / 1000.0
+).show(truncate=False)
+furthest_traveled = furthest_traveled.drop("street_address")</div>
 </div>
 </div>
 </div>
@@ -5502,12 +5540,22 @@ only showing top 20 rows
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># most coffee shops' visitors' homes are &lt;10km away</span>
-<span class="n">display</span><span class="p">(</span><span class="n">furthest_traveled</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'avg_median_dist_from_home'</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">furthest_traveled</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'avg_median_dist_from_home'</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s2">" coffee shops have vistors' home &lt;10 km away, out of "</span><span class="p">,</span> <span class="n">furthest_traveled</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s2">"coffee shops."</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">furthest_traveled</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"avg_median_dist_from_home"</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">furthest_traveled</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"avg_median_dist_from_home"</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+    <span class="s2">" coffee shops have vistors' home &lt;10 km away, out of "</span><span class="p">,</span>
+    <span class="n">furthest_traveled</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+    <span class="s2">"coffee shops."</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-11"># most coffee shops' visitors' homes are &lt;10km away
-display(furthest_traveled.filter(f.col('avg_median_dist_from_home') &lt; 10000))
-print(furthest_traveled.filter(f.col('avg_median_dist_from_home') &lt; 10000).count(), " coffee shops have vistors' home &lt;10 km away, out of ", furthest_traveled.count(), "coffee shops.")</div>
+display(furthest_traveled.filter(f.col("avg_median_dist_from_home") &lt; 10000))
+print(
+    furthest_traveled.filter(f.col("avg_median_dist_from_home") &lt; 10000).count(),
+    " coffee shops have vistors' home &lt;10 km away, out of ",
+    furthest_traveled.count(),
+    "coffee shops.",
+)</div>
 </div>
 </div>
 </div>
@@ -5604,18 +5652,22 @@ SedonaRegistrator.registerAll(spark)</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># load the census block groups for Washington State</span>
-<span class="c1"># filter it down to our three counties of interest in Seattle </span>
+<span class="c1"># filter it down to our three counties of interest in Seattle</span>
 <span class="n">WA_cbgs</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">'header'</span><span class="p">,</span> <span class="s1">'true'</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">'escape'</span><span class="p">,</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">'file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/wa_cbg.csv'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'GEOID'</span><span class="p">)</span><span class="o">.</span><span class="n">rlike</span><span class="p">(</span><span class="s1">'^(53033|53053|53061)'</span><span class="p">))</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"escape"</span><span class="p">,</span> <span class="s1">'"'</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">"file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/wa_cbg.csv"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"GEOID"</span><span class="p">)</span><span class="o">.</span><span class="n">rlike</span><span class="p">(</span><span class="s2">"^(53033|53053|53061)"</span><span class="p">))</span>
 <span class="p">)</span>
 <span class="n">WA_cbgs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-13"># load the census block groups for Washington State
-# filter it down to our three counties of interest in Seattle 
+# filter it down to our three counties of interest in Seattle
 WA_cbgs = (
-  spark.read.option('header', 'true').option('escape', "\"").csv('file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/wa_cbg.csv')
-  .filter(f.col('GEOID').rlike('^(53033|53053|53061)'))
+    spark.read.option("header", "true")
+    .option("escape", '"')
+    .csv("file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/wa_cbg.csv")
+    .filter(f.col("GEOID").rlike("^(53033|53053|53061)"))
 )
 WA_cbgs.head()</div>
 </div>
@@ -5656,26 +5708,34 @@ WA_cbgs.head()</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># transform the geometry column into a Geometry-type</span>
 <span class="n">WA_cbgs</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">WA_cbgs</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'cbg_geometry'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_GeomFromWkt(geometry)"</span><span class="p">))</span>
-  <span class="c1"># we'll just use the CBG centroid</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'cbg_geometry'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_Centroid(cbg_geometry)"</span><span class="p">))</span>
-  <span class="c1"># since we'll be doing a distance calculation, let's also use a projected CRS - epsg:3857</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'cbg_geometry'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_Transform(ST_FlipCoordinates(cbg_geometry), 'epsg:4326','epsg:3857', false)"</span><span class="p">))</span> <span class="c1"># ST_FlipCoordinates() necessary due to this bug: https://issues.apache.org/jira/browse/SEDONA-39</span>
-  <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">'GEOID'</span><span class="p">,</span> <span class="s1">'cbg'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">'geometry'</span><span class="p">,</span> <span class="s1">'cbg_polygon_geometry'</span><span class="p">)</span>
+    <span class="n">WA_cbgs</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"cbg_geometry"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_GeomFromWkt(geometry)"</span><span class="p">))</span>
+    <span class="c1"># we'll just use the CBG centroid</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"cbg_geometry"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_Centroid(cbg_geometry)"</span><span class="p">))</span>
+    <span class="c1"># since we'll be doing a distance calculation, let's also use a projected CRS - epsg:3857</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">"cbg_geometry"</span><span class="p">,</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span>
+            <span class="s2">"ST_Transform(ST_FlipCoordinates(cbg_geometry), 'epsg:4326','epsg:3857', false)"</span>
+        <span class="p">),</span>
+    <span class="p">)</span>  <span class="c1"># ST_FlipCoordinates() necessary due to this bug: https://issues.apache.org/jira/browse/SEDONA-39</span>
+    <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">"GEOID"</span><span class="p">,</span> <span class="s2">"cbg"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">"geometry"</span><span class="p">,</span> <span class="s2">"cbg_polygon_geometry"</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-14"># transform the geometry column into a Geometry-type
 WA_cbgs = (
-  WA_cbgs
-  .withColumn('cbg_geometry', f.expr("ST_GeomFromWkt(geometry)"))
-  # we'll just use the CBG centroid
-  .withColumn('cbg_geometry', f.expr("ST_Centroid(cbg_geometry)"))
-  # since we'll be doing a distance calculation, let's also use a projected CRS - epsg:3857
-  .withColumn('cbg_geometry', f.expr("ST_Transform(ST_FlipCoordinates(cbg_geometry), 'epsg:4326','epsg:3857', false)")) # ST_FlipCoordinates() necessary due to this bug: https://issues.apache.org/jira/browse/SEDONA-39
-  .withColumnRenamed('GEOID', 'cbg')
-  .withColumnRenamed('geometry', 'cbg_polygon_geometry')
+    WA_cbgs.withColumn("cbg_geometry", f.expr("ST_GeomFromWkt(geometry)"))
+    # we'll just use the CBG centroid
+    .withColumn("cbg_geometry", f.expr("ST_Centroid(cbg_geometry)"))
+    # since we'll be doing a distance calculation, let's also use a projected CRS - epsg:3857
+    .withColumn(
+        "cbg_geometry",
+        f.expr(
+            "ST_Transform(ST_FlipCoordinates(cbg_geometry), 'epsg:4326','epsg:3857', false)"
+        ),
+    )  # ST_FlipCoordinates() necessary due to this bug: https://issues.apache.org/jira/browse/SEDONA-39
+    .withColumnRenamed("GEOID", "cbg")
+    .withColumnRenamed("geometry", "cbg_polygon_geometry")
 )</div>
 </div>
 </div>
@@ -5798,56 +5858,64 @@ WA_cbgs = (
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Next let's prep our sample data</span>
 <span class="n">sample_seattle_visitors</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">sample</span>
-  <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">'visitor_home_cbgs'</span><span class="p">))</span>
-  <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">'key'</span><span class="p">,</span> <span class="s1">'cbg'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">'value'</span><span class="p">,</span> <span class="s1">'visitors'</span><span class="p">)</span>
-<span class="c1">#   # filter out CBGs with low visitor counts</span>
-  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'visitors'</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
-  <span class="c1"># filter down to only the visitors from Seattle CBGs</span>
-  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'cbg'</span><span class="p">)</span><span class="o">.</span><span class="n">rlike</span><span class="p">(</span><span class="s1">'^(53033|53053|53061)'</span><span class="p">))</span>
-  <span class="c1"># aggregate up all the visitors over time from each CBG to each Cafe</span>
-  <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">,</span> <span class="s1">'cbg'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">'visitors'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'visitors'</span><span class="p">)</span>
-  <span class="p">)</span>
-  <span class="c1"># join back with most up-to-date POI information</span>
-  <span class="o">.</span><span class="n">join</span><span class="p">(</span>
-    <span class="n">cafes_latest</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">,</span> <span class="s1">'latitude'</span><span class="p">,</span> <span class="s1">'longitude'</span><span class="p">),</span>
-    <span class="s1">'placekey'</span>
-  <span class="p">)</span>
-  <span class="c1"># transform geometry column</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'cafe_geometry'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_Point(CAST(longitude AS Decimal(24, 20)), CAST(latitude AS Decimal(24, 20)))"</span><span class="p">))</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'cafe_geometry'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_Transform(ST_FlipCoordinates(cafe_geometry), 'epsg:4326','epsg:3857', false)"</span><span class="p">))</span>
-  <span class="c1"># join with CBG geometries</span>
-  <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WA_cbgs</span><span class="p">,</span> <span class="s1">'cbg'</span><span class="p">)</span>
+    <span class="n">sample</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"placekey"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">"visitor_home_cbgs"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">"key"</span><span class="p">,</span> <span class="s2">"cbg"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">"value"</span><span class="p">,</span> <span class="s2">"visitors"</span><span class="p">)</span>
+    <span class="c1">#   # filter out CBGs with low visitor counts</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"visitors"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="c1"># filter down to only the visitors from Seattle CBGs</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"cbg"</span><span class="p">)</span><span class="o">.</span><span class="n">rlike</span><span class="p">(</span><span class="s2">"^(53033|53053|53061)"</span><span class="p">))</span>
+    <span class="c1"># aggregate up all the visitors over time from each CBG to each Cafe</span>
+    <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">"placekey"</span><span class="p">,</span> <span class="s2">"cbg"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"visitors"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"visitors"</span><span class="p">))</span>
+    <span class="c1"># join back with most up-to-date POI information</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cafes_latest</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"placekey"</span><span class="p">,</span> <span class="s2">"latitude"</span><span class="p">,</span> <span class="s2">"longitude"</span><span class="p">),</span> <span class="s2">"placekey"</span><span class="p">)</span>
+    <span class="c1"># transform geometry column</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">"cafe_geometry"</span><span class="p">,</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span>
+            <span class="s2">"ST_Point(CAST(longitude AS Decimal(24, 20)), CAST(latitude AS Decimal(24, 20)))"</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">"cafe_geometry"</span><span class="p">,</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span>
+            <span class="s2">"ST_Transform(ST_FlipCoordinates(cafe_geometry), 'epsg:4326','epsg:3857', false)"</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+    <span class="c1"># join with CBG geometries</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WA_cbgs</span><span class="p">,</span> <span class="s2">"cbg"</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-16"># Next let's prep our sample data
 sample_seattle_visitors = (
-  sample
-  .select('placekey', f.explode('visitor_home_cbgs'))
-  .withColumnRenamed('key', 'cbg')
-  .withColumnRenamed('value', 'visitors')
-#   # filter out CBGs with low visitor counts
-  .filter(f.col('visitors') &gt; 4)
-  # filter down to only the visitors from Seattle CBGs
-  .filter(f.col('cbg').rlike('^(53033|53053|53061)'))
-  # aggregate up all the visitors over time from each CBG to each Cafe
-  .groupBy('placekey', 'cbg')
-  .agg(
-    f.sum('visitors').alias('visitors')
-  )
-  # join back with most up-to-date POI information
-  .join(
-    cafes_latest.select('placekey', 'latitude', 'longitude'),
-    'placekey'
-  )
-  # transform geometry column
-  .withColumn('cafe_geometry', f.expr("ST_Point(CAST(longitude AS Decimal(24, 20)), CAST(latitude AS Decimal(24, 20)))"))
-  .withColumn('cafe_geometry', f.expr("ST_Transform(ST_FlipCoordinates(cafe_geometry), 'epsg:4326','epsg:3857', false)"))
-  # join with CBG geometries
-  .join(WA_cbgs, 'cbg')
+    sample.select("placekey", f.explode("visitor_home_cbgs"))
+    .withColumnRenamed("key", "cbg")
+    .withColumnRenamed("value", "visitors")
+    #   # filter out CBGs with low visitor counts
+    .filter(f.col("visitors") &gt; 4)
+    # filter down to only the visitors from Seattle CBGs
+    .filter(f.col("cbg").rlike("^(53033|53053|53061)"))
+    # aggregate up all the visitors over time from each CBG to each Cafe
+    .groupBy("placekey", "cbg")
+    .agg(f.sum("visitors").alias("visitors"))
+    # join back with most up-to-date POI information
+    .join(cafes_latest.select("placekey", "latitude", "longitude"), "placekey")
+    # transform geometry column
+    .withColumn(
+        "cafe_geometry",
+        f.expr(
+            "ST_Point(CAST(longitude AS Decimal(24, 20)), CAST(latitude AS Decimal(24, 20)))"
+        ),
+    )
+    .withColumn(
+        "cafe_geometry",
+        f.expr(
+            "ST_Transform(ST_FlipCoordinates(cafe_geometry), 'epsg:4326','epsg:3857', false)"
+        ),
+    )
+    # join with CBG geometries
+    .join(WA_cbgs, "cbg")
 )</div>
 </div>
 </div>
@@ -6005,18 +6073,22 @@ sample_seattle_visitors = (
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">distance_traveled_SEA</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">sample_seattle_visitors</span>
-  <span class="c1"># calculate the distance from home in meters</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'distance_from_home'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_Distance(cafe_geometry, cbg_geometry)"</span><span class="p">))</span>
+    <span class="n">sample_seattle_visitors</span>
+    <span class="c1"># calculate the distance from home in meters</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">"distance_from_home"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_Distance(cafe_geometry, cbg_geometry)"</span><span class="p">)</span>
+    <span class="p">)</span>
 <span class="p">)</span>
-<span class="n">distance_traveled_SEA</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s1">'distance_traveled_SEA'</span><span class="p">)</span>
+<span class="n">distance_traveled_SEA</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"distance_traveled_SEA"</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-18">distance_traveled_SEA = (
-  sample_seattle_visitors
-  # calculate the distance from home in meters
-  .withColumn('distance_from_home', f.expr("ST_Distance(cafe_geometry, cbg_geometry)"))
+    sample_seattle_visitors
+    # calculate the distance from home in meters
+    .withColumn(
+        "distance_from_home", f.expr("ST_Distance(cafe_geometry, cbg_geometry)")
+    )
 )
-distance_traveled_SEA.createOrReplaceTempView('distance_traveled_SEA')</div>
+distance_traveled_SEA.createOrReplaceTempView("distance_traveled_SEA")</div>
 </div>
 </div>
 </div>
@@ -6041,23 +6113,23 @@ distance_traveled_SEA.createOrReplaceTempView('distance_traveled_SEA')</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="s1">'''</span>
-<span class="s1">SELECT *</span>
-<span class="s1">FROM (</span>
-<span class="s1">  SELECT DISTINCT </span>
-<span class="s1">    placekey, </span>
-<span class="s1">    cbg,</span>
-<span class="s1">    visitors,</span>
-<span class="s1">    distance_from_home,</span>
-<span class="s1">    posexplode(split(repeat(",", visitors), ","))</span>
-<span class="s1">    FROM distance_traveled_SEA</span>
-<span class="s1">)</span>
-<span class="s1">WHERE pos &gt; 0</span>
-<span class="s1">'''</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">SELECT *</span>
+<span class="s2">FROM (</span>
+<span class="s2">  SELECT DISTINCT </span>
+<span class="s2">    placekey, </span>
+<span class="s2">    cbg,</span>
+<span class="s2">    visitors,</span>
+<span class="s2">    distance_from_home,</span>
+<span class="s2">    posexplode(split(repeat(",", visitors), ","))</span>
+<span class="s2">    FROM distance_traveled_SEA</span>
+<span class="s2">)</span>
+<span class="s2">WHERE pos &gt; 0</span>
+<span class="s2">"""</span>
 
 <span class="n">weighted_median_tmp</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-19">q = '''
+<div class="clipboard-copy-txt" id="cell-19">q = """
 SELECT *
 FROM (
   SELECT DISTINCT 
@@ -6069,7 +6141,7 @@ FROM (
     FROM distance_traveled_SEA
 )
 WHERE pos &gt; 0
-'''
+"""
 
 weighted_median_tmp = spark.sql(q)</div>
 </div>
@@ -6096,11 +6168,11 @@ weighted_median_tmp = spark.sql(q)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">grp_window</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">)</span>
-<span class="n">median_percentile</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s1">'percentile_approx(distance_from_home, 0.5)'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">grp_window</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s2">"placekey"</span><span class="p">)</span>
+<span class="n">median_percentile</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"percentile_approx(distance_from_home, 0.5)"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-20">grp_window = Window.partitionBy('placekey')
-median_percentile = f.expr('percentile_approx(distance_from_home, 0.5)')</div>
+<div class="clipboard-copy-txt" id="cell-20">grp_window = Window.partitionBy("placekey")
+median_percentile = f.expr("percentile_approx(distance_from_home, 0.5)")</div>
 </div>
 </div>
 </div>
@@ -6244,16 +6316,12 @@ median_percentile = f.expr('percentile_approx(distance_from_home, 0.5)')</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">median_dist_traveled_SEA</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">weighted_median_tmp</span>
-  <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">median_percentile</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'median_dist_traveled_SEA'</span><span class="p">))</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">median_dist_traveled_SEA</span> <span class="o">=</span> <span class="n">weighted_median_tmp</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">"placekey"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">median_percentile</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"median_dist_traveled_SEA"</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-22">median_dist_traveled_SEA = (
-  weighted_median_tmp
-  .groupBy('placekey')
-  .agg(median_percentile.alias('median_dist_traveled_SEA'))
+<div class="clipboard-copy-txt" id="cell-22">median_dist_traveled_SEA = weighted_median_tmp.groupBy("placekey").agg(
+    median_percentile.alias("median_dist_traveled_SEA")
 )</div>
 </div>
 </div>
@@ -6279,10 +6347,13 @@ median_percentile = f.expr('percentile_approx(distance_from_home, 0.5)')</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">median_dist_traveled_SEA</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'median_dist_traveled_SEA'</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">25000</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">median_dist_traveled_SEA</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"median_dist_traveled_SEA"</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">25000</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span>
+    <span class="mi">10</span>
+<span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-23">median_dist_traveled_SEA.filter(f.col('median_dist_traveled_SEA') &lt; 25000).limit(10).toPandas().head()
-</div>
+<div class="clipboard-copy-txt" id="cell-23">median_dist_traveled_SEA.filter(f.col("median_dist_traveled_SEA") &lt; 25000).limit(
+    10
+).toPandas().head()</div>
 </div>
 </div>
 </div>
@@ -6375,22 +6446,14 @@ median_percentile = f.expr('percentile_approx(distance_from_home, 0.5)')</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">total_visits</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">sample</span>
-  <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">'raw_visit_counts'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'total_visits'</span><span class="p">),</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">'raw_visitor_counts'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'total_visitors'</span><span class="p">)</span>
-  <span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">total_visits</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">"placekey"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"raw_visit_counts"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"total_visits"</span><span class="p">),</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"raw_visitor_counts"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"total_visitors"</span><span class="p">),</span>
 <span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-24">total_visits = (
-  sample
-  .groupBy('placekey')
-  .agg(
-    f.sum('raw_visit_counts').alias('total_visits'),
-    f.sum('raw_visitor_counts').alias('total_visitors')
-  )
+<div class="clipboard-copy-txt" id="cell-24">total_visits = sample.groupBy("placekey").agg(
+    f.sum("raw_visit_counts").alias("total_visits"),
+    f.sum("raw_visitor_counts").alias("total_visitors"),
 )</div>
 </div>
 </div>
@@ -6417,25 +6480,29 @@ median_percentile = f.expr('percentile_approx(distance_from_home, 0.5)')</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">distance_traveled_final</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">furthest_traveled</span>
-  <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">median_dist_traveled_SEA</span><span class="p">,</span> <span class="s1">'placekey'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cafes_latest</span><span class="p">,</span> <span class="p">[</span><span class="s1">'placekey'</span><span class="p">,</span> <span class="s1">'location_name'</span><span class="p">])</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'distance_traveled_diff'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'avg_median_dist_from_home'</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'median_dist_traveled_SEA'</span><span class="p">))</span>
-  <span class="c1"># keep only the cafes with a meaningful sample - at least 1000 visits since 2018</span>
-  <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">total_visits</span><span class="p">,</span> <span class="s1">'placekey'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'total_visits'</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">'distance_traveled_diff'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">furthest_traveled</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">median_dist_traveled_SEA</span><span class="p">,</span> <span class="s2">"placekey"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cafes_latest</span><span class="p">,</span> <span class="p">[</span><span class="s2">"placekey"</span><span class="p">,</span> <span class="s2">"location_name"</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">"distance_traveled_diff"</span><span class="p">,</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"avg_median_dist_from_home"</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"median_dist_traveled_SEA"</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="c1"># keep only the cafes with a meaningful sample - at least 1000 visits since 2018</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">total_visits</span><span class="p">,</span> <span class="s2">"placekey"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"total_visits"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">"distance_traveled_diff"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-25">distance_traveled_final = (
-  furthest_traveled
-  .join(median_dist_traveled_SEA, 'placekey')
-  .join(cafes_latest, ['placekey', 'location_name'])
-  .withColumn('distance_traveled_diff', f.col('avg_median_dist_from_home') - f.col('median_dist_traveled_SEA'))
-  # keep only the cafes with a meaningful sample - at least 1000 visits since 2018
-  .join(total_visits, 'placekey')
-  .filter(f.col('total_visits') &gt; 1000)
-  .orderBy('distance_traveled_diff', ascending = False)
+    furthest_traveled.join(median_dist_traveled_SEA, "placekey")
+    .join(cafes_latest, ["placekey", "location_name"])
+    .withColumn(
+        "distance_traveled_diff",
+        f.col("avg_median_dist_from_home") - f.col("median_dist_traveled_SEA"),
+    )
+    # keep only the cafes with a meaningful sample - at least 1000 visits since 2018
+    .join(total_visits, "placekey")
+    .filter(f.col("total_visits") &gt; 1000)
+    .orderBy("distance_traveled_diff", ascending=False)
 )</div>
 </div>
 </div>
@@ -6634,9 +6701,9 @@ median_percentile = f.expr('percentile_approx(distance_from_home, 0.5)')</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">distance_traveled_final</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">distance_traveled_final</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"placekey"</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-27">distance_traveled_final.select('placekey').distinct().count()</div>
+<div class="clipboard-copy-txt" id="cell-27">distance_traveled_final.select("placekey").distinct().count()</div>
 </div>
 </div>
 </div>
@@ -6679,23 +6746,47 @@ median_percentile = f.expr('percentile_approx(distance_from_home, 0.5)')</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">most_tourists</span> <span class="o">=</span> <span class="n">distance_traveled_final</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'visitor_type'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="s1">'tourist'</span><span class="p">))</span>
-<span class="n">most_locals</span> <span class="o">=</span> <span class="n">distance_traveled_final</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">'distance_traveled_diff'</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'visitor_type'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="s1">'local'</span><span class="p">))</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">most_tourists</span> <span class="o">=</span> <span class="n">distance_traveled_final</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s2">"visitor_type"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="s2">"tourist"</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">most_locals</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">distance_traveled_final</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">"distance_traveled_diff"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"visitor_type"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="s2">"local"</span><span class="p">))</span>
+<span class="p">)</span>
 
 <span class="n">visitor_type</span> <span class="o">=</span> <span class="n">most_tourists</span><span class="o">.</span><span class="n">unionByName</span><span class="p">(</span><span class="n">most_locals</span><span class="p">)</span>
 
 <span class="c1"># create a geopandas geodataframe</span>
 <span class="n">visitor_type_gdf</span> <span class="o">=</span> <span class="n">visitor_type</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
-<span class="n">visitor_type_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">visitor_type_gdf</span><span class="p">,</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">visitor_type_gdf</span><span class="p">[</span><span class="s1">'longitude'</span><span class="p">],</span> <span class="n">visitor_type_gdf</span><span class="p">[</span><span class="s1">'latitude'</span><span class="p">]),</span> <span class="n">crs</span> <span class="o">=</span> <span class="s1">'EPSG:4326'</span><span class="p">)</span>
+<span class="n">visitor_type_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="n">visitor_type_gdf</span><span class="p">,</span>
+    <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span>
+        <span class="n">visitor_type_gdf</span><span class="p">[</span><span class="s2">"longitude"</span><span class="p">],</span> <span class="n">visitor_type_gdf</span><span class="p">[</span><span class="s2">"latitude"</span><span class="p">]</span>
+    <span class="p">),</span>
+    <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-28">most_tourists = distance_traveled_final.limit(500).withColumn('visitor_type', f.lit('tourist'))
-most_locals = distance_traveled_final.orderBy('distance_traveled_diff').limit(500).withColumn('visitor_type', f.lit('local'))
+<div class="clipboard-copy-txt" id="cell-28">most_tourists = distance_traveled_final.limit(500).withColumn(
+    "visitor_type", f.lit("tourist")
+)
+most_locals = (
+    distance_traveled_final.orderBy("distance_traveled_diff")
+    .limit(500)
+    .withColumn("visitor_type", f.lit("local"))
+)
 
 visitor_type = most_tourists.unionByName(most_locals)
 
 # create a geopandas geodataframe
 visitor_type_gdf = visitor_type.toPandas()
-visitor_type_gdf = gpd.GeoDataFrame(visitor_type_gdf, geometry = gpd.points_from_xy(visitor_type_gdf['longitude'], visitor_type_gdf['latitude']), crs = 'EPSG:4326')</div>
+visitor_type_gdf = gpd.GeoDataFrame(
+    visitor_type_gdf,
+    geometry=gpd.points_from_xy(
+        visitor_type_gdf["longitude"], visitor_type_gdf["latitude"]
+    ),
+    crs="EPSG:4326",
+)</div>
 </div>
 </div>
 </div>
@@ -6733,70 +6824,64 @@ visitor_type_gdf = gpd.GeoDataFrame(visitor_type_gdf, geometry = gpd.points_from
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">map_cafe_visitor_type</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
-  
-  <span class="c1"># map bounds</span>
-  <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-  <span class="n">ne</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
-  <span class="n">folium_bounds</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">,</span> <span class="n">ne</span><span class="p">]</span>
-  
-  <span class="c1"># map</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  <span class="n">y</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  
-  <span class="n">map_</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
-    <span class="n">location</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span>
-    <span class="n">tiles</span> <span class="o">=</span> <span class="s2">"OpenStreetMap"</span>
-  <span class="p">)</span>
-  
-  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    
-    <span class="n">tooltip</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"placekey: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'placekey'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;location_name: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'location_name'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;brands: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'brands'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;street_address: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'street_address'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;city: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'city'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;region: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'region'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;postal_code: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'postal_code'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;visitor_type: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'visitor_type'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;avg_median_dist_from_home: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'avg_median_dist_from_home'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
-    
-    <span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
-      <span class="p">[</span><span class="n">point</span><span class="p">[</span><span class="s1">'geometry'</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">point</span><span class="p">[</span><span class="s1">'geometry'</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">],</span>
-      <span class="n">radius</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span>
-      <span class="n">fill_color</span> <span class="o">=</span> <span class="s1">'blue'</span> <span class="k">if</span> <span class="n">point</span><span class="p">[</span><span class="s1">'visitor_type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'tourist'</span> <span class="k">else</span> <span class="s1">'red'</span><span class="p">,</span>
-      <span class="n">color</span> <span class="o">=</span> <span class="s1">'blue'</span> <span class="k">if</span> <span class="n">point</span><span class="p">[</span><span class="s1">'visitor_type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'tourist'</span> <span class="k">else</span> <span class="s1">'red'</span><span class="p">,</span>
-      <span class="n">fill_opacity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-      <span class="n">tooltip</span> <span class="o">=</span> <span class="n">tooltip</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_</span><span class="p">)</span>
 
-  <span class="n">map_</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">folium_bounds</span><span class="p">)</span> 
-  
-  <span class="k">return</span> <span class="n">map_</span>
+    <span class="c1"># map bounds</span>
+    <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">ne</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+    <span class="n">folium_bounds</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">,</span> <span class="n">ne</span><span class="p">]</span>
+
+    <span class="c1"># map</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">map_</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="n">tiles</span><span class="o">=</span><span class="s2">"OpenStreetMap"</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+
+        <span class="n">tooltip</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"placekey: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'placekey'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;location_name: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'location_name'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;brands: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'brands'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;street_address: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'street_address'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;city: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'city'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;region: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'region'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;postal_code: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'postal_code'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;visitor_type: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'visitor_type'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;avg_median_dist_from_home: </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'avg_median_dist_from_home'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+
+        <span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">point</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">point</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">],</span>
+            <span class="n">radius</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+            <span class="n">fill_color</span><span class="o">=</span><span class="s2">"blue"</span> <span class="k">if</span> <span class="n">point</span><span class="p">[</span><span class="s2">"visitor_type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"tourist"</span> <span class="k">else</span> <span class="s2">"red"</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span> <span class="k">if</span> <span class="n">point</span><span class="p">[</span><span class="s2">"visitor_type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"tourist"</span> <span class="k">else</span> <span class="s2">"red"</span><span class="p">,</span>
+            <span class="n">fill_opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">tooltip</span><span class="o">=</span><span class="n">tooltip</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_</span><span class="p">)</span>
+
+    <span class="n">map_</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">folium_bounds</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">map_</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-29">def map_cafe_visitor_type(gdf):
-  
-  # map bounds
-  sw = [gdf.unary_union.bounds[1], gdf.unary_union.bounds[0]]
-  ne = [gdf.unary_union.bounds[3], gdf.unary_union.bounds[2]]
-  folium_bounds = [sw, ne]
-  
-  # map
-  x = gdf.centroid.x[0]
-  y = gdf.centroid.y[0]
-  
-  map_ = folium.Map(
-    location = [y, x],
-    tiles = "OpenStreetMap"
-  )
-  
-  for i, point in gdf.iterrows():
-    
-    tooltip = f"placekey: {point['placekey']}<br/>location_name: {point['location_name']}<br/>brands: {point['brands']}<br/>street_address: {point['street_address']}<br/>city: {point['city']}<br/>region: {point['region']}<br/>postal_code: {point['postal_code']}<br/>visitor_type: {point['visitor_type']}<br/>avg_median_dist_from_home: {point['avg_median_dist_from_home']}"
-    
-    folium.Circle(
-      [point['geometry'].y, point['geometry'].x],
-      radius = 40,
-      fill_color = 'blue' if point['visitor_type'] == 'tourist' else 'red',
-      color = 'blue' if point['visitor_type'] == 'tourist' else 'red',
-      fill_opacity = 1,
-      tooltip = tooltip
-    ).add_to(map_)
 
-  map_.fit_bounds(folium_bounds) 
-  
-  return map_</div>
+    # map bounds
+    sw = [gdf.unary_union.bounds[1], gdf.unary_union.bounds[0]]
+    ne = [gdf.unary_union.bounds[3], gdf.unary_union.bounds[2]]
+    folium_bounds = [sw, ne]
+
+    # map
+    x = gdf.centroid.x[0]
+    y = gdf.centroid.y[0]
+
+    map_ = folium.Map(location=[y, x], tiles="OpenStreetMap")
+
+    for i, point in gdf.iterrows():
+
+        tooltip = f"placekey: {point['placekey']}<br/>location_name: {point['location_name']}<br/>brands: {point['brands']}<br/>street_address: {point['street_address']}<br/>city: {point['city']}<br/>region: {point['region']}<br/>postal_code: {point['postal_code']}<br/>visitor_type: {point['visitor_type']}<br/>avg_median_dist_from_home: {point['avg_median_dist_from_home']}"
+
+        folium.Circle(
+            [point["geometry"].y, point["geometry"].x],
+            radius=40,
+            fill_color="blue" if point["visitor_type"] == "tourist" else "red",
+            color="blue" if point["visitor_type"] == "tourist" else "red",
+            fill_opacity=1,
+            tooltip=tooltip,
+        ).add_to(map_)
+
+    map_.fit_bounds(folium_bounds)
+
+    return map_</div>
 </div>
 </div>
 </div>
@@ -6886,20 +6971,28 @@ map_cafe_visitor_type(visitor_type_gdf)</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">WA_neighbs</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">'header'</span><span class="p">,</span> <span class="s1">'true'</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">'escape'</span><span class="p">,</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">'file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/seattle_neighborhoods.csv'</span><span class="p">)</span>
-  <span class="c1"># transform the geometry column into a Geometry-type</span>
-  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'geometry'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_GeomFromWkt(geometry)"</span><span class="p">))</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"header"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">"escape"</span><span class="p">,</span> <span class="s1">'"'</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">csv</span><span class="p">(</span>
+        <span class="s2">"file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/seattle_neighborhoods.csv"</span>
+    <span class="p">)</span>
+    <span class="c1"># transform the geometry column into a Geometry-type</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">"geometry"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_GeomFromWkt(geometry)"</span><span class="p">))</span>
 <span class="p">)</span>
-<span class="n">WA_neighbs</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s1">'WA_neighbs'</span><span class="p">)</span>
+<span class="n">WA_neighbs</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"WA_neighbs"</span><span class="p">)</span>
 
 <span class="n">WA_neighbs</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-31">WA_neighbs = (
-  spark.read.option('header', 'true').option('escape', "\"").csv('file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/seattle_neighborhoods.csv')
-  # transform the geometry column into a Geometry-type
-  .withColumn('geometry', f.expr("ST_GeomFromWkt(geometry)"))
+    spark.read.option("header", "true")
+    .option("escape", '"')
+    .csv(
+        "file:///media/hdd1/code/sigspatial-2021-cafe-analysis/data/seattle_neighborhoods.csv"
+    )
+    # transform the geometry column into a Geometry-type
+    .withColumn("geometry", f.expr("ST_GeomFromWkt(geometry)"))
 )
-WA_neighbs.createOrReplaceTempView('WA_neighbs')
+WA_neighbs.createOrReplaceTempView("WA_neighbs")
 
 WA_neighbs.limit(10).toPandas().head()</div>
 </div>
@@ -6994,11 +7087,21 @@ WA_neighbs.limit(10).toPandas().head()</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">cafes_geo</span> <span class="o">=</span> <span class="n">cafes_latest</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">'cafe_geometry'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s2">"ST_Point(CAST(longitude AS Decimal(24,20)), CAST(latitude AS Decimal(24,20)))"</span><span class="p">))</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">'placekey'</span><span class="p">,</span> <span class="s1">'cafe_geometry'</span><span class="p">)</span>
-<span class="n">cafes_geo</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s1">'cafes_geo'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">cafes_geo</span> <span class="o">=</span> <span class="n">cafes_latest</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s2">"cafe_geometry"</span><span class="p">,</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span>
+        <span class="s2">"ST_Point(CAST(longitude AS Decimal(24,20)), CAST(latitude AS Decimal(24,20)))"</span>
+    <span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"placekey"</span><span class="p">,</span> <span class="s2">"cafe_geometry"</span><span class="p">)</span>
+<span class="n">cafes_geo</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">"cafes_geo"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-32">cafes_geo = cafes_latest.withColumn('cafe_geometry', f.expr("ST_Point(CAST(longitude AS Decimal(24,20)), CAST(latitude AS Decimal(24,20)))")).select('placekey', 'cafe_geometry')
-cafes_geo.createOrReplaceTempView('cafes_geo')</div>
+<div class="clipboard-copy-txt" id="cell-32">cafes_geo = cafes_latest.withColumn(
+    "cafe_geometry",
+    f.expr(
+        "ST_Point(CAST(longitude AS Decimal(24,20)), CAST(latitude AS Decimal(24,20)))"
+    ),
+).select("placekey", "cafe_geometry")
+cafes_geo.createOrReplaceTempView("cafes_geo")</div>
 </div>
 </div>
 </div>
@@ -7024,20 +7127,20 @@ cafes_geo.createOrReplaceTempView('cafes_geo')</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># perform a spatial join</span>
-<span class="n">q</span> <span class="o">=</span> <span class="s1">'''</span>
-<span class="s1">SELECT cafes_geo.placekey, WA_neighbs.S_HOOD as neighborhood, WA_neighbs.geometry</span>
-<span class="s1">FROM WA_neighbs, cafes_geo</span>
-<span class="s1">WHERE ST_Intersects(WA_neighbs.geometry, cafes_geo.cafe_geometry)</span>
-<span class="s1">'''</span>
+<span class="n">q</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">SELECT cafes_geo.placekey, WA_neighbs.S_HOOD as neighborhood, WA_neighbs.geometry</span>
+<span class="s2">FROM WA_neighbs, cafes_geo</span>
+<span class="s2">WHERE ST_Intersects(WA_neighbs.geometry, cafes_geo.cafe_geometry)</span>
+<span class="s2">"""</span>
 
 <span class="n">cafe_neighb_join</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-33"># perform a spatial join
-q = '''
+q = """
 SELECT cafes_geo.placekey, WA_neighbs.S_HOOD as neighborhood, WA_neighbs.geometry
 FROM WA_neighbs, cafes_geo
 WHERE ST_Intersects(WA_neighbs.geometry, cafes_geo.cafe_geometry)
-'''
+"""
 
 cafe_neighb_join = spark.sql(q)</div>
 </div>
@@ -7168,24 +7271,22 @@ cafe_neighb_join = spark.sql(q)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># add the visit and visitor counts and aggregate up to the neighborhood</span>
 <span class="n">neighborhood_agg</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">cafe_neighb_join</span>
-  <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">total_visits</span><span class="p">,</span> <span class="s1">'placekey'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">'neighborhood'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'geometry'</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s1">'string'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'geometry'</span><span class="p">))</span>
-  <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">'total_visits'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'total_visits'</span><span class="p">),</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">'total_visitors'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'total_visitors'</span><span class="p">)</span>
-  <span class="p">)</span>
+    <span class="n">cafe_neighb_join</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">total_visits</span><span class="p">,</span> <span class="s2">"placekey"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">"neighborhood"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"geometry"</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">"string"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"geometry"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"total_visits"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"total_visits"</span><span class="p">),</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"total_visitors"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"total_visitors"</span><span class="p">),</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-35"># add the visit and visitor counts and aggregate up to the neighborhood
 neighborhood_agg = (
-  cafe_neighb_join
-  .join(total_visits, 'placekey')
-  .groupBy('neighborhood', f.col('geometry').cast('string').alias('geometry'))
-  .agg(
-    f.sum('total_visits').alias('total_visits'),
-    f.sum('total_visitors').alias('total_visitors')
-  )
+    cafe_neighb_join.join(total_visits, "placekey")
+    .groupBy("neighborhood", f.col("geometry").cast("string").alias("geometry"))
+    .agg(
+        f.sum("total_visits").alias("total_visits"),
+        f.sum("total_visitors").alias("total_visitors"),
+    )
 )</div>
 </div>
 </div>
@@ -7211,17 +7312,19 @@ neighborhood_agg = (
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">neighbs_gdf</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">neighborhood_agg</span>
-  <span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">neighbs_gdf</span> <span class="o">=</span> <span class="n">neighborhood_agg</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<span class="n">neighbs_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="n">neighbs_gdf</span><span class="p">,</span>
+    <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="o">.</span><span class="n">from_wkt</span><span class="p">(</span><span class="n">neighbs_gdf</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]),</span>
+    <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">neighbs_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">neighbs_gdf</span><span class="p">,</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="o">.</span><span class="n">from_wkt</span><span class="p">(</span><span class="n">neighbs_gdf</span><span class="p">[</span><span class="s1">'geometry'</span><span class="p">]),</span> <span class="n">crs</span> <span class="o">=</span> <span class="s1">'EPSG:4326'</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-36">neighbs_gdf = (
-  neighborhood_agg
-  .toPandas()
-)
-neighbs_gdf = gpd.GeoDataFrame(neighbs_gdf, geometry = gpd.GeoSeries.from_wkt(neighbs_gdf['geometry']), crs = 'EPSG:4326')</div>
+<div class="clipboard-copy-txt" id="cell-36">neighbs_gdf = neighborhood_agg.toPandas()
+neighbs_gdf = gpd.GeoDataFrame(
+    neighbs_gdf,
+    geometry=gpd.GeoSeries.from_wkt(neighbs_gdf["geometry"]),
+    crs="EPSG:4326",
+)</div>
 </div>
 </div>
 </div>
@@ -7260,72 +7363,70 @@ neighbs_gdf = gpd.GeoDataFrame(neighbs_gdf, geometry = gpd.GeoSeries.from_wkt(ne
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">map_neighbs</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
-  
-  <span class="c1"># map bounds</span>
-  <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-  <span class="n">ne</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
-  <span class="n">folium_bounds</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">,</span> <span class="n">ne</span><span class="p">]</span>
-  
-  <span class="c1"># map</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  <span class="n">y</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  
-  <span class="n">map_</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
-    <span class="n">location</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span>
-    <span class="n">tiles</span> <span class="o">=</span> <span class="s2">"OpenStreetMap"</span>
-  <span class="p">)</span>
-    
-  <span class="n">gdf</span><span class="p">[</span><span class="s1">'percentile'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s1">'total_visits'</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
-  
-  <span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span>
-      <span class="n">gdf</span><span class="p">[[</span><span class="s1">'neighborhood'</span><span class="p">,</span> <span class="s1">'total_visits'</span><span class="p">,</span> <span class="s1">'total_visitors'</span><span class="p">,</span> <span class="s1">'percentile'</span><span class="p">,</span> <span class="s1">'geometry'</span><span class="p">]],</span>
-      <span class="n">style_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'weight'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-        <span class="s1">'color'</span><span class="p">:</span><span class="s1">'blue'</span><span class="p">,</span>
-        <span class="s1">'fillOpacity'</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">'properties'</span><span class="p">][</span><span class="s1">'percentile'</span><span class="p">]</span>
-      <span class="p">},</span>
-    <span class="n">tooltip</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">GeoJsonTooltip</span><span class="p">(</span>
-        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'neighborhood'</span><span class="p">,</span> <span class="s1">'total_visits'</span><span class="p">,</span> <span class="s1">'total_visitors'</span><span class="p">,</span> <span class="s1">'percentile'</span><span class="p">]</span>
-      <span class="p">)</span>
+
+    <span class="c1"># map bounds</span>
+    <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">ne</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+    <span class="n">folium_bounds</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">,</span> <span class="n">ne</span><span class="p">]</span>
+
+    <span class="c1"># map</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">map_</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="n">tiles</span><span class="o">=</span><span class="s2">"OpenStreetMap"</span><span class="p">)</span>
+
+    <span class="n">gdf</span><span class="p">[</span><span class="s2">"percentile"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">"total_visits"</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+
+    <span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span>
+        <span class="n">gdf</span><span class="p">[</span>
+            <span class="p">[</span><span class="s2">"neighborhood"</span><span class="p">,</span> <span class="s2">"total_visits"</span><span class="p">,</span> <span class="s2">"total_visitors"</span><span class="p">,</span> <span class="s2">"percentile"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]</span>
+        <span class="p">],</span>
+        <span class="n">style_function</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"weight"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">,</span>
+            <span class="s2">"fillOpacity"</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">"properties"</span><span class="p">][</span><span class="s2">"percentile"</span><span class="p">],</span>
+        <span class="p">},</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">GeoJsonTooltip</span><span class="p">(</span>
+            <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">"neighborhood"</span><span class="p">,</span> <span class="s2">"total_visits"</span><span class="p">,</span> <span class="s2">"total_visitors"</span><span class="p">,</span> <span class="s2">"percentile"</span><span class="p">]</span>
+        <span class="p">),</span>
     <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_</span><span class="p">)</span>
 
-  <span class="n">map_</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">folium_bounds</span><span class="p">)</span> 
-  
-  <span class="k">return</span> <span class="n">map_</span>
+    <span class="n">map_</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">folium_bounds</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">map_</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-37">def map_neighbs(gdf):
-  
-  # map bounds
-  sw = [gdf.unary_union.bounds[1], gdf.unary_union.bounds[0]]
-  ne = [gdf.unary_union.bounds[3], gdf.unary_union.bounds[2]]
-  folium_bounds = [sw, ne]
-  
-  # map
-  x = gdf.centroid.x[0]
-  y = gdf.centroid.y[0]
-  
-  map_ = folium.Map(
-    location = [y, x],
-    tiles = "OpenStreetMap"
-  )
-    
-  gdf['percentile'] = pd.qcut(gdf['total_visits'], 100, labels=False) / 100
-  
-  folium.GeoJson(
-      gdf[['neighborhood', 'total_visits', 'total_visitors', 'percentile', 'geometry']],
-      style_function = lambda x: {
-        'weight':0,
-        'color':'blue',
-        'fillOpacity': x['properties']['percentile']
-      },
-    tooltip = folium.features.GeoJsonTooltip(
-        fields = ['neighborhood', 'total_visits', 'total_visitors', 'percentile']
-      )
+
+    # map bounds
+    sw = [gdf.unary_union.bounds[1], gdf.unary_union.bounds[0]]
+    ne = [gdf.unary_union.bounds[3], gdf.unary_union.bounds[2]]
+    folium_bounds = [sw, ne]
+
+    # map
+    x = gdf.centroid.x[0]
+    y = gdf.centroid.y[0]
+
+    map_ = folium.Map(location=[y, x], tiles="OpenStreetMap")
+
+    gdf["percentile"] = pd.qcut(gdf["total_visits"], 100, labels=False) / 100
+
+    folium.GeoJson(
+        gdf[
+            ["neighborhood", "total_visits", "total_visitors", "percentile", "geometry"]
+        ],
+        style_function=lambda x: {
+            "weight": 0,
+            "color": "blue",
+            "fillOpacity": x["properties"]["percentile"],
+        },
+        tooltip=folium.features.GeoJsonTooltip(
+            fields=["neighborhood", "total_visits", "total_visitors", "percentile"]
+        ),
     ).add_to(map_)
 
-  map_.fit_bounds(folium_bounds) 
-  
-  return map_</div>
+    map_.fit_bounds(folium_bounds)
+
+    return map_</div>
 </div>
 </div>
 </div>
@@ -7413,23 +7514,21 @@ neighbs_gdf = gpd.GeoDataFrame(neighbs_gdf, geometry = gpd.GeoSeries.from_wkt(ne
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">home_loc_most_cafe_visitors</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">sample</span>
-  <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">'visitor_home_cbgs'</span><span class="p">))</span>
-  <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">'key'</span><span class="p">,</span> <span class="s1">'cbg'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">'value'</span><span class="p">,</span> <span class="s1">'visitors'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">'cbg'</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">'visitors'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'visitors'</span><span class="p">))</span>
-  <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">'visitors'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">sample</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">"visitor_home_cbgs"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">"key"</span><span class="p">,</span> <span class="s2">"cbg"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">"value"</span><span class="p">,</span> <span class="s2">"visitors"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">"cbg"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"visitors"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"visitors"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">"visitors"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-39">home_loc_most_cafe_visitors = (
-  sample
-  .select(f.explode('visitor_home_cbgs'))
-  .withColumnRenamed('key', 'cbg')
-  .withColumnRenamed('value', 'visitors')
-  .groupBy('cbg')
-  .agg(f.sum('visitors').alias('visitors'))
-  .orderBy('visitors', ascending = False)
+    sample.select(f.explode("visitor_home_cbgs"))
+    .withColumnRenamed("key", "cbg")
+    .withColumnRenamed("value", "visitors")
+    .groupBy("cbg")
+    .agg(f.sum("visitors").alias("visitors"))
+    .orderBy("visitors", ascending=False)
 )</div>
 </div>
 </div>
@@ -7581,27 +7680,27 @@ home_loc_most_cafe_visitors.limit(10).toPandas().head()</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Map of the top 1000 CBGs in terms of visitors' origins</span>
 <span class="n">home_loc_gdf</span> <span class="o">=</span> <span class="p">(</span>
-  <span class="n">home_loc_most_cafe_visitors</span>
-  <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">join</span><span class="p">(</span>
-    <span class="n">WA_cbgs</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">'cbg'</span><span class="p">,</span> <span class="s1">'cbg_polygon_geometry'</span><span class="p">),</span>
-    <span class="s1">'cbg'</span>
-  <span class="p">)</span>
-  <span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+    <span class="n">home_loc_most_cafe_visitors</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">WA_cbgs</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"cbg"</span><span class="p">,</span> <span class="s2">"cbg_polygon_geometry"</span><span class="p">),</span> <span class="s2">"cbg"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 <span class="p">)</span>
-<span class="n">home_loc_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">home_loc_gdf</span><span class="p">,</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="o">.</span><span class="n">from_wkt</span><span class="p">(</span><span class="n">home_loc_gdf</span><span class="p">[</span><span class="s1">'cbg_polygon_geometry'</span><span class="p">]),</span> <span class="n">crs</span> <span class="o">=</span> <span class="s1">'EPSG:4326'</span><span class="p">)</span>
+<span class="n">home_loc_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="n">home_loc_gdf</span><span class="p">,</span>
+    <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="o">.</span><span class="n">from_wkt</span><span class="p">(</span><span class="n">home_loc_gdf</span><span class="p">[</span><span class="s2">"cbg_polygon_geometry"</span><span class="p">]),</span>
+    <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-42"># Map of the top 1000 CBGs in terms of visitors' origins
 home_loc_gdf = (
-  home_loc_most_cafe_visitors
-  .limit(1000)
-  .join(
-    WA_cbgs.select('cbg', 'cbg_polygon_geometry'),
-    'cbg'
-  )
-  .toPandas()
+    home_loc_most_cafe_visitors.limit(1000)
+    .join(WA_cbgs.select("cbg", "cbg_polygon_geometry"), "cbg")
+    .toPandas()
 )
-home_loc_gdf = gpd.GeoDataFrame(home_loc_gdf, geometry = gpd.GeoSeries.from_wkt(home_loc_gdf['cbg_polygon_geometry']), crs = 'EPSG:4326')</div>
+home_loc_gdf = gpd.GeoDataFrame(
+    home_loc_gdf,
+    geometry=gpd.GeoSeries.from_wkt(home_loc_gdf["cbg_polygon_geometry"]),
+    crs="EPSG:4326",
+)</div>
 </div>
 </div>
 </div>
@@ -7639,72 +7738,62 @@ home_loc_gdf = gpd.GeoDataFrame(home_loc_gdf, geometry = gpd.GeoSeries.from_wkt(
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">map_cbgs</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
-  
-  <span class="c1"># map bounds</span>
-  <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-  <span class="n">ne</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
-  <span class="n">folium_bounds</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">,</span> <span class="n">ne</span><span class="p">]</span>
-  
-  <span class="c1"># map</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  <span class="n">y</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  
-  <span class="n">map_</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
-    <span class="n">location</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span>
-    <span class="n">tiles</span> <span class="o">=</span> <span class="s2">"OpenStreetMap"</span>
-  <span class="p">)</span>
-  
-  <span class="n">gdf</span><span class="p">[</span><span class="s1">'quantile'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s1">'visitors'</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
-  
-  <span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span>
-      <span class="n">gdf</span><span class="p">[[</span><span class="s1">'cbg'</span><span class="p">,</span> <span class="s1">'visitors'</span><span class="p">,</span> <span class="s1">'geometry'</span><span class="p">,</span> <span class="s1">'quantile'</span><span class="p">]],</span>
-      <span class="n">style_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'weight'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-        <span class="s1">'color'</span><span class="p">:</span><span class="s1">'blue'</span><span class="p">,</span>
-        <span class="s1">'fillOpacity'</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">'properties'</span><span class="p">][</span><span class="s1">'quantile'</span><span class="p">]</span>
-      <span class="p">},</span>
-    <span class="n">tooltip</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">GeoJsonTooltip</span><span class="p">(</span>
-        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'cbg'</span><span class="p">,</span> <span class="s1">'visitors'</span><span class="p">,</span> <span class="s1">'quantile'</span><span class="p">]</span>
-      <span class="p">)</span>
+
+    <span class="c1"># map bounds</span>
+    <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">ne</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+    <span class="n">folium_bounds</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">,</span> <span class="n">ne</span><span class="p">]</span>
+
+    <span class="c1"># map</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">map_</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="n">tiles</span><span class="o">=</span><span class="s2">"OpenStreetMap"</span><span class="p">)</span>
+
+    <span class="n">gdf</span><span class="p">[</span><span class="s2">"quantile"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">"visitors"</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+
+    <span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span>
+        <span class="n">gdf</span><span class="p">[[</span><span class="s2">"cbg"</span><span class="p">,</span> <span class="s2">"visitors"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">,</span> <span class="s2">"quantile"</span><span class="p">]],</span>
+        <span class="n">style_function</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"weight"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">,</span>
+            <span class="s2">"fillOpacity"</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">"properties"</span><span class="p">][</span><span class="s2">"quantile"</span><span class="p">],</span>
+        <span class="p">},</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">GeoJsonTooltip</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">"cbg"</span><span class="p">,</span> <span class="s2">"visitors"</span><span class="p">,</span> <span class="s2">"quantile"</span><span class="p">]),</span>
     <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_</span><span class="p">)</span>
 
-  <span class="n">map_</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">folium_bounds</span><span class="p">)</span> 
-  
-  <span class="k">return</span> <span class="n">map_</span>
+    <span class="n">map_</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">folium_bounds</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">map_</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-43">def map_cbgs(gdf):
-  
-  # map bounds
-  sw = [gdf.unary_union.bounds[1], gdf.unary_union.bounds[0]]
-  ne = [gdf.unary_union.bounds[3], gdf.unary_union.bounds[2]]
-  folium_bounds = [sw, ne]
-  
-  # map
-  x = gdf.centroid.x[0]
-  y = gdf.centroid.y[0]
-  
-  map_ = folium.Map(
-    location = [y, x],
-    tiles = "OpenStreetMap"
-  )
-  
-  gdf['quantile'] = pd.qcut(gdf['visitors'], 100, labels=False) / 100
-  
-  folium.GeoJson(
-      gdf[['cbg', 'visitors', 'geometry', 'quantile']],
-      style_function = lambda x: {
-        'weight':0,
-        'color':'blue',
-        'fillOpacity': x['properties']['quantile']
-      },
-    tooltip = folium.features.GeoJsonTooltip(
-        fields = ['cbg', 'visitors', 'quantile']
-      )
+
+    # map bounds
+    sw = [gdf.unary_union.bounds[1], gdf.unary_union.bounds[0]]
+    ne = [gdf.unary_union.bounds[3], gdf.unary_union.bounds[2]]
+    folium_bounds = [sw, ne]
+
+    # map
+    x = gdf.centroid.x[0]
+    y = gdf.centroid.y[0]
+
+    map_ = folium.Map(location=[y, x], tiles="OpenStreetMap")
+
+    gdf["quantile"] = pd.qcut(gdf["visitors"], 100, labels=False) / 100
+
+    folium.GeoJson(
+        gdf[["cbg", "visitors", "geometry", "quantile"]],
+        style_function=lambda x: {
+            "weight": 0,
+            "color": "blue",
+            "fillOpacity": x["properties"]["quantile"],
+        },
+        tooltip=folium.features.GeoJsonTooltip(fields=["cbg", "visitors", "quantile"]),
     ).add_to(map_)
 
-  map_.fit_bounds(folium_bounds) 
-  
-  return map_</div>
+    map_.fit_bounds(folium_bounds)
+
+    return map_</div>
 </div>
 </div>
 </div>
@@ -7829,7 +7918,7 @@ map_cbgs(home_loc_gdf)</div>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 14, 2024 03:28:23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">September 23, 2024 22:14:04</span>
   </span>
 
     
@@ -7965,7 +8054,7 @@ map_cbgs(home_loc_gdf)</div>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "search.share", "navigation.footer", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
