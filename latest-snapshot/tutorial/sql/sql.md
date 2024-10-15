@@ -739,6 +739,60 @@ The coordinates of polygons have been changed. The output will be like this:
 
 ```
 
+## Cluster with DBSCAN
+
+Sedona provides an implementation of the [DBSCAN](https://en.wikipedia.org/wiki/Dbscan) algorithm to cluster spatial data.
+
+The algorithm is available as a Scala and Python function called on a spatial dataframe. The returned dataframe has an additional column added containing the unique identifier of the cluster that record is a member of and a boolean column indicating if the record is a core point.
+
+The first parameter is the dataframe, the next two are the epsilon and min_points parameters of the DBSCAN algorithm.
+
+=== "Scala"
+
+	```scala
+	import org.apache.sedona.stats.DBSCAN.dbscan
+
+	dbscan(df, 0.1, 5).show()
+	```
+
+=== "Java"
+
+	```java
+	import org.apache.sedona.stats.DBSCAN;
+
+	DBSCAN.dbscan(df, 0.1, 5).show();
+	```
+
+=== "Python"
+
+	```python
+	from sedona.stats.dbscan import dbscan
+
+	dbscan(df, 0.1, 5).show()
+	```
+
+The output will look like this:
+
+```
++----------------+---+------+-------+
+|        geometry| id|isCore|cluster|
++----------------+---+------+-------+
+|   POINT (2.5 4)|  3| false|      1|
+|     POINT (3 4)|  2| false|      1|
+|     POINT (3 5)|  5| false|      1|
+|     POINT (1 3)|  9|  true|      0|
+| POINT (2.5 4.5)|  7|  true|      1|
+|     POINT (1 2)|  1|  true|      0|
+| POINT (1.5 2.5)|  4|  true|      0|
+| POINT (1.2 2.5)|  8|  true|      0|
+|   POINT (1 2.5)| 11|  true|      0|
+|     POINT (1 5)| 10| false|     -1|
+|     POINT (5 6)| 12| false|     -1|
+|POINT (12.8 4.5)|  6| false|     -1|
+|     POINT (4 3)| 13| false|     -1|
++----------------+---+------+-------+
+```
+
 ## Run spatial queries
 
 After creating a Geometry type column, you are able to run spatial queries.
@@ -822,7 +876,7 @@ SedonaPyDeck.create_choropleth_map(df=groupedresult, plot_col='AirportCount')
 !!!Note
 	`plot_col` is a required argument informing SedonaPyDeck of the column name used to render the choropleth effect.
 
-![](../image/choropleth.gif)
+![Creating a Choropleth map using SedonaPyDeck](../image/choropleth.gif)
 
 The dataset used is available [here](https://github.com/apache/sedona/tree/4c5fa8333b2c61850d5664b878df9493c7915066/binder/data/ne_50m_airports) and
 can also be found in the example notebook available [here](https://github.com/apache/sedona/blob/4c5fa8333b2c61850d5664b878df9493c7915066/binder/ApacheSedonaSQL_SpatialJoin_AirportsPerCountry.ipynb)
@@ -837,7 +891,7 @@ Example (referenced from overture notebook available via binder):
 SedonaPyDeck.create_geometry_map(df_building, elevation_col='height')
 ```
 
-![](../image/buildings.gif)
+![Creating a Geometry map using SedonaPyDeck](../image/buildings.gif)
 
 !!!Tip
 	`elevation_col` is an optional argument which can be used to render a 3D map. Pass the column with 'elevation' values for the geometries here.
@@ -852,7 +906,7 @@ Example:
 SedonaPyDeck.create_scatterplot_map(df=crimes_df)
 ```
 
-![](../image/points.gif)
+![Creating a Scatterplot map using SedonaPyDeck](../image/points.gif)
 
 The dataset used here is the Chicago crimes dataset, available [here](https://github.com/apache/sedona/blob/sedona-1.5.0/spark/common/src/test/resources/Chicago_Crimes.csv)
 
@@ -866,7 +920,7 @@ Example:
 SedonaPyDeck.create_heatmap(df=crimes_df)
 ```
 
-![](../image/heatmap.gif)
+![Creating a heatmap using SedonaPyDeck](../image/heatmap.gif)
 
 The dataset used here is the Chicago crimes dataset, available [here](https://github.com/apache/sedona/blob/sedona-1.5.0/spark/common/src/test/resources/Chicago_Crimes.csv)
 
@@ -890,7 +944,7 @@ Example (referenced from an example notebook via the binder):
 SedonaKepler.create_map(df=groupedresult, name="AirportCount")
 ```
 
-![](../image/sedona_customization.gif)
+![Visualize geospatial data using SedonaKepler](../image/sedona_customization.gif)
 
 The dataset used is available [here](https://github.com/apache/sedona/tree/4c5fa8333b2c61850d5664b878df9493c7915066/binder/data/ne_50m_airports) and
 can also be found in the example notebook available [here](https://github.com/apache/sedona/blob/4c5fa8333b2c61850d5664b878df9493c7915066/binder/ApacheSedonaSQL_SpatialJoin_AirportsPerCountry.ipynb)
