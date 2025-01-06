@@ -4732,9 +4732,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
-<span class="kn">from</span> <span class="nn">sedona.register</span> <span class="kn">import</span> <span class="n">SedonaRegistrator</span>
-<span class="kn">from</span> <span class="nn">sedona.utils</span> <span class="kn">import</span> <span class="n">SedonaKryoRegistrator</span><span class="p">,</span> <span class="n">KryoSerializer</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sedona.register</span><span class="w"> </span><span class="kn">import</span> <span class="n">SedonaRegistrator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sedona.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">SedonaKryoRegistrator</span><span class="p">,</span> <span class="n">KryoSerializer</span>
 
 <span class="n">spark</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">"sigspatial2021"</span><span class="p">)</span>
@@ -4861,10 +4861,10 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="nn">f</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">MapType</span><span class="p">,</span> <span class="n">StringType</span><span class="p">,</span> <span class="n">IntegerType</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyspark.sql.functions</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">f</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">MapType</span><span class="p">,</span> <span class="n">StringType</span><span class="p">,</span> <span class="n">IntegerType</span>
 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-2">import pyspark.sql.functions as f
 from pyspark.sql.types import MapType, StringType, IntegerType
@@ -5225,9 +5225,9 @@ sample.limit(10).toPandas().head()</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">Window</span>
-<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-<span class="kn">import</span> <span class="nn">folium</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.window</span><span class="w"> </span><span class="kn">import</span> <span class="n">Window</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-5">from pyspark.sql.window import Window
 import geopandas as gpd
@@ -5374,7 +5374,7 @@ cafes_gdf = gpd.GeoDataFrame(
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">map_cafes</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">map_cafes</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
 
     <span class="c1"># map bounds</span>
     <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
@@ -5724,9 +5724,9 @@ print(
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># but `distance_from_home` takes into account ALL visitors to the coffee shop, which as we saw above can distort values. When selecting a site for a coffee shop, we likely care more about how far visitors traveled from within Seattle</span>
 <span class="c1"># we can compute this using Sedona</span>
-<span class="kn">import</span> <span class="nn">sedona</span>
-<span class="kn">from</span> <span class="nn">sedona.register</span> <span class="kn">import</span> <span class="n">SedonaRegistrator</span>
-<span class="kn">from</span> <span class="nn">sedona.utils</span> <span class="kn">import</span> <span class="n">SedonaKryoRegistrator</span><span class="p">,</span> <span class="n">KryoSerializer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sedona</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sedona.register</span><span class="w"> </span><span class="kn">import</span> <span class="n">SedonaRegistrator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sedona.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">SedonaKryoRegistrator</span><span class="p">,</span> <span class="n">KryoSerializer</span>
 
 <span class="n">SedonaRegistrator</span><span class="o">.</span><span class="n">registerAll</span><span class="p">(</span><span class="n">spark</span><span class="p">)</span>
 </pre></div>
@@ -6933,7 +6933,7 @@ visitor_type_gdf = gpd.GeoDataFrame(
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">map_cafe_visitor_type</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">map_cafe_visitor_type</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
 
     <span class="c1"># map bounds</span>
     <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
@@ -7472,7 +7472,7 @@ neighbs_gdf = gpd.GeoDataFrame(
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">map_neighbs</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">map_neighbs</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
 
     <span class="c1"># map bounds</span>
     <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
@@ -7761,7 +7761,7 @@ home_loc_most_cafe_visitors.limit(10).toPandas().head()</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">shapely</span> <span class="kn">import</span> <span class="n">wkt</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">shapely</span><span class="w"> </span><span class="kn">import</span> <span class="n">wkt</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-41">from shapely import wkt</div>
 </div>
@@ -7847,7 +7847,7 @@ home_loc_gdf = gpd.GeoDataFrame(
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">map_cbgs</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">map_cbgs</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
 
     <span class="c1"># map bounds</span>
     <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">gdf</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
