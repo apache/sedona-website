@@ -20,11 +20,11 @@
       
       
       <link rel="icon" href="../../image/sedona_logo_symbol.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
-        <title>Raster SQL app - Apache Sedona&trade;</title>
+        <title>Raster DataFrame / SQL app - Apache Sedona&trade;</title>
       
     
     
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Raster SQL app
+              Raster DataFrame / SQL app
             
           </span>
         </div>
@@ -1531,7 +1531,7 @@
   
   
   <span class="md-ellipsis">
-    Spatial SQL app
+    Spatial DataFrame / SQL app
     
   </span>
   
@@ -1561,7 +1561,7 @@
   
   
   <span class="md-ellipsis">
-    Raster SQL app
+    Raster DataFrame / SQL app
     
   </span>
   
@@ -1574,7 +1574,7 @@
   
   
   <span class="md-ellipsis">
-    Raster SQL app
+    Raster DataFrame / SQL app
     
   </span>
   
@@ -1948,6 +1948,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../geopandas-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GeoPandas API on Sedona
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../rdd/" class="md-nav__link">
         
   
@@ -1977,29 +2000,6 @@
   
   <span class="md-ellipsis">
     Sedona R
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../api/pydocs" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Sedona Python
     
   </span>
   
@@ -4715,7 +4715,7 @@
   
   
   <span class="md-ellipsis">
-    Contribute to Geopandas
+    Contribute to Geopandas API on Sedona
     
   </span>
   
@@ -5525,7 +5525,7 @@
   
 
 
-  <h1>Raster SQL app</h1>
+  <h1>Raster DataFrame / SQL app</h1>
 
 <!--
  Licensed to the Apache Software Foundation (ASF) under one
@@ -5628,11 +5628,11 @@ If you use SedonaViz together with SedonaSQL, please add the following line afte
 
 <span class="n">config</span> <span class="o">=</span> <span class="n">SedonaContext</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span> <span class="o">.</span>\
     <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.jars.packages&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;org.apache.sedona:sedona-spark-shaded-3.3_2.12:1.7.2,&#39;</span>
-           <span class="s1">&#39;org.datasyslab:geotools-wrapper:1.7.2-28.5&#39;</span><span class="p">)</span><span class="o">.</span> \
+           <span class="s1">&#39;org.apache.sedona:sedona-spark-shaded-3.3_2.12:1.8.0,&#39;</span>
+           <span class="s1">&#39;org.datasyslab:geotools-wrapper:1.8.0-33.1&#39;</span><span class="p">)</span><span class="o">.</span> \
     <span class="n">getOrCreate</span><span class="p">()</span>
 </code></pre></div>
-Please replace the <code>3.3</code> in the package name of sedona-spark-shaded with the corresponding major.minor version of Spark, such as <code>sedona-spark-shaded-3.4_2.12:1.7.2</code>.</p>
+Please replace the <code>3.3</code> in the package name of sedona-spark-shaded with the corresponding major.minor version of Spark, such as <code>sedona-spark-shaded-3.4_2.12:1.8.0</code>.</p>
 </div>
 </div>
 </div>
@@ -6037,7 +6037,7 @@ objects yet. However, you can write a UDF that returns the band data as an array
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../sql/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Spatial SQL app">
+          <a href="../sql/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Spatial DataFrame / SQL app">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6047,7 +6047,7 @@ objects yet. However, you can write a UDF that returns the band data as an array
                 Previous
               </span>
               <div class="md-ellipsis">
-                Spatial SQL app
+                Spatial DataFrame / SQL app
               </div>
             </div>
           </a>
